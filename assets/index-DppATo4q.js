@@ -1,0 +1,1 @@
+import{t as e}from"./preload-helper-BHCL1zlc.js";try{await e(()=>import(`./main-BUpY6MEM.js`),[])}catch(e){globalThis.__forgeaxStartup?.fail?.(e)}

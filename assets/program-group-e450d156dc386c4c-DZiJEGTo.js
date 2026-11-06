@@ -1,0 +1,1 @@
+var e=`doomsday/view`,t=`doomsday/engine`;function n(e){return!!e&&typeof e==`object`&&e.channel===`doomsday/view`}function r(e){return!!e&&typeof e==`object`&&e.channel===`doomsday/engine`}Object.freeze({pos:[12.5,9.5,19.5],target:[-1,1,-2.8],fovDeg:38});var i=4.6,a=-5.15;export{r as a,e as i,t as n,n as o,a as r,i as t};
