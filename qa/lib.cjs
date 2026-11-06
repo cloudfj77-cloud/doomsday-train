@@ -38,6 +38,7 @@ async function click(page, selector, index = 0) {
     const els = [...(host?.shadowRoot?.querySelectorAll(selector) ?? [])].filter((n) => n.getClientRects().length > 0 && !n.disabled);
     const el = els[index];
     if (!el) return null;
+    el.scrollIntoView({ block: 'center' });
     const r = el.getBoundingClientRect();
     const x = r.left + r.width / 2, y = r.top + r.height / 2;
     const top = host.shadowRoot.elementFromPoint(x, y);

@@ -46,7 +46,7 @@ pnpm exec tsx scripts/balance-sim.mts 300              # 平衡模拟
 node qa/playthrough.cjs "http://localhost:4195/?qa=1"  # 验收
 ```
 
-发布到 GitHub Pages：`BASE=/doomsday-train/ OUT=site bash scripts/build.sh`，再把 `site/` 推到 `gh-pages` 分支。
+发布到 GitHub Pages：`bash scripts/publish-pages.sh`（按子路径打包并推送到 `gh-pages` 分支，约 1 分钟后生效）。
 
 ---
 
