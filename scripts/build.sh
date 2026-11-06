@@ -5,7 +5,11 @@ cd "$(dirname "$0")/.."
 export PATH="$HOME/.local/bin:$PATH"
 out=".forgeax/diag/build.json"
 mkdir -p .forgeax/diag
-pnpm exec forgeax project build --html-head web/head.html --json > "$out" 2>&1 || true
+# 可选：BASE=/doomsday-train/ OUT=site 用于 GitHub Pages 子路径发布
+extra=()
+[ -n "${BASE:-}" ] && extra+=(--base "$BASE")
+[ -n "${OUT:-}" ] && extra+=(--outDir "$OUT")
+pnpm exec forgeax project build --html-head web/head.html "${extra[@]}" --json > "$out" 2>&1 || true
 python3 - "$out" <<'PY'
 import json, sys
 raw = open(sys.argv[1]).read()
