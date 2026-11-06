@@ -1,0 +1,61 @@
+<section class="title-screen" data-ui-part="title-screen">
+  <div class="title-block">
+    <h1 class="game-title" data-i18n="game.title">末日列车</h1>
+    <p class="subtitle" data-i18n="cover.subtitle"></p>
+    <div class="title-actions">
+      <button type="button" class="menu-btn primary" data-act="new-game" data-i18n="cover.newGame"></button>
+      <button type="button" class="menu-btn" data-act="continue" data-ui-part="continue-btn" data-i18n="cover.resume"></button>
+      <small class="save-info" data-ui-part="save-info"></small>
+      <div class="lang-switch" role="group">
+        <button type="button" data-act="lang" data-lang="zh">中文</button>
+        <button type="button" data-act="lang" data-lang="en">EN</button>
+      </div>
+    </div>
+    <ul class="howto">
+      <li data-i18n="cover.howto1"></li>
+      <li data-i18n="cover.howto2"></li>
+      <li data-i18n="cover.howto3"></li>
+      <li data-i18n="cover.howto4"></li>
+    </ul>
+    <p class="proto-tag" data-i18n="cover.protoTag"></p>
+  </div>
+</section>
+
+<section class="hud" data-ui-part="hud">
+  <header class="topbar">
+    <div class="tb-left">
+      <strong class="tb-title" data-i18n="game.title">末日列车</strong>
+      <span class="tb-day" data-ui-part="tb-day"></span>
+      <span class="tb-phase" data-ui-part="tb-phase"></span>
+    </div>
+    <div class="tb-stats">
+      <div class="stat"><small data-i18n="hud.cash"></small><b data-ui-part="tb-cash"></b></div>
+      <div class="stat"><small data-i18n="hud.debt"></small><b data-ui-part="tb-debt"></b></div>
+      <div class="stat due"><small data-ui-part="tb-due-label"></small><b data-ui-part="tb-due"></b></div>
+    </div>
+    <div class="tb-right">
+      <div class="lang-switch small" role="group">
+        <button type="button" data-act="lang" data-lang="zh">中文</button>
+        <button type="button" data-act="lang" data-lang="en">EN</button>
+      </div>
+      <button type="button" class="ghost" data-act="to-title" data-i18n="hud.menu"></button>
+    </div>
+  </header>
+
+  <div class="toasts" data-ui-part="toasts" aria-live="polite"></div>
+  <div class="settle-banner" data-ui-part="settle-banner"></div>
+
+  <aside class="side">
+    <nav class="tabs" data-ui-part="tabs"></nav>
+    <div class="tab-body" data-ui-part="tab-body"></div>
+  </aside>
+
+  <div class="station-plate" data-ui-part="station-plate"></div>
+  <div class="train-stats" data-ui-part="train-stats"></div>
+  <div class="main-action" data-ui-part="main-action"></div>
+  <div class="travel-bar" data-ui-part="travel-bar"><span data-ui-part="travel-label"></span><i data-ui-part="travel-fill"></i></div>
+</section>
+
+<section class="modal-layer" data-ui-part="modal-layer">
+  <div class="modal" data-ui-part="modal"></div>
+</section>

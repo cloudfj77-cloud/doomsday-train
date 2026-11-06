@@ -1,0 +1,41 @@
+<style>
+  #forgeax-status { display: none !important; }
+  #forgeax-loading { background: radial-gradient(ellipse at 40% 60%, #2a1a12 0%, #120c09 55%, #050404 100%) !important; }
+  #forgeax-loading-title { font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif !important; font-weight: 900 !important; letter-spacing: 0.12em !important; color: #efe3cc !important; text-shadow: 2px 2px 0 #8a7a62, 4px 4px 0 #5a4c3a; }
+  #forgeax-loading-status, #forgeax-loading-detail { display: none !important; }
+  #forgeax-loading-fill { background: linear-gradient(90deg, #b8452a, #ffcf6a) !important; }
+  #forgeax-loading-subtitle { margin: 0; color: rgb(239 227 204 / 70%); font: 14px/1.6 "PingFang SC", system-ui, sans-serif; letter-spacing: 0.16em; }
+</style>
+<script>
+  (() => {
+    // Same rule as the HUD: saved choice (localStorage doomsday.lang) wins, else zh* browsers get Chinese.
+    let saved = null;
+    try { saved = localStorage.getItem('doomsday.lang'); } catch (error) { saved = null; }
+    const q = new URLSearchParams(location.search).get('lang');
+    const langs = [].concat(navigator.languages || [], navigator.language || []);
+    const pick = q === 'zh' || q === 'en' ? q : saved === 'zh' || saved === 'en' ? saved : String(langs.find((v) => v) || '').toLowerCase().startsWith('zh') ? 'zh' : 'en';
+    const zh = pick === 'zh';
+    const text = zh
+      ? { title: '末日列车', loading: '列车正在点火…', slow: '仍在加载，可继续等待或重新载入。', reload: '重新载入', lang: 'zh-CN' }
+      : { title: 'Doomsday Train', loading: 'Firing up the boiler…', slow: 'Still loading. You can keep waiting or reload.', reload: 'Reload', lang: 'en' };
+    document.title = text.title;
+    document.documentElement.lang = text.lang;
+    const apply = () => {
+      const title = document.getElementById('forgeax-loading-title');
+      if (title) title.textContent = text.title;
+      const status = document.getElementById('forgeax-loading-status');
+      if (status && !document.getElementById('forgeax-loading-subtitle')) {
+        const subtitle = document.createElement('p');
+        subtitle.id = 'forgeax-loading-subtitle';
+        subtitle.textContent = text.loading;
+        status.after(subtitle);
+      }
+      const slow = document.getElementById('forgeax-loading-slow');
+      if (slow) slow.textContent = text.slow;
+      const reload = document.getElementById('forgeax-loading-reload');
+      if (reload) reload.textContent = text.reload;
+    };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', apply, { once: true });
+    else apply();
+  })();
+</script>

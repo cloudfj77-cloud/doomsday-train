@@ -1,0 +1,502 @@
+{
+  "fallbackLng": "en",
+  "defaultNS": "ui",
+  "resources": {
+    "zh": {
+      "ui": {
+        "game": {
+          "title": "末日列车"
+        },
+        "cover": {
+          "subtitle": "你用全部家当换来一张「希望线」运行许可。还清 6000 欠款，成为末日里有名的列车长。",
+          "newGame": "开始新游戏",
+          "resume": "继续游戏",
+          "saveInfo": "存档：第 {{day}} 天 · 现金 {{cash}} · 剩余欠款 {{debt}}",
+          "noSave": "暂无存档",
+          "howto1": "每天从 3 条路线里选 1 条，列车逐站行驶。",
+          "howto2": "到站接待客商：低价进货、按牌价卖给有需求的采购客；载客上车即收票款。",
+          "howto3": "收车后结算燃油、司机工资和生活维护，现金可以暂时为负。",
+          "howto4": "每 5 天偿债大结算，累计还款不足就失败；还清 6000 即胜利。",
+          "protoTag": "可玩原型 v0.1 · 跑线 → 买卖 → 日结 → 还款 · 数值取自策划案 0 Tag 基准"
+        },
+        "hud": {
+          "day": "第 {{day}} 天",
+          "cash": "现金",
+          "debt": "剩余欠款",
+          "due": "第 {{day}} 天大结算",
+          "dueNeed": "还需补 {{amount}}",
+          "dueOk": "本期已还够",
+          "dueNone": "无后续还款",
+          "menu": "回到标题"
+        },
+        "phase": {
+          "depot": "整备出发",
+          "travel": "行驶中",
+          "station": "停靠中",
+          "dayEnd": "日结",
+          "settlement": "偿债大结算",
+          "won": "债务清零",
+          "lost": "游戏结束"
+        },
+        "region": {
+          "rich": "富人区",
+          "slum": "贫民区"
+        },
+        "place": {
+          "rich": {
+            "p0": "金穹",
+            "p1": "霓虹港",
+            "p2": "白塔",
+            "p3": "钟楼区",
+            "p4": "玻璃坊",
+            "p5": "云阶",
+            "p6": "银杏台",
+            "p7": "天桥市"
+          },
+          "slum": {
+            "p0": "锈井",
+            "p1": "铁皮巷",
+            "p2": "灰坑",
+            "p3": "煤渣镇",
+            "p4": "破瓦堆",
+            "p5": "黑水沟",
+            "p6": "废轮场",
+            "p7": "拾荒集"
+          }
+        },
+        "item": {
+          "ration": "口粮",
+          "water": "净水",
+          "veg": "蔬菜",
+          "sewage": "污水",
+          "scrap": "废铁",
+          "ingot": "金属锭",
+          "parts": "零件",
+          "repair": "维修包",
+          "seed": "种子",
+          "research": "研究资料",
+          "bandage": "绷带"
+        },
+        "tab": {
+          "customers": "客商",
+          "passengers": "乘客",
+          "depot": "整备",
+          "cargo": "货舱"
+        },
+        "cust": {
+          "supplier": "供货客",
+          "buyer": "采购客",
+          "batchTag": "整批 -{{pct}}%",
+          "noBatch": "无整批价",
+          "buySingle": "单拿 {{price}}",
+          "buyBatch": "整批买下 {{price}}",
+          "pass": "拒绝",
+          "budget": "预算 {{budget}}",
+          "have": "库存 {{n}}",
+          "sell": "卖出 {{amount}}",
+          "cantSell": "没有对方要的货",
+          "cantAfford": "对方预算不够",
+          "deal": "已成交 {{amount}}",
+          "passed": "已离开",
+          "allDone": "本站客商都已接待完。",
+          "hint": "每位客商只成交一次；单拿可调数量，整批必须全部接下。离站后没接待的客商就走了。",
+          "settleHint": "大结算期间只能向还在的采购客卖货补缺。",
+          "unit": "单价 {{price}}",
+          "retail": "牌价 {{price}}"
+        },
+        "pas": {
+          "waiting": "候车乘客",
+          "to": "去 {{place}}（{{seg}} 段）",
+          "board": "上车 +{{fare}}",
+          "unbound": "选定路线后才能签单",
+          "lastStop": "今天到此为止，明天选路线后可签单",
+          "boarded": "已上车",
+          "seats": "座位 {{used}}/{{total}}",
+          "riders": "车上乘客",
+          "riderTo": "乘客 · 去第 {{n}} 站",
+          "want": "想买 {{item}} · {{price}}",
+          "sellRider": "卖给他 +{{price}}",
+          "sold": "已卖出",
+          "none": "暂无",
+          "hint": "票价 24/段，上车即收全款；到站自动下车。在车乘客到站时有 30% 概率想买点东西。"
+        },
+        "depot": {
+          "cars": "车厢 {{n}}/10",
+          "storage": "存储车厢",
+          "storageDesc": "+16 格货舱；之后每个商业站 +1 名客商",
+          "passenger": "载客车厢",
+          "passengerDesc": "+6 个乘客座位",
+          "buy": "购买 {{price}}",
+          "owned": "已有 {{n}} 节",
+          "repay": "提前还款",
+          "repayDesc": "提前还的本金计入累计已还；还款需要足额现金。",
+          "repayBtn": "还 {{amount}}",
+          "repayAll": "全部还清 {{amount}}",
+          "negative": "现金为负：只能卖货和载客，不能进货、购车或还款。"
+        },
+        "cargo": {
+          "cells": "货舱 {{used}}/{{cap}} 格",
+          "itemCells": "{{n}} 格",
+          "load": "载荷 Q {{q}}",
+          "value": "库存参考估值 {{v}}（不能直接抵现金）",
+          "empty": "货舱空空如也。",
+          "fuel": "下一段燃油 ≈ {{f}}",
+          "formula": "每段燃油 = 6 + 4×车厢数 + 0.5×载荷（含随身枪弹 1.5），日末合计向上取整。",
+          "grid": "格子示意（原型按占格数计算，不做摆放旋转）"
+        },
+        "stats": {
+          "cells": "货舱",
+          "seats": "座位",
+          "load": "载荷",
+          "fuel": "今日燃油",
+          "cars": "车厢"
+        },
+        "plate": {
+          "stop": "第 {{k}}/{{n}} 站",
+          "origin": "起点站",
+          "route": "今日路线"
+        },
+        "action": {
+          "chooseRoute": "选择今天的路线",
+          "depart": "发车 → {{place}}",
+          "endDay": "收车 · 日末结算",
+          "showSettle": "查看大结算"
+        },
+        "route": {
+          "title": "第 {{day}} 天 · 选择路线",
+          "desc": "初始司机每天最多跑 3 站。站越多，客商和乘客越多，燃油和工资也越多。",
+          "stops": "{{n}} 站",
+          "customers": "预计客商 {{n}} 名",
+          "fuel": "预计燃油+工资 ≈ {{f}}",
+          "choose": "走这条",
+          "later": "先在本站处理"
+        },
+        "travel": {
+          "to": "行驶中 → {{place}}"
+        },
+        "bill": {
+          "title": "第 {{day}} 天 · 日末结算",
+          "income": "今日已到账",
+          "retail": "零售收入",
+          "tickets": "客票收入",
+          "purchases": "进货支出",
+          "cars": "整备支出",
+          "repaid": "提前还款",
+          "fuel": "燃油（{{seg}} 段）",
+          "wages": "司机工资（{{seg}} 段）",
+          "living": "生活维护（{{n}} 人）",
+          "total": "日末账单",
+          "cash": "现金 {{before}} → {{after}}",
+          "negative": "现金为负：普通日可以继续经营，但不能进货、购车或还款，直到卖货补回。",
+          "next": "进入第 {{day}} 天",
+          "toSettle": "进入偿债大结算"
+        },
+        "settle": {
+          "title": "第 {{day}} 天 · 偿债大结算",
+          "required": "本期累计应还",
+          "repaid": "累计已还本金",
+          "due": "本期应补",
+          "cash": "当前现金",
+          "short": "还差 {{amount}}。可以把货卖给本站还没走的采购客补缺。",
+          "ok": "现金足够，付款后进入下一天。",
+          "pay": "支付 {{amount}}",
+          "sell": "去卖货补缺",
+          "forfeit": "认输，结束本局",
+          "banner": "大结算还差 {{amount}}",
+          "bannerOk": "现金已够支付 {{amount}}",
+          "back": "回到结算"
+        },
+        "won": {
+          "title": "债务清零！",
+          "desc": "第 {{day}} 天，你还清了全部 6000 欠款。「希望线」从此属于你。",
+          "stats": "累计零售收入 {{revenue}} · 客票 {{tickets}} · 载客 {{passengers}} 人 · 车厢 {{cars}} 节",
+          "continue": "继续经营",
+          "title2": "回到标题"
+        },
+        "lost": {
+          "title": "列车被收走了",
+          "desc": "第 {{day}} 天大结算没能付足 {{due}}，累计已还 {{repaid}} / 6000。",
+          "stats": "撑过 {{day}} 天 · 累计零售收入 {{revenue}} · 客票 {{tickets}}",
+          "retry": "再来一局",
+          "title2": "回到标题"
+        },
+        "err": {
+          "cash": "现金不足",
+          "negativeCash": "现金为负，不能主动付款",
+          "space": "货舱放不下",
+          "seats": "座位已满",
+          "noStock": "没有对方要的货",
+          "budget": "对方预算不够",
+          "done": "已经成交过了",
+          "unbound": "先选路线",
+          "maxCars": "车厢已达上限",
+          "amount": "数量无效",
+          "phase": "现在不能这么做",
+          "notFound": "找不到对象"
+        },
+        "toast": {
+          "bought": "进货 −{{amount}}",
+          "sold": "卖出 +{{amount}}",
+          "boarded": "乘客上车 +{{amount}}",
+          "riderSold": "卖给乘客 +{{amount}}",
+          "delivered": "{{n}} 名乘客到站下车",
+          "car": "购买车厢 −{{amount}}",
+          "repaid": "还款 {{amount}}",
+          "arrived": "抵达 {{place}}",
+          "eventUp": "今日行情：{{item}} 涨价 ×1.25",
+          "eventDown": "今日行情：{{item}} 跌价 ×0.8",
+          "eventNone": "今日行情平稳",
+          "settled": "大结算通过，已还 {{amount}}"
+        }
+      }
+    },
+    "en": {
+      "ui": {
+        "game": {
+          "title": "Doomsday Train"
+        },
+        "cover": {
+          "subtitle": "You traded everything for one permit on the Hope Line. Pay off 6,000 in debt and become the wasteland's most famous conductor.",
+          "newGame": "New Game",
+          "resume": "Continue",
+          "saveInfo": "Save: Day {{day}} · Cash {{cash}} · Debt {{debt}}",
+          "noSave": "No save yet",
+          "howto1": "Each day, pick 1 of 3 routes; the train runs stop by stop.",
+          "howto2": "Trade at stations: buy low from suppliers, sell at list price to buyers who need it. Fares are paid on boarding.",
+          "howto3": "At day end you pay fuel, driver wages and upkeep. Cash may dip below zero for a while.",
+          "howto4": "Every 5 days the debt check comes. Fall short of the cumulative total and you lose; clear 6,000 to win.",
+          "protoTag": "Playable prototype v0.1 · Route → Trade → Settle → Repay · Numbers from the 0-Tag design baseline"
+        },
+        "hud": {
+          "day": "Day {{day}}",
+          "cash": "Cash",
+          "debt": "Debt left",
+          "due": "Debt check · Day {{day}}",
+          "dueNeed": "Owe {{amount}}",
+          "dueOk": "Covered",
+          "dueNone": "No more checks",
+          "menu": "Title"
+        },
+        "phase": {
+          "depot": "Preparing",
+          "travel": "On the move",
+          "station": "At station",
+          "dayEnd": "Day end",
+          "settlement": "Debt check",
+          "won": "Debt cleared",
+          "lost": "Game over"
+        },
+        "region": {
+          "rich": "Uptown",
+          "slum": "Slums"
+        },
+        "place": {
+          "rich": {
+            "p0": "Gilded Dome",
+            "p1": "Neon Harbor",
+            "p2": "White Spire",
+            "p3": "Clocktower",
+            "p4": "Glassworks",
+            "p5": "Cloudsteps",
+            "p6": "Ginkgo Terrace",
+            "p7": "Skybridge"
+          },
+          "slum": {
+            "p0": "Rustwell",
+            "p1": "Tin Alley",
+            "p2": "Ash Pit",
+            "p3": "Cinder Town",
+            "p4": "Broken Tiles",
+            "p5": "Blackwater",
+            "p6": "Tire Yard",
+            "p7": "Scrap Market"
+          }
+        },
+        "item": {
+          "ration": "Rations",
+          "water": "Clean water",
+          "veg": "Vegetables",
+          "sewage": "Dirty water",
+          "scrap": "Scrap iron",
+          "ingot": "Metal ingot",
+          "parts": "Parts",
+          "repair": "Repair kit",
+          "seed": "Seeds",
+          "research": "Research notes",
+          "bandage": "Bandage"
+        },
+        "tab": {
+          "customers": "Traders",
+          "passengers": "Riders",
+          "depot": "Workshop",
+          "cargo": "Cargo"
+        },
+        "cust": {
+          "supplier": "Supplier",
+          "buyer": "Buyer",
+          "batchTag": "Bulk −{{pct}}%",
+          "noBatch": "No bulk deal",
+          "buySingle": "Buy {{price}}",
+          "buyBatch": "Buy all {{price}}",
+          "pass": "Decline",
+          "budget": "Budget {{budget}}",
+          "have": "Have {{n}}",
+          "sell": "Sell {{amount}}",
+          "cantSell": "No matching stock",
+          "cantAfford": "Budget too low",
+          "deal": "Deal {{amount}}",
+          "passed": "Left",
+          "allDone": "Every trader here has been served.",
+          "hint": "One deal per trader. Pick quantities for single buys; a bulk deal takes the whole lot. Unserved traders leave when you depart.",
+          "settleHint": "During the debt check you can only sell to buyers still here.",
+          "unit": "Unit {{price}}",
+          "retail": "List {{price}}"
+        },
+        "pas": {
+          "waiting": "Waiting",
+          "to": "To {{place}} ({{seg}} legs)",
+          "board": "Board +{{fare}}",
+          "unbound": "Pick a route to sign tickets",
+          "lastStop": "Last stop today; sign tomorrow after picking a route",
+          "boarded": "Aboard",
+          "seats": "Seats {{used}}/{{total}}",
+          "riders": "On board",
+          "riderTo": "Rider · to stop {{n}}",
+          "want": "Wants {{item}} · {{price}}",
+          "sellRider": "Sell +{{price}}",
+          "sold": "Sold",
+          "none": "None",
+          "hint": "Fare is 24 per leg, paid in full on boarding; riders get off at their stop. On arrival each rider has a 30% chance to want something."
+        },
+        "depot": {
+          "cars": "Cars {{n}}/10",
+          "storage": "Storage car",
+          "storageDesc": "+16 cargo cells; +1 trader at every later station",
+          "passenger": "Passenger car",
+          "passengerDesc": "+6 rider seats",
+          "buy": "Buy {{price}}",
+          "owned": "Owned {{n}}",
+          "repay": "Repay early",
+          "repayDesc": "Early payments count toward the cumulative total. Needs enough cash.",
+          "repayBtn": "Pay {{amount}}",
+          "repayAll": "Pay off {{amount}}",
+          "negative": "Cash is negative: you can sell and carry riders, but not buy, build or repay."
+        },
+        "cargo": {
+          "cells": "Hold {{used}}/{{cap}} cells",
+          "itemCells": "{{n}} cells",
+          "load": "Load Q {{q}}",
+          "value": "Stock reference value {{v}} (not cash)",
+          "empty": "The hold is empty.",
+          "fuel": "Next leg fuel ≈ {{f}}",
+          "formula": "Fuel per leg = 6 + 4×cars + 0.5×load (incl. 1.5 for your gun and ammo), summed and rounded up at day end.",
+          "grid": "Cell sketch (the prototype counts cells; no placement or rotation)"
+        },
+        "stats": {
+          "cells": "Hold",
+          "seats": "Seats",
+          "load": "Load",
+          "fuel": "Fuel today",
+          "cars": "Cars"
+        },
+        "plate": {
+          "stop": "Stop {{k}}/{{n}}",
+          "origin": "Origin",
+          "route": "Today's route"
+        },
+        "action": {
+          "chooseRoute": "Pick today's route",
+          "depart": "Depart → {{place}}",
+          "endDay": "Stop for the day",
+          "showSettle": "Open debt check"
+        },
+        "route": {
+          "title": "Day {{day}} · Pick a route",
+          "desc": "Your starting driver covers up to 3 stops a day. More stops bring more traders and riders, and more fuel and wages.",
+          "stops": "{{n}} stops",
+          "customers": "≈{{n}} traders",
+          "fuel": "Fuel + wages ≈ {{f}}",
+          "choose": "Take it",
+          "later": "Stay a moment"
+        },
+        "travel": {
+          "to": "On the move → {{place}}"
+        },
+        "bill": {
+          "title": "Day {{day}} · End of day",
+          "income": "Booked today",
+          "retail": "Sales",
+          "tickets": "Fares",
+          "purchases": "Purchases",
+          "cars": "Workshop",
+          "repaid": "Early repayment",
+          "fuel": "Fuel ({{seg}} legs)",
+          "wages": "Driver wages ({{seg}} legs)",
+          "living": "Upkeep ({{n}} people)",
+          "total": "Day-end bill",
+          "cash": "Cash {{before}} → {{after}}",
+          "negative": "Cash is negative: you can keep running, but no buying, building or repaying until sales bring it back.",
+          "next": "On to day {{day}}",
+          "toSettle": "Go to the debt check"
+        },
+        "settle": {
+          "title": "Day {{day}} · Debt check",
+          "required": "Cumulative due",
+          "repaid": "Repaid so far",
+          "due": "Due now",
+          "cash": "Cash",
+          "short": "Short by {{amount}}. Sell to buyers still at this station to cover it.",
+          "ok": "You have enough. Pay to start the next day.",
+          "pay": "Pay {{amount}}",
+          "sell": "Sell to cover",
+          "forfeit": "Give up",
+          "banner": "Debt check: short by {{amount}}",
+          "bannerOk": "Enough to pay {{amount}}",
+          "back": "Back to check"
+        },
+        "won": {
+          "title": "Debt cleared!",
+          "desc": "On day {{day}} you paid off all 6,000. The Hope Line is yours.",
+          "stats": "Sales {{revenue}} · Fares {{tickets}} · {{passengers}} riders · {{cars}} cars",
+          "continue": "Keep running",
+          "title2": "Title screen"
+        },
+        "lost": {
+          "title": "The train was repossessed",
+          "desc": "On day {{day}} you could not pay {{due}}. Repaid {{repaid}} / 6,000.",
+          "stats": "Lasted {{day}} days · Sales {{revenue}} · Fares {{tickets}}",
+          "retry": "Try again",
+          "title2": "Title screen"
+        },
+        "err": {
+          "cash": "Not enough cash",
+          "negativeCash": "Cash is negative; no new spending",
+          "space": "Not enough cargo space",
+          "seats": "No free seats",
+          "noStock": "You don't have what they want",
+          "budget": "Their budget is too low",
+          "done": "Already dealt",
+          "unbound": "Pick a route first",
+          "maxCars": "Car limit reached",
+          "amount": "Invalid amount",
+          "phase": "Not now",
+          "notFound": "Not found"
+        },
+        "toast": {
+          "bought": "Bought −{{amount}}",
+          "sold": "Sold +{{amount}}",
+          "boarded": "Rider boarded +{{amount}}",
+          "riderSold": "Sold to rider +{{amount}}",
+          "delivered": "{{n}} rider(s) got off",
+          "car": "New car −{{amount}}",
+          "repaid": "Repaid {{amount}}",
+          "arrived": "Arrived at {{place}}",
+          "eventUp": "Market: {{item}} up ×1.25",
+          "eventDown": "Market: {{item}} down ×0.8",
+          "eventNone": "Market is steady today",
+          "settled": "Debt check passed, paid {{amount}}"
+        }
+      }
+    }
+  }
+}
