@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>《逃离鸭科夫》逆向拆解报告 · 代码 + 美术</title>
+<style>
+:root{--bg:#f7f6f2;--card:#fff;--ink:#1f2328;--sub:#5b6370;--line:#e4e2da;--acc:#e8a317;--acc2:#2f6fde;--ok:#1a8f5a;--warn:#c4472d}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 -apple-system,"PingFang SC","Helvetica Neue",Arial,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:40px 28px 80px}
+header{display:flex;gap:28px;align-items:flex-end;border-bottom:3px solid var(--ink);padding-bottom:22px;margin-bottom:28px}
+header h1{font-size:34px;line-height:1.2;margin:0}
+header .tag{display:inline-block;background:var(--acc);color:#1f2328;font-weight:700;padding:2px 10px;border-radius:4px;font-size:13px;margin-bottom:8px}
+header p{margin:6px 0 0;color:var(--sub)}
+nav{position:sticky;top:0;background:rgba(247,246,242,.95);backdrop-filter:blur(6px);z-index:9;padding:10px 0;margin-bottom:18px;border-bottom:1px solid var(--line);font-size:14px}
+nav a{color:var(--sub);text-decoration:none;margin-right:18px}nav a:hover{color:var(--acc2)}
+h2{font-size:24px;margin:46px 0 14px;display:flex;align-items:center;gap:10px}
+h2 .n{background:var(--ink);color:#fff;border-radius:6px;padding:0 9px;font-size:16px}
+h3{font-size:17px;margin:26px 0 8px}
+.grid{display:grid;gap:14px}.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:860px){.g4,.g3,.g2{grid-template-columns:1fr 1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.kpi b{display:block;font-size:28px;line-height:1.2}.kpi span{color:var(--sub);font-size:13px}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:14px}
+th,td{padding:8px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#f0eee7;font-weight:600}
+code,pre{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px}
+code{background:#f0eee7;padding:1px 5px;border-radius:4px}
+pre{background:#fbfaf6;border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:8px;padding:12px 14px;overflow:auto;line-height:1.55}
+.note{border-left:4px solid var(--acc2);background:#eef3fd;padding:10px 14px;border-radius:6px;color:#23324d;font-size:14px}
+.warn{border-left-color:var(--warn);background:#fcefeb;color:#5a2418}
+.pill{display:inline-block;border:1px solid var(--line);background:#fff;border-radius:999px;padding:2px 10px;margin:3px 4px 3px 0;font-size:13px}
+.pill.y{background:#fff6dc;border-color:#f0d88a}.pill.b{background:#e9f0fd;border-color:#bcd0f5}.pill.g{background:#e7f5ee;border-color:#b4dec8}.pill.r{background:#fcebe7;border-color:#f0c3b8}
+figure{margin:12px 0}figure img{width:100%;border:1px solid var(--line);border-radius:10px;background:#fff}
+figcaption{color:var(--sub);font-size:13px;margin-top:4px}
+ul{padding-left:20px;margin:6px 0}li{margin:3px 0}
+.arch{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;font-size:13px}
+.arch .l{grid-column:1/-1;background:#1f2328;color:#fff;border-radius:8px;padding:8px 12px;font-weight:600}
+.arch .m{background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.arch .m b{display:block;font-size:14px;margin-bottom:2px}
+.arch .m.hl{border-color:var(--acc);background:#fffaf0}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:14px}
+.flow span{background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 10px}
+.flow i{color:var(--sub);font-style:normal}
+footer{margin-top:60px;color:var(--sub);font-size:13px;border-top:1px solid var(--line);padding-top:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div>
+    <span class="tag">REVERSE ENGINEERING · 学习用途</span>
+    <h1>《逃离鸭科夫》Escape from Duckov<br>代码 + 美术 逆向拆解</h1>
+    <p>样本：Steam 版 v2.3.30 · build-guid 5ed0f56f… · 开发商 TeamSoda（B站发行）· 拆解日期 2026-11-07</p>
+  </div>
+</header>
+<nav>
+  <a href="#overview">1 总览</a><a href="#stack">2 技术栈</a><a href="#arch">3 代码架构</a><a href="#combat">4 战斗与角色</a><a href="#ai">5 AI 与视野</a><a href="#loop">6 搜打撤循环</a><a href="#meta">7 成长/存档/Mod</a><a href="#art">8 美术管线</a><a href="#learn">9 可借鉴点</a>
+</nav>
+
+<h2 id="overview"><span class="n">1</span>一页总览</h2>
+<div class="grid g4">
+  <div class="card kpi"><b>Unity 2022.3.62f2</b><span>URP · 延迟渲染(GBuffer) · Mono 后端（未 IL2CPP，可完整反编译）</span></div>
+  <div class="card kpi"><b>≈15 万行</b><span>自研 C#：Duckov.Core 12.5 万 + 物品系统 6k + 其他</span></div>
+  <div class="card kpi"><b>63 个场景</b><span>Main + 子场景叠加加载；11 张主地图 + 基地 + 过场</span></div>
+  <div class="card kpi"><b>2.9 GB</b><span>资源 1.15 GB 在 resources.assets.resS（全走 Resources，无 AssetBundle）</span></div>
+  <div class="card kpi"><b>4381 贴图</b><span>主力 256/512px，BC7 压缩占 79%</span></div>
+  <div class="card kpi"><b>3887 Mesh</b><span>中位数 402 顶点 —— 低模风格</span></div>
+  <div class="card kpi"><b>44 万 GameObject</b><span>18.8 万 MeshRenderer：关卡全靠模块化小件堆砌</span></div>
+  <div class="card kpi"><b>≈440 物品 / ≈65 任务</b><span>按本地化表 Item_* / Quest_* 键推算</span></div>
+</div>
+<p class="note">一句话结论：这是一款<b>“插件拼装 + 数据驱动 + 小团队高效”</b>的典型 Unity 中型项目。核心玩法代码集中在一个 1.8MB 的 <code>TeamSoda.Duckov.Core.dll</code> 里，角色/物品/伤害都走统一的 <b>Stat + Item 树</b>；美术用<b>自研 Amplify 着色器 SodaLit</b> + 低模 + 小贴图 + 大量后处理（HBAO、屏幕空间阴影、体积光、描边、战争迷雾）撑起画面质感。</p>
+
+<h2 id="stack"><span class="n">2</span>技术栈 / 第三方插件（从 Managed 目录识别）</h2>
+<table>
+<tr><th style="width:140px">类别</th><th>插件</th><th style="width:38%">用途推断</th></tr>
+<tr><td>角色/移动</td><td><span class="pill y">ECM2 (Easy Character Movement 2)</span><span class="pill y">Animancer + Animancer.FSM</span><span class="pill">KINEMATION MagicBlend</span></td><td>物理移动、代码驱动动画（不依赖 Animator 状态机）、上下半身动画混合</td></tr>
+<tr><td>AI</td><td><span class="pill y">A* Pathfinding Project</span><span class="pill y">NodeCanvas (ParadoxNotion)</span></td><td>寻路 + 行为树/FSM 可视化编辑（自研 23 个 Action、9 个 Condition 节点）</td></tr>
+<tr><td>渲染/画面</td><td><span class="pill b">URP</span><span class="pill b">HBAO</span><span class="pill b">Kronnect Umbra 屏幕空间软阴影</span><span class="pill b">VLB 体积光束</span><span class="pill b">EPO 描边</span><span class="pill b">FOW 战争迷雾</span><span class="pill b">Tasty Grass Shader</span><span class="pill b">Bakery 烘焙</span><span class="pill b">MeshCombineStudio</span><span class="pill b">Shapes / ALINE</span></td><td>环境光遮蔽、柔和阴影、手电/路灯光柱、交互描边、迷雾、草地、光照贴图、合批、技能范围/瞄准线矢量绘制</td></tr>
+<tr><td>UI</td><td><span class="pill g">TextMeshPro</span><span class="pill g">LeTai TranslucentImage（毛玻璃）</span><span class="pill g">LeTai TrueShadow</span><span class="pill g">DOTween Pro</span><span class="pill g">UISplineRenderer</span><span class="pill g">Odin</span></td><td>毛玻璃面板、柔和投影、UI 动效</td></tr>
+<tr><td>镜头</td><td><span class="pill">Cinemachine</span></td><td>俯视跟随相机、过场</td></tr>
+<tr><td>音频</td><td><span class="pill r">FMOD Studio + Resonance</span></td><td>Master.bank 55MB；声音也用于 AI 听觉</td></tr>
+<tr><td>数据/存档</td><td><span class="pill">EasySave3</span><span class="pill">Newtonsoft.Json</span><span class="pill">MiniExcel</span><span class="pill">FlexReader</span><span class="pill">SodaLocalization (CSV)</span></td><td>存档、配置表读取、10 种语言 CSV 本地化</td></tr>
+<tr><td>异步/平台</td><td><span class="pill">UniTask</span><span class="pill">Steamworks.NET</span><span class="pill">Bilibili.BDS</span><span class="pill">Razer Chroma</span></td><td>异步加载/生成物品、Steam 成就与创意工坊、B站埋点</td></tr>
+</table>
+<p class="note warn">发现彩蛋：打包时把多个插件的 Demo/Examples 也打进去了（<code>ECM2.Examples</code>、<code>EPODemo</code>、<code>ShapesSamples</code>、<code>VLB_Samples</code>、<code>Razer.WyvrnSDK.Tests</code> 等），以及 <code>Duckov_BurstDebugInformation_DoNotShip</code> 目录、本地化目录里的 <code>.idea</code>——属于发布流程没清干净，不影响运行。</p>
+
+<h2 id="arch"><span class="n">3</span>代码架构</h2>
+<div class="arch">
+  <div class="l">表现层 · UI（Duckov.UI 93 类）· HUD · 小地图 · 捏脸 · 选项</div>
+  <div class="m"><b>背包/物品 UI</b>InventoryDisplay · SlotDisplay · LootView · ItemDetails</div>
+  <div class="m"><b>商店/经济 UI</b>StockShopView · BlackMarket · ATM</div>
+  <div class="m"><b>任务/对话</b>QuestGiverView · Dialogues(NodeCanvas)</div>
+  <div class="m"><b>建造/种植</b>BuilderView · GardenView</div>
+  <div class="m"><b>小游戏</b>GamingConsole：黄金矿工/泡泡/贪吃蛇…</div>
+  <div class="l">玩法层 · TeamSoda.Duckov.Core</div>
+  <div class="m hl"><b>CharacterMainControl</b>2749 行“胖控制器”：聚合移动/血量/装备/动作/动画/Buff</div>
+  <div class="m hl"><b>动作系统 CA_*</b>优先级抢占：攻击/冲刺/换弹/用药/交互/控制他人</div>
+  <div class="m hl"><b>战斗</b>ItemAgent_Gun(1548行) · Projectile · Health 伤害管线 · Explosion</div>
+  <div class="m hl"><b>AI</b>AICharacterController · AIMainBrain 感知 · NodeCanvas 行为 · 随机配装</div>
+  <div class="m hl"><b>关卡循环</b>LevelManager · MultiSceneCore · 撤离/掉落/昼夜/天气/规则</div>
+  <div class="l">数据层 · ItemStatsSystem（独立程序集）+ GameplayDataSettings（全局 SO）</div>
+  <div class="m"><b>Item 树</b>Stats · Modifiers · Slots · Inventory · Variables · Tags · Effects</div>
+  <div class="m"><b>Buff</b>层数 · 时限 · 互斥标签优先级</div>
+  <div class="m"><b>掉落表</b>RandomItemGenerateDescription：概率+数量+Tag 权重+品质权重</div>
+  <div class="m"><b>存档</b>SavesSystem(ES3) · 10 份滚动备份 · 防时间回拨</div>
+  <div class="m"><b>Mod</b>ModManager：info.ini + DLL 反射加载</div>
+</div>
+<h3>命名空间体量（Duckov.Core，按文件数）</h3>
+<p>根命名空间 531 · Duckov.UI 93 · MiniGames.GoldMiner 65 · Quests 51 · NodeCanvas 节点 32 · PerkTrees 19 · Crops 16 · Buildings 15 · MiniMaps 12 · Modding 8 · Weathers 5 · Economy 3 …<br><span style="color:var(--sub)">最大的 10 个类：CharacterMainControl 2749 / ItemAgent_Gun 1548 / BubblePopper 1102 / InputManager 936 / GameplayDataSettings 882 / GardenView 827 / LevelManager 791 / BDSManager 769 / AudioManager 726 / SavesSystem 660</span></p>
+
+<h2 id="combat"><span class="n">4</span>战斗与角色</h2>
+<h3>4.1 动作优先级（CharacterActionBase.cs）</h3>
+<p>不是传统的大状态机，而是“<b>优先级抢占</b>”：新动作优先级 ≥ 当前动作才能打断；每个动作声明自己允许什么（CanMove / CanRun / CanUseHand / CanControlAim）。</p>
+<pre>enum ActionPriorities { Whatever, Reload, Attack, usingItem, Dash, Skills, Fishing, Interact, ControlOtherCharacter }
+// CA_Dash:  staminaCost = 10, coolTime = 0.5s, speedCurve 用 AnimationCurve 驱动, 期间 CanMove=false
+// CA_Reload: 允许移动、禁用手部；CA_Attack(近战): dealDamageTime = 0.1s</pre>
+<h3>4.2 伤害管线（Health.cs:340-420，已人工核对）</h3>
+<pre>crit = Random() &lt; critRate                 // ★ “暴击”即“爆头”：暴击时用头甲，否则用身甲
+if 玩家受击: dmg *= Rule.DamageFactor_ToPlayer   // 难度规则
+dmg = base × (crit ? critDamageFactor : 1) × (isZombie ? damageFactorToZombie : 1)
+if 非真实伤害:
+    armor = crit ? HeadArmor : BodyArmor
+    头盔/护甲耐久 -= armorBreak                  // 只在 Raid 地图掉耐久
+    mult  = 2 / (clamp(armor - armorPiercing, 0, 999) + 2)   // 护甲收益递减曲线
+    AI 互殴: mult *= 攻方.aiCombatFactor / 守方.aiCombatFactor
+    dmg *= mult
+final = Σ_元素 (dmg × 元素占比 × 目标元素抗性)，单元素最少 1 点   // 物理/火/毒/电/冰…
+附带：BoneCrack(骨折) / Wound / Bleed 按 bleedChance 概率上 Buff</pre>
+<p>护甲曲线示例：甲 2 减伤 50%，甲 4 减 67%，甲 6 减 75%——穿透值直接从护甲里扣，<b>穿甲弹的价值非常直观</b>。天气联动：下雨时火伤 -0.15、电伤 +0.2。</p>
+<h3>4.3 枪械 ItemAgent_Gun（1548 行）</h3>
+<ul>
+<li>状态机：<code>shootCooling → ready → fire → burstEachShotCooling → empty → reloading</code></li>
+<li>所有参数都是 Item 的 Stat（可被配件/Buff 修改）：Damage、ShootSpeed、BurstCount、ShotCount(霰弹)、ShotAngle、BulletSpeed/Distance、Penetrate、Capacity、CritRate、ArmorPiercing/Break、DmgOverDistance…</li>
+<li>散布：腰射/ADS 两套 Default/Max Scatter，开火时 ScatterGrow 增长、停火 ScatterRecover 回落；ADS 下霰弹角度 ×0.5</li>
+<li>后坐：RecoilV/H 的 Min/Max 随机 + 缩放，视觉回弹 <code>_recoilBackSpeed=20</code>、<code>_recoilDistance=0.2</code></li>
+<li>扩展：<code>GunSettingExpend_*</code> 命中触发爆炸、给敌人/自己上 Buff、粘弹等——用组合而非继承做“特殊枪”</li>
+</ul>
+<h3>4.4 输入与镜头</h3>
+<p>固定俯视：<code>CameraArm.globalPitch = 55°</code>、<code>globalYaw = -30°</code>、距离 45；<code>GameCamera.defaultFOV = 20°</code>、ADS 15°（小 FOV 远距离 ≈ 近正交的“微缩模型”感）。鼠标射线投到地面得到瞄准点，相机按瞄准偏移前探（<code>defaultAimOffset = 5</code>）。<br><b>巧妙之处：</b>镜头的俯仰/偏航/距离做成了自定义 URP <code>VolumeComponent</code>（<code>SodaCraft/CameraArmControl</code>），昼夜参数也走 Volume（<code>TimeOfDayPost</code>）——进入室内/特定区域时，镜头角度和夜晚视野衰减随 Volume 权重<b>自动平滑过渡</b>，关卡美术摆个 Volume 就能调镜头，不用写代码。</p>
+
+<h2 id="ai"><span class="n">5</span>AI、视野与遮挡</h2>
+<div class="grid g2">
+<div class="card"><b>AI 感知（AIMainBrain）</b><ul>
+<li>视锥：ViewAngle / ViewDistance，外加近身 SenseRange</li>
+<li>夜晚：视角/视距按 <code>TimeOfDayController.NightViewAngleFactor</code> 衰减，夜视仪与手电可抵消；视距不低于 SenseRange-2.5</li>
+<li>遮挡：射线检测，热成像模式换一套遮挡层</li>
+<li>听觉：AISound —— 枪声/脚步作为声音事件广播</li>
+<li>行为：NodeCanvas 行为树 + A* 寻路；特殊敌人有独立脚本（TagillaAI、PetAI、骑马/炸弹车附件）</li>
+</ul></div>
+<div class="card"><b>配装与刷怪</b><ul>
+<li><code>CharacterRandomPreset</code>：敌人模板（血量、阵营、装备池、aiCombatFactor…）按权重随机武器/护甲/外观</li>
+<li><code>CharacterSpawnerRoot/Group/Selector</code> 分层刷怪点，<code>WaveCharacterSpawner</code> 波次</li>
+<li>难度规则 <code>Rules</code> 控制刷怪数量倍率、玩家受伤倍率</li>
+</ul>
+<b>玩家视野</b><ul>
+<li>FOW 插件做战争迷雾：以玩家为中心 Revealer3D，世界范围 128×128 动态跟随</li>
+<li>OcclusionFade*：玩家被墙/屋顶挡住时对应物体淡出（俯视游戏标配）</li>
+</ul></div>
+</div>
+
+<h2 id="loop"><span class="n">6</span>搜打撤核心循环</h2>
+<div class="flow"><span>基地 Base</span><i>→ 选图/带装</i><span>SceneLoader + MultiSceneCore<br>(Main + 子场景叠加)</span><i>→</i><span>LevelManager 初始化<br>刷怪/箱子/出口</span><i>→</i><span>搜刮 Lootbox<br>按品质读条</span><i>→</i><span>战斗 / 天气 / 昼夜</span><i>→</i><span>撤离 CountDownArea</span><i>/</i><span>死亡 → DeathLottery</span><i>→</i><span>回基地：仓库/商店/建造/种植/任务</span></div>
+<ul style="margin-top:12px">
+<li><b>场景组织</b>：每张地图 = <code>Level_X_Main</code>（逻辑/配置）+ 若干子场景（地块、地下室、Boss 房），例：StormZone 有 Main + 1 + B0~B4 六个子场景。</li>
+<li><b>掉落表</b> <code>RandomItemGenerateDescription</code>：<code>chance</code> + <code>randomCount</code> 区间 + 按 <b>Tag 权重</b>选类别 + 按<b>品质权重</b>选稀有度，再用 ItemFilter 从物品库里筛出候选、UniTask 异步生成。</li>
+<li><b>搜刮读条</b>：<code>inspectTime</code> 不是固定 1 秒，而是 <code>GameplayDataSettings.Looting.inspectingTimes[品质]</code>——越稀有越久，制造开箱期待感。</li>
+<li><b>撤离点</b>：ExitCreator 在 Min~MaxExitCount 之间随机出口，CountDownArea 站圈倒计时。</li>
+<li><b>容量</b>：Inventory 默认 64 格（槽位制，非俄罗斯方块网格），玩家仓库 PlayerStorage 默认 32，可由天赋 <code>AddPlayerStorage</code> 扩容。</li>
+<li><b>环境系统</b>：TimeOfDay（昼夜相位、Volume 切换）、Weathers（雨/风暴/雪），影响 AI 视野与元素伤害。</li>
+</ul>
+
+<h2 id="meta"><span class="n">7</span>成长、经济、存档、Mod、埋点</h2>
+<div class="grid g2">
+<div class="card"><b>成长与经济</b><ul>
+<li>Quests：Quest → Tasks(Conditions) → Rewards，数据驱动；~65 个任务</li>
+<li>PerkTrees：图结构天赋节点，效果如扩容仓库、扩大菜园</li>
+<li>Endowment 天赋禀赋、MasterKeys 万能钥匙、Achievements</li>
+<li>StockShop（有库存/刷新/价格系数）、BlackMarket、ATM 存取款、BitcoinMiner 挖矿机</li>
+<li>Crafting / Decompose 合成与分解、Buildings 基地建造、Crops 种植、Fishing 钓鱼、CustomFace 捏脸</li>
+</ul></div>
+<div class="card"><b>系统服务</b><ul>
+<li><b>存档</b>：EasySave3 文件存档，多槽位，<code>BackupListCount = 10</code> 份滚动备份，记录上次保存时间防回拨</li>
+<li><b>Mod</b>：<code>Mods/</code>目录或 Steam 创意工坊，每个 Mod 需 <code>info.ini</code>(name/displayName/description) + <code>&lt;name&gt;.dll</code>，入口类约定为 <code>&lt;name&gt;.ModBehaviour</code>，用 <code>Assembly.LoadFrom</code> 反射加载</li>
+<li><b>本地化</b>：StreamingAssets 下 10 语言 CSV（key, value）</li>
+<li><b>埋点</b>：B站 BDS，34 种事件：raid_new/raid_end、level_evacuated、main_character_dead、enemy_kill、shop_purchased、craft_craft、perk_unlocked、face_customize_*、heartbeat…</li>
+<li><b>小游戏</b>：游戏机里内置黄金矿工（65 个类，含遗物系统）、泡泡龙、贪吃蛇、躲鼠标</li>
+</ul></div>
+</div>
+
+<h2 id="art"><span class="n">8</span>美术管线</h2>
+<h3>8.1 着色器：自研 SodaCraft 系列（Amplify Shader Editor 生成）</h3>
+<table>
+<tr><th>Shader</th><th>材质数</th><th>Pass</th><th>关键属性 → 用途</th></tr>
+<tr><td><b>SodaCraft/SodaLit</b></td><td>408</td><td>GBuffer / Depth / Shadow</td><td>MainTex+Tint、MaskTint(局部换色)、NormalMap、MetallicSmoothness；<b>Coverage 覆盖层</b>（雪地图把雪“盖”到所有物体顶面）；<code>_TempratureLerp</code>（热成像）</td></tr>
+<tr><td><b>SodaCraft/SodaCharacter</b></td><td>186</td><td>Forward + GBuffer</td><td><code>_FresnelPower</code> 边缘光让角色从场景里跳出来；<code>_HurtValue</code> 受击闪白；AlphaMask/Cutout；AO_Blend2Albedo</td></tr>
+<tr><td>SodaLit_EdgeLight</td><td>50</td><td>GBuffer</td><td>EdgeLight 轮廓光 + 风噪声顶点摆动（植被）</td></tr>
+<tr><td>SodaDecal / DecalWaterV2</td><td>5</td><td>DBuffer</td><td>弹孔、血迹、水渍贴花</td></tr>
+<tr><td>特效类</td><td>~70</td><td>Forward</td><td>SodaSoftParticle、SmokeFireFX（都带 Thermal 颜色）、Lazer、SniperRound、SkillRange、MoveRing、BuildingGrid、Mosaic…</td></tr>
+</table>
+<p class="note">渲染路径：主场景 Shader 只有 GBuffer 而无 Forward Pass → <b>URP Deferred</b>，所以能放 1650 盏灯（大量点光源营造“夜晚手电/路灯”氛围）。再叠 HBAO + Umbra 屏幕空间软阴影 + 体积光 + 64 张时空蓝噪声(stbn_) 做抖动，低模也能有“微缩模型/桌游”质感。</p>
+
+<h3>8.2 资源规格</h3>
+<div class="grid g3">
+<div class="card"><b>贴图</b><ul><li>256px 1277 张、512px 643 张、1024px 418 张、2048px 仅 56 张</li><li>BC7 2180 / DXT5 339 / DXT1 102</li><li>命名：<code>T_*_C</code> 颜色、<code>_MMOR</code> 打包遮罩、<code>_N</code> 法线、<code>_E</code> 自发光、<code>_M</code> 换色遮罩</li></ul></div>
+<div class="card"><b>模型</b><ul><li>中位数 402 顶点；AK47 1552 顶点、鸭身体 1004、鸭嘴 154</li><li>最复杂：尿素袋 17594、5 级衣服 6773、坦克/汽车 ~4800</li><li>角色 = 鸭身 + 嘴 + 脚 + 手套 + 帽/衣/背包 <b>模块化拼装</b>，仅 196 个 SkinnedMesh</li></ul></div>
+<div class="card"><b>动画/其他</b><ul><li>238 AnimationClip、37 AnimatorController：Idle/Walk 四向/Roll/近战挥砍/弓…数量很克制，靠 Animancer 代码混合</li><li>3182 个粒子系统</li><li>9 种字体：思源黑体、PressStart2P、fusion-pixel 像素体、Orbitron…</li></ul></div>
+</div>
+
+<h3>8.3 物品图标：3D 渲染出图（Pfb_ / IG_ 前缀）</h3>
+<figure><img src="../img/duckov/sprites_icons.jpg" alt="icons"><figcaption>抽样 80 个 Sprite。物品图标是把 3D 模型统一打光（左上主光、柔和投影）渲染成 256px 透明 PNG；Buff/天赋用白色扁平线性图标；PP_ 天赋用深蓝六边形底板。</figcaption></figure>
+
+<h3>8.4 模型（抽样导出几何）</h3>
+<figure><img src="../img/duckov/meshes.jpg" alt="meshes"><figcaption>鸭子本体是一颗“土豆形”身体（1004 顶点）+ 独立鸭嘴/鸭脚；武器 1.2k~1.9k 三角面，结构写实但比例偏 Q。</figcaption></figure>
+
+<h3>8.5 贴图样本</h3>
+<div class="grid g2">
+<figure><img src="../img/duckov/tex_weapon.jpg" alt="weapon tex"><figcaption>武器：手绘+烘焙混合的写实材质，饱和度低；_MMOR 打包图呈紫/青色</figcaption></figure>
+<figure><img src="../img/duckov/tex_char.jpg" alt="char tex"><figcaption>角色装备：头盔/衣服按 LV1~LV6 分级，外观随等级“越来越军事化”</figcaption></figure>
+</div>
+<figure><img src="../img/duckov/tex_env.jpg" alt="env tex"><figcaption>环境/道具贴图抽样</figcaption></figure>
+
+<h3>8.6 美术风格总结</h3>
+<ul>
+<li><b>“可爱主角 × 写实武器 × 废土场景”</b>的反差：鸭子是极简圆润造型，武器和装备是写实小模型，形成核心喜感。</li>
+<li><b>低模 + 小贴图 + 高质量光照</b>：把预算花在后处理与灯光而不是资产精度上，俯视 55° + 20° FOV 远机位让细节本来就看不清。</li>
+<li><b>玩法驱动的 Shader 功能</b>：受击闪白、热成像、雪覆盖、换色遮罩全部做进统一 Shader，一套材质适配多种玩法状态。</li>
+<li><b>关卡</b>：18 万个 BoxCollider + 18.8 万 MeshRenderer，说明是 ProBuilder/模块件逐个摆放，用 MeshCombineStudio 合批、Bakery 烘焙。</li>
+</ul>
+
+<h2 id="learn"><span class="n">9</span>值得借鉴的设计</h2>
+<div class="grid g2">
+<div class="card"><b>代码</b><ol>
+<li><b>Item 即一切</b>：武器、配件、弹药、护甲、背包、甚至“角色躯壳”都是 Item；配件通过 Slot 嵌套，属性通过 Stat+Modifier 叠加——加新武器几乎零代码。</li>
+<li><b>动作优先级抢占</b>：比状态机更容易扩展新动作（钓鱼、控制他人都是后加的）。</li>
+<li><b>护甲曲线 2/(A-P+2)</b>：简单、收益递减、穿透直观，非常适合搬到自己的游戏。</li>
+<li><b>掉落 = Tag 权重 × 品质权重</b>，搜刮时间绑定品质，数值策划只调表。</li>
+<li><b>Main + 子场景</b>叠加加载，美术/策划可并行改不同地块。</li>
+<li><b>Mod 约定极简</b>：info.ini + 同名 DLL + ModBehaviour。</li>
+<li><b>镜头/昼夜参数挂到 URP Volume</b>：关卡美术用 Volume 区域即可调镜头角度和夜视衰减，自动混合。</li>
+</ol></div>
+<div class="card"><b>美术 / 制作</b><ol>
+<li>统一自研 Lit Shader，玩法状态（受击/热成像/覆雪）做成参数，而不是换材质。</li>
+<li>图标用 3D 模型统一灯光自动出图，几百个物品保持一致风格。</li>
+<li>资产精度压低（256/512 贴图、几百顶点），把性能留给延迟渲染多光源与 AO/阴影。</li>
+<li>大量成熟插件拼装（ECM2、Animancer、A*、NodeCanvas、FOW、HBAO…），小团队把精力放在玩法与内容。</li>
+</ol></div>
+</div>
+
+<footer>
+产出目录：<code>duckov_re/src/</code>（反编译 C# 工程，可用 VS/Rider 打开浏览）· <code>duckov_re/art/</code>（1272 个 Sprite、299 张贴图样本、15 个 OBJ、71 个配置/本地化文本、统计 JSON）。<br>
+声明：本报告仅用于个人学习研究，提取的代码与美术资源版权归 TeamSoda / bilibili 所有，请勿再分发或用于商业项目。
+</footer>
+</div>
+</body>
+</html>

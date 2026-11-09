@@ -48,6 +48,10 @@ node qa/playthrough.cjs "http://localhost:4195/?qa=1"  # 验收
 
 发布到 GitHub Pages：`bash scripts/publish-pages.sh`（按子路径打包并推送到 `gh-pages` 分支，约 1 分钟后生效）。
 
+### 参考游戏拆解
+
+`docs/teardowns/index.html`：《可能是偷的》（Probably Stolen）与《逃离鸭科夫》（Escape from Duckov）的系统、数值、叙事、美术拆解总览，以及对本项目的借鉴点。仅供内部学习研究，相关代码与美术版权归原开发商所有。
+
 ---
 
 ## English
