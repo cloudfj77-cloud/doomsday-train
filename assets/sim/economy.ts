@@ -3,6 +3,7 @@
  * Pure, deterministic (seeded RNG stored in state) and JSON-serialisable, so the
  * whole game is one autosave object. No DOM, no engine imports.
  */
+import { TRAIN_EXIT, walkSite, canExtract } from '../shared/station-map.ts';
 import {
   CARS,
   ITEM_IDS,
@@ -19,7 +20,7 @@ import {
 
 export const SAVE_VERSION = 1;
 
-export type Phase = 'depot' | 'travel' | 'station' | 'dayEnd' | 'settlement' | 'won' | 'lost';
+export type Phase = 'exploration' | 'depot' | 'travel' | 'station' | 'dayEnd' | 'settlement' | 'won' | 'lost';
 
 export interface Goods {
   readonly item: ItemId;
@@ -133,6 +134,7 @@ export interface Game {
   cars: CarKind[];
   inventory: Record<ItemId, number>;
   station: Station;
+  expedition?: { stationId: number; status: 'active' | 'returned' | 'skipped'; x: number; y: number; mapVersion?: number; surveyed?: string[] };
   nextId: number;
   event?: MarketEvent;
   routeOptions?: RouteOption[];
@@ -678,4 +680,25 @@ export function debtPreview(game: Game): { readonly day: number; readonly requir
   const due = nextDue(game.day);
   if (!due) return undefined;
   return { ...due, due: dueAmount(game, due.required) };
+}
+
+export function enterStationMap(game: Game): ActionResult {
+  if (game.phase !== 'station' || game.expedition?.stationId === game.station.id) return fail('phase');
+  game.expedition = {stationId: game.station.id, status:'active', x:TRAIN_EXIT.x, y:TRAIN_EXIT.z, mapVersion:2, surveyed:[]};
+  game.phase='exploration'; return {ok:true};
+}
+export function moveExplorer(game:Game,dx:number,dy:number):void {
+  const e=game.expedition;
+  if(game.phase!=='exploration'||!e||Math.abs(dx)+Math.abs(dy)!==1) return;
+  const next=walkSite(game.station.id,e.x,e.y,dx,dy);
+  e.x=next.x;e.y=next.z;
+}
+export function returnToTrain(game:Game):ActionResult {
+  const e=game.expedition;
+  if(game.phase!=='exploration'||!e||!canExtract(e.x,e.y)) return fail('phase');
+  e.status='returned';game.phase='station';return {ok:true};
+}
+export function skipStationMap(game:Game):ActionResult {
+  if(game.phase!=='station'||game.expedition?.stationId===game.station.id) return fail('phase');
+  game.expedition={stationId:game.station.id,status:'skipped',x:1,y:5};return {ok:true};
 }

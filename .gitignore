@@ -4,3 +4,9 @@ node_modules/
 .assetlib/
 artifacts/
 site/
+.game-builder/
+
+qa/browsers/
+qa/operation-history/
+
+.pnpm-store/

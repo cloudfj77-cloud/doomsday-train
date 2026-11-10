@@ -7,7 +7,7 @@ import { mountUi, type UiAsset } from '@forgeax/engine/ui';
 import { bindUiLocalization, createUiLocalization } from '@forgeax/engine/ui/localization';
 import { CARS, ITEM_IDS, ITEMS, RULES, type CarKind, type ItemId, type Region } from '../sim/data.ts';
 import {
-  arrive,
+  arrive, enterStationMap, moveExplorer, returnToTrain, skipStationMap,
   boardPassenger,
   buyBatch,
   buyCar,
@@ -43,9 +43,10 @@ import {
   type Game,
 } from '../sim/economy.ts';
 import { isEngineMessage, VIEW_CHANNEL, type EngineMessage, type ViewMessage } from '../shared/protocol.ts';
+import { TRAIN_EXIT, stationBuildings, buildingAt, canExtract } from '../shared/station-map.ts';
 import { initialLanguage, LANG_KEY, type GameLanguage } from './language.ts';
 
-type Host = Pick<GameHost, 'uiRoot' | 'port' | 'presentationPort' | 'setPointerLockAllowed'>;
+type Host = Pick<GameHost, 'uiRoot' | 'port' | 'presentationPort' | 'setPointerLockAllowed' | 'gameProjection'>;
 type Tab = 'customers' | 'passengers' | 'depot' | 'cargo';
 
 export const SAVE_KEY = 'doomsday.save.v1';
@@ -123,19 +124,28 @@ export async function createGameUi(asset: UiAsset, host: Host): Promise<{ dispos
     const g = game;
     const message: ViewMessage = {
       channel: VIEW_CHANNEL,
-      mode: !g ? 'title' : travelling ? 'travel' : 'station',
+      mode: !g ? 'title' : travelling ? 'travel' : g.phase === 'exploration' ? 'exploration' : 'station',
       region: g?.station.region ?? 'rich',
       stationSeed: g?.station.id ?? 0,
       cars: g?.cars ?? [],
       travelMs: TRAVEL_MS,
       travelSerial,
       riders: g?.riders.length ?? 0,
+      simulation: g ? JSON.stringify(g) : undefined,
+      explorer: g?.phase === 'exploration' && g.expedition ? {x:g.expedition.x,z:g.expedition.y,surveyed:g.expedition.surveyed ?? []} : undefined,
     };
     port?.postMessage(message);
   };
   const onPort = (event: MessageEvent) => {
     if (isEngineMessage(event.data)) {
       engine = event.data;
+      if (game?.phase === 'exploration' && game.expedition && engine.mode === 'exploration' && engine.stationSeed === game.station.id && engine.explorer) {
+        game.expedition.x = engine.explorer.x;
+        game.expedition.y = engine.explorer.z;
+        game.expedition.surveyed = [...engine.explorer.surveyed];
+        if (engine.extractRequested && returnToTrain(game).ok) commit();
+        else { save(); renderExpedition(); }
+      }
       mirror();
     }
   };
@@ -206,6 +216,7 @@ export async function createGameUi(asset: UiAsset, host: Host): Promise<{ dispos
 
   const doDepart = () => {
     if (!game || travelling) return;
+    if(game.phase==='station' && game.expedition?.stationId!==game.station.id) return;
     const result = depart(game);
     if (!report(result)) return;
     arrive(game);
@@ -249,6 +260,14 @@ export async function createGameUi(asset: UiAsset, host: Host): Promise<{ dispos
         const loaded = loadSave();
         if (loaded && loaded.phase !== 'lost') {
           game = loaded;
+          if (game.phase === 'exploration' && game.expedition && game.expedition.mapVersion !== 2) {
+            game.expedition.x = TRAIN_EXIT.x; game.expedition.y = TRAIN_EXIT.z;
+            game.expedition.mapVersion = 2; game.expedition.surveyed = [];
+          }
+          if (game.phase === 'exploration' && game.expedition && game.expedition.mapVersion !== 2) {
+            game.expedition.x = TRAIN_EXIT.x; game.expedition.y = TRAIN_EXIT.z;
+            game.expedition.mapVersion = 2; game.expedition.surveyed = [];
+          }
           lastDelivered = loaded.today.delivered;
           routeDeferred = false;
           settleSelling = false;
@@ -334,6 +353,16 @@ export async function createGameUi(asset: UiAsset, host: Host): Promise<{ dispos
         report(repay(g, Number(el.dataset.amount)), 'toast.repaid', 'money');
         commit();
         return;
+      case 'explore': report(enterStationMap(g)); commit(); return;
+      case 'skip-explore': report(skipStationMap(g)); commit(); return;
+      case 'survey': {
+        const e = g.expedition;
+        const building = e && buildingAt(g.station.id, e.x, e.y);
+        if (g.phase === 'exploration' && e && building) e.surveyed = [...new Set([...(e.surveyed ?? []), building.id])];
+        commit(); return;
+      }
+      case 'walk': moveExplorer(g,Number(el.dataset.dx),Number(el.dataset.dy)); commit(); return;
+      case 'return-train': report(returnToTrain(g)); commit(); return;
       case 'depart':
         doDepart();
         return;
@@ -520,7 +549,7 @@ export async function createGameUi(asset: UiAsset, host: Host): Promise<{ dispos
 
   const renderTop = (g: Game) => {
     part('tb-day').textContent = t('hud.day', { day: g.day });
-    part('tb-phase').textContent = t(`phase.${travelling ? 'travel' : g.phase}`);
+    part('tb-phase').textContent = g.phase==='exploration' ? words('站点探索','Station exploration') : t(`phase.${travelling ? 'travel' : g.phase}`);
     const cash = part('tb-cash');
     cash.textContent = money(g.cash);
     cash.classList.toggle('neg', g.cash < 0);
@@ -562,6 +591,10 @@ export async function createGameUi(asset: UiAsset, host: Host): Promise<{ dispos
     const box = part('main-action');
     if (settleSelling && g.phase === 'settlement') {
       box.innerHTML = `<button type="button" class="big" data-act="settle-back">${t('settle.back')}</button>`;
+      return;
+    }
+    if (g.phase === 'station' && g.expedition?.stationId !== g.station.id) {
+      box.innerHTML = '<button class="big" data-act="explore" '+(travelling?'disabled':'')+'>'+words('下车探索站点','Explore station')+'</button><button class="btn" data-act="skip-explore" '+(travelling?'disabled':'')+'>'+words('不下车 · 放弃本站出击','Stay aboard · skip sortie')+'</button>';
       return;
     }
     if (g.phase === 'depot' && !g.route) {
@@ -658,8 +691,29 @@ export async function createGameUi(asset: UiAsset, host: Host): Promise<{ dispos
       <div class="actions"><button type="button" class="btn go" data-act="settle-pay" ${short > 0 ? 'disabled' : ''}>${t('settle.pay', { amount: due })}</button><button type="button" class="btn danger" data-act="forfeit">${t('settle.forfeit')}</button></div>`;
   };
 
+
+  const words=(zh:string,en:string)=>i18n.language.startsWith('zh')?zh:en;
+  function renderExpedition() {
+    const e = game?.expedition;
+    if (game?.phase !== 'exploration' || !e) { part('expedition').innerHTML = ''; return; }
+    const names = {warehouse: words('货运仓库','Freight warehouse'), workshop: words('维修工坊','Repair workshop'), clinic: words('废弃医务所','Abandoned clinic')};
+    const buildings = stationBuildings(game.station.id);
+    const current = buildingAt(game.station.id, e.x, e.y);
+    const surveyed = e.surveyed ?? [];
+    const ready = canExtract(e.x, e.y);
+    const map = buildings.map(b => '<rect x="'+(b.x+17-4)+'" y="'+(b.z+25-3)+'" width="8" height="6" fill="'+(surveyed.includes(b.id)?'#759a79':'#9d8260')+'"/>').join('');
+    part('expedition').innerHTML = '<header><small>01 / '+words('站点探索','STATION EXPLORATION')+'</small><h2>'+stationName()+'</h2><p>'+words('出击机会 1/1 · 自由探索后返回列车','Sortie 1/1 · Explore and return')+'</p></header>'
+      + '<aside class="site-map"><svg viewBox="-1 -1 36 33" role="img" aria-label="'+words('站点小地图','Station minimap')+'"><rect x="0" y="0" width="34" height="31" fill="#242c29"/>'+map+'<circle cx="6" cy="29" r="1.3" fill="#7ce3df"/><circle cx="'+(e.x+17)+'" cy="'+(e.y+25)+'" r="0.8" fill="#ffda7d"/></svg><p>'+words('青色：列车撤离点','Cyan: train exit')+'</p></aside>'
+      + '<footer><div class="site-status"><strong>'+ (current ? names[current.id] : words('站区街道','Station streets'))+'</strong><p>'+ (ready ? words('已到达列车 · E 或点击返车','At the train · E or click to return') : current ? words('按 E 勘察室内 · 可自由进出门洞','Press E to survey · enter through the doorway') : words('沿道路探索，建筑门洞位于正面','Explore the roads. Doorways face the street.'))+'</p></div>'
+      + '<div class="site-objectives">'+buildings.map(b => '<span>'+ (surveyed.includes(b.id)?'✓ ':'○ ')+names[b.id]+'</span>').join('')+'</div>'
+      + '<div class="actions"><span>'+words('WASD / 方向键移动 · E 交互','WASD / arrows to move · E interact')+'</span>'
+      + (current ? '<button class="btn" data-act="survey">'+words('勘察建筑','Survey building')+'</button>' : '')
+      + '<button class="btn go" data-act="return-train" '+(ready?'':'disabled')+'>'+words('返回列车','Return to train')+'</button></div></footer>';
+  }
   function render() {
     const g = game;
+    flag('exploring',g?.phase==='exploration');
+    renderExpedition();
     flag('at-title', !g);
     flag('in-game', !!g);
     flag('travelling', travelling);

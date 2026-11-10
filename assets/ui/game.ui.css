@@ -253,3 +253,18 @@ b, strong { font-weight: 700; }
 .minus { color: #ff8a72; }
 .modal .actions { justify-content: flex-end; }
 .big-number { font-size: 34px; font-weight: 900; font-variant-numeric: tabular-nums; }
+
+.expedition { display:none; position:absolute; inset:0; pointer-events:none; }
+:host(.exploring) .expedition { display:block; }
+:host(.exploring) .hud { display:none; }
+.expedition header { position:absolute; top:24px; left:28px; padding:16px 22px; border-left:3px solid #d3a05a; background:linear-gradient(90deg,#171b1deb, #171b1d40); }
+.expedition h2 { margin:4px 0; font-size:26px; }
+.expedition p { margin:5px 0; font-size:12px; color:#c9bda8; }
+.expedition small { color:#d5b578; letter-spacing:0.16em; }
+.site-map { position:absolute; top:24px; right:24px; width:156px; padding:12px; border:1px solid #6b6251; background:#171b1deb; }
+.site-map svg { width:100%; height:142px; }
+.site-map p { text-align:center; }
+.expedition footer { position:absolute; bottom:22px; left:28px; right:28px; padding:14px 20px; background:#171b1ded; border-top:1px solid #71614b; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:10px 24px; }
+.site-objectives { display:flex; gap:18px; align-items:center; font-size:12px; color:#d4b987; }
+.expedition .actions { grid-column:1/-1; display:flex; align-items:center; gap:14px; pointer-events:auto; }
+.expedition .actions span { margin-right:auto; color:#b8b5a9; font-size:12px; }

@@ -8,7 +8,7 @@ import type { CarKind, Region } from '../sim/data.ts';
 export const VIEW_CHANNEL = 'doomsday/view';
 export const ENGINE_CHANNEL = 'doomsday/engine';
 
-export type ViewMode = 'title' | 'station' | 'travel';
+export type ViewMode = 'title' | 'station' | 'travel' | 'exploration';
 
 export interface ViewMessage {
   readonly channel: typeof VIEW_CHANNEL;
@@ -24,6 +24,9 @@ export interface ViewMessage {
   readonly travelSerial: number;
   /** Passengers on board (lit windows / silhouettes) */
   readonly riders: number;
+  readonly explorer?: { x: number; z: number; surveyed: readonly string[] };
+  /** Read-only economy snapshot for the Engine-owned acceptance projection. */
+  readonly simulation?: string;
 }
 
 /** Engine → Frontend: presentation facts for QA. */
@@ -36,6 +39,8 @@ export interface EngineMessage {
   readonly cars: number;
   readonly stationSeed: number;
   readonly frames: number;
+  readonly explorer?: { x: number; z: number; surveyed: readonly string[]; building?: string };
+  readonly extractRequested?: boolean;
 }
 
 export function isViewMessage(value: unknown): value is ViewMessage {

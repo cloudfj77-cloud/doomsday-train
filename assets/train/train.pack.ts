@@ -8,11 +8,16 @@ import { Time, Update, type EntityHandle } from '@forgeax/engine/ecs';
 import type { Plugin } from '@forgeax/engine/plugin';
 import { MeshFilter, MeshRenderer } from '@forgeax/engine/render';
 import { Transform } from '@forgeax/engine/scene';
+import { quat } from '@forgeax/engine/math';
+import { INPUT_SNAPSHOT_RESOURCE_KEY, type InputSnapshot } from '@forgeax/engine/input';
+import { resolveGameEntity } from '../shared/scene-refs.ts';
+import { SITE_ORIGIN, TRAIN_EXIT, stationBuildings, buildingAt, walkSite, canExtract, EXPLORER_SPEED } from '../shared/station-map.ts';
 import { ok } from '@forgeax/engine/types';
 import type {} from '@forgeax/engine/app';
 import { guidText, materialGuid, PACKAGE_IDS, voxelGuid } from '../shared/asset-refs.ts';
 import {
   CAR_SPACING,
+  CAMERA_POSE,
   ENGINE_CHANNEL,
   FIRST_CAR_X,
   isViewMessage,
@@ -41,7 +46,7 @@ interface Prop {
 
 export const train: Plugin = {
   name: 'doomsday/train',
-  inject: ['world', 'assets', 'gameHost'],
+  inject: ['world', 'assets', 'gameHost', 'gameScene'],
   async apply(ctx) {
     const world = ctx.world;
     const assets = ctx.assets!;
@@ -53,6 +58,7 @@ export const train: Plugin = {
       const materialCache = new Map<string, number>();
       const meshes = new Map<string, { mesh: number; materials: number[] }>();
       const keys = [
+        'site-ground', 'room-warehouse', 'room-workshop', 'room-clinic', 'explorer', 'exit-marker', 'survey-marker',
         'loco', 'car-storage', 'car-passenger', 'sleepers',
         'station-rich-0', 'station-rich-1', 'station-slum-0', 'station-slum-1',
         'ruin-0', 'ruin-1', 'wreck', 'tree', 'pole', 'zombie-0', 'zombie-1', 'zombie-2', 'smoke',
@@ -165,10 +171,67 @@ export const train: Plugin = {
         station = { entity: spawn(key, [0, 0, 0]), key };
       };
 
+      const camera = resolveGameEntity(world, ctx.gameScene, 'camera');
+      const siteEntities: EntityHandle[] = [];
+      const surveyMarkers = new Map<string, EntityHandle>();
+      let player: EntityHandle | undefined;
+      let explorer = { x: TRAIN_EXIT.x, z: TRAIN_EXIT.z, surveyed: [] as string[] };
+      let facing = 0;
+      let inputReady = false;
+      let extractRequested = false;
+      let siteSeed = -1;
+      const cameraAt = (x: number, z: number, exploring: boolean) => {
+        const target: V3 = exploring ? [SITE_ORIGIN + x, 1, z] : [...CAMERA_POSE.target];
+        const pos: V3 = exploring ? CAMERA_POSE.pos.map((v, i) => v - CAMERA_POSE.target[i]! + target[i]!) as V3 : [...CAMERA_POSE.pos];
+        const rotation = quat.fromLookAt(quat.create(), pos, target, [0, 1, 0]);
+        world.set(camera, Transform, { pos, quat: [...rotation] as [number, number, number, number] }).unwrap();
+      };
+      const clearSite = () => {
+        for (const e of siteEntities) kill(e);
+        siteEntities.length = 0;
+        surveyMarkers.clear();
+        player = undefined;
+        siteSeed = -1;
+        cameraAt(0, 0, false);
+      };
+      const stageSite = (message: ViewMessage) => {
+        clearSite();
+        siteSeed = message.stationSeed;
+        explorer = { x: message.explorer?.x ?? TRAIN_EXIT.x, z: message.explorer?.z ?? TRAIN_EXIT.z, surveyed: [...message.explorer?.surveyed ?? []] };
+        const add = (key: string, x: number, z: number, rot = 0) => {
+          const e = spawn(key, [SITE_ORIGIN + x, 0, z], rot);
+          siteEntities.push(e); return e;
+        };
+        add('site-ground', 0, 0);
+        add('loco', -17, 7.5);
+        add('car-storage', -22.2, 7.5);
+        add('exit-marker', TRAIN_EXIT.x, TRAIN_EXIT.z);
+        for (const b of stationBuildings(siteSeed)) {
+          add('room-' + b.id, b.x, b.z);
+          surveyMarkers.set(b.id, add('survey-marker', b.x, b.z));
+        }
+        for (const [x, z] of [[-15,-19],[-14,-15],[14,-20],[14,-13],[-15,-3],[11,3]] as const) add('tree', x, z);
+        add('wreck', -9, -19, 0.4);
+        add('ruin-0', 13, -24);
+        for (const [x, z] of [[-25,-34],[-13,-39],[0,-40],[15,-38],[28,-30]] as const) {
+          add(message.region === 'rich' ? 'ruin-0' : 'ruin-1', x, z);
+          add('tree', x + 4, z + 3);
+        }
+        add('pole', -15, 3);
+        player = add('explorer', explorer.x, explorer.z);
+        inputReady = false;
+        cameraAt(explorer.x, explorer.z, true);
+      };
+
       const receive = (event: MessageEvent) => {
         if (!isViewMessage(event.data)) return;
         const message = event.data;
+        const wasExploring = view?.mode === 'exploration';
         view = message;
+        if (message.mode === 'exploration') {
+          if (!wasExploring || siteSeed !== message.stationSeed) stageSite(message);
+          else if (message.explorer) explorer = { ...message.explorer, surveyed: [...message.explorer.surveyed] };
+        } else if (wasExploring) clearSite();
         syncCars(message.cars);
         if (message.mode === 'travel' && message.travelSerial !== lastSerial) {
           lastSerial = message.travelSerial;
@@ -200,8 +263,28 @@ export const train: Plugin = {
           cars: cars.length,
           stationSeed: view?.stationSeed ?? -1,
           frames,
+          explorer: view?.mode === 'exploration' ? { ...explorer, building: buildingAt(siteSeed, explorer.x, explorer.z)?.id } : undefined,
+          extractRequested,
         } satisfies EngineMessage);
       };
+
+      if (host.gameProjection) yield host.gameProjection.registerRead({
+        id: 'doomsday.flow', title: 'Station exploration flow',
+        read: () => {
+          const game = JSON.parse(view?.simulation ?? 'null');
+          if (game?.phase === 'exploration' && game.expedition) {
+            game.expedition.x = explorer.x;
+            game.expedition.y = explorer.z;
+            game.expedition.surveyed = [...explorer.surveyed];
+          }
+          return {
+            game, travelling: view?.mode === 'travel',
+            buildings: stationBuildings(view?.stationSeed ?? 0).map(b => ({ ...b })),
+            engine: { mode: view?.mode ?? 'title', frames, objects: siteEntities.length,
+              building: buildingAt(siteSeed, explorer.x, explorer.z)?.id ?? null },
+          };
+        },
+      });
 
       world.addSystem(Update, {
         name: 'doomsday-train-stage',
@@ -211,6 +294,35 @@ export const train: Plugin = {
           clock += dt;
           frames += 1;
           const mode = view?.mode ?? 'title';
+          if (mode === 'exploration' && player) {
+            const kb = w.getResource<InputSnapshot>(INPUT_SNAPSHOT_RESOURCE_KEY)?.keyboard;
+            if (!kb?.downCode('KeyE')) inputReady = true;
+            const horizontal = Number(!!(kb?.downCode('KeyD') || kb?.downCode('ArrowRight'))) - Number(!!(kb?.downCode('KeyA') || kb?.downCode('ArrowLeft')));
+            const vertical = Number(!!(kb?.downCode('KeyS') || kb?.downCode('ArrowDown'))) - Number(!!(kb?.downCode('KeyW') || kb?.downCode('ArrowUp')));
+            if (horizontal || vertical) {
+              const ox = CAMERA_POSE.pos[0] - CAMERA_POSE.target[0];
+              const oz = CAMERA_POSE.pos[2] - CAMERA_POSE.target[2];
+              const norm = Math.hypot(ox, oz) * Math.hypot(horizontal, vertical);
+              const dx = (horizontal * oz + vertical * ox) / norm;
+              const dz = (-horizontal * ox + vertical * oz) / norm;
+              const next = walkSite(siteSeed, explorer.x, explorer.z, dx * dt * EXPLORER_SPEED, dz * dt * EXPLORER_SPEED);
+              explorer.x = next.x; explorer.z = next.z;
+              facing = Math.atan2(dx, dz);
+            }
+            const building = buildingAt(siteSeed, explorer.x, explorer.z);
+            if (inputReady && kb?.justPressedCode('KeyE')) {
+              if (building && !explorer.surveyed.includes(building.id)) explorer.surveyed.push(building.id);
+              if (canExtract(explorer.x, explorer.z)) extractRequested = true;
+              publish(); extractRequested = false;
+            }
+            place(player, [SITE_ORIGIN + explorer.x, 0.03, explorer.z], facing);
+            for (const [id, marker] of surveyMarkers) {
+              const b = stationBuildings(siteSeed).find(b => b.id === id)!;
+              place(marker, [SITE_ORIGIN + b.x, explorer.surveyed.includes(id) ? -10 : 0, b.z]);
+            }
+            cameraAt(explorer.x, explorer.z, true);
+            if (frames % 6 === 0) publish();
+          }
           let speed = 0; // world units per second, for smoke drift & bob
           let shift = 0; // distance travelled this trip (stations)
 

@@ -8,6 +8,7 @@ import { definePack } from '@forgeax/engine/pack/source';
 import type { MeshAsset } from '@forgeax/engine/types';
 import { ok } from '@forgeax/engine/types';
 import { PACKAGE_IDS, slot } from './shared/asset-refs.ts';
+import { ROOM_WALLS, ROOM_FURNITURE, type BuildingKind } from './shared/station-map.ts';
 import { MeshKit } from './shared/mesh-kit.ts';
 import type { PaletteKey } from './shared/palette.ts';
 
@@ -299,12 +300,87 @@ function smokePuff(): MeshAsset {
   return m.build();
 }
 
+
+function explorationGround(): MeshAsset {
+  const m = new Model('site-ground');
+  m.block('dirtDark', 0, -0.5, -20, 240, 0.25, 240);
+  m.block('dirt', 0, -0.35, -9, 46, 0.3, 42);
+  m.block('gravel', 0, -0.04, -1, 34, 0.08, 3);
+  m.block('gravel', 0, -0.04, -13, 3, 0.08, 24);
+  m.block('concreteDark', -11, -0.03, 4, 8, 0.1, 3);
+  for (let x = -16; x < 18; x += 2) {
+    m.block('sleeper', x, 0, 7.5, 0.3, 0.15, 2.4);
+    m.block('rail', x, 0.15, 6.8, 2, 0.12, 0.1);
+    m.block('rail', x, 0.15, 8.2, 2, 0.12, 0.1);
+  }
+  for (let i = 0; i < 65; i++) {
+    const x = ((i * 73) % 410) / 10 - 20;
+    const z = -((i * 47) % 320) / 10 + 5;
+    m.block(i % 2 ? 'dirtDark' : 'gravel', x, -0.015, z, 0.2 + i % 3 * 0.2, 0.06, 0.24);
+  }
+  return m.build();
+}
+function explorationRoom(kind: BuildingKind): MeshAsset {
+  const m = new Model('room-' + kind);
+  const wall: PaletteKey = kind === 'warehouse' ? 'tinRust' : kind === 'clinic' ? 'cream' : 'concrete';
+  m.block('concreteDark', 0, -0.06, 0, 8.4, 0.12, 6.4);
+  for (const b of ROOM_WALLS) m.block(wall, b.x, 0, b.z, b.w, b.h, b.d);
+  for (const b of ROOM_FURNITURE[kind]) {
+    m.block(kind === 'warehouse' ? 'wood' : kind === 'clinic' ? 'cream' : 'iron', b.x, 0, b.z, b.w, b.h, b.d);
+    m.block('ironDark', b.x, b.h * 0.8, b.z, b.w + 0.03, 0.07, b.d + 0.03);
+  }
+  // Door lintel, signage and lit windows share the train scene palette.
+  m.block('iron', 0, 2.5, 3, 2.4, 0.22, 0.3);
+  for (const x of [-1.1, 1.1]) m.block('iron', x, 0, 3, 0.14, 2.5, 0.2);
+  m.block(kind === 'clinic' ? 'neonCyan' : 'lamp', 0, 2.75, -2.8, 1.7, 0.3, 0.12);
+  for (const x of [-2.5, 2.5]) m.block('glass', x, 1.5, -2.8, 1.4, 0.9, 0.12);
+  if (kind === 'clinic') {
+    m.block('rust', 0, 1.25, -2.75, 0.2, 1, 0.15);
+    m.block('rust', 0, 1.65, -2.73, 0.8, 0.2, 0.15);
+    m.block('tarp', -2.4, 0.72, -0.7, 1.2, 0.12, 1.8);
+  }
+  if (kind === 'workshop') {
+    for (const x of [-1.5, 0, 1.5]) m.block('rust', x, 1, -2.1, 0.35, 0.28, 0.35);
+  }
+  return m.build();
+}
+function explorerModel(): MeshAsset {
+  const m = new Model('explorer');
+  for (const x of [-0.17, 0.17]) m.block('ironDark', x, 0, 0, 0.24, 0.65, 0.32);
+  m.block('olive', 0, 0.65, 0, 0.65, 0.65, 0.4);
+  m.block('cream', 0, 1.3, 0, 0.4, 0.4, 0.4);
+  m.block('olive', 0, 1.65, 0, 0.5, 0.12, 0.5);
+  m.block('wood', 0, 0.75, -0.3, 0.5, 0.55, 0.25);
+  m.block('cream', 0, 0.95, 0.22, 0.48, 0.2, 0.05);
+  m.block('neonCyan', 0.44, 1.15, 0, 0.22, 0.1, 0.26);
+  for (const x of [-0.43, 0.43]) m.block('olive', x, 0.7, 0.06, 0.2, 0.6, 0.24);
+  m.block('lamp', -0.44, 0.9, 0.2, 0.12, 0.12, 0.1);
+  return m.build();
+}
+function siteMarker(exit: boolean): MeshAsset {
+  const m = new Model(exit ? 'exit-marker' : 'survey-marker');
+  const color: PaletteKey = exit ? 'neonCyan' : 'lamp';
+  const size = exit ? 2.8 : 0.8;
+  for (const sign of [-1, 1]) {
+    m.block(color, sign * size / 2, 0.025, 0, 0.08, 0.04, size);
+    m.block(color, 0, 0.025, sign * size / 2, size, 0.04, 0.08);
+  }
+  if (!exit) m.block('wood', 0, 0, 0, 0.6, 0.5, 0.45);
+  return m.build();
+}
 export default definePack({
   schemaVersion: '2.0.0',
   packageId: PACKAGE_IDS.voxels,
   name: 'Doomsday Train / Voxels',
   build: () =>
     ok({
+      'mesh/site-ground': explorationGround(),
+      'mesh/room-warehouse': explorationRoom('warehouse'),
+      'mesh/room-workshop': explorationRoom('workshop'),
+      'mesh/room-clinic': explorationRoom('clinic'),
+      'mesh/explorer': explorerModel(),
+      'mesh/exit-marker': siteMarker(true),
+      'mesh/survey-marker': siteMarker(false),
       'mesh/loco': locomotive(),
       'mesh/car-storage': storageCar(),
       'mesh/car-passenger': passengerCar(),
