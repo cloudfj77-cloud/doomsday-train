@@ -1,0 +1,1 @@
+import{t as e}from"./preload-helper-DoI0vKEp.js";try{await e(()=>import(`./main-DYFKgKRl.js`),[])}catch(e){globalThis.__forgeaxStartup?.fail?.(e)}
