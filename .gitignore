@@ -11,3 +11,6 @@ qa/operation-history/
 
 .pnpm-store/
 .preview-local/
+.zaohua-local
+.forgeax-local/
+.envdoc/

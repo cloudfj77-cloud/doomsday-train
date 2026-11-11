@@ -27,3 +27,11 @@ shipped unchanged in the Web ZIP. Keep credentials and private URLs out of it.
 - Reproduction: a `*.ui.i18n.json` containing a nested key named `prototype` (e.g. `"cover": { "prototype": "..." }`).
 - Expected/Actual: a diagnostic naming the forbidden key; actual is only `expected string-valued i18next resources with fallbackLng and defaultNS` at line 1 column 1 (`isUiLocalization` rejects `__proto__`/`prototype`/`constructor` keys silently).
 - Workaround: rename the key (`protoTag`).
+
+### 2026-11-11 — Project init injects an unpublished devkit version
+- Scope: SDK / initialization, Engine 0.4.19, Node 24.19.0, pnpm 12.15.0 on Windows.
+- Reproduction: `pnpm exec forgeax project init --json` in the existing game.
+- Expected: initialize dependencies using the pinned Engine release.
+- Actual: init adds `@forgeax/engine-devkit: 0.0.0` to devDependencies; installation fails with `ERR_PNPM_NO_MATCHING_VERSION` from the public npm registry.
+- Recovery: removed only the invalid dependency injected by the failed command; kept the pinned Engine and lockfile.
+- Status: blocked; initialization and runtime acceptance have not passed.
