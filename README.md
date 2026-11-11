@@ -39,6 +39,8 @@ v0.2 规则与数值按团队文档《00 功能文档总表｜末日列车》及
 
 ## 本地运行
 
+换电脑 / 云电脑开发看 [`docs/dev-setup.md`](docs/dev-setup.md)。
+
 基于 [ForgeAX Engine](https://github.com/ForgeaXGame) 0.4.19。
 
 ```bash

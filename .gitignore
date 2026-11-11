@@ -4,3 +4,4 @@ node_modules/
 .assetlib/
 artifacts/
 site/
+site-*/

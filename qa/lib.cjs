@@ -1,11 +1,28 @@
 // 驱动打包后的游戏（forgeax project preview 提供的 dist/），全部用真实点击。
-const puppeteer = require('/Users/cloud/WorkBuddy/2026-10-31-16-30-00/qa/node_modules/puppeteer-core');
+const puppeteer = require('puppeteer-core');
+const fs = require('fs');
+
+/** 浏览器路径：优先环境变量 CHROME_PATH，否则按系统找 Chrome / Edge。 */
+function browserPath() {
+  if (process.env.CHROME_PATH) return process.env.CHROME_PATH;
+  const pf = process.env.ProgramFiles || 'C:\\Program Files';
+  const pf86 = process.env['ProgramFiles(x86)'] || 'C:\\Program Files (x86)';
+  const local = process.env.LOCALAPPDATA || '';
+  const candidates = {
+    darwin: ['/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge'],
+    win32: [`${pf}\\Google\\Chrome\\Application\\chrome.exe`, `${pf86}\\Google\\Chrome\\Application\\chrome.exe`, `${local}\\Google\\Chrome\\Application\\chrome.exe`, `${pf86}\\Microsoft\\Edge\\Application\\msedge.exe`, `${pf}\\Microsoft\\Edge\\Application\\msedge.exe`],
+    linux: ['/usr/bin/google-chrome', '/usr/bin/chromium', '/usr/bin/chromium-browser', '/usr/bin/microsoft-edge'],
+  }[process.platform] || [];
+  const found = candidates.find((p) => p && fs.existsSync(p));
+  if (!found) throw new Error('找不到 Chrome / Edge，请设置环境变量 CHROME_PATH');
+  return found;
+}
 const path = require('path');
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function launch({ lang = 'zh-CN', width = 1280, height = 720 } = {}) {
   const browser = await puppeteer.launch({
-    executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    executablePath: browserPath(),
     headless: 'new',
     args: ['--no-sandbox', '--enable-unsafe-webgpu', `--window-size=${width},${height + 80}`, `--lang=${lang}`],
     defaultViewport: { width, height },

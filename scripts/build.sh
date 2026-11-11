@@ -10,7 +10,8 @@ extra=()
 [ -n "${BASE:-}" ] && extra+=(--base "$BASE")
 [ -n "${OUT:-}" ] && extra+=(--outDir "$OUT")
 pnpm exec forgeax project build --html-head web/head.html ${extra[@]+"${extra[@]}"} --json > "$out" 2>&1 || true
-python3 - "$out" <<'PY'
+PY=$(command -v python3 || command -v python)
+"$PY" - "$out" <<'PY'
 import json, sys
 raw = open(sys.argv[1]).read()
 j = json.loads(raw[raw.rfind('{"ok"'):])
