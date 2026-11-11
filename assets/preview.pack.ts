@@ -5,6 +5,7 @@ import { Time, Update } from '@forgeax/engine/ecs';
 import { INPUT_SNAPSHOT_RESOURCE_KEY, type InputSnapshot } from '@forgeax/engine/input';
 import { createBoxGeometry } from '@forgeax/engine/geometry';
 import { Materials } from '@forgeax/engine/render';
+import data from './world.json';
 import { createState, step, project, validateConfig } from '../scripts/logic/world.ts';
 import { camera, object, draw } from '../scripts/view/scene.ts';
 import type {} from '@forgeax/engine/app';
@@ -13,7 +14,7 @@ export const preview: Plugin = {
   name: 'doomsday-preview', inject: ['world', 'assets'],
   async apply(ctx) {
     await ctx.effect(async function* () {
-      const config = validateConfig({ speed: 4, limit: 5, start: [0, 0] });
+      const config = validateConfig(data);
       let state = createState(config);
       const assets = ctx.assets!;
       const mesh = assets.create(createBoxGeometry(1, 1, 1).unwrap()).unwrap();
@@ -35,3 +36,4 @@ export const preview: Plugin = {
   },
 };
 export default definePack({ schemaVersion: '2.0.0', plugins: true, packageId: definePackageId('019fb7ce-3800-7000-8000-000000000000'), build: () => ok({ 'plugin/engine': { kind: 'plugin', module: { specifier: './preview.pack.ts', export: 'preview' }, config: {} } }) });
+

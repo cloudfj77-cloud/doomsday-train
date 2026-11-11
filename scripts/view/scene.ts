@@ -1,4 +1,4 @@
-import type { AssetHandle } from '@forgeax/engine/assets-runtime';
+import type { AssetHandle } from '@forgeax/engine/types';
 import { Transform, Name } from '@forgeax/engine/scene';
 import { Camera, MeshFilter, MeshRenderer, perspective } from '@forgeax/engine/render';
 import { quat } from '@forgeax/engine/math';
@@ -16,4 +16,5 @@ export function camera(world: World) {
 export function object(world: World, name: string, mesh: AssetHandle<'mesh'>, material: AssetHandle<'material'>, pos: [number, number, number], scale: [number, number, number]) {
   return world.spawn({ component: Name, data: { value: name } }, { component: Transform, data: { pos, scale } }, { component: MeshFilter, data: { assetHandle: mesh } }, { component: MeshRenderer, data: { materials: [material] } }).unwrap();
 }
+
 
