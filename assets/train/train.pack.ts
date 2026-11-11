@@ -6,9 +6,12 @@
 import { definePack } from '@forgeax/engine/pack/source';
 import { Time, Update, type EntityHandle } from '@forgeax/engine/ecs';
 import type { Plugin } from '@forgeax/engine/plugin';
-import { MeshFilter, MeshRenderer } from '@forgeax/engine/render';
+import { EXPLORATION_CAMERA, EXPLORATION_OFFSET, aimLead } from '../shared/exploration-camera.ts';
+import { Camera, MeshFilter, MeshRenderer } from '@forgeax/engine/render';
 import { Transform } from '@forgeax/engine/scene';
-import { quat } from '@forgeax/engine/math';
+import { viewportToWorld } from '@forgeax/engine/picking';
+import { createCharacter, stepCharacter } from '../shared/character-controller.ts';
+import { quat, ray, vec3 } from '@forgeax/engine/math';
 import { INPUT_SNAPSHOT_RESOURCE_KEY, type InputSnapshot } from '@forgeax/engine/input';
 import { resolveGameEntity } from '../shared/scene-refs.ts';
 import { SITE_ORIGIN, TRAIN_EXIT, stationBuildings, buildingAt, walkSite, canExtract, EXPLORER_SPEED } from '../shared/station-map.ts';
@@ -176,13 +179,20 @@ export const train: Plugin = {
       const surveyMarkers = new Map<string, EntityHandle>();
       let player: EntityHandle | undefined;
       let explorer = { x: TRAIN_EXIT.x, z: TRAIN_EXIT.z, surveyed: [] as string[] };
-      let facing = 0;
+      let character = createCharacter(TRAIN_EXIT.x, TRAIN_EXIT.z);
+      let aim: {x:number;z:number} | undefined;
+      const cameraLead = {x:0,z:0};
+      let desiredLead = {x:0,z:0};
+      let cameraPose: {pos:number[];target:number[];fov:number} = {pos:[...CAMERA_POSE.pos],target:[...CAMERA_POSE.target],fov:CAMERA_POSE.fovDeg};
       let inputReady = false;
       let extractRequested = false;
       let siteSeed = -1;
       const cameraAt = (x: number, z: number, exploring: boolean) => {
-        const target: V3 = exploring ? [SITE_ORIGIN + x, 1, z] : [...CAMERA_POSE.target];
-        const pos: V3 = exploring ? CAMERA_POSE.pos.map((v, i) => v - CAMERA_POSE.target[i]! + target[i]!) as V3 : [...CAMERA_POSE.pos];
+        const target: V3 = exploring ? [SITE_ORIGIN + x, EXPLORATION_CAMERA.pivotHeight, z] : [...CAMERA_POSE.target];
+        const pos: V3 = exploring ? EXPLORATION_OFFSET.map((v, i) => v + target[i]!) as V3 : [...CAMERA_POSE.pos];
+        const fov = exploring ? EXPLORATION_CAMERA.fov : CAMERA_POSE.fovDeg;
+        world.set(camera, Camera, {fov:fov*Math.PI/180}).unwrap();
+        cameraPose={pos:[...pos],target:[...target],fov};
         const rotation = quat.fromLookAt(quat.create(), pos, target, [0, 1, 0]);
         world.set(camera, Transform, { pos, quat: [...rotation] as [number, number, number, number] }).unwrap();
       };
@@ -219,6 +229,8 @@ export const train: Plugin = {
         }
         add('pole', -15, 3);
         player = add('explorer', explorer.x, explorer.z);
+        character = createCharacter(explorer.x, explorer.z);
+        aim = undefined; cameraLead.x=0;cameraLead.z=0;desiredLead={x:0,z:0};
         inputReady = false;
         cameraAt(explorer.x, explorer.z, true);
       };
@@ -265,6 +277,7 @@ export const train: Plugin = {
           frames,
           explorer: view?.mode === 'exploration' ? { ...explorer, building: buildingAt(siteSeed, explorer.x, explorer.z)?.id } : undefined,
           extractRequested,
+          controller: {...character},
         } satisfies EngineMessage);
       };
 
@@ -280,7 +293,7 @@ export const train: Plugin = {
           return {
             game, travelling: view?.mode === 'travel',
             buildings: stationBuildings(view?.stationSeed ?? 0).map(b => ({ ...b })),
-            engine: { mode: view?.mode ?? 'title', frames, objects: siteEntities.length,
+            engine: { mode: view?.mode ?? 'title', frames, objects: siteEntities.length, controller:{...character}, cameraLead:{...cameraLead},cameraPose:{...cameraPose}, aim:aim??null,
               building: buildingAt(siteSeed, explorer.x, explorer.z)?.id ?? null },
           };
         },
@@ -295,32 +308,50 @@ export const train: Plugin = {
           frames += 1;
           const mode = view?.mode ?? 'title';
           if (mode === 'exploration' && player) {
-            const kb = w.getResource<InputSnapshot>(INPUT_SNAPSHOT_RESOURCE_KEY)?.keyboard;
+            const snapshot = w.getResource<InputSnapshot>(INPUT_SNAPSHOT_RESOURCE_KEY);
+            const kb = snapshot?.keyboard;
             if (!kb?.downCode('KeyE')) inputReady = true;
             const horizontal = Number(!!(kb?.downCode('KeyD') || kb?.downCode('ArrowRight'))) - Number(!!(kb?.downCode('KeyA') || kb?.downCode('ArrowLeft')));
             const vertical = Number(!!(kb?.downCode('KeyS') || kb?.downCode('ArrowDown'))) - Number(!!(kb?.downCode('KeyW') || kb?.downCode('ArrowUp')));
-            if (horizontal || vertical) {
-              const ox = CAMERA_POSE.pos[0] - CAMERA_POSE.target[0];
-              const oz = CAMERA_POSE.pos[2] - CAMERA_POSE.target[2];
-              const norm = Math.hypot(ox, oz) * Math.hypot(horizontal, vertical);
-              const dx = (horizontal * oz + vertical * ox) / norm;
-              const dz = (-horizontal * ox + vertical * oz) / norm;
-              const next = walkSite(siteSeed, explorer.x, explorer.z, dx * dt * EXPLORER_SPEED, dz * dt * EXPLORER_SPEED);
-              explorer.x = next.x; explorer.z = next.z;
-              facing = Math.atan2(dx, dz);
+            const ox = EXPLORATION_OFFSET[0], oz=EXPLORATION_OFFSET[2];
+            const norm = Math.hypot(ox,oz);
+            const mouse = snapshot?.mouse.position;
+            const extent = host.drawingBufferSize?.() ?? host.canvas;
+            if (mouse && extent && extent.width > 0 && extent.height > 0) {
+              const r = viewportToWorld(w,camera,mouse.x,mouse.y,extent.width,extent.height);
+              if (r) {
+                const origin=ray.getOrigin(vec3.create(),r), direction=ray.getDirection(vec3.create(),r);
+                const t = Math.abs(direction[1]!) > 0.0001 ? -origin[1]!/direction[1]! : -1;
+                if (t>0) {
+                  aim={x:origin[0]!+direction[0]!*t-SITE_ORIGIN,z:origin[2]!+direction[2]!*t};
+                  const centre=viewportToWorld(w,camera,extent.width/2,extent.height/2,extent.width,extent.height);
+                  if(centre){
+                    const co=ray.getOrigin(vec3.create(),centre),cd=ray.getDirection(vec3.create(),centre);
+                    const ct=Math.abs(cd[1]!)>0.0001?-co[1]!/cd[1]!:-1;
+                    if(ct>0)desiredLead=aimLead(aim.x-(co[0]!+cd[0]!*ct-SITE_ORIGIN),aim.z-(co[2]!+cd[2]!*ct));
+                  }
+                }
+              }
             }
+            character.x=explorer.x;character.z=explorer.z;
+            stepCharacter(character,{x:(horizontal*oz+vertical*ox)/norm,z:(-horizontal*ox+vertical*oz)/norm,
+              run:!!(kb?.downCode('ShiftLeft')||kb?.downCode('ShiftRight')),dash:!!kb?.justPressedCode('Space'),aim},dt,siteSeed);
+            explorer.x=character.x;explorer.z=character.z;
             const building = buildingAt(siteSeed, explorer.x, explorer.z);
-            if (inputReady && kb?.justPressedCode('KeyE')) {
+            if (inputReady && character.action !== 'dash' && kb?.justPressedCode('KeyE')) {
               if (building && !explorer.surveyed.includes(building.id)) explorer.surveyed.push(building.id);
               if (canExtract(explorer.x, explorer.z)) extractRequested = true;
               publish(); extractRequested = false;
             }
-            place(player, [SITE_ORIGIN + explorer.x, 0.03, explorer.z], facing);
+            const bob = character.action==='walk'||character.action==='run' ? Math.sin(character.distance*9)*0.035 : 0;
+            place(player, [SITE_ORIGIN + explorer.x, 0.03+bob, explorer.z], character.yaw, [1,character.action==='dash'?0.78:1,1]);
             for (const [id, marker] of surveyMarkers) {
               const b = stationBuildings(siteSeed).find(b => b.id === id)!;
               place(marker, [SITE_ORIGIN + b.x, explorer.surveyed.includes(id) ? -10 : 0, b.z]);
             }
-            cameraAt(explorer.x, explorer.z, true);
+            const blend=1-Math.exp(-8*dt);
+            cameraLead.x+=(desiredLead.x-cameraLead.x)*blend;cameraLead.z+=(desiredLead.z-cameraLead.z)*blend;
+            cameraAt(explorer.x+cameraLead.x, explorer.z+cameraLead.z, true);
             if (frames % 6 === 0) publish();
           }
           let speed = 0; // world units per second, for smoke drift & bob

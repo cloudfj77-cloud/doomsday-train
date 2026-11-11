@@ -41,6 +41,7 @@ export interface EngineMessage {
   readonly frames: number;
   readonly explorer?: { x: number; z: number; surveyed: readonly string[]; building?: string };
   readonly extractRequested?: boolean;
+  readonly controller?: {action: string; stamina: number; cooldown: number};
 }
 
 export function isViewMessage(value: unknown): value is ViewMessage {

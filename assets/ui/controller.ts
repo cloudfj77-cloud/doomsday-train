@@ -287,6 +287,7 @@ export async function createGameUi(asset: UiAsset, host: Host): Promise<{ dispos
         return;
     }
     if (!g) return;
+    if (g.phase==='exploration' && engine?.controller?.action==='dash' && (act==='survey'||act==='return-train')) return;
     switch (act) {
       case 'tab':
         tab = el.dataset.tab as Tab;
@@ -704,9 +705,9 @@ export async function createGameUi(asset: UiAsset, host: Host): Promise<{ dispos
     const map = buildings.map(b => '<rect x="'+(b.x+17-4)+'" y="'+(b.z+25-3)+'" width="8" height="6" fill="'+(surveyed.includes(b.id)?'#759a79':'#9d8260')+'"/>').join('');
     part('expedition').innerHTML = '<header><small>01 / '+words('站点探索','STATION EXPLORATION')+'</small><h2>'+stationName()+'</h2><p>'+words('出击机会 1/1 · 自由探索后返回列车','Sortie 1/1 · Explore and return')+'</p></header>'
       + '<aside class="site-map"><svg viewBox="-1 -1 36 33" role="img" aria-label="'+words('站点小地图','Station minimap')+'"><rect x="0" y="0" width="34" height="31" fill="#242c29"/>'+map+'<circle cx="6" cy="29" r="1.3" fill="#7ce3df"/><circle cx="'+(e.x+17)+'" cy="'+(e.y+25)+'" r="0.8" fill="#ffda7d"/></svg><p>'+words('青色：列车撤离点','Cyan: train exit')+'</p></aside>'
-      + '<footer><div class="site-status"><strong>'+ (current ? names[current.id] : words('站区街道','Station streets'))+'</strong><p>'+ (ready ? words('已到达列车 · E 或点击返车','At the train · E or click to return') : current ? words('按 E 勘察室内 · 可自由进出门洞','Press E to survey · enter through the doorway') : words('沿道路探索，建筑门洞位于正面','Explore the roads. Doorways face the street.'))+'</p></div>'
+      + '<footer><div class="site-status"><span>'+words('体力 ','Stamina ')+Math.round(engine?.controller?.stamina ?? 100)+' / 100 · '+(engine?.controller?.action ?? 'idle')+'</span><br><strong>'+ (current ? names[current.id] : words('站区街道','Station streets'))+'</strong><p>'+ (ready ? words('已到达列车 · E 或点击返车','At the train · E or click to return') : current ? words('按 E 勘察室内 · 可自由进出门洞','Press E to survey · enter through the doorway') : words('沿道路探索，建筑门洞位于正面','Explore the roads. Doorways face the street.'))+'</p></div>'
       + '<div class="site-objectives">'+buildings.map(b => '<span>'+ (surveyed.includes(b.id)?'✓ ':'○ ')+names[b.id]+'</span>').join('')+'</div>'
-      + '<div class="actions"><span>'+words('WASD / 方向键移动 · E 交互','WASD / arrows to move · E interact')+'</span>'
+      + '<div class="actions"><span>'+words('WASD 移动 · 鼠标朝向 · Shift 奔跑 · Space 冲刺 · E 交互','WASD move · Mouse face · Shift run · Space dash · E interact')+'</span>'
       + (current ? '<button class="btn" data-act="survey">'+words('勘察建筑','Survey building')+'</button>' : '')
       + '<button class="btn go" data-act="return-train" '+(ready?'':'disabled')+'>'+words('返回列车','Return to train')+'</button></div></footer>';
   }

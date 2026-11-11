@@ -10,3 +10,4 @@ qa/browsers/
 qa/operation-history/
 
 .pnpm-store/
+.preview-local/
