@@ -7,7 +7,7 @@
   "packageManager": "pnpm@12.15.0",
   "scripts": {
     "dev": "forgeax dev start",
-    "build": "forgeax project build",
+    "build": "forgeax project build --json",
     "package": "forgeax project package",
     "serve": "forgeax project preview",
     "preview": "forgeax project preview",

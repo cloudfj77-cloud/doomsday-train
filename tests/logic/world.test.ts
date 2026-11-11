@@ -21,3 +21,40 @@ describe('real simulation', () => {
   });
 });
 
+
+describe('railway movement', () => {
+  const config = validateConfig(data);
+  const spawn = createState(config);
+  it('rejects a spawn inside the rock and duplicate landmark identities', () => {
+    expect(() => validateConfig({ ...data, start: [0, 0] })).toThrow();
+    expect(() => validateConfig({ ...data, obstacles: [data.obstacles[0], data.obstacles[0]] })).toThrow();
+  });
+  it('sweeps the whole segment and stops walking on contact', () => {
+    const hit = step({ ...spawn, x: -4, z: 0 }, [1, 0], 10, config);
+    expect(hit.x).toBeCloseTo(-1.22);
+    const pressed = step(hit, [1, 0], 1, config);
+    expect(pressed.moving).toBe(false);
+    expect(pressed.walkDistance).toBe(hit.walkDistance);
+    const depot = step({ ...spawn, x: 3, z: 2 }, [0, -1], 10, config);
+    expect(depot.z).toBeCloseTo(-2.28);
+  });
+  it('slides beside the rock, retaining facing and stride when input is released', () => {
+    const start = { ...spawn, x: -2, z: 0.8 };
+    const slide = step(start, [1, -1], 0.4, config);
+    expect(slide.x).toBeCloseTo(-1.22);
+    expect(slide.z).toBeLessThan(-0.3);
+    expect(slide.facingX).toBeCloseTo(Math.SQRT1_2);
+    expect(slide.facingZ).toBeCloseTo(-Math.SQRT1_2);
+    expect(slide.walkDistance).toBeGreaterThan(0);
+    expect(step(slide, [0, 0], 1, config)).toEqual({ ...slide, moving: false });
+  });
+  it('reaches the depot approach around either side of the outcrop', () => {
+    for (const x of [-2, 2]) {
+      let s = step(spawn, [1, 0], (x - spawn.x) / config.speed, config);
+      s = step(s, [0, -1], 5 / config.speed, config);
+      expect(s.z).toBeCloseTo(-2);
+      s = step(s, [1, 0], (3 - x) / config.speed, config);
+      expect(s.x).toBeCloseTo(3);
+    }
+  });
+});

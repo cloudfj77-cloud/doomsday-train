@@ -1,12 +1,20 @@
 import { existsSync, readFileSync, writeFileSync, unlinkSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
-const run = () => spawnSync(process.execPath, ['node_modules/vitest/vitest.mjs', 'run', 'tests/logic/world.test.ts', 'tests/contracts/project.test.ts'], { encoding: 'utf8' });
+const run = () => spawnSync(process.execPath, ['node_modules/vitest/vitest.mjs', 'run', 'tests/logic/world.test.ts', 'tests/contracts/project.test.ts', 'tests/view/presentation.test.ts'], { encoding: 'utf8' });
 const cases = [
+  ['config/presentation/scene.json', s => s.replace('"gravelCount": 195', '"gravelCount": -2')],
+  ['scripts/logic/world.ts', s => s.replace('ids.has(o.id)', 'false')],
+  ['scripts/logic/world.ts', s => s.replace('if (c.start.every', 'if (false && c.start.every')],
+  ['scripts/logic/world.ts', s => s.replace('enter < time && enter < exit', 'false')],
+  ['scripts/logic/world.ts', s => s.replace('if (hit.axis >= 0)', 'if (false)')],
+  ['scripts/logic/world.ts', s => s.replace('moving: traveled > 0', 'moving: true')],
+  ['scripts/logic/world.ts', s => s.replace('walkDistance: state.walkDistance + traveled', 'walkDistance: 0')],
+  ['config/gameplay/world.json', s => s.replace('"size": [2, 1.5]', '"size": [5, 1.5]')],
   ['scripts/logic/layout.test.ts', () => '// misplaced test'],
   ['Documents/uncategorized.md', () => '# misplaced document'],
   ['assets/world.json', () => '{}'],
   ['config/gameplay/world.json', s => s.replace('"speed": 4', '"speed": -1')],
-  ['scripts/logic/world.ts', s => s.replace('state.x + input[0]', 'state.x - input[0]')],
+  ['scripts/logic/world.ts', s => s.replace('facingX * distance', '-facingX * distance')],
   ['scripts/logic/world.ts', s => s.replace('Object.freeze({ ...state })', '({ ...state })')],
   ['scripts/logic/world.ts', s => s + '\n// document. forbidden boundary\n'],
   ['scripts/view/scene.ts', s => s + '\n// step( forbidden boundary\n'],

@@ -1,1 +1,10 @@
-{ "speed": 4, "limit": 5, "start": [0, 0] }
+{
+  "speed": 4,
+  "limit": 5,
+  "radius": 0.22,
+  "start": [-3.5, 3],
+  "obstacles": [
+    { "id": "outcrop", "center": [0, 0], "size": [2, 1.5] },
+    { "id": "depot", "center": [3, -3], "size": [2, 1] }
+  ]
+}

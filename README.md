@@ -1,9 +1,10 @@
-# Doomsday Train 骨架
+# Doomsday Train · 风沙铁路补给点
 
 ForgeaX + TypeScript，PC 2.5D 俯视角搜打撤项目。
-本阶段仅实现几何地面、角色与 WASD 移动验证，不扩写战斗与经济。
+首场景是沙漠中的铁路遗迹。用 WASD 从浅沙地沿半埋轨枕向信号牌移动，绕过中央断岩可抵达补给台。
 
 - 设计真相：Documents/design/concept.md
+- 体素美术与首场景：Documents/design/voxel-art.md
 - 复用流程：Documents/workflow/development.md
 - 启动：powershell -File tools/preview.ps1
 - 检查：powershell -File tools/check.ps1
