@@ -299,6 +299,79 @@ function smokePuff(): MeshAsset {
   return m.build();
 }
 
+function plantingCar(): MeshAsset {
+  const m = new Model('car-planting');
+  carBase(m);
+  m.box('ironDark', [0, 1.1, 0], [4.2, 0.4, 1.64]);
+  m.box('glass', [0, 1.95, 0], [4.1, 1.3, 1.56]);
+  for (const x of [-1.6, -0.55, 0.55, 1.6]) m.box('iron', [x, 1.95, 0], [0.08, 1.32, 1.6]);
+  m.box('iron', [0, 2.64, 0], [4.2, 0.1, 1.6]);
+  for (const x of [-1.55, -0.5, 0.5, 1.55]) {
+    m.box('leafDark', [x, 1.45, 0.35], [0.7, 0.3, 0.5]);
+    m.box('leaf', [x, 1.7, 0.35], [0.5, 0.3, 0.4]);
+    m.box('leaf', [x, 1.55, -0.4], [0.6, 0.35, 0.45]);
+  }
+  m.box('lamp', [0, 2.55, 0], [3.4, 0.06, 0.12]);
+  return m.build();
+}
+
+function processingCar(): MeshAsset {
+  const m = new Model('car-processing');
+  carBase(m);
+  m.box('rustDark', [0, 1.72, 0], [4.2, 1.6, 1.64]);
+  m.box('iron', [-1.2, 1.9, 0.83], [1.2, 0.7, 0.04]);
+  m.box('lamp', [-1.2, 1.9, 0.86], [0.9, 0.18, 0.02]);
+  m.box('tinRust', [0, 2.6, 0], [4.32, 0.16, 1.8]);
+  m.box('ironDark', [1.3, 3.2, 0.3], [0.42, 1.1, 0.42]);
+  m.box('rust', [1.3, 3.8, 0.3], [0.55, 0.14, 0.55]);
+  m.box('ironDark', [0.4, 2.9, -0.4], [0.3, 0.5, 0.3]);
+  m.box('iron', [-0.8, 2.85, -0.3], [1.2, 0.35, 0.7]);
+  m.box('neonCyan', [-0.8, 3.05, -0.3], [0.3, 0.06, 0.72]);
+  return m.build();
+}
+
+function resourceStation(seed: number): MeshAsset {
+  const m = new Model(`station-resource-${seed}`);
+  const rand = rng(seed * 557 + 3);
+  m.block('concreteDark', 0, 0, -2.75, 14, 0.35, 2.6);
+  // storage tanks & gantry
+  for (const x of [-9, -5.5]) {
+    m.block('rust', x, 0, -7.5, 2.6, 3.2 + rand() * 1.5, 2.6);
+    m.block('rustDark', x, 3.6, -7.5, 2.0, 0.5, 2.0);
+  }
+  m.block('ironDark', 2, 0, -6, 0.3, 5.5, 0.3);
+  m.block('ironDark', 7, 0, -6, 0.3, 5.5, 0.3);
+  m.block('iron', 4.5, 5.5, -6, 5.6, 0.35, 0.4);
+  m.box('lamp', [4.5, 5.2, -5.8], [0.4, 0.3, 0.3]);
+  for (let i = 0; i < 6; i += 1) m.block(rand() < 0.5 ? 'concreteDark' : 'rustDark', -2 + i * 1.6 + rand(), 0, -4.6 - rand() * 2, 0.9 + rand(), 0.4 + rand() * 1.4, 0.9);
+  m.block('tinRust', 10, 0, -5, 3, 1.6, 1.6);
+  m.block('olive', 10.3, 1.6, -5, 2.4, 1.2, 1.4);
+  m.block('neonPink', -1.5, 2.6, -3.8, 0.1, 0.1, 0.1);
+  return m.build();
+}
+
+function huntStation(seed: number): MeshAsset {
+  const m = new Model(`station-hunt-${seed}`);
+  const rand = rng(seed * 811 + 9);
+  m.block('dirtDark', 0, 0, -2.75, 14, 0.2, 2.6);
+  // barbed fence
+  for (let x = -12; x <= 12; x += 2) {
+    m.block('ironDark', x, 0, -4.2, 0.14, 2.2, 0.14);
+    m.box('rail', [x + 1, 1.9, -4.2], [2, 0.05, 0.05]);
+    m.box('rail', [x + 1, 1.2, -4.2], [2, 0.05, 0.05]);
+  }
+  // watchtower
+  for (const [x, z] of [[-6, -7], [-4.4, -7], [-6, -8.6], [-4.4, -8.6]] as const) m.block('wood', x, 0, z, 0.2, 4.2, 0.2);
+  m.block('wood', -5.2, 4.2, -7.8, 2.2, 0.2, 2.2);
+  m.block('tarp', -5.2, 5.2, -7.8, 2.4, 0.2, 2.4);
+  m.box('lamp', [-5.2, 4.8, -6.7], [0.3, 0.3, 0.3]);
+  for (let i = 0; i < 5; i += 1) m.block('deadTree', 2 + i * 2.2 + rand(), 0, -7 - rand() * 3, 0.3, 2.5 + rand() * 2, 0.3);
+  m.block('rustDark', 6, 0.25, -5.5, 3.2, 0.7, 1.5);
+  m.block('rust', 5.8, 0.95, -5.5, 1.6, 0.6, 1.3);
+  m.box('neonPink', [-5.2, 4.5, -6.75], [0.6, 0.08, 0.04]);
+  return m.build();
+}
+
 export default definePack({
   schemaVersion: '2.0.0',
   packageId: PACKAGE_IDS.voxels,
@@ -308,6 +381,12 @@ export default definePack({
       'mesh/loco': locomotive(),
       'mesh/car-storage': storageCar(),
       'mesh/car-passenger': passengerCar(),
+      'mesh/car-planting': plantingCar(),
+      'mesh/car-processing': processingCar(),
+      'mesh/station-resource-0': resourceStation(0),
+      'mesh/station-resource-1': resourceStation(1),
+      'mesh/station-hunt-0': huntStation(0),
+      'mesh/station-hunt-1': huntStation(1),
       'mesh/sleepers': sleepers(),
       'mesh/ground': groundAndRails(),
       'mesh/station-rich-0': richStation(0),

@@ -3,7 +3,7 @@
  * The frontend owns the economy simulation and every player-visible word; the
  * Engine only stages the 3D view (train composition, station, travel animation).
  */
-import type { CarKind, Region } from '../sim/data.ts';
+import type { CarKind, NodeKind } from '../sim/data.ts';
 
 export const VIEW_CHANNEL = 'doomsday/view';
 export const ENGINE_CHANNEL = 'doomsday/engine';
@@ -14,7 +14,7 @@ export interface ViewMessage {
   readonly channel: typeof VIEW_CHANNEL;
   readonly mode: ViewMode;
   /** Region of the station the train stands at (station) or is heading to (travel). */
-  readonly region: Region;
+  readonly region: NodeKind;
   /** Variant seed for the station model (stable per station id). */
   readonly stationSeed: number;
   readonly cars: readonly CarKind[];

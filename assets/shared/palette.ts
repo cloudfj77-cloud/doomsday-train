@@ -34,6 +34,8 @@ export const PALETTE = Object.freeze({
   zombieSkin: [0.52, 0.55, 0.47],
   zombieCloth: [0.3, 0.12, 0.11],
   deadTree: [0.14, 0.11, 0.09],
+  leaf: [0.11, 0.25, 0.04],
+  leafDark: [0.05, 0.13, 0.02],
   smoke: [0.36, 0.35, 0.34],
 } satisfies Record<string, RGB>);
 

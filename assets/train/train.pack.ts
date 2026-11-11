@@ -20,7 +20,7 @@ import {
   type EngineMessage,
   type ViewMessage,
 } from '../shared/protocol.ts';
-import type { CarKind, Region } from '../sim/data.ts';
+import type { CarKind, NodeKind as Region } from '../sim/data.ts';
 
 type V3 = [number, number, number];
 const yaw = (a: number): [number, number, number, number] => [0, Math.sin(a / 2), 0, Math.cos(a / 2)];
@@ -53,8 +53,9 @@ export const train: Plugin = {
       const materialCache = new Map<string, number>();
       const meshes = new Map<string, { mesh: number; materials: number[] }>();
       const keys = [
-        'loco', 'car-storage', 'car-passenger', 'sleepers',
+        'loco', 'car-storage', 'car-passenger', 'car-planting', 'car-processing', 'sleepers',
         'station-rich-0', 'station-rich-1', 'station-slum-0', 'station-slum-1',
+        'station-resource-0', 'station-resource-1', 'station-hunt-0', 'station-hunt-1',
         'ruin-0', 'ruin-1', 'wreck', 'tree', 'pole', 'zombie-0', 'zombie-1', 'zombie-2', 'smoke',
       ];
       const handles: number[] = [];
@@ -156,7 +157,7 @@ export const train: Plugin = {
         const same = kinds.length === cars.length && kinds.every((k, i) => cars[i]!.kind === k);
         if (same) return;
         for (const c of cars) kill(c.entity);
-        cars = kinds.map((kind, i) => ({ kind, entity: spawn(kind === 'storage' ? 'car-storage' : 'car-passenger', [FIRST_CAR_X - i * CAR_SPACING, 0, 0]) }));
+        cars = kinds.map((kind, i) => ({ kind, entity: spawn(`car-${kind}`, [FIRST_CAR_X - i * CAR_SPACING, 0, 0]) }));
       };
       const showStationNow = (region: Region, s: number) => {
         const key = stationKey(region, s);

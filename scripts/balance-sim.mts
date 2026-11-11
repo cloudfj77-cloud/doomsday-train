@@ -1,73 +1,68 @@
 /**
- * 30 天全程平衡模拟：用一个"贪心机器人"跑 N 个随机种子，统计六期大结算的通过率。
- * 用法：pnpm exec tsx scripts/balance-sim.mts [runs]
- * 仅用于给策划案提供数据参考；机器人不代表真人最优或平均水平。
+ * v0.2 平衡模拟：贪心机器人跑 N 局（只经营、不出击），统计各偿债期通过率。
+ * 用法：pnpm exec tsx scripts/balance-sim.mts 300 [exp]
  */
-import { retailPrice, previewSale, newGame, chooseRoute, depart, arrive, routeDone, endDay, closeBill, paySettlement, sellToBuyer, sellToRider, boardPassenger, buyBatch, buySingle, buyCar, capacity, cellsUsed, debtPreview, type Game } from '../assets/sim/economy.ts';
+import { ITEMS } from '../assets/sim/data.ts';
+import {
+  arrive,
+  boardPassenger,
+  buyBatch,
+  buyCar,
+  chooseRoute,
+  closeBill,
+  depart,
+  endDay,
+  hireDriver,
+  newGame,
+  paySettlement,
+  routeActive,
+  sellToBuyer,
+  sellToRider,
+  skipSite,
+  type Game,
+} from '../assets/sim/economy.ts';
 
-type Policy = { name: string; storageCars: number; passengerCars: number; reserve: number; lookahead: number };
+const runs = Number(process.argv[2] ?? 200);
+const exp = process.argv[3] === 'exp';
+const passed = [0, 0, 0, 0, 0, 0];
+let finalCash = 0;
 
-function station(game: Game, policy: Policy) {
-  for (const c of game.station.customers) if (c.kind === 'buyer' && !c.outcome && previewSale(game, c).total > 0) sellToBuyer(game, c.id);
-  for (const r of game.riders) if (r.want && !r.want.sold) sellToRider(game, r.id);
-  const storage = game.cars.filter((c) => c === 'storage').length;
-  const passenger = game.cars.filter((c) => c === 'passenger').length;
-  // 扩建不挤占下一期应还本金
-  const preview = debtPreview(game);
-  const keep = policy.reserve + (preview && preview.day - game.day <= policy.lookahead ? preview.due : 0);
-  if (storage < policy.storageCars && game.cash - 600 > keep) buyCar(game, 'storage');
-  else if (passenger < policy.passengerCars && game.cash - 800 > keep) buyCar(game, 'passenger');
-  for (const p of game.station.passengers) if (!p.boarded && p.dest !== undefined) boardPassenger(game, p.id);
-  for (const c of game.station.customers) {
-    if (c.kind !== 'supplier' || c.outcome) continue;
-    const resale = c.goods!.reduce((s, g) => s + g.qty * retailPrice(g.item, undefined), 0);
-    if (c.batchPrice !== undefined && c.batchPrice < resale * 0.88 && game.cash - c.batchPrice > policy.reserve) {
-      if (buyBatch(game, c.id).ok) continue;
-    }
-    // 单拿利润足够的货
-    const q = c.goods!.map((g) => (g.unit < retailPrice(g.item, undefined) * 0.85 ? g.qty : 0));
-    const cost = c.goods!.reduce((s, g, i) => s + g.unit * q[i]!, 0);
-    if (cost > 0 && game.cash - cost > policy.reserve && cellsUsed(game.inventory) < capacity(game)) buySingle(game, c.id, q);
+function playStation(g: Game): void {
+  for (const c of g.station.customers) if (!c.outcome && c.kind === 'buyer') sellToBuyer(g, c.id);
+  for (const r of g.riders) if (r.want && !r.want.sold) sellToRider(g, r.id);
+  for (const p of g.station.passengers) if (!p.status && p.dest !== undefined && (p.deadline! > g.day || (p.seg ?? 9) <= 1)) boardPassenger(g, p.id);
+  for (const c of g.station.customers) {
+    if (c.outcome || c.kind !== 'supplier' || !c.goods) continue;
+    const resale = c.goods.reduce((s, x) => s + x.qty * Math.floor(ITEMS[x.item].value * 1.2), 0);
+    const price = c.batchPrice ?? c.goods.reduce((s, x) => s + x.qty * x.unit, 0);
+    if (price < resale * 0.85 && g.cash - price > 150) buyBatch(g, c.id);
   }
+  if (g.day >= 3 && g.cash > 900 && !g.cars.some((c) => c.kind === 'storage')) buyCar(g, 'storage');
+  if (g.station.driver && !g.pendingDriver && g.driver === 0 && g.cash > 700) hireDriver(g);
+  if (g.station.site) skipSite(g);
 }
 
-function run(seed: number, policy: Policy) {
-  const game = newGame(seed);
-  const passedAt: number[] = [];
-  while (game.phase !== 'lost' && game.day <= 30) {
-    if (game.phase === 'won') break;
-    chooseRoute(game, 2);
-    station(game, policy);
-    while (!routeDone(game)) {
-      depart(game);
-      arrive(game);
-      station(game, policy);
-    }
-    endDay(game);
-    closeBill(game);
-    if (game.phase === 'settlement') {
-      for (const c of game.station.customers) if (c.kind === 'buyer' && !c.outcome) sellToBuyer(game, c.id);
-      const day = game.day;
-      if (paySettlement(game).ok) passedAt.push(day);
-      else return { passed: passedAt.length, lostDay: day, cash: game.cash, cars: game.cars.length };
-    }
+for (let seed = 1; seed <= runs; seed += 1) {
+  const g = newGame(seed * 7919, exp);
+  for (let guard = 0; guard < 3000 && g.phase !== 'lost' && g.day <= 30; guard += 1) {
+    if (g.phase === 'station') {
+      playStation(g);
+      if (routeActive(g)) {
+        if (!depart(g).ok) endDay(g);
+      } else if (g.routeOptions?.length) {
+        const pure = g.routeOptions.findIndex((r) => r.every((n) => n.kind === 'rich' || n.kind === 'slum'));
+        chooseRoute(g, pure >= 0 ? pure : 0);
+      } else endDay(g);
+    } else if (g.phase === 'travel') arrive(g);
+    else if (g.phase === 'dayEnd') closeBill(g);
+    else if (g.phase === 'settlement') {
+      const k = g.settlement!.day / 5 - 1;
+      if (paySettlement(g).ok) passed[k]! += 1;
+      else g.phase = 'lost';
+    } else if (g.phase === 'won') g.phase = 'station';
   }
-  return { passed: passedAt.length, lostDay: 0, cash: game.cash, cars: game.cars.length };
+  finalCash += g.cash;
 }
-
-const runs = Number(process.argv[2] ?? 300);
-if (process.env.DBG) { for (let s = 1; s <= 6; s += 1) console.log(JSON.stringify(run(s * 104729, { name: 'x', storageCars: 1, passengerCars: 1, reserve: 150, lookahead: 2 }))); }
-const policies: Policy[] = [
-  { name: '只用车头', storageCars: 0, passengerCars: 0, reserve: 100, lookahead: 2 },
-  { name: '1 载客', storageCars: 0, passengerCars: 1, reserve: 100, lookahead: 2 },
-  { name: '1 存储 + 1 载客', storageCars: 1, passengerCars: 1, reserve: 100, lookahead: 2 },
-  { name: '2 存储 + 2 载客', storageCars: 2, passengerCars: 2, reserve: 100, lookahead: 2 },
-  { name: '3 存储 + 3 载客', storageCars: 3, passengerCars: 3, reserve: 100, lookahead: 2 },
-];
-for (const policy of policies) {
-  const counts = [0, 0, 0, 0, 0, 0, 0];
-  for (let s = 1; s <= runs; s += 1) counts[run(s * 104729, policy).passed]! += 1;
-  const reach = (k: number) => counts.slice(k).reduce((a, b) => a + b, 0);
-  const line = [1, 2, 3, 4, 5, 6].map((k) => `第${k * 5}天 ${((reach(k) / runs) * 100).toFixed(0)}%`).join(' | ');
-  console.log(`${policy.name.padEnd(14)}  ${line}`);
-}
+console.log(`runs ${runs} (${exp ? 'experiments on' : 'team rules'})`);
+console.log('pass rate by debt check (day 5/10/15/20/25/30):', passed.map((p) => `${Math.round((p / runs) * 100)}%`).join(' / '));
+console.log('avg final cash', Math.round(finalCash / runs));

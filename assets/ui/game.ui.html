@@ -6,6 +6,7 @@
       <button type="button" class="menu-btn primary" data-act="new-game" data-i18n="cover.newGame"></button>
       <button type="button" class="menu-btn" data-act="continue" data-ui-part="continue-btn" data-i18n="cover.resume"></button>
       <small class="save-info" data-ui-part="save-info"></small>
+      <div class="exp-toggle" data-ui-part="exp-toggle"></div>
       <div class="lang-switch" role="group">
         <button type="button" data-act="lang" data-lang="zh">中文</button>
         <button type="button" data-act="lang" data-lang="en">EN</button>
@@ -27,6 +28,7 @@
       <strong class="tb-title" data-i18n="game.title">末日列车</strong>
       <span class="tb-day" data-ui-part="tb-day"></span>
       <span class="tb-phase" data-ui-part="tb-phase"></span>
+      <span class="tb-quota" data-ui-part="tb-quota"></span>
     </div>
     <div class="tb-stats">
       <div class="stat"><small data-i18n="hud.cash"></small><b data-ui-part="tb-cash"></b></div>
@@ -52,10 +54,16 @@
 
   <div class="station-plate" data-ui-part="station-plate"></div>
   <div class="train-stats" data-ui-part="train-stats"></div>
+  <nav class="train-strip" data-ui-part="train-strip"></nav>
   <div class="main-action" data-ui-part="main-action"></div>
+  <div class="cargo-view" data-ui-part="cargo-view"></div>
   <div class="travel-bar" data-ui-part="travel-bar"><span data-ui-part="travel-label"></span><i data-ui-part="travel-fill"></i></div>
 </section>
+
+<section class="explore-layer" data-ui-part="explore-layer"></section>
 
 <section class="modal-layer" data-ui-part="modal-layer">
   <div class="modal" data-ui-part="modal"></div>
 </section>
+
+<div class="drag-layer" data-ui-part="drag-layer"></div>

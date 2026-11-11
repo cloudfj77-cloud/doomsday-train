@@ -9,7 +9,7 @@ mkdir -p .forgeax/diag
 extra=()
 [ -n "${BASE:-}" ] && extra+=(--base "$BASE")
 [ -n "${OUT:-}" ] && extra+=(--outDir "$OUT")
-pnpm exec forgeax project build --html-head web/head.html "${extra[@]}" --json > "$out" 2>&1 || true
+pnpm exec forgeax project build --html-head web/head.html ${extra[@]+"${extra[@]}"} --json > "$out" 2>&1 || true
 python3 - "$out" <<'PY'
 import json, sys
 raw = open(sys.argv[1]).read()
