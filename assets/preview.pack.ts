@@ -1,4 +1,4 @@
-import presentation from './presentation.json';
+import presentation from '../config/presentation/scene.json';
 import { definePack, definePackageId } from '@forgeax/engine/pack/source';
 import { AssetGuid } from '@forgeax/engine/pack/guid';
 import { ok } from '@forgeax/engine/types';
@@ -7,7 +7,7 @@ import { Time, Update } from '@forgeax/engine/ecs';
 import { INPUT_SNAPSHOT_RESOURCE_KEY, type InputSnapshot } from '@forgeax/engine/input';
 import { createBoxGeometry } from '@forgeax/engine/geometry';
 import { Materials } from '@forgeax/engine/render';
-import data from './world.json';
+import data from '../config/gameplay/world.json';
 import { createState, step, project, validateConfig } from '../scripts/logic/world.ts';
 import { camera, object, draw } from '../scripts/view/scene.ts';
 import type {} from '@forgeax/engine/app';
@@ -47,3 +47,4 @@ export default definePack({ schemaVersion: '2.0.0', plugins: true, packageId, bu
   'material/player': Materials.unlit(presentation.player.color as [number, number, number, number]),
   'plugin/engine': { kind: 'plugin', module: { specifier: './preview.pack.ts', export: 'preview' }, config: { mesh: ref('mesh/unit'), ground: ref('material/ground'), actor: ref('material/player') } }
 }) });
+

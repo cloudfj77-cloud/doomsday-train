@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { createState, step, project, validateConfig } from './world.ts';
-import data from '../../assets/world.json';
+import { createState, step, project, validateConfig } from '../../scripts/logic/world.ts';
+import data from '../../config/gameplay/world.json';
 describe('real simulation', () => {
   it('loads JSON and moves from input', () => {
     const c = validateConfig(data), start = createState(c);
@@ -20,3 +20,4 @@ describe('real simulation', () => {
     expect(Math.abs(step(s, [1, 1], 100, c).x)).toBeLessThanOrEqual(c.limit);
   });
 });
+
