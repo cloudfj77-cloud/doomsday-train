@@ -1,3 +1,46 @@
+# 项目说明书
+
+## 一句话游戏是什么
+2.5D 俯视角搜打撤：进入 3D 地图搜索物品，撤出售卖赚金币，再进入下一局。设计真相：[concept](Documents/concept.md)。
+
+## 目录地图
+- `Documents/`：设计真相和专题文档。
+- `scripts/logic/`：纯逻辑和只读状态投影，不依赖显示或 DOM。
+- `scripts/view/`：读取投影绘制场景，不计算游戏规则。
+- `assets/`：JSON 配置、Pack 和资产源；根插件只负责装配。
+- `tools/`：可重复启动、检查和验证脚本。
+- `skills/`：引擎接口及工作流参考。
+- `docs/`：引擎问题反馈。
+- `qa/`：本地检查记录（不提交生成物）。
+
+## 硬约定
+- 数值、场景和内容配置放 JSON，运行时加载和校验；禁止静默回退。
+- 逻辑与画面分离，画面读取逻辑投影；引擎装配以 forge.json 为唯一 authority。
+- 约定不能只写在注释里：前提被破坏会静默出错时，必须有无窗口检查。
+- 截图只证明画出来了，不证明点得动。
+- 每条检查都要反着验一次：故意改坏 → 看它报错 → 改回 → 通过。
+- 检查调用真实代码，不在检查里把公式重新推一遍。
+- 修一个 bug = 修复 + 一条新的检查。
+- AGENTS.md 小于 20KB；玩法细节只写 Documents/ 专题并链接。
+
+## 验证命令
+基础环境：`pnpm exec forgeax project check --json`；类型：`pnpm typecheck`；测试：`pnpm test`。
+稳定流程入口随后落实在 tools/；运行、交互与重载通过才可声明可玩。
+
+## 拍板记录
+### 已确认
+- 2026-11-11：ForgeaX + TypeScript；造化插件；PC；直接编辑本目录。
+- 2026-11-11：按五阶段提交；本次只做骨架，不提前扩写玩法。
+### 建议（待试玩确认）
+- 用最小移动场景验证逻辑与画面分离。
+### 待决定
+- 详细玩法、战斗、经济参数，见 Documents/concept.md。
+规则被推翻时用删除线保留，并标明作废日期。
+
+## Git 节奏
+每完成一个阶段提交一次；仅提交本阶段文件；验证阻塞必须如实记录，不当成通过。
+
+---
 # ForgeaX Game Project Guide
 
 AI-first TypeScript game on `@forgeax/engine`. Hard rules and routing here;
@@ -97,3 +140,4 @@ expected start, not an environment failure.
 | Physics, character motion | `forgeax-engine-physics` |
 | Blocked checks, Linux headless, release | [delivery guide](https://github.com/ForgeaXGame/forgeax-engine-harness/blob/main/docs/engine/skills/forgeax-engine-sdk/references/game-delivery.md) |
 | Scripted playthrough and acceptance | `forgeax project play` in the CLI skill quick contract; edit `scripts/playthrough.mjs` |
+
