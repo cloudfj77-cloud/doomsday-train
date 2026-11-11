@@ -8,7 +8,7 @@ import { definePack } from '@forgeax/engine/pack/source';
 import type { MeshAsset } from '@forgeax/engine/types';
 import { ok } from '@forgeax/engine/types';
 import { PACKAGE_IDS, slot } from './shared/asset-refs.ts';
-import { ROOM_WALLS, ROOM_FURNITURE, type BuildingKind } from './shared/station-map.ts';
+import { ROOM_WALLS, ROOM_FURNITURE, SITE_ROADS, SITE_COVER, type BuildingKind } from './shared/station-map.ts';
 import { MeshKit } from './shared/mesh-kit.ts';
 import type { PaletteKey } from './shared/palette.ts';
 
@@ -305,8 +305,14 @@ function explorationGround(): MeshAsset {
   const m = new Model('site-ground');
   m.block('dirtDark', 0, -0.5, -20, 240, 0.25, 240);
   m.block('dirt', 0, -0.35, -9, 46, 0.3, 42);
-  m.block('gravel', 0, -0.04, -1, 34, 0.08, 3);
-  m.block('gravel', 0, -0.04, -13, 3, 0.08, 24);
+  for(const b of SITE_ROADS) m.block('gravel',b.x,-0.04,b.z,b.w,b.h,b.d);
+  for(const b of SITE_COVER) {
+    m.block('concreteDark',b.x,0,b.z,b.w,b.h,b.d);
+    m.block('cream',b.x,b.h,b.z,b.w,0.08,b.d);
+  }
+  for(const x of [-16,16]) m.block('concreteDark',x,0,-19,0.35,1.2,10);
+  for(const x of [-2,2]) m.block('rust',x,0,-12.5,0.25,2.6,0.25);
+  m.block('lamp',0,2.6,-12.5,4.3,0.16,0.25);
   m.block('concreteDark', -11, -0.03, 4, 8, 0.1, 3);
   for (let x = -16; x < 18; x += 2) {
     m.block('sleeper', x, 0, 7.5, 0.3, 0.15, 2.4);
@@ -344,6 +350,23 @@ function explorationRoom(kind: BuildingKind): MeshAsset {
   }
   return m.build();
 }
+/** The roof and upper foreground walls form an independently hidden shell. */
+function explorationRoof(kind: BuildingKind): MeshAsset {
+  const m=new Model('roof-'+kind);
+  const color:PaletteKey=kind==='clinic'?'olive':kind==='warehouse'?'tinRust':'ironDark';
+  m.block(color,0,3.3,0,8.8,0.25,6.8);
+  for(const x of [-3,-1,1,3]) m.block('ironDark',x,3.55,0,0.12,0.12,6.8);
+  m.block('concreteDark',2.3,3.55,-1,1.3,0.5,1.3);
+  m.block(color,-4,2.7,0,0.3,0.6,6);
+  m.block(color,0,2.72,3,2.4,0.58,0.3);
+  m.block(kind==='clinic'?'cream':'tinRust',4,1.1,0,0.3,2.2,6);
+  for(const x of [-2.6,2.6]) m.block(kind==='clinic'?'cream':'concrete',x,0.8,3,2.8,2.5,0.3);
+  if(kind==='clinic') {
+    m.block('cream',0,3.57,0,2,0.05,0.5);
+    m.block('cream',0,3.57,0,0.5,0.05,2);
+  }
+  return m.build();
+}
 function explorerModel(): MeshAsset {
   const m = new Model('explorer');
   for (const x of [-0.17, 0.17]) m.block('ironDark', x, 0, 0, 0.24, 0.65, 0.32);
@@ -375,6 +398,9 @@ export default definePack({
   build: () =>
     ok({
       'mesh/site-ground': explorationGround(),
+      'mesh/roof-warehouse': explorationRoof('warehouse'),
+      'mesh/roof-workshop': explorationRoof('workshop'),
+      'mesh/roof-clinic': explorationRoof('clinic'),
       'mesh/room-warehouse': explorationRoom('warehouse'),
       'mesh/room-workshop': explorationRoom('workshop'),
       'mesh/room-clinic': explorationRoom('clinic'),

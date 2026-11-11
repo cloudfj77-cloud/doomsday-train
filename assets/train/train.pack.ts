@@ -14,7 +14,7 @@ import { createCharacter, stepCharacter } from '../shared/character-controller.t
 import { quat, ray, vec3 } from '@forgeax/engine/math';
 import { INPUT_SNAPSHOT_RESOURCE_KEY, type InputSnapshot } from '@forgeax/engine/input';
 import { resolveGameEntity } from '../shared/scene-refs.ts';
-import { SITE_ORIGIN, TRAIN_EXIT, stationBuildings, buildingAt, walkSite, canExtract, EXPLORER_SPEED } from '../shared/station-map.ts';
+import { SITE_ORIGIN, TRAIN_EXIT, stationBuildings, roofHidden, buildingAt, walkSite, canExtract, EXPLORER_SPEED } from '../shared/station-map.ts';
 import { ok } from '@forgeax/engine/types';
 import type {} from '@forgeax/engine/app';
 import { guidText, materialGuid, PACKAGE_IDS, voxelGuid } from '../shared/asset-refs.ts';
@@ -61,7 +61,7 @@ export const train: Plugin = {
       const materialCache = new Map<string, number>();
       const meshes = new Map<string, { mesh: number; materials: number[] }>();
       const keys = [
-        'site-ground', 'room-warehouse', 'room-workshop', 'room-clinic', 'explorer', 'exit-marker', 'survey-marker',
+        'roof-warehouse', 'roof-workshop', 'roof-clinic', 'site-ground', 'room-warehouse', 'room-workshop', 'room-clinic', 'explorer', 'exit-marker', 'survey-marker',
         'loco', 'car-storage', 'car-passenger', 'sleepers',
         'station-rich-0', 'station-rich-1', 'station-slum-0', 'station-slum-1',
         'ruin-0', 'ruin-1', 'wreck', 'tree', 'pole', 'zombie-0', 'zombie-1', 'zombie-2', 'smoke',
@@ -176,6 +176,7 @@ export const train: Plugin = {
 
       const camera = resolveGameEntity(world, ctx.gameScene, 'camera');
       const siteEntities: EntityHandle[] = [];
+      const roofs = new Map<string, EntityHandle>();
       const surveyMarkers = new Map<string, EntityHandle>();
       let player: EntityHandle | undefined;
       let explorer = { x: TRAIN_EXIT.x, z: TRAIN_EXIT.z, surveyed: [] as string[] };
@@ -200,6 +201,7 @@ export const train: Plugin = {
         for (const e of siteEntities) kill(e);
         siteEntities.length = 0;
         surveyMarkers.clear();
+        roofs.clear();
         player = undefined;
         siteSeed = -1;
         cameraAt(0, 0, false);
@@ -218,6 +220,7 @@ export const train: Plugin = {
         add('exit-marker', TRAIN_EXIT.x, TRAIN_EXIT.z);
         for (const b of stationBuildings(siteSeed)) {
           add('room-' + b.id, b.x, b.z);
+          roofs.set(b.id, add('roof-' + b.id,b.x,b.z));
           surveyMarkers.set(b.id, add('survey-marker', b.x, b.z));
         }
         for (const [x, z] of [[-15,-19],[-14,-15],[14,-20],[14,-13],[-15,-3],[11,3]] as const) add('tree', x, z);
@@ -292,7 +295,7 @@ export const train: Plugin = {
           }
           return {
             game, travelling: view?.mode === 'travel',
-            buildings: stationBuildings(view?.stationSeed ?? 0).map(b => ({ ...b })),
+            buildings: stationBuildings(view?.stationSeed ?? 0).map(b => ({ ...b, roofHidden: roofHidden(siteSeed,b.id,explorer.x,explorer.z), roofPresent: roofs.has(b.id) })),
             engine: { mode: view?.mode ?? 'title', frames, objects: siteEntities.length, controller:{...character}, cameraLead:{...cameraLead},cameraPose:{...cameraPose}, aim:aim??null,
               building: buildingAt(siteSeed, explorer.x, explorer.z)?.id ?? null },
           };
@@ -337,6 +340,10 @@ export const train: Plugin = {
             stepCharacter(character,{x:(horizontal*oz+vertical*ox)/norm,z:(-horizontal*ox+vertical*oz)/norm,
               run:!!(kb?.downCode('ShiftLeft')||kb?.downCode('ShiftRight')),dash:!!kb?.justPressedCode('Space'),aim},dt,siteSeed);
             explorer.x=character.x;explorer.z=character.z;
+            for(const b of stationBuildings(siteSeed)) {
+              const roof=roofs.get(b.id);
+              if(roof) place(roof,[SITE_ORIGIN+b.x,roofHidden(siteSeed,b.id,explorer.x,explorer.z)?-30:0,b.z]);
+            }
             const building = buildingAt(siteSeed, explorer.x, explorer.z);
             if (inputReady && character.action !== 'dash' && kb?.justPressedCode('KeyE')) {
               if (building && !explorer.surveyed.includes(building.id)) explorer.surveyed.push(building.id);

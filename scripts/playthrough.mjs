@@ -46,14 +46,19 @@ export default async function(play){
  await play.screenshot('controller-dash');
  await play.advance(1);
  const buildings=(await state()).buildings;
+ assert.ok(buildings.every(b=>b.roofPresent && !b.roofHidden));
+ await play.screenshot("map-loop-route-roofs-exterior");
  for(const b of buildings){
    await go(0,-1.5);
    if(b.id==='clinic'){await go(0,-12.5);await go(b.x,-13.5);}else await go(b.x,-1.5);
    await go(b.x,b.z+4.3);await go(b.x,b.z+0.8);
+   assert.equal((await state()).buildings.find(r=>r.id===b.id).roofHidden,true);
    await play.keyboard.press('KeyE');
    await play.waitFor(s=>s.game.expedition.surveyed.includes(b.id),{read:'doomsday.flow'});
    await play.screenshot('03-interior-'+b.id);
    await go(b.x,b.z+4.3);
+   assert.equal((await state()).buildings.find(r=>r.id===b.id).roofHidden,false);
+   await play.screenshot("roof-restored-"+b.id);
    if(b.id==='clinic'){await go(0,-13.5);await go(0,-1.5);}
  }
  const before=(await state()).game.expedition;
@@ -62,7 +67,7 @@ export default async function(play){
  const after=(await state()).game.expedition;
  assert.equal(after.surveyed.length,3);assert.ok(Math.hypot(after.x-before.x,after.y-before.y)<0.6);
  await play.screenshot('04-exploration-reload');
- await go(0,1);await go(-11,4);await click('return-train');
+ await go(0,-13);await go(0,-23);await go(-14,-23);await play.screenshot('map-northern-loop');await go(-14,-1.5);await play.screenshot('map-return-lane');await go(0,-1.5);await go(0,1);await go(-11,4);await click('return-train');
  assert.equal((await state()).game.expedition.status,'returned');
  assert.equal((await state()).engine.cameraPose.fov,38);
  await play.screenshot('05-returned-train');

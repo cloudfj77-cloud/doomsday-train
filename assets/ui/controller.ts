@@ -43,7 +43,7 @@ import {
   type Game,
 } from '../sim/economy.ts';
 import { isEngineMessage, VIEW_CHANNEL, type EngineMessage, type ViewMessage } from '../shared/protocol.ts';
-import { TRAIN_EXIT, stationBuildings, buildingAt, canExtract } from '../shared/station-map.ts';
+import { TRAIN_EXIT, SITE_ROADS, stationBuildings, buildingAt, canExtract } from '../shared/station-map.ts';
 import { initialLanguage, LANG_KEY, type GameLanguage } from './language.ts';
 
 type Host = Pick<GameHost, 'uiRoot' | 'port' | 'presentationPort' | 'setPointerLockAllowed' | 'gameProjection'>;
@@ -702,11 +702,13 @@ export async function createGameUi(asset: UiAsset, host: Host): Promise<{ dispos
     const current = buildingAt(game.station.id, e.x, e.y);
     const surveyed = e.surveyed ?? [];
     const ready = canExtract(e.x, e.y);
+    const roads=SITE_ROADS.map(r=>'<rect x="'+(r.x+17-r.w/2)+'" y="'+(r.z+25-r.d/2)+'" width="'+r.w+'" height="'+r.d+'" fill="#62675b"/>').join('');
+    const next=buildings.find(b=>!surveyed.includes(b.id));
     const map = buildings.map(b => '<rect x="'+(b.x+17-4)+'" y="'+(b.z+25-3)+'" width="8" height="6" fill="'+(surveyed.includes(b.id)?'#759a79':'#9d8260')+'"/>').join('');
-    part('expedition').innerHTML = '<header><small>01 / '+words('站点探索','STATION EXPLORATION')+'</small><h2>'+stationName()+'</h2><p>'+words('出击机会 1/1 · 自由探索后返回列车','Sortie 1/1 · Explore and return')+'</p></header>'
-      + '<aside class="site-map"><svg viewBox="-1 -1 36 33" role="img" aria-label="'+words('站点小地图','Station minimap')+'"><rect x="0" y="0" width="34" height="31" fill="#242c29"/>'+map+'<circle cx="6" cy="29" r="1.3" fill="#7ce3df"/><circle cx="'+(e.x+17)+'" cy="'+(e.y+25)+'" r="0.8" fill="#ffda7d"/></svg><p>'+words('青色：列车撤离点','Cyan: train exit')+'</p></aside>'
-      + '<footer><div class="site-status"><span>'+words('体力 ','Stamina ')+Math.round(engine?.controller?.stamina ?? 100)+' / 100 · '+(engine?.controller?.action ?? 'idle')+'</span><br><strong>'+ (current ? names[current.id] : words('站区街道','Station streets'))+'</strong><p>'+ (ready ? words('已到达列车 · E 或点击返车','At the train · E or click to return') : current ? words('按 E 勘察室内 · 可自由进出门洞','Press E to survey · enter through the doorway') : words('沿道路探索，建筑门洞位于正面','Explore the roads. Doorways face the street.'))+'</p></div>'
-      + '<div class="site-objectives">'+buildings.map(b => '<span>'+ (surveyed.includes(b.id)?'✓ ':'○ ')+names[b.id]+'</span>').join('')+'</div>'
+    part('expedition').innerHTML = '<header><small>01 / '+words('站点探索','STATION EXPLORATION')+'</small><h2>'+stationName()+'</h2><p>'+words('集结区 → 货运区 → 维修区 → 医疗区 → 返车','Forecourt → Freight → Service → Medical → Train')+'</p></header>'
+      + '<aside class="site-map"><svg viewBox="-1 -1 36 33" role="img" aria-label="'+words('站点小地图','Station minimap')+'"><rect x="0" y="0" width="34" height="31" fill="#242c29"/>'+roads+map+'<circle cx="6" cy="29" r="1.3" fill="#7ce3df"/><circle cx="'+(e.x+17)+'" cy="'+(e.y+25)+'" r="0.8" fill="#ffda7d"/></svg><p>'+words('青色：撤离 · 黄点：当前位置 · 双环道路可绕行','Cyan: exit · Gold: you · Loop roads allow detours')+'</p></aside>'
+      + '<footer><div class="site-status"><span>'+words('体力 ','Stamina ')+Math.round(engine?.controller?.stamina ?? 100)+' / 100 · '+(engine?.controller?.action ?? 'idle')+'</span><br><strong>'+ (current ? names[current.id] : words('站区街道','Station streets'))+'</strong><p>'+ (ready ? words('已到达列车 · E 或点击返车','At the train · E or click to return') : current ? words('屋顶已隐藏 · 按 E 勘察 · 离开自动恢复','Roof hidden · E to survey · restored on exit') : words('先搜仓库，再经工坊前往医务所；两侧道路可返车','Survey freight, service, then medical; side lanes loop back'))+'</p></div>'
+      + '<div class="site-objectives"><span>'+ (next ? words('建议前往：','Next: ')+names[next.id] : words('勘察完成，可沿侧路返车','Survey complete; return via either lane'))+'</span>'+buildings.map(b => '<span>'+ (surveyed.includes(b.id)?'✓ ':'○ ')+names[b.id]+'</span>').join('')+'</div>'
       + '<div class="actions"><span>'+words('WASD 移动 · 鼠标朝向 · Shift 奔跑 · Space 冲刺 · E 交互','WASD move · Mouse face · Shift run · Space dash · E interact')+'</span>'
       + (current ? '<button class="btn" data-act="survey">'+words('勘察建筑','Survey building')+'</button>' : '')
       + '<button class="btn go" data-act="return-train" '+(ready?'':'disabled')+'>'+words('返回列车','Return to train')+'</button></div></footer>';
