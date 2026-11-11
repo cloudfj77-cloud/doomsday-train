@@ -32,3 +32,6 @@ supportedArchitectures:
   libc:
     - glibc
     - musl
+
+packages:
+  - '.'

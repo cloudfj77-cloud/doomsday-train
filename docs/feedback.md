@@ -35,3 +35,9 @@ shipped unchanged in the Web ZIP. Keep credentials and private URLs out of it.
 - Actual: init adds `@forgeax/engine-devkit: 0.0.0` to devDependencies; installation fails with `ERR_PNPM_NO_MATCHING_VERSION` from the public npm registry.
 - Recovery: removed only the invalid dependency injected by the failed command; kept the pinned Engine and lockfile.
 - Status: blocked; initialization and runtime acceptance have not passed.
+
+### 2026-11-11 — pnpm default workspace pattern mismatch
+- Engine 0.4.19 project check reports project-pnpm-workspace-state-stale after official platform SDK installation and pnpm install.
+- Manifest omits packages; pnpm 12 records workspacePackagePatterns ["."], while Engine compares omitted packages as [].
+- Project workaround: explicitly declare packages: ['.'] in pnpm-workspace.yaml and reinstall. Do not modify installed records or Engine output.
+- Browser acceptance on final scene: project play passed with installed Edge, keyboard movement and reload, no console/page errors. Earlier blocked report above is superseded for this scene.

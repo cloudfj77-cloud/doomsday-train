@@ -25,7 +25,7 @@
 
 ## 验证命令
 基础环境：`pnpm exec forgeax project check --json`；类型：`pnpm typecheck`；测试：`pnpm test`。
-稳定流程入口随后落实在 tools/；运行、交互与重载通过才可声明可玩。
+稳定入口：`powershell -File tools/preview.ps1`；检查：`powershell -File tools/check.ps1`；反向验证：`node tools/mutation-check.mjs`；真实交互：`powershell -File tools/verify.ps1`。流程见 [workflow](Documents/workflow.md)；运行、交互与重载通过才可声明可玩。
 
 ## 拍板记录
 ### 已确认
@@ -140,4 +140,5 @@ expected start, not an environment failure.
 | Physics, character motion | `forgeax-engine-physics` |
 | Blocked checks, Linux headless, release | [delivery guide](https://github.com/ForgeaXGame/forgeax-engine-harness/blob/main/docs/engine/skills/forgeax-engine-sdk/references/game-delivery.md) |
 | Scripted playthrough and acceptance | `forgeax project play` in the CLI skill quick contract; edit `scripts/playthrough.mjs` |
+
 

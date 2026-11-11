@@ -40,7 +40,8 @@
     }
   },
   "dependencies": {
-    "@forgeax/engine": "0.4.19"
+    "@forgeax/engine": "0.4.19",
+    "zaohua-platform-sdk": "file:./vendor/zaohua-platform-sdk"
   },
   "devDependencies": {
     "@types/node": "20.19.40",
