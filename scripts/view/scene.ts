@@ -1,3 +1,4 @@
+import { actorPartPose } from './actor-model.ts';
 import itemStyle from '../../config/presentation/items.json';
 import presentation from '../../config/presentation/scene.json';
 import type { AssetHandle } from '@forgeax/engine/types';
@@ -20,9 +21,8 @@ export function draw(world: World, entities: ReadonlyMap<Part,EntityHandle>, sta
     const lift = leg ? Math.max(0,leg*swing) * presentation.actor.bob : Math.abs(swing)*presentation.actor.bob;
     const arm=part==='left-arm'||part==='right-arm';
     const holding=pose?itemStyle.holding[pose]:undefined;
-    const pitch=arm&&holding?-holding.armPitch:0,pivot=presentation.actor.unit*10.75;
-    const forward=arm&&holding?-Math.sin(pitch)*pivot:0;
-    const armLift=arm&&holding?holding.armLift+pivot*(1-Math.cos(pitch))+Math.abs(swing)*holding.bob:0;
+    const rest=actorPartPose(part,pose),pitch=rest.pitch,forward=rest.z;
+    const armLift=rest.y+(arm&&holding?Math.abs(swing)*holding.bob:0);
     const angle = part === 'shade' ? 0 : yaw;
     world.set(entity,Transform,{
       pos:[state.x+(stride+forward)*state.facingX,part==='shade'?state.shadowY:state.y+lift+armLift,state.z+(stride+forward)*state.facingZ],

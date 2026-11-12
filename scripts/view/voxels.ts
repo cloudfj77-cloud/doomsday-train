@@ -1,3 +1,4 @@
+import { actorBoxes } from './actor-model.ts';
 import { createBoxGeometry, meshFromInterleaved, withVertexColors } from '@forgeax/engine/geometry';
 import style from '../../config/presentation/scene.json';
 import data from '../../config/gameplay/world.json';
@@ -138,22 +139,8 @@ export const parts=['terrain','body','left-leg','right-leg','left-arm','right-ar
 export type Part=typeof parts[number];
 export function bake(part:Part) {
   if(part==='terrain')return terrain().finish();
-  const b=new Blocks(),u=style.actor.unit;
-  const block=(x:number,y:number,z:number,w:number,h:number,d:number,ink:Ink)=>b.box(x*u,y*u,z*u,w*u,h*u,d*u,ink);
-  if(part==='body') {
-    block(0,8.7,0,4.1,5.3,2.8,'coat');block(0,6.65,0,4.2,.9,2.9,'leather');
-    block(0,12.3,.1,3.3,3.2,2.9,'skin');block(0,13.1,-.5,3.45,2.2,2.1,'coal');
-    block(0,14.15,.25,6,.65,5,'timber');block(0,15,0,4.1,1.45,3.4,'grain');block(0,14.45,0,4.2,.43,3.48,'leather');
-    block(0,11.1,.6,3.65,1,2.9,'red');block(1,10.2,1.56,.88,1.9,.4,'red');
-    block(0,9,-2,3.8,4.7,2.1,'leather');block(0,10.65,-2.25,4.1,1.15,2.1,'grain');
-
-  } else if(part==='left-arm'||part==='right-arm'){
-    const side=part==='left-arm'?-1:1;block(side*2.55,9.05,0,1.12,3.4,1.35,'teal');block(side*2.55,7.3,.1,1,1,1.18,'skin');
-  } else if(part==='shade') {
-    b.box(.28,.027,.12,.91,.013,.35,'shadow',-.25);
-  } else {
-    const x=part==='left-leg'?-1.14:1.14;
-    block(x,4.8,0,1.6,3.4,1.8,'teal');block(x,2,0,1.45,2.5,1.5,'coal');block(x,.63,.32,1.85,1.25,2.4,'timber');
-  }
+  const b=new Blocks();
+  if(part==='shade')b.box(.28,.027,.12,.91,.013,.35,'shadow',-.25);
+  else for(const box of actorBoxes(part))b.box(...box.center,...box.size,box.ink);
   return b.finish();
 }

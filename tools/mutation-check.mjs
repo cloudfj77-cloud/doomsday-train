@@ -10,6 +10,10 @@ function retryFile(action) {
 }
 const replace=(before,after)=>s=>s.replace(before,after);
 const cases=[
+ ['scripts/view/actor-preview.ts',replace("['body','left-leg','right-leg','left-arm','right-arm']","['left-leg','right-leg','left-arm','right-arm']")],
+ ['scripts/view/actor-preview.ts',replace('return faces.sort((a,b)=>a.depth-b.depth)','return faces.sort((a,b)=>b.depth-a.depth)')],
+ ['scripts/view/actor-model.ts',replace('pitch=-holding.armPitch','pitch=0')],
+
  ['scripts/logic/items.ts',replace('item.loaded!+=n','item.loaded!+=0')],
  ['scripts/logic/items.ts',replace('item.loaded=0','item.loaded=1')],
  ['scripts/logic/items.ts',replace('const n=Math.min(need,ammo.quantity)','const n=ammo.quantity')],
