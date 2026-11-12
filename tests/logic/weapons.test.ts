@@ -17,6 +17,7 @@ it('rolls back equipment replacement and unloading when no placement exists',()=
  // A two-cell bag can contain the pistol, but cannot receive the larger equipped SMG.
  for(const [id,i] of Object.entries(s.items))if(i.location.kind==='grid'&&id!=='item-5')delete s.items[id];
  c.definitions.find(d=>d.id==='backpack')!.container={columns:2,rows:1};s.items['item-5'].location={kind:'grid',parent:s.backpackId,x:0,y:0,rotated:false};
+ for(let n=0;n<6;n++){const id='block-'+n;s.items[id]={id,definition:'bandage',quantity:1,variables:{},modifiers:[],location:{kind:'grid',parent:s.playerId,x:n%2,y:Math.floor(n/2),rotated:false}};}
  let before=JSON.stringify(s.items);expect(run({type:'equip',id:'item-5'}).ok).toBe(false);expect(JSON.stringify(s.items)).toBe(before);
  expect(run({type:'unload',id:'item-7'}).ok).toBe(false);expect(JSON.stringify(s.items)).toBe(before);
  expect(run({type:'equip',id:s.backpackId}).ok).toBe(false);

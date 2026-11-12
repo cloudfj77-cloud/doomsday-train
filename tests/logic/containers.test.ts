@@ -5,7 +5,7 @@ import {validateItems,createItems,commandItems,projectContainer,assertItemState}
 it('reuses grid placement and split across independent container sizes',()=>{
  const {config:c,world:w}=validateItems(raw,world),s=createItems(c,w);
  c.definitions.push({...c.definitions.find(d=>d.id==='backpack')!,id:'store',container:{columns:4,rows:3}});
- s.items.store={id:'store',definition:'store',quantity:1,variables:{},modifiers:[],location:{kind:'world',position:[0,0,0]}};
+ s.items.store={id:'store',definition:'store',quantity:1,variables:{},modifiers:[],location:{kind:'world',position:[-3.6,0,3.8]}};
  const e={player:[-3.6,0,3.8] as [number,number,number],visible:()=>true,dropPosition:()=>undefined};
  commandItems(s,c,w,{type:'pickup',id:'item-1'},e);s.open=true;
  const i=Object.values(s.items).find(i=>i.location.kind==='grid'&&i.quantity===20)!;

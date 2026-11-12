@@ -59,17 +59,19 @@ describe('Item authoritative transactions',()=>{
     expect(run({type:'move',id:'item-1',x:l.x,y:l.y,rotated:false}).ok).toBe(true);expect(s.items[target.id].quantity).toBe(20);expect(s.items['item-1'].quantity).toBe(2);
   });
   it('partially picks into a full grid and fails split without space',()=>{
-    const cc=structuredClone(c);cc.definitions.find(d=>d.id==='backpack')!.container={columns:1,rows:1};
+    const cc=structuredClone(c);cc.definitions.find(d=>d.id==='backpack')!.container={columns:1,rows:1};cc.definitions.find(d=>d.id==='player')!.container={columns:1,rows:1};
     const s=createItems(cc,w),e:Environment={player:[-3.6,0,3.8],visible:()=>true,dropPosition:()=>[0,0,0]};
+    s.items.blocker={id:'blocker',definition:'bandage',quantity:1,variables:{},modifiers:[],location:{kind:'grid',parent:s.playerId,x:0,y:0,rotated:false}};
     expect(commandItems(s,cc,w,{type:'pickup',id:'item-1'},e)).toMatchObject({ok:true,amount:20});
     expect(s.items['item-1'].quantity).toBe(5);expect(commandItems(s,cc,w,{type:'pickup',id:'item-1'},e).ok).toBe(false);
-    commandItems(s,cc,w,{type:'toggle'},e);const id=Object.values(s.items).find(i=>i.location.kind==='grid')!.id;
+    commandItems(s,cc,w,{type:'toggle'},e);const id=Object.values(s.items).find(i=>i.location.kind==='grid'&&i.definition==='scrap')!.id;
     const before=JSON.stringify(s.items);expect(commandItems(s,cc,w,{type:'split',id,quantity:2},e).ok).toBe(false);expect(JSON.stringify(s.items)).toBe(before);
   });
   it('enforces slots, ownership, cycles and explicit stat targets; freezes nested projection',()=>{
     const {s}=setup();s.items.player.modifiers=[{stat:'health',target:'player',operation:'add',value:20},{stat:'health',target:'player',operation:'multiply',value:2}];
     expect(stat(s,c,'player','health')).toBe(240);assertItemState(s,c);
     const p=projectItems(s,c);expect(Object.isFrozen(p.items.player.variables)).toBe(true);
+    const originalWater=structuredClone(s.items['item-4'].location),waterQuantity=s.items['item-4'].quantity;s.items['item-4'].quantity=1;s.items['item-4'].location={kind:'slot',parent:s.playerId,slot:'primary'};expect(()=>assertItemState(s,c)).toThrow('invalid-slot');s.items['item-4'].location=originalWater;s.items['item-4'].quantity=waterQuantity;
     s.items[s.backpackId].location={kind:'slot',parent:s.playerId,slot:'unknown'};expect(()=>assertItemState(s,c)).toThrow();
     s.items[s.backpackId].location={kind:'grid',parent:s.backpackId,x:0,y:0,rotated:false};expect(()=>assertItemState(s,c)).toThrow();
     s.items[s.backpackId].location={kind:'slot',parent:'missing',slot:'backpack'};expect(()=>assertItemState(s,c)).toThrow();
