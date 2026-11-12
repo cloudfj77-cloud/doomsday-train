@@ -30,3 +30,11 @@ it('nearby rechecks range and visibility even while inventory is open',()=>{
  expect(nearbyItems(s,c,w,e)).toEqual([]);const before=JSON.stringify(s.items);expect(run({type:'take',id:'item-1'}).ok).toBe(false);expect(JSON.stringify(s.items)).toBe(before);
  e.visible=()=>true;e.player=[100,0,0];expect(run({type:'take',id:'item-1'}).ok).toBe(false);
 });
+it('transfers a world stack to a specified cell without losing its remainder',()=>{
+ const {config:c,world:w}=validateItems(raw,world),s=createItems(c,w),e={player:[-4.5,0,3.2] as [number,number,number],visible:()=>true,dropPosition:()=>undefined};s.open=true;
+ expect(commandItems(s,c,w,{type:'take',id:'item-2',x:2,y:2,rotated:false},e)).toMatchObject({ok:true,amount:60});
+ expect(s.items['item-2'].quantity).toBe(30);const held=Object.values(s.items).find(i=>i.definition==='ammo'&&i.location.kind==='grid')!;
+ expect(held.quantity).toBe(60);commandItems(s,c,w,{type:'drop',id:held.id,quantity:1},{...e,dropPosition:()=>[0,0,0]});
+ expect(commandItems(s,c,w,{type:'take',id:'item-2',x:2,y:2,rotated:false},e)).toMatchObject({ok:true,amount:1});expect(s.items['item-2'].quantity).toBe(29);expect(s.items[held.id].quantity).toBe(60);
+ const before=JSON.stringify(s.items);expect(commandItems(s,c,w,{type:'take',id:'item-2',x:99,y:2,rotated:false},e).ok).toBe(false);expect(JSON.stringify(s.items)).toBe(before);
+});

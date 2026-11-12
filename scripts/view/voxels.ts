@@ -134,7 +134,7 @@ function terrain() {
 
 // These exact geometry descriptors also assemble the collision scene.
 export function collisionBoxes() { return terrain().boxes; }
-export const parts=['terrain','body','left-leg','right-leg','shade'] as const;
+export const parts=['terrain','body','left-leg','right-leg','left-arm','right-arm','shade'] as const;
 export type Part=typeof parts[number];
 export function bake(part:Part) {
   if(part==='terrain')return terrain().finish();
@@ -146,7 +146,9 @@ export function bake(part:Part) {
     block(0,14.15,.25,6,.65,5,'timber');block(0,15,0,4.1,1.45,3.4,'grain');block(0,14.45,0,4.2,.43,3.48,'leather');
     block(0,11.1,.6,3.65,1,2.9,'red');block(1,10.2,1.56,.88,1.9,.4,'red');
     block(0,9,-2,3.8,4.7,2.1,'leather');block(0,10.65,-2.25,4.1,1.15,2.1,'grain');
-    for(const side of [-1,1]) {block(side*2.55,9.05,0,1.12,3.4,1.35,'teal');block(side*2.55,7.3,.1,1,1,1.18,'skin');}
+
+  } else if(part==='left-arm'||part==='right-arm'){
+    const side=part==='left-arm'?-1:1;block(side*2.55,9.05,0,1.12,3.4,1.35,'teal');block(side*2.55,7.3,.1,1,1,1.18,'skin');
   } else if(part==='shade') {
     b.box(.28,.027,.12,.91,.013,.35,'shadow',-.25);
   } else {

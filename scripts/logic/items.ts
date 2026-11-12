@@ -81,7 +81,7 @@ export function assertItemState(s:ItemState,c:ItemConfig):void {
     if(key!==item.id||!d||!integer(item.quantity)||!item.variables||!Array.isArray(item.modifiers)||
       Object.values(item.variables).some(v=>!['string','number','boolean'].includes(typeof v)||(typeof v==='number'&&!Number.isFinite(v)))||
       item.modifiers.some(m=>!s.items[m.target]||!defs[s.items[m.target].definition]?.stats||!(m.stat in defs[s.items[m.target].definition].stats!)||!['add','multiply'].includes(m.operation)||!Number.isFinite(m.value)))throw Error('invalid-item-instance');
-    if(d.weapon?(!Number.isInteger(item.loaded)||item.loaded!<0||item.loaded!>d.weapon.capacity):item.loaded!==undefined)throw Error('invalid-loaded-ammo');
+    if(d.weapon?(item.quantity!==1||!Number.isInteger(item.loaded)||item.loaded!<0||item.loaded!>d.weapon.capacity):item.loaded!==undefined)throw Error('invalid-loaded-ammo');
     if(l.kind!=='world'&&item.quantity>d.maxStack)throw Error('invalid-stack');
     if(l.kind==='world'&&(!d.portable||!position(l.position)))throw Error('invalid-world-location');
     if(l.kind==='actor'&&item.id!==s.playerId)throw Error('invalid-actor');
@@ -150,9 +150,15 @@ export function commandItems(s:ItemState,c:ItemConfig,w:ItemWorldConfig,cmd:Item
   }else if(cmd.type==='pickup'||cmd.type==='take') {
     if(item.location.kind!=='world'||(cmd.type==='pickup'?(s.open||nearestItem(s,c,w,e)!==item.id):(!s.open||!nearbyItems(s,c,w,e).includes(item.id))))return fail('not-interactable','物品不在可拾取范围或操作入口不可用');
     if(cmd.type==='take'&&cmd.x!==undefined){
-      if(item.quantity>d.maxStack||!canPlace(draft,c,item.id,s.backpackId,cmd.x,cmd.y!,cmd.rotated!))return fail('invalid-placement','此处不能放置，请使用自动拾取或选择空格');
-      item.location={kind:'grid',parent:s.backpackId,x:cmd.x,y:cmd.y!,rotated:cmd.rotated!};
-      assertItemState(draft,c);Object.assign(s,draft);return s.result={ok:true,code:'ok',amount:item.quantity};
+      const target=Object.values(draft.items).find(i=>{const l=i.location;if(l.kind!=='grid'||l.parent!==s.backpackId)return false;const [width,height]=dimensions(c.definitions.find(d=>d.id===i.definition)!,l.rotated);return cmd.x!>=l.x&&cmd.x!<l.x+width&&cmd.y!>=l.y&&cmd.y!<l.y+height;});
+      if(target&&compatible(draft,item,target)){
+        const n=Math.min(item.quantity,d.maxStack-target.quantity);if(!n)return fail('stack-full','目标堆叠已满');target.quantity+=n;item.quantity-=n;if(!item.quantity)delete draft.items[item.id];amount=n;
+      }else{
+        if(!canPlace(draft,c,item.id,s.backpackId,cmd.x,cmd.y!,cmd.rotated!))return fail('invalid-placement','此处不能放置');
+        const moved=item.quantity>d.maxStack?newInstance(d.maxStack):item;if(moved!==item)item.quantity-=moved.quantity;
+        moved.location={kind:'grid',parent:s.backpackId,x:cmd.x,y:cmd.y!,rotated:cmd.rotated!};amount=moved.quantity;
+      }
+      assertItemState(draft,c);Object.assign(s,draft);return s.result={ok:true,code:'ok',amount};
     }
     const before=item.quantity;
     for(const target of Object.values(draft.items))if(target.location.kind==='grid'&&target.location.parent===draft.backpackId&&compatible(draft,item,target)) {
@@ -169,7 +175,7 @@ export function commandItems(s:ItemState,c:ItemConfig,w:ItemWorldConfig,cmd:Item
   } else {
     if(!s.open||item.location.kind!=='grid'||!s.items[item.location.parent])return fail('not-in-backpack','请打开背包选择物品');
     const sourceParent=item.location.parent;
-    if((cmd.type==='move'||cmd.type==='split')&&cmd.parent&&(!c.definitions.find(d=>d.id===draft.items[cmd.parent!]?.definition)?.container||d.container))return fail('invalid-container','目标不是可用容器，或不允许嵌套容器');
+    if((cmd.type==='move'||cmd.type==='split')&&cmd.parent&&(!c.definitions.find(d=>d.id===draft.items[cmd.parent!]?.definition)?.container||(d.container&&cmd.parent!==sourceParent)))return fail('invalid-container','目标不是可用容器，或不允许嵌套容器');
     if(cmd.type==='move') {
       const target=Object.values(draft.items).find(i=>{
         const l=i.location;if(i.id===item.id||l.kind!=='grid'||l.parent!==(cmd.parent??sourceParent))return false;
@@ -202,8 +208,6 @@ export function commandItems(s:ItemState,c:ItemConfig,w:ItemWorldConfig,cmd:Item
 }
 export function projectItems(s:ItemState,c:ItemConfig,target?:string,nearby:string[]=[]) {
   const bag=c.definitions.find(d=>d.id===s.items[s.backpackId].definition)!.container!;
-  const weight=Object.values(s.items).filter(i=>i.location.kind==='grid'&&i.location.parent===s.backpackId)
-    .reduce((n,i)=>n+c.definitions.find(d=>d.id===i.definition)!.weight*i.quantity,0);
   const equipped=Object.values(s.items).find(i=>i.location.kind==='slot'&&i.location.parent===s.playerId&&i.location.slot==='primary');
   const carried=Object.values(s.items).filter(i=>(i.location.kind==='grid'&&i.location.parent===s.backpackId)||(i.location.kind==='slot'&&i.location.parent===s.playerId));
   const totalWeight=carried.reduce((n,i)=>{const d=c.definitions.find(d=>d.id===i.definition)!;return n+d.weight*i.quantity+(d.weapon?(i.loaded??0)*c.definitions.find(a=>a.id===d.weapon!.ammo)!.weight:0);},0);

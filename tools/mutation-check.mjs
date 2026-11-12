@@ -10,6 +10,14 @@ function retryFile(action) {
 }
 const replace=(before,after)=>s=>s.replace(before,after);
 const cases=[
+ ['scripts/logic/items.ts',replace('item.loaded!+=n','item.loaded!+=0')],
+ ['scripts/logic/items.ts',replace('item.loaded=0','item.loaded=1')],
+ ['scripts/logic/items.ts',replace('const n=Math.min(need,ammo.quantity)','const n=ammo.quantity')],
+ ['scripts/logic/items.ts',replace("if(!place)return fail('no-space','背包空间不足，无法放回原武器')","if(false)return fail('no-space','背包空间不足，无法放回原武器')")],
+ ['scripts/logic/items.ts',replace('item.loaded!>d.weapon.capacity','false')],
+ ['config/gameplay/items.json',replace('"capacity":12','"capacity":0')],
+ ['config/presentation/items.json',replace('"armPitch": 1.15','"armPitch": -1')],
+
  ['config/gameplay/items.json',replace('"maxStack":20','"maxStack":0')],
  ['config/gameplay/item-world.json',replace('"interactionDistance":1.5','"interactionDistance":-1')],
  ['config/presentation/items.json',replace('"cellSize":44','"cellSize":1')],
@@ -18,7 +26,7 @@ const cases=[
  ['scripts/logic/items.ts',replace('return x+width<=l.x||l.x+ow<=x||y+height<=l.y||l.y+oh<=y','return true')],
  ['scripts/logic/items.ts',replace('rotated?[d.size[1],d.size[0]]','rotated?[d.size[0],d.size[1]]')],
  ['scripts/logic/items.ts',replace('v.distance<=w.interactionDistance&&e.visible(v.p)','true')],
- ['scripts/logic/items.ts',replace('if(s.open||nearestItem','if(false&&s.open||nearestItem')],
+ ['scripts/logic/items.ts',replace("(s.open||nearestItem(s,c,w,e)!==item.id)","(false||nearestItem(s,c,w,e)!==item.id)")],
  ['scripts/logic/items.ts',replace('target.quantity+=n','target.quantity+=0')],
  ['scripts/logic/items.ts',replace('item.quantity-=cmd.quantity','item.quantity-=0')],
  ['scripts/logic/items.ts',replace('if(drop!==item)item.quantity-=cmd.quantity','if(false)item.quantity-=cmd.quantity')],
@@ -66,10 +74,10 @@ const cases=[
  ['forge.json',s=>{const f=JSON.parse(s);delete f.roots.engine;return JSON.stringify(f);}]
 ];
 if(run().status!==0)throw Error('baseline must pass');
-for(const [file,mutate] of cases){
+for(const [index,[file,mutate]] of cases.entries()){
  const existed=existsSync(file),original=existed?readFileSync(file,'utf8'):'';
  try {const broken=mutate(original);if(broken===original)throw Error('mutation did not apply: '+file);retryFile(()=>writeFileSync(file,broken));
-   if(run().status===0)throw Error('mutation escaped: '+file);console.log('caught broken premise:',file);
+   if(run().status===0)throw Error('mutation escaped '+index+': '+file);console.log('caught broken premise',index,file);
  }finally{retryFile(()=>{if(existed)writeFileSync(file,original);else if(existsSync(file))unlinkSync(file);});}
  const restored=run();if(restored.status!==0)throw Error('restored checks failed: '+file+'\n'+restored.stdout+'\n'+restored.stderr);
 }

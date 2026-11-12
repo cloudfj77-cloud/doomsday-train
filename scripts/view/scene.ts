@@ -1,3 +1,4 @@
+import itemStyle from '../../config/presentation/items.json';
 import presentation from '../../config/presentation/scene.json';
 import type { AssetHandle } from '@forgeax/engine/types';
 import { Transform, Name } from '@forgeax/engine/scene';
@@ -9,7 +10,7 @@ import type { CameraState } from '../logic/camera.ts';
 
 import type { Part } from './voxels.ts';
 
-export function draw(world: World, entities: ReadonlyMap<Part,EntityHandle>, state: Readonly<State>) {
+export function draw(world: World, entities: ReadonlyMap<Part,EntityHandle>, state: Readonly<State>,pose?:'pistol'|'smg') {
   const yaw = Math.atan2(state.facingX,state.facingZ);
   const swing = state.moving && state.grounded ? Math.sin(state.walkDistance * Math.PI * 2 / presentation.actor.stride) : 0;
   for (const [part, entity] of entities) {
@@ -17,10 +18,15 @@ export function draw(world: World, entities: ReadonlyMap<Part,EntityHandle>, sta
     const leg = part === 'left-leg' ? 1 : part === 'right-leg' ? -1 : 0;
     const stride = leg * swing * presentation.actor.legSwing;
     const lift = leg ? Math.max(0,leg*swing) * presentation.actor.bob : Math.abs(swing)*presentation.actor.bob;
+    const arm=part==='left-arm'||part==='right-arm';
+    const holding=pose?itemStyle.holding[pose]:undefined;
+    const pitch=arm&&holding?-holding.armPitch:0,pivot=presentation.actor.unit*10.75;
+    const forward=arm&&holding?-Math.sin(pitch)*pivot:0;
+    const armLift=arm&&holding?holding.armLift+pivot*(1-Math.cos(pitch))+Math.abs(swing)*holding.bob:0;
     const angle = part === 'shade' ? 0 : yaw;
     world.set(entity,Transform,{
-      pos:[state.x+stride*state.facingX,part==='shade'?state.shadowY:state.y+lift,state.z+stride*state.facingZ],
-      quat:[0,Math.sin(angle/2),0,Math.cos(angle/2)]
+      pos:[state.x+(stride+forward)*state.facingX,part==='shade'?state.shadowY:state.y+lift+armLift,state.z+(stride+forward)*state.facingZ],
+      quat:[Math.cos(angle/2)*Math.sin(pitch/2),Math.sin(angle/2)*Math.cos(pitch/2),-Math.sin(angle/2)*Math.sin(pitch/2),Math.cos(angle/2)*Math.cos(pitch/2)]
     }).unwrap();
   }
 }
@@ -35,4 +41,10 @@ export function drawCamera(world: World, eye: EntityHandle, state: CameraState, 
 }
 export function object(world: World, name: string, mesh: AssetHandle<'mesh'>, material: AssetHandle<'material'>, pos: [number, number, number], scale: [number, number, number]) {
   return world.spawn({ component: Name, data: { value: name } }, { component: Transform, data: { pos, scale } }, { component: MeshFilter, data: { assetHandle: mesh } }, { component: MeshRenderer, data: { materials: [material] } }).unwrap();
+}
+
+export function heldTransform(state:Readonly<State>,pose:'pistol'|'smg'){
+ const p=itemStyle.holding[pose],yaw=Math.atan2(state.facingX,state.facingZ),bob=state.moving?Math.abs(Math.sin(state.walkDistance*Math.PI*2/presentation.actor.stride))*p.bob:0;
+ const angle=yaw-Math.PI/2;
+ return {pos:[state.x+state.facingX*p.gunForward+state.facingZ*p.gunRight,state.y+p.gunHeight+bob,state.z+state.facingZ*p.gunForward-state.facingX*p.gunRight] as [number,number,number],quat:[0,Math.sin(angle/2),0,Math.cos(angle/2)] as [number,number,number,number],scale:[p.gunScale,p.gunScale,p.gunScale] as [number,number,number]};
 }
