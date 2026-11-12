@@ -34,8 +34,10 @@ async function route(play,height) {
   s=await play.state();assert.ok(Math.hypot(...s.camera.offset)<.1,'pointer exit recentres camera');
   await go(play,-3,.4);await go(play,-3,-2.9);
   s=await play.state();assert.ok(s.y>.7&&s.grounded,'walk up slope');await shot('slope-up');
-  await go(play,-3,.5);s=await play.state();assert.ok(s.y<.08,'descend slope');await shot('slope-down');
-  await go(play,-3,-2.9);await go(play,-3,-4.1);
+  // The ramp exit borders railway sleepers. Sample clear sand after leaving the ramp,
+  // rather than assuming every point within the waypoint tolerance has ground height zero.
+  await go(play,-3,.5);await go(play,-4,.9);s=await play.state();assert.ok(s.y<.08&&s.grounded,'descend slope onto clear sand');await shot('slope-down');
+  await go(play,-3,.5);await go(play,-3,-2.9);await go(play,-3,-4.1);
   await shot('platform');
   let falling=false;
   await play.page.keyboard.down('KeyW');await play.page.keyboard.down('KeyA');

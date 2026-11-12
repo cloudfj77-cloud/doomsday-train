@@ -41,3 +41,7 @@ shipped unchanged in the Web ZIP. Keep credentials and private URLs out of it.
 - Manifest omits packages; pnpm 12 records workspacePackagePatterns ["."], while Engine compares omitted packages as [].
 - Project workaround: explicitly declare packages: ['.'] in pnpm-workspace.yaml and reinstall. Do not modify installed records or Engine output.
 - Browser acceptance on final scene: project play passed with installed Edge, keyboard movement and reload, no console/page errors. Earlier blocked report above is superseded for this scene.
+
+### 2026-11-12 — Installed preview plugin release mismatch
+- `forgeax_status_lite` against this project reports `engine_release_mismatch`: game pins Engine 0.4.19, plugin expects 0.4.8. It also reports a missing v2 kit despite this project's installed Engine skills and v3 manifest.
+- Keep the project's pinned release and use its installed CLI for checks and owner-browser acceptance; do not downgrade the project to match the older plugin.
