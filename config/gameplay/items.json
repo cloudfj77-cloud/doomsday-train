@@ -1,0 +1,11 @@
+{
+  "definitions": [
+    {"id":"player","name":"拾荒者","description":"角色躯壳","tags":["character"],"size":[1,1],"rotatable":false,"maxStack":1,"weight":0,"value":0,"portable":false,"stats":{"health":100},"slots":{"backpack":["backpack"]}},
+    {"id":"scrap","name":"废铁","description":"铁路遗迹中的金属零件。","tags":["material"],"size":[1,1],"rotatable":false,"maxStack":20,"weight":0.2,"value":5,"portable":true},
+    {"id":"ammo","name":"弹药盒","description":"封存的弹药，本阶段尚不能装填。","tags":["ammo"],"size":[2,1],"rotatable":true,"maxStack":10,"weight":0.3,"value":20,"portable":true},
+    {"id":"bandage","name":"绷带","description":"基础医疗物资，本阶段尚不能使用。","tags":["medical"],"size":[1,1],"rotatable":false,"maxStack":10,"weight":0.1,"value":15,"portable":true},
+    {"id":"water","name":"水","description":"密封饮用水，本阶段尚不能使用。","tags":["supply"],"size":[1,2],"rotatable":true,"maxStack":5,"weight":0.5,"value":10,"portable":true},
+    {"id":"rifle","name":"步枪","description":"遗留步枪，本阶段尚不能装备。","tags":["weapon"],"size":[4,2],"rotatable":true,"maxStack":1,"weight":3.2,"value":200,"portable":true,"stats":{"damage":20}},
+    {"id":"backpack","name":"背包","description":"提供10×6容器；本阶段不能换装或打开拾取的背包。","tags":["backpack"],"size":[3,3],"rotatable":false,"maxStack":1,"weight":0.8,"value":60,"portable":true,"container":{"columns":10,"rows":6}}
+  ]
+}
