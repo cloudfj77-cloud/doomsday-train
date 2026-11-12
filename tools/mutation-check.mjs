@@ -11,6 +11,8 @@ function retryFile(action) {
 const replace=(before,after)=>s=>s.replace(before,after);
 const json=change=>source=>{const value=JSON.parse(source);change(value);return JSON.stringify(value);};
 const cases=[
+ ['scripts/logic/items.ts',replace('return e.hovered&&nearby.includes(e.hovered)?e.hovered:nearby[0]','return nearby[0]')],
+
  ['config/gameplay/rogue.json',()=> '{}'],
 
  ['config/gameplay/player.json',replace('"pickup": "KeyE"','"pickup": "KeyW"')],
@@ -23,7 +25,7 @@ const cases=[
  ['scripts/logic/items.ts',replace("if(l.kind!=='grid'&&l.kind!=='slot')return false;","if(l.kind!=='grid'&&l.kind!=='slot')return true;")],
  ['scripts/logic/items.ts',replace('if(ancestors.has(cursor.id))return false','if(ancestors.has(cursor.id))return true')],
  ['scripts/view/actor-preview.ts',replace("hasBackpack?['backpack']:[]","true?['backpack']:[]")],
- ['config/presentation/drop-outline.json',replace('"outlineWidth": 2','"outlineWidth": 9')],
+ ['config/presentation/drop-feedback.json',replace('"outlineWidth": 2','"outlineWidth": 9')],
 
  ['scripts/view/actor-preview.ts',replace("['body','left-leg'","['left-leg'")],
  ['scripts/view/actor-preview.ts',replace('return faces.sort((a,b)=>a.depth-b.depth)','return faces.sort((a,b)=>b.depth-a.depth)')],
@@ -34,18 +36,18 @@ const cases=[
  ['scripts/logic/items.ts',replace('const n=Math.min(need,ammo.quantity)','const n=ammo.quantity')],
  ['scripts/logic/items.ts',replace("if(!place)return fail('no-space','背包空间不足，无法放回原武器')","if(false)return fail('no-space','背包空间不足，无法放回原武器')")],
  ['scripts/logic/items.ts',replace('item.loaded!>d.weapon.capacity','false')],
- ['config/gameplay/items/pistol.json',json(v=>{v.weapon.capacity=0;})],
+ ['config/gameplay/items.json',json(v=>{v.definitions.find(d=>d.id==='pistol').weapon.capacity=0;})],
  ['config/presentation/holding.json',replace('"armPitch": 1.15','"armPitch": -1')],
 
- ['config/gameplay/items/scrap.json',json(v=>{v.maxStack=0;})],
- ['config/gameplay/interactions.json',replace('"interactionDistance": 1.5','"interactionDistance":-1')],
+ ['config/gameplay/items.json',json(v=>{v.definitions[0].maxStack=0;})],
+ ['config/gameplay/player.json',replace('"interactionDistance": 1.5','"interactionDistance":-1')],
  ['config/presentation/inventory-ui.json',replace('"cellSize": 44','"cellSize":1')],
  ['scripts/logic/items.ts',replace('ids.has(d.id)','false')],
  ['scripts/logic/items.ts',replace('x+width>grid.columns','false')],
  ['scripts/logic/items.ts',replace('return x+width<=l.x||l.x+ow<=x||y+height<=l.y||l.y+oh<=y','return true')],
  ['scripts/logic/items.ts',replace('rotated?[d.size[1],d.size[0]]','rotated?[d.size[0],d.size[1]]')],
  ['scripts/logic/items.ts',replace('v.distance<=w.interactionDistance&&e.visible(v.p)','true')],
- ['scripts/logic/items.ts',replace("(s.open||nearestItem(s,c,w,e)!==item.id)","(false||nearestItem(s,c,w,e)!==item.id)")],
+ ['scripts/logic/items.ts',replace("(s.open||pickupTarget(s,c,w,e)!==item.id)","(false||pickupTarget(s,c,w,e)!==item.id)")],
  ['scripts/logic/items.ts',replace('target.quantity+=n','target.quantity+=0')],
  ['scripts/logic/items.ts',replace('item.quantity-=cmd.quantity','item.quantity-=0')],
  ['scripts/logic/items.ts',replace('if(drop!==item)item.quantity-=cmd.quantity','if(false)item.quantity-=cmd.quantity')],

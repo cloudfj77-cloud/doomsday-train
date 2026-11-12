@@ -1,0 +1,151 @@
+{
+  "definitions": [
+    {
+      "id": "scrap",
+      "name": "废铁",
+      "description": "铁路遗迹中的金属零件。",
+      "tags": [
+        "material"
+      ],
+      "size": [
+        1,
+        1
+      ],
+      "rotatable": false,
+      "maxStack": 20,
+      "weight": 0.2,
+      "value": 5,
+      "portable": true
+    },
+    {
+      "id": "ammo",
+      "name": "通用弹药",
+      "description": "适配基础手枪与冲锋枪，逐发装填和卸回背包。",
+      "tags": [
+        "ammo"
+      ],
+      "size": [
+        1,
+        1
+      ],
+      "rotatable": false,
+      "maxStack": 60,
+      "weight": 0.008333333333333333,
+      "value": 10,
+      "portable": true,
+      "valueQuantity": 30,
+      "unit": "发",
+      "category": "武器弹药",
+      "usage": "弹药／消耗品"
+    },
+    {
+      "id": "bandage",
+      "name": "绷带",
+      "description": "基础医疗物资，本阶段尚不能使用。",
+      "tags": [
+        "medical"
+      ],
+      "size": [
+        1,
+        1
+      ],
+      "rotatable": false,
+      "maxStack": 10,
+      "weight": 0.1,
+      "value": 15,
+      "portable": true
+    },
+    {
+      "id": "water",
+      "name": "水",
+      "description": "密封饮用水，本阶段尚不能使用。",
+      "tags": [
+        "supply"
+      ],
+      "size": [
+        1,
+        2
+      ],
+      "rotatable": true,
+      "maxStack": 5,
+      "weight": 0.5,
+      "value": 10,
+      "portable": true
+    },
+    {
+      "id": "backpack",
+      "name": "背包",
+      "description": "提供10×6网格，可装备、取下和移动；包内物品随背包保留。",
+      "tags": [
+        "backpack"
+      ],
+      "size": [
+        3,
+        3
+      ],
+      "rotatable": false,
+      "maxStack": 1,
+      "weight": 0.8,
+      "value": 60,
+      "portable": true,
+      "container": {
+        "columns": 10,
+        "rows": 6
+      }
+    },
+    {
+      "id": "pistol",
+      "name": "基础手枪",
+      "description": "真实取得后可装备；支持通用弹药装填与卸弹，本期不支持射击。",
+      "tags": [
+        "weapon",
+        "equippable"
+      ],
+      "size": [
+        2,
+        1
+      ],
+      "rotatable": true,
+      "maxStack": 1,
+      "weight": 1,
+      "value": 120,
+      "valueQuantity": 1,
+      "unit": "把",
+      "category": "武器弹药",
+      "usage": "武器／手枪",
+      "portable": true,
+      "weapon": {
+        "ammo": "ammo",
+        "capacity": 12,
+        "pose": "pistol"
+      }
+    },
+    {
+      "id": "smg",
+      "name": "冲锋枪",
+      "description": "真实取得后可装备；支持通用弹药装填与卸弹，本期不支持射击。",
+      "tags": [
+        "weapon",
+        "equippable"
+      ],
+      "size": [
+        3,
+        2
+      ],
+      "rotatable": true,
+      "maxStack": 1,
+      "weight": 2,
+      "value": 300,
+      "valueQuantity": 1,
+      "unit": "把",
+      "category": "武器弹药",
+      "usage": "武器／冲锋枪",
+      "portable": true,
+      "weapon": {
+        "ammo": "ammo",
+        "capacity": 30,
+        "pose": "smg"
+      }
+    }
+  ]
+}

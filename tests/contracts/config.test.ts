@@ -7,7 +7,7 @@ import {configFields,playerConfig,worldConfig,itemConfig,itemWorldConfig,sceneCo
 it('assembles player parameters from their single source without changing defaults',()=>{
  expect(worldConfig.speed).toBe(playerConfig.movement.speed);expect(worldConfig.height).toBe(playerConfig.body.height);expect(worldConfig.start).toEqual(playerConfig.spawn);expect(itemWorldConfig.backpackDefinition).toBe(playerConfig.initialBackpack);
  expect(itemConfig.definitions.find(d=>d.id===playerConfig.item.id)!.stats).toEqual(playerConfig.baseStats);expect(sceneConfig.keys).toEqual(playerConfig.keys.movement);expect(itemStyleConfig.keys).toEqual(playerConfig.keys.inventory);
- expect(Object.keys(world).sort()).toEqual(['ground','limit','obstacles','surfaces']);
+ expect(Object.keys(world).sort()).toEqual(['gravity','ground','limit','obstacles','surfaces']);
 });
 it('rejects mixed responsibilities, invalid profiles and conflicting controls',()=>{
  expect(()=>configFields({camera:{},speed:4},['camera'],'camera')).toThrow('config-fields');

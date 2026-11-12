@@ -21,7 +21,7 @@ WASD 沿镜头水平轴移动，斜向不加速；Shift 按住跑步。移动立
 ## 配置、装配与验证
 
 - `config/gameplay/player.json`：移动、胶囊、坡阶、出生、初始背包、基础属性与控制键。
-- `config/gameplay/world.json`：地面大小、边界与验证地形；`physics.json`单独维护重力。
+- `config/gameplay/world.json`：地面大小、边界与验证地形；world.json 内 gravity 维护重力。
 - `config/presentation/camera.json`：机位、响应与相机区域；体素色板、环境布局和人物表现分别维护。详见[配置规范](configuration.md)。
 - 体素方盒的同一组几何描述同时生成画面和静态碰撞，阴影、草与地面碎粒不阻挡。几何描述由场景生成器返回，物理适配层消费，不在显示层执行规则。
 - forge.json 的 roots 是唯一装配入口；原生插件系统、实体、消息端口监听与资源均使用 effect 清理。端口借用且不关闭，不新增入口。

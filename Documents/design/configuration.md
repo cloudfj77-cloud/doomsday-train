@@ -2,7 +2,7 @@
 
 ## 规则
 
-根目录 `config/` 下每个JSON只保存一个独立调参对象，按 gameplay 与 presentation 分类。玩家自身参数集中在玩家配置；其他系统不得再次保存玩家速度、出生、背包或按键的副本。各物品类型一文件，新增类型在只读组装模块显式导入。
+根目录 `config/` 下按系统聚合相关参数，避免逐个对象拆分JSON，按 gameplay 与 presentation 分类。玩家自身参数集中在玩家配置；其他系统不得再次保存玩家速度、出生、背包或按键的副本。所有物品类型集中在 items.json 的 definitions 数组，新增类型由同一校验入口检查。
 
 `scripts/config/game.ts` 仅校验、引用和组装既有接口，不保存另一份数值，不引入运行时入口或生命周期；引擎插件仍只由 `forge.json` 装配。未知字段、缺少配置、重复控制键、无效引用和未登记的JSON必须报错，不能忽略或使用默认值替代。
 
@@ -10,12 +10,10 @@
 
 | 路径 | 唯一职责 |
 | --- | --- |
-| `gameplay/player.json` | 玩家物品身份、行走/跑步/转向参数、胶囊碰撞体尺寸与坡阶参数、出生位置、初始背包、随身格、装备槽、基础属性与控制按键 |
-| `gameplay/world.json` | 地图边界、地面尺寸、障碍和可行走表面 |
-| `gameplay/physics.json` | 世界物理常量，目前为重力 |
-| `gameplay/interactions.json` | 拾取范围与丢弃落点条件 |
+| `gameplay/player.json` | 玩家物品身份、行走/跑步/转向参数、胶囊碰撞体尺寸与坡阶参数、出生位置、初始背包、随身格、装备槽、基础属性、控制按键与 interactions（拾取范围和丢弃条件） |
+| `gameplay/world.json` | 地图边界、地面尺寸、障碍、可行走表面与 gravity |
 | `gameplay/drops.json` | 地面物品出生表 |
-| `gameplay/items/<类型>.json` | 单一物品类型的名称、标签、格型、堆叠、载荷、参考价值、容器或枪械能力 |
+| `gameplay/items.json` | 全部物品类型的名称、标签、格型、堆叠、载荷、参考价值、容器或枪械能力 |
 | `presentation/camera.json` | 相机参数与相机区域混合 |
 | `presentation/palette.json` | 全项目体素色板 |
 | `presentation/environment.json` | 场景美术布局 |
@@ -23,8 +21,7 @@
 | `presentation/inventory-ui.json` | 物品网格及界面颜色、滚动条样式 |
 | `presentation/item-visuals.json` | 物品图标和世界模型的共用体素外观 |
 | `presentation/holding.json` | 持械姿态参数 |
-| `presentation/drop-outline.json` | 地面物品描边 |
-| `presentation/drop-labels.json` | 悬停像素标签样式 |
+| `presentation/drop-feedback.json` | 地面物品描边与悬停像素标签样式 |
 
 ## 玩家属性
 

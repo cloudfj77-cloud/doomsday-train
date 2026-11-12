@@ -18,7 +18,7 @@ export interface ItemState { items:Record<string,ItemInstance>; playerId:string;
 export type Outcome = {ok:true;code:'ok';amount?:number}|{ok:false;code:string;expected:string;hint:string;detail?:string};
 export type ItemCommand = {type:'toggle'}|{type:'close'}|{type:'pickup';id:string}|{type:'move';id:string;parent?:string;x:number;y:number;rotated:boolean}|
   {type:'split';id:string;quantity:number;parent?:string}|{type:'drop';id:string;quantity:number}|{type:'equip';id:string}|{type:'unequip';id:string;parent?:string;x?:number;y?:number;rotated?:boolean}|{type:'load';id:string}|{type:'unload';id:string}|{type:'take';id:string;parent?:string;x?:number;y?:number;rotated?:boolean};
-export interface Environment { player:Position; visible:(position:Position)=>boolean; dropPosition:()=>Position|undefined }
+export interface Environment { player:Position; hovered?:string; visible:(position:Position)=>boolean; dropPosition:()=>Position|undefined }
 const integer=(v:unknown):v is number=>Number.isInteger(v)&&Number(v)>0;
 const position=(v:unknown):v is Position=>Array.isArray(v)&&v.length===3&&v.every(Number.isFinite);
 const strings=(v:unknown):v is string[]=>Array.isArray(v)&&v.length>0&&v.every(x=>typeof x==='string'&&x.trim().length>0)&&new Set(v).size===v.length;
@@ -116,6 +116,7 @@ export function nearbyItems(s:ItemState,c:ItemConfig,w:ItemWorldConfig,e:Environ
     .filter(v=>v.distance<=w.interactionDistance&&e.visible(v.p)).sort((a,b)=>a.distance-b.distance||a.id.localeCompare(b.id)).map(v=>v.id);
 }
 export function nearestItem(s:ItemState,c:ItemConfig,w:ItemWorldConfig,e:Environment){return nearbyItems(s,c,w,e)[0];}
+export function pickupTarget(s:ItemState,c:ItemConfig,w:ItemWorldConfig,e:Environment){const nearby=nearbyItems(s,c,w,e);return e.hovered&&nearby.includes(e.hovered)?e.hovered:nearby[0];}
 export function equippedBackpack(s:ItemState):string|undefined {
  return Object.values(s.items).find(i=>i.location.kind==='slot'&&i.location.parent===s.playerId&&i.location.slot===s.backpackSlot)?.id;
 }
@@ -182,7 +183,7 @@ export function commandItems(s:ItemState,c:ItemConfig,w:ItemWorldConfig,cmd:Item
       item.loaded=0;
     }
   }else if(cmd.type==='pickup'||cmd.type==='take') {
-    if(item.location.kind!=='world'||(cmd.type==='pickup'?(s.open||nearestItem(s,c,w,e)!==item.id):(!s.open||!nearbyItems(s,c,w,e).includes(item.id))))return fail('not-interactable','物品不在可拾取范围或操作入口不可用');
+    if(item.location.kind!=='world'||(cmd.type==='pickup'?(s.open||pickupTarget(s,c,w,e)!==item.id):(!s.open||!nearbyItems(s,c,w,e).includes(item.id))))return fail('not-interactable','物品不在可拾取范围或操作入口不可用');
     const destination=cmd.type==='take'?cmd.parent:undefined;
     if(destination&&(!carriedContainers(draft).includes(destination)))return fail('invalid-container','目标不是随身格或已装备背包');
     const pickupParent=destination??draft.backpackId;
@@ -241,7 +242,7 @@ export function commandItems(s:ItemState,c:ItemConfig,w:ItemWorldConfig,cmd:Item
       amount=cmd.quantity;
     }
   }
-  assertItemState(draft,c);Object.assign(s,draft);return s.result={ok:true,code:'ok',amount};
+  return finish();
 }
 export function projectItems(s:ItemState,c:ItemConfig,target?:string,nearby:string[]=[],hovered?:string) {
   const bag=c.definitions.find(d=>d.id===s.items[s.backpackId].definition)!.container!;

@@ -20,7 +20,7 @@ import type {} from '@forgeax/engine/app';
 import { itemConfig as itemData } from '../scripts/config/game.ts';
 import { itemWorldConfig as itemWorldData } from '../scripts/config/game.ts';
 import { itemStyleConfig as itemStyle } from '../scripts/config/game.ts';
-import { createItems, validateItems, projectItems, commandItems, nearestItem, nearbyItems, type ItemCommand } from '../scripts/logic/items.ts';
+import { createItems, validateItems, projectItems, commandItems, pickupTarget, nearbyItems, type ItemCommand } from '../scripts/logic/items.ts';
 import { validateItemStyle } from '../scripts/view/item-presentation.ts';
 import { itemEnvironment } from '../scripts/controller/item-environment.ts';
 import type { BarrelDistortionMapping } from '@forgeax/engine/render';
@@ -94,11 +94,11 @@ export const preview: Plugin.Object<{ meshes: Record<Part,string>; itemMeshes:Re
           if(!kb?.downCode(key))blockedKeys.delete(key);
           else if(inventory.open||!pointer.focused)blockedKeys.add(key);
         }
-        const environment=itemEnvironment(physics,itemsWorld,[state.x,state.y,state.z]);
+        const environment={...itemEnvironment(physics,itemsWorld,[state.x,state.y,state.z]),hovered};
         for(const cmd of pending.splice(0))if(cmd&&typeof cmd.type==='string')commandItems(inventory,itemsConfig,itemsWorld,cmd,environment);
         const down=(key:string)=>pointer.focused&&!inventory.open&&!blockedKeys.has(key)&&!!kb?.downCode(key);
         state=tickCharacter(world,physics,character,state,{axis:[Number(down(presentation.keys.right))-Number(down(presentation.keys.left)),Number(down(presentation.keys.up))-Number(down(presentation.keys.down))],run:down(presentation.keys.run),aim:inventory.open?undefined:groundPoint(pointer.ray,state.y)},world.getResource(FixedTime).delta,config,presentation.camera.yaw);
-        target=nearestItem(inventory,itemsConfig,itemsWorld,itemEnvironment(physics,itemsWorld,[state.x,state.y,state.z]));
+        target=pickupTarget(inventory,itemsConfig,itemsWorld,{...itemEnvironment(physics,itemsWorld,[state.x,state.y,state.z]),hovered});
         nearby=nearbyItems(inventory,itemsConfig,itemsWorld,itemEnvironment(physics,itemsWorld,[state.x,state.y,state.z]));
         world.insertResource('preview-state', project(state));
       } }).unwrap();
@@ -125,6 +125,7 @@ export const preview: Plugin.Object<{ meshes: Record<Part,string>; itemMeshes:Re
         world.set(eye,Outline,{entities:nearby.map(id=>drops.get(id)).filter((e):e is NonNullable<typeof e>=>e!==undefined)}).unwrap();
         hovered=undefined;
         if(!inventory.open&&pointer.focused&&pointer.display){const d=pointer.display,hit=pickTriangleDisplay(world,d.x,d.y,d.mapping,d.mapping.width,d.mapping.height);if(hit.status==='hit')hovered=nearby.find(id=>drops.get(id)===hit.hit.entity);}
+        target=pickupTarget(inventory,itemsConfig,itemsWorld,{...itemEnvironment(world.getResource<PhysicsWorld>('PhysicsWorld')!,itemsWorld,[state.x,state.y,state.z]),hovered});
         const projection=inventoryProjection(),signature=JSON.stringify(projection);
         if(signature!==lastProjection){lastProjection=signature;port.postMessage({type:'item-projection',state:projection});}
       }}).unwrap();

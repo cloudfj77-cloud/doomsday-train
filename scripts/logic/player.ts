@@ -3,7 +3,8 @@ export type PlayerConfig=typeof profile;
 export function validatePlayer(raw:unknown):PlayerConfig {
  const p=raw as PlayerConfig;
  const exact=(v:object|undefined,keys:string[])=>!!v&&Object.keys(v).length===keys.length&&keys.every(k=>Object.hasOwn(v,k));
- if(!p||!exact(p,['item','movement','body','spawn','initialBackpack','backpackSlot','pockets','slots','baseStats','reservedStats','keys'])||
+ if(!p||!exact(p,['item','movement','body','spawn','initialBackpack','backpackSlot','pockets','slots','baseStats','reservedStats','keys','interactions'])||
+ !exact(p.interactions,['interactionDistance','dropRadius','dropClearance','dropHeight'])||!Object.values(p.interactions).every(n=>Number.isFinite(n)&&n>0)||
  !exact(p.movement,['speed','runSpeed','turnTime','aimDeadzone'])||!Object.values(p.movement).every(n=>Number.isFinite(n)&&n>0)||p.movement.runSpeed<p.movement.speed||
  !exact(p.body,['radius','height','skin','maxSlope','stepHeight','stepWidth','snapDistance'])||!Object.values(p.body).every(n=>Number.isFinite(n)&&n>0)||p.body.height<=p.body.radius*2||p.body.maxSlope>=90||
  !Array.isArray(p.spawn)||p.spawn.length!==2||!p.spawn.every(Number.isFinite)||!p.initialBackpack?.trim()||!p.backpackSlot?.trim()||
