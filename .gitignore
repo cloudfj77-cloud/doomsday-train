@@ -19,3 +19,4 @@ qa/operation-history/
 .game-builder/artifacts/
 .game-builder/reference/
 qa/controller/
+qa/items/

@@ -1,0 +1,14 @@
+{
+  "keys":{"toggle":"Tab","close":"Escape","pickup":"KeyE","rotate":"KeyR"},
+  "cellSize":44,
+  "colors":{"panel":"#192326","grid":"#111b1e","line":"#40504b","accent":"#efb960","text":"#f4ead4","valid":"#58ba89","invalid":"#e46f62"},
+  "visuals":{
+    "scrap":{"color":"#a6b3b4","symbol":"Fe","boxes":[[0,0.12,0,0.38,0.12,0.28,"steel"],[0.09,0.23,0,0.16,0.1,0.3,"rail"]]},
+    "ammo":{"color":"#b9a36c","symbol":"弹","boxes":[[0,0.15,0,0.42,0.26,0.27,"timber"],[0,0.3,0,0.45,0.04,0.3,"cream"]]},
+    "bandage":{"color":"#e7ded0","symbol":"+","boxes":[[0,0.14,0,0.32,0.23,0.26,"light"],[0,0.27,0,0.09,0.04,0.25,"red"],[0,0.27,0,0.25,0.04,0.08,"red"]]},
+    "water":{"color":"#74b9c4","symbol":"水","boxes":[[0,0.22,0,0.2,0.36,0.2,"coat"],[0,0.43,0,0.12,0.06,0.12,"light"]]},
+    "rifle":{"color":"#bdb296","symbol":"枪","boxes":[[0,0.12,0,0.7,0.1,0.13,"steel"],[-0.3,0.12,0,0.22,0.14,0.18,"timber"],[0,0.09,0.1,0.11,0.09,0.18,"rail"]]},
+    "backpack":{"color":"#9fa776","symbol":"包","boxes":[[0,0.24,0,0.35,0.42,0.25,"coat"],[0,0.18,0.16,0.28,0.22,0.12,"timber"],[0,0.47,0,0.14,0.04,0.12,"steel"]]}
+  }
+}
+

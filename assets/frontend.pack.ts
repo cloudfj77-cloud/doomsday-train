@@ -5,6 +5,12 @@ import './runtime/zaohua-platform-init.js';
 import { subscribeBrowserFrameSubmitted } from '@forgeax/engine/app';
 import { computeDisplayScreenRay } from '@forgeax/engine/picking';
 import type { BarrelDistortionMapping } from '@forgeax/engine/render';
+import itemData from '../config/gameplay/items.json';
+import itemWorld from '../config/gameplay/item-world.json';
+import itemStyle from '../config/presentation/items.json';
+import { validateItems, type ItemProjection } from '../scripts/logic/items.ts';
+import { validateItemStyle } from '../scripts/view/item-presentation.ts';
+import { mountInventory } from '../scripts/view/item-ui.ts';
 export const frontend: Plugin = { name: 'preview-frontend', inject: ['gameHost'], async apply(ctx) {
   await ctx.effect(async function* () {
     const host=ctx.gameHost!;
@@ -13,12 +19,19 @@ export const frontend: Plugin = { name: 'preview-frontend', inject: ['gameHost']
     const port=host.presentationPort??host.port;
     if(!(canvas instanceof HTMLCanvasElement)||!port) throw Error('missing-controller-presentation-host');
     const doc=canvas.ownerDocument, win=doc.defaultView!;
+    const {config}=validateItems(itemData,itemWorld);
+    const uiRoot=host.uiRoot??doc.getElementById('game-ui');
+    if(!(uiRoot instanceof HTMLElement))throw Error('missing-inventory-ui-root');
+    const ui=mountInventory(uiRoot,config,validateItemStyle(itemStyle,config),command=>port.postMessage({type:'item-command',command}));
+    const receive=(event:MessageEvent)=>{if(event.data?.type==='item-projection')ui.update(event.data.state as ItemProjection);};
+    port.addEventListener('message',receive);port.start();port.postMessage({type:'item-ready'});
+    yield ()=>{port.removeEventListener('message',receive);ui.dispose();};
     let point: {x:number;y:number}|undefined, mapping:BarrelDistortionMapping|undefined;
     const publish=()=>{
       const rect=canvas.getBoundingClientRect();
       const inside=point&&point.x>=rect.left&&point.x<rect.right&&point.y>=rect.top&&point.y<rect.bottom;
       const focused=doc.hasFocus();
-      const ray=inside&&focused&&mapping&&rect.width>0&&rect.height>0?computeDisplayScreenRay((point!.x-rect.left)/rect.width*mapping.width,(point!.y-rect.top)/rect.height*mapping.height,mapping,mapping.width,mapping.height)?.ray:undefined;
+      const ray=inside&&focused&&!ui.isOpen()&&mapping&&rect.width>0&&rect.height>0?computeDisplayScreenRay((point!.x-rect.left)/rect.width*mapping.width,(point!.y-rect.top)/rect.height*mapping.height,mapping,mapping.width,mapping.height)?.ray:undefined;
       port.postMessage({type:'controller-pointer',focused,ray:ray?Array.from(ray):undefined});
     };
     const move=(event:PointerEvent)=>{point={x:event.clientX,y:event.clientY};publish();};

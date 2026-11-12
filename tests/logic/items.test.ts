@@ -9,6 +9,11 @@ function setup() {
   return {s,e,run};
 }
 describe('Item authoritative transactions',()=>{
+  it('never projects a missing or already transferred pickup target',()=>{
+    const {s,run}=setup();expect(projectItems(s,c,'item-1').target).toBe('item-1');
+    run({type:'pickup',id:'item-1'});expect(projectItems(s,c,'item-1').target).toBeNull();
+    expect(projectItems(s,c,'removed').target).toBeNull();
+  });
   it('rejects malformed definitions, references and capabilities',()=>{
     for(const mutate of [(v:any)=>v.definitions.push(v.definitions[0]),(v:any)=>v.definitions[1].size[0]=0,(v:any)=>v.definitions[6].maxStack=2,(v:any)=>v.definitions[1].weight=-1]) {
       const v=structuredClone(configRaw);mutate(v);expect(()=>validateItems(v,w)).toThrow();

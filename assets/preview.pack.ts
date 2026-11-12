@@ -6,7 +6,7 @@ import { ok } from '@forgeax/engine/types';
 import type { Plugin } from '@forgeax/engine/plugin';
 import { Time, Update, FixedUpdate, FixedTime } from '@forgeax/engine/ecs';
 import { INPUT_SNAPSHOT_RESOURCE_KEY, type InputSnapshot } from '@forgeax/engine/input';
-import { bake, parts, collisionBoxes, type Part } from '../scripts/view/voxels.ts';
+import { bake, bakeItem, parts, collisionBoxes, type Part } from '../scripts/view/voxels.ts';
 import { Materials } from '@forgeax/engine/render';
 import data from '../config/gameplay/world.json';
 import { createState, project, validateConfig } from '../scripts/logic/world.ts';
@@ -16,8 +16,16 @@ import physics3d from '@forgeax/engine/physics-rapier3d';
 import type { PhysicsWorld } from '@forgeax/engine/physics';
 import { spawnCharacter, spawnCollision, tickCharacter } from '../scripts/controller/movement.ts';
 import type {} from '@forgeax/engine/app';
+import itemData from '../config/gameplay/items.json';
+import itemWorldData from '../config/gameplay/item-world.json';
+import itemStyle from '../config/presentation/items.json';
+import { createItems, validateItems, projectItems, commandItems, nearestItem, type ItemCommand } from '../scripts/logic/items.ts';
+import { validateItemStyle } from '../scripts/view/item-presentation.ts';
+import { itemEnvironment } from '../scripts/controller/item-environment.ts';
+import { Transform } from '@forgeax/engine/scene';
+import type { AssetHandle } from '@forgeax/engine/types';
 
-export const preview: Plugin.Object<{ meshes: Record<Part,string>; material: string }> = {
+export const preview: Plugin.Object<{ meshes: Record<Part,string>; itemMeshes:Record<string,string>; material: string }> = {
   name: 'doomsday-preview', inject: ['world', 'assets', 'gameHost'],
   async apply(ctx, configAssets) {
     await ctx.plugin(physics3d);
@@ -25,18 +33,32 @@ export const preview: Plugin.Object<{ meshes: Record<Part,string>; material: str
       validatePresentation(presentation);
       const config = validateConfig(data);
       let state = createState(config);
+      const {config:itemsConfig,world:itemsWorld}=validateItems(itemData,itemWorldData);
+      validateItemStyle(itemStyle,itemsConfig);
+      const inventory=createItems(itemsConfig,itemsWorld);
+      const pending:ItemCommand[]=[];let lastProjection='',target:string|undefined;
       let view = createCamera([state.x,state.y,state.z],presentation.camera,presentation.zones);
       let pointer: {ray?:number[]; focused:boolean}={focused:true};
       const port=ctx.gameHost!.port;
       if(!port) throw Error('missing-controller-source-port');
-      const receive=(event:MessageEvent)=>{ if(event.data?.type==='controller-pointer') pointer=event.data; };
+      const receive=(event:MessageEvent)=>{
+        if(event.data?.type==='controller-pointer')pointer=event.data;
+        if(event.data?.type==='item-command'&&pending.length<32)pending.push(event.data.command);
+        if(event.data?.type==='item-ready')lastProjection='';
+      };
       port.addEventListener('message',receive); port.start();
       yield ()=>port.removeEventListener('message',receive);
-      const read = ctx.gameHost!.gameProjection?.registerRead({ id: 'preview', title: 'Controller state', read: () => ({...project(state),camera:JSON.parse(JSON.stringify(view)),aim:groundPoint(pointer.ray,state.y)??null}) });
+      const read = ctx.gameHost!.gameProjection?.registerRead({ id: 'preview', title: 'Controller and Item state', read: () => ({...project(state),camera:JSON.parse(JSON.stringify(view)),aim:inventory.open?null:groundPoint(pointer.ray,state.y)??null,inventory:JSON.parse(JSON.stringify(projectItems(inventory,itemsConfig,target)))}) });
       if (read) yield read;
       const assets = ctx.assets!;
       const material = (await assets.load(configAssets.material, 'material')).unwrap();
       yield () => assets.release(material);
+      const dropMeshes=new Map<string,AssetHandle<'mesh'>>();
+      for(const [id,guid] of Object.entries(configAssets.itemMeshes)) {
+        const mesh=(await assets.load(guid,'mesh')).unwrap();dropMeshes.set(id,mesh);yield ()=>assets.release(mesh);
+      }
+      const drops=new Map<string,ReturnType<typeof object>>();
+      yield ()=>{for(const entity of drops.values())ctx.world.despawn(entity);};
       const entities = new Map<Part,ReturnType<typeof object>>();
       const eye = camera(ctx.world,view);
       yield () => ctx.world.despawn(eye);
@@ -51,20 +73,37 @@ export const preview: Plugin.Object<{ meshes: Record<Part,string>; material: str
         yield () => ctx.world.despawn(entity);
       }
       draw(ctx.world, entities, project(state));
+      const blockedKeys=new Set<string>();
       ctx.world.addSystem(FixedUpdate, { name: 'preview-movement', after:['physicsSyncBackend'],before:['physicsStepSimulation'],queries: [], fn(world) {
         const physics=world.getResource<PhysicsWorld>('PhysicsWorld');
         if(!physics?.hasBody(character)) return;
         const kb = world.getResource<InputSnapshot>(INPUT_SNAPSHOT_RESOURCE_KEY)?.keyboard;
-        const down=(key:string)=>pointer.focused&&!!kb?.downCode(key);
-        state=tickCharacter(world,physics,character,state,{axis:[Number(down(presentation.keys.right))-Number(down(presentation.keys.left)),Number(down(presentation.keys.up))-Number(down(presentation.keys.down))],run:down(presentation.keys.run),aim:groundPoint(pointer.ray,state.y)},world.getResource(FixedTime).delta,config,presentation.camera.yaw);
+        for(const key of Object.values(presentation.keys)) {
+          if(!kb?.downCode(key))blockedKeys.delete(key);
+          else if(inventory.open||!pointer.focused)blockedKeys.add(key);
+        }
+        const environment=itemEnvironment(physics,itemsWorld,[state.x,state.y,state.z]);
+        for(const cmd of pending.splice(0))if(cmd&&typeof cmd.type==='string')commandItems(inventory,itemsConfig,itemsWorld,cmd,environment);
+        const down=(key:string)=>pointer.focused&&!inventory.open&&!blockedKeys.has(key)&&!!kb?.downCode(key);
+        state=tickCharacter(world,physics,character,state,{axis:[Number(down(presentation.keys.right))-Number(down(presentation.keys.left)),Number(down(presentation.keys.up))-Number(down(presentation.keys.down))],run:down(presentation.keys.run),aim:inventory.open?undefined:groundPoint(pointer.ray,state.y)},world.getResource(FixedTime).delta,config,presentation.camera.yaw);
+        target=nearestItem(inventory,itemsConfig,itemsWorld,itemEnvironment(physics,itemsWorld,[state.x,state.y,state.z]));
         world.insertResource('preview-state', project(state));
       } }).unwrap();
       yield () => { ctx.world.removeSystem(FixedUpdate, 'preview-movement'); };
       ctx.world.addSystem(Update, {name:'preview-presentation',queries:[],fn(world){
-        view=advanceCamera(view,[state.x,state.y,state.z],groundPoint(pointer.ray,state.y),world.getResource(Time).delta,presentation.camera,presentation.zones);
+        view=advanceCamera(view,[state.x,state.y,state.z],inventory.open?undefined:groundPoint(pointer.ray,state.y),world.getResource(Time).delta,presentation.camera,presentation.zones);
         const size=ctx.gameHost!.drawingBufferSize?.();
         drawCamera(world,eye,view,size&&size.height>0?size.width/size.height:presentation.camera.aspect);
         draw(world, entities, project(state));
+        for(const [id,entity] of drops)if(inventory.items[id]?.location.kind!=='world'){world.despawn(entity);drops.delete(id);}
+        for(const item of Object.values(inventory.items))if(item.location.kind==='world') {
+          let entity=drops.get(item.id);
+          if(!entity){const mesh=dropMeshes.get(item.definition);if(!mesh)throw Error('missing-item-mesh: '+item.definition);entity=object(world,'Drop '+item.id,mesh,material,item.location.position,[1,1,1]);drops.set(item.id,entity);}
+          const scale=item.id===target?1.18:1;
+          world.set(entity,Transform,{pos:item.location.position,scale:[scale,scale,scale]}).unwrap();
+        }
+        const projection=projectItems(inventory,itemsConfig,target),signature=JSON.stringify(projection);
+        if(signature!==lastProjection){lastProjection=signature;port.postMessage({type:'item-projection',state:projection});}
       }}).unwrap();
       yield ()=>{ctx.world.removeSystem(Update,'preview-presentation');};
     });
@@ -74,8 +113,8 @@ const packageId = definePackageId('019fb7ce-3800-7000-8000-000000000000');
 const ref = (key: string) => ({ $asset: AssetGuid.format(AssetGuid.derive(packageId, key)) });
 export default definePack({ schemaVersion: '2.0.0', plugins: true, packageId, build: () => ok({
   ...Object.fromEntries(parts.map(part => ['mesh/'+part,bake(part)])),
+  ...Object.fromEntries(itemData.definitions.filter(d=>d.portable).map(d=>['mesh/item/'+d.id,bakeItem(d.id)])),
   'material/voxel': Materials.unlit([1,1,1,1]),
   'plugin/engine': { kind: 'plugin', module: { specifier: './preview.pack.ts', export: 'preview' },
-    config: { meshes: Object.fromEntries(parts.map(part => [part,ref('mesh/'+part)])), material: ref('material/voxel') } }
+    config: { meshes: Object.fromEntries(parts.map(part => [part,ref('mesh/'+part)])), itemMeshes:Object.fromEntries(itemData.definitions.filter(d=>d.portable).map(d=>[d.id,ref('mesh/item/'+d.id)])), material: ref('material/voxel') } }
 }) });
-

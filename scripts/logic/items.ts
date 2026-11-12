@@ -7,7 +7,7 @@ export interface ItemDefinition {
 export interface ItemConfig { definitions:ItemDefinition[] }
 export interface ItemWorldConfig {
   playerDefinition:string; backpackDefinition:string; backpackSlot:string; interactionDistance:number;
-  dropRadius:number; dropClearance:number; drops:{definition:string;quantity:number;position:Position}[];
+  dropRadius:number; dropClearance:number; dropHeight:number; drops:{definition:string;quantity:number;position:Position}[];
 }
 export type Location = {kind:'world';position:Position}|{kind:'actor'}|
   {kind:'slot';parent:string;slot:string}|{kind:'grid';parent:string;x:number;y:number;rotated:boolean};
@@ -37,7 +37,7 @@ export function validateItems(raw:unknown,worldRaw:unknown):{config:ItemConfig;w
   const defs=Object.fromEntries(c.definitions.map(d=>[d.id,d]));
   if(!w||!defs[w.playerDefinition]||!defs[w.backpackDefinition]?.container||
     !defs[w.playerDefinition].slots?.[w.backpackSlot]?.some(t=>defs[w.backpackDefinition].tags.includes(t))||
-    ![w.interactionDistance,w.dropRadius,w.dropClearance].every(n=>Number.isFinite(n)&&n>0)||!Array.isArray(w.drops)||
+    ![w.interactionDistance,w.dropRadius,w.dropClearance,w.dropHeight].every(n=>Number.isFinite(n)&&n>0)||!Array.isArray(w.drops)||
     w.drops.some(d=>!defs[d.definition]?.portable||!integer(d.quantity)||!position(d.position)))throw Error('invalid-item-world-config');
   return {config:c,world:w};
 }
@@ -165,7 +165,7 @@ export function projectItems(s:ItemState,c:ItemConfig,target?:string) {
   const bag=c.definitions.find(d=>d.id===s.items[s.backpackId].definition)!.container!;
   const weight=Object.values(s.items).filter(i=>i.location.kind==='grid'&&i.location.parent===s.backpackId)
     .reduce((n,i)=>n+c.definitions.find(d=>d.id===i.definition)!.weight*i.quantity,0);
-  const value=structuredClone({...s,grid:bag,weight,target:target??null});
+  const value=structuredClone({...s,grid:bag,weight,target:target&&s.items[target]?.location.kind==='world'?target:null});
   const freeze=(v:unknown):void=>{if(v&&typeof v==='object'){Object.values(v).forEach(freeze);Object.freeze(v);}};freeze(value);return value;
 }
 export type ItemProjection=ReturnType<typeof projectItems>;

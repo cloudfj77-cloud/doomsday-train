@@ -1,6 +1,11 @@
 import { createBoxGeometry, meshFromInterleaved, withVertexColors } from '@forgeax/engine/geometry';
 import style from '../../config/presentation/scene.json';
 import data from '../../config/gameplay/world.json';
+import itemStyle from '../../config/presentation/items.json';
+import itemData from '../../config/gameplay/items.json';
+import itemWorld from '../../config/gameplay/item-world.json';
+import { validateItems } from '../logic/items.ts';
+import { validateItemStyle } from './item-presentation.ts';
 
 type Ink = keyof typeof style.palette;
 const cube = createBoxGeometry(1, 1, 1).unwrap();
@@ -42,6 +47,15 @@ class Blocks {
     const mesh = meshFromInterleaved(new Float32Array(this.vertices),new Uint32Array(this.indices)).unwrap();
     return withVertexColors(mesh,this.colors,{space:'srgb'}).unwrap();
   }
+}
+
+export function bakeItem(id:string) {
+  const {config}=validateItems(itemData,itemWorld);
+  const style=validateItemStyle(itemStyle,config),visual=style.visuals[id];
+  if(!visual)throw Error('missing-item-mesh: '+id);
+  const blocks=new Blocks();
+  for(const b of visual.boxes)blocks.box(Number(b[0]),Number(b[1]),Number(b[2]),Number(b[3]),Number(b[4]),Number(b[5]),b[6] as Ink);
+  return blocks.finish();
 }
 
 function terrain() {
