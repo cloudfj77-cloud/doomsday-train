@@ -15,8 +15,8 @@ export interface Modifier { stat:string; target:string; operation:'add'|'multipl
 export interface ItemInstance { id:string; definition:string; quantity:number; location:Location; variables:Record<string,string|number|boolean>; modifiers:Modifier[] }
 export interface ItemState { items:Record<string,ItemInstance>; playerId:string; backpackId:string; nextId:number; open:boolean; result:Outcome }
 export type Outcome = {ok:true;code:'ok';amount?:number}|{ok:false;code:string;expected:string;hint:string;detail?:string};
-export type ItemCommand = {type:'toggle'}|{type:'close'}|{type:'pickup';id:string}|{type:'move';id:string;x:number;y:number;rotated:boolean}|
-  {type:'split';id:string;quantity:number}|{type:'drop';id:string;quantity:number};
+export type ItemCommand = {type:'toggle'}|{type:'close'}|{type:'pickup';id:string}|{type:'move';id:string;parent?:string;x:number;y:number;rotated:boolean}|
+  {type:'split';id:string;quantity:number;parent?:string}|{type:'drop';id:string;quantity:number};
 export interface Environment { player:Position; visible:(position:Position)=>boolean; dropPosition:()=>Position|undefined }
 const integer=(v:unknown):v is number=>Number.isInteger(v)&&Number(v)>0;
 const position=(v:unknown):v is Position=>Array.isArray(v)&&v.length===3&&v.every(Number.isFinite);
@@ -62,11 +62,11 @@ export function canPlace(s:ItemState,c:ItemConfig,id:string,parent:string,x:numb
     return x+width<=l.x||l.x+ow<=x||y+height<=l.y||l.y+oh<=y;
   });
 }
-function findSpace(s:ItemState,c:ItemConfig,id:string):Extract<Location,{kind:'grid'}>|undefined {
-  const grid=c.definitions.find(d=>d.id===s.items[s.backpackId].definition)!.container!;
+export function findSpace(s:ItemState,c:ItemConfig,id:string,parent:string=s.backpackId):Extract<Location,{kind:'grid'}>|undefined {
+  const grid=c.definitions.find(d=>d.id===s.items[parent].definition)!.container!;
   const d=c.definitions.find(d=>d.id===s.items[id].definition)!;
   for(const rotated of d.rotatable?[false,true]:[false])for(let y=0;y<grid.rows;y++)for(let x=0;x<grid.columns;x++)
-    if(canPlace(s,c,id,s.backpackId,x,y,rotated))return {kind:'grid',parent:s.backpackId,x,y,rotated};
+    if(canPlace(s,c,id,parent,x,y,rotated))return {kind:'grid',parent,x,y,rotated};
 }
 export function assertItemState(s:ItemState,c:ItemConfig):void {
   const defs=Object.fromEntries(c.definitions.map(d=>[d.id,d]));
@@ -130,10 +130,11 @@ export function commandItems(s:ItemState,c:ItemConfig,w:ItemWorldConfig,cmd:Item
     if(item.location.kind==='world')amount=before-item.quantity;
     if(!amount)return fail('no-space','背包空间不足');
   } else {
-    if(!s.open||item.location.kind!=='grid'||item.location.parent!==s.backpackId)return fail('not-in-backpack','请打开背包选择物品');
+    if(!s.open||item.location.kind!=='grid'||!s.items[item.location.parent])return fail('not-in-backpack','请打开背包选择物品');
+    const sourceParent=item.location.parent;
     if(cmd.type==='move') {
       const target=Object.values(draft.items).find(i=>{
-        const l=i.location;if(i.id===item.id||l.kind!=='grid'||l.parent!==draft.backpackId)return false;
+        const l=i.location;if(i.id===item.id||l.kind!=='grid'||l.parent!==(cmd.parent??sourceParent))return false;
         const [width,height]=dimensions(c.definitions.find(d=>d.id===i.definition)!,l.rotated);
         return cmd.x>=l.x&&cmd.y>=l.y&&cmd.x<l.x+width&&cmd.y<l.y+height;
       });
@@ -142,14 +143,14 @@ export function commandItems(s:ItemState,c:ItemConfig,w:ItemWorldConfig,cmd:Item
         amount=Math.min(item.quantity,d.maxStack-target.quantity);if(!amount)return fail('stack-full','目标堆叠已满');
         target.quantity+=amount;item.quantity-=amount;if(!item.quantity)delete draft.items[item.id];
       }else {
-        if(!canPlace(draft,c,item.id,draft.backpackId,cmd.x,cmd.y,cmd.rotated))return fail('invalid-placement','此处不能放置');
-        item.location={kind:'grid',parent:draft.backpackId,x:cmd.x,y:cmd.y,rotated:cmd.rotated};
+        if(!canPlace(draft,c,item.id,cmd.parent??sourceParent,cmd.x,cmd.y,cmd.rotated))return fail('invalid-placement','此处不能放置');
+        item.location={kind:'grid',parent:cmd.parent??sourceParent,x:cmd.x,y:cmd.y,rotated:cmd.rotated};
       }
     } else {
       if(!integer(cmd.quantity)||cmd.quantity>item.quantity)return fail('invalid-quantity','数量必须是有效整数');
       if(cmd.type==='split') {
         if(cmd.quantity===item.quantity||d.maxStack===1||Object.keys(item.variables).length||item.modifiers.length)return fail('invalid-split','无法拆分此物品');
-        const copy=newInstance(cmd.quantity),place=findSpace(draft,c,copy.id);
+        const copy=newInstance(cmd.quantity),place=findSpace(draft,c,copy.id,cmd.parent??sourceParent);
         if(!place)return fail('no-space','拆分需要额外空间');copy.location=place;item.quantity-=cmd.quantity;
       }else {
         const p=e.dropPosition();if(!p||!position(p))return fail('no-drop-position','脚边没有安全的丢弃位置');
@@ -169,3 +170,9 @@ export function projectItems(s:ItemState,c:ItemConfig,target?:string) {
   const freeze=(v:unknown):void=>{if(v&&typeof v==='object'){Object.values(v).forEach(freeze);Object.freeze(v);}};freeze(value);return value;
 }
 export type ItemProjection=ReturnType<typeof projectItems>;
+
+export function projectContainer(s:ItemState,c:ItemConfig,parent:string) {
+ const item=s.items[parent],grid=c.definitions.find(d=>d.id===item?.definition)?.container;
+ if(!grid)throw Error('not-a-container');
+ return {id:parent,...grid,items:Object.values(s.items).filter(i=>i.location.kind==='grid'&&i.location.parent===parent).map(i=>structuredClone(i))};
+}
