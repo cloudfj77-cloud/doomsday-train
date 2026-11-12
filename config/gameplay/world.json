@@ -1,10 +1,121 @@
 {
   "speed": 4,
-  "limit": 5,
+  "limit": 9,
   "radius": 0.22,
-  "start": [-3.5, 3],
+  "start": [
+    -3.5,
+    3
+  ],
   "obstacles": [
-    { "id": "outcrop", "center": [0, 0], "size": [2, 1.5] },
-    { "id": "depot", "center": [3, -3], "size": [2, 1] }
+    {
+      "id": "outcrop",
+      "center": [
+        0,
+        0
+      ],
+      "size": [
+        2,
+        1.5
+      ],
+      "height": 1.35
+    },
+    {
+      "id": "depot",
+      "center": [
+        3,
+        -3
+      ],
+      "size": [
+        2,
+        1
+      ],
+      "height": 1.6
+    }
+  ],
+  "runSpeed": 6,
+  "height": 1.5,
+  "skin": 0.01,
+  "maxSlope": 45,
+  "stepHeight": 0.25,
+  "stepWidth": 0.2,
+  "snapDistance": 0.15,
+  "gravity": 20,
+  "turnTime": 0.08,
+  "aimDeadzone": 0.15,
+  "surfaces": [
+    {
+      "id": "slope",
+      "center": [
+        -3,
+        0.5,
+        -2
+      ],
+      "size": [
+        2,
+        0.2,
+        3
+      ],
+      "pitch": 20
+    },
+    {
+      "id": "landing",
+      "center": [
+        -3,
+        0.95,
+        -4.2
+      ],
+      "size": [
+        2,
+        0.2,
+        1.6
+      ],
+      "pitch": 0
+    },
+    {
+      "id": "low-step",
+      "center": [
+        -1,
+        0.1,
+        -5
+      ],
+      "size": [
+        1.4,
+        0.2,
+        1.4
+      ],
+      "pitch": 0
+    },
+    {
+      "id": "high-step",
+      "center": [
+        1,
+        0.35,
+        -5
+      ],
+      "size": [
+        1.4,
+        0.7,
+        1.4
+      ],
+      "pitch": 0
+    },
+    {
+      "id": "steep-slope",
+      "center": [
+        5,
+        0.7,
+        1
+      ],
+      "size": [
+        1.6,
+        0.2,
+        2
+      ],
+      "pitch": 60
+    }
+  ],
+  "ground": [
+    80,
+    80
   ]
 }

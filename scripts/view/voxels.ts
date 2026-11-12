@@ -14,12 +14,15 @@ const indices=cube.indices;
 if (!indices) throw Error('missing-unit-cube-indices');
 
 // Each box contributes flat-shaded faces to a single indexed part.
+export interface Box { center: number[]; size: number[]; pitch: number; yaw: number }
 class Blocks {
+  boxes: Box[] = [];
   vertices: number[] = [];
   indices: number[] = [];
   colors: number[] = [];
-  box(x:number,y:number,z:number,w:number,h:number,d:number, ink: Ink, yaw = 0) {
+  box(x:number,y:number,z:number,w:number,h:number,d:number, ink: Ink, yaw = 0, pitch = 0) {
     if (![x,y,z,w,h,d,yaw].every(Number.isFinite) || Math.min(w,h,d)<=0) throw Error('invalid-voxel-box');
+    if (ink !== 'shadow' && ink !== 'grass' && y+h/2>.04) this.boxes.push({center:[x,y,z],size:[w,h,d],pitch,yaw});
     const hex = style.palette[ink];
     if (!/^#[a-f0-9]{6}$/i.test(hex)) throw Error('invalid-voxel-palette');
     const rgb = [1,3,5].map(i => parseInt(hex.slice(i,i+2),16)/255);
@@ -27,7 +30,9 @@ class Blocks {
     for(let i=0;i<position.length/3;i++) {
       const px=position[i*3]*w,pz=position[i*3+2]*d;
       const nx=normal[i*3]*c+normal[i*3+2]*s,nz=-normal[i*3]*s+normal[i*3+2]*c,ny=normal[i*3+1];
-      this.vertices.push(x+c*px+s*pz,y+position[i*3+1]*h,z-s*px+c*pz,nx,ny,nz,uv[i*2],uv[i*2+1]);
+      const cp=Math.cos(pitch),sp=Math.sin(pitch),py=position[i*3+1]*h;
+      const ry=cp*py-sp*pz,rz=sp*py+cp*pz;
+      this.vertices.push(x+c*px+s*rz,y+ry,z-s*px+c*rz,c*normal[i*3]+s*(sp*ny+cp*normal[i*3+2]),cp*ny-sp*normal[i*3+2],-s*normal[i*3]+c*(sp*ny+cp*normal[i*3+2]),uv[i*2],uv[i*2+1]);
       const shade=.76+.23*Math.max(ny,0)+.13*Math.max(-nx,0)+.03*Math.max(nz,0);
       this.colors.push(rgb[0]*shade,rgb[1]*shade,rgb[2]*(shade+(1-shade)*.27));
     }
@@ -43,7 +48,7 @@ function terrain() {
   const b=new Blocks(), layout=style.layout;
   let seed=layout.seed;
   const rand=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
-  const [w,d]=layout.ground;
+  const [w,d]=data.ground;
   b.box(0,-.2,0,w,.4,d,'sand');
   for(let i=0;i<layout.gravelCount;i++) {
     const x=rand()*24-12,z=rand()*18-9,r=rand();
@@ -109,13 +114,16 @@ function terrain() {
       b.box(x+(rand()-.5)*.31,h*.5,z+(rand()-.5)*.22,.06,h,.06,'grass');
     }
   }
-  return b.finish();
+  for (const o of data.surfaces) b.box(o.center[0],o.center[1],o.center[2],o.size[0],o.size[1],o.size[2],'rock',0,o.pitch*Math.PI/180);
+  return b;
 }
 
+// These exact geometry descriptors also assemble the collision scene.
+export function collisionBoxes() { return terrain().boxes; }
 export const parts=['terrain','body','left-leg','right-leg','shade'] as const;
 export type Part=typeof parts[number];
 export function bake(part:Part) {
-  if(part==='terrain')return terrain();
+  if(part==='terrain')return terrain().finish();
   const b=new Blocks(),u=style.actor.unit;
   const block=(x:number,y:number,z:number,w:number,h:number,d:number,ink:Ink)=>b.box(x*u,y*u,z*u,w*u,h*u,d*u,ink);
   if(part==='body') {
