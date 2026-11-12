@@ -1,6 +1,6 @@
 import style from '../../config/presentation/scene.json';
 import itemStyle from '../../config/presentation/items.json';
-export type ActorPart='body'|'left-leg'|'right-leg'|'left-arm'|'right-arm';
+export type ActorPart='body'|'left-leg'|'right-leg'|'left-arm'|'right-arm'|'backpack';
 export interface ActorBox {center:[number,number,number];size:[number,number,number];ink:keyof typeof style.palette}
 export function actorBoxes(part:ActorPart):ActorBox[] {
   const boxes:ActorBox[]=[],u=style.actor.unit;
@@ -10,8 +10,10 @@ export function actorBoxes(part:ActorPart):ActorBox[] {
     block(0,12.3,.1,3.3,3.2,2.9,'skin');block(0,13.1,-.5,3.45,2.2,2.1,'coal');
     block(0,14.15,.25,6,.65,5,'timber');block(0,15,0,4.1,1.45,3.4,'grain');block(0,14.45,0,4.2,.43,3.48,'leather');
     block(0,11.1,.6,3.65,1,2.9,'red');block(1,10.2,1.56,.88,1.9,.4,'red');
-    block(0,9,-2,3.8,4.7,2.1,'leather');block(0,10.65,-2.25,4.1,1.15,2.1,'grain');
 
+
+  } else if(part==='backpack'){
+    block(0,9,-2,3.8,4.7,2.1,'leather');block(0,10.65,-2.25,4.1,1.15,2.1,'grain');
   } else if(part==='left-arm'||part==='right-arm'){
     const side=part==='left-arm'?-1:1;block(side*2.55,9.05,0,1.12,3.4,1.35,'teal');block(side*2.55,7.3,.1,1,1,1.18,'skin');
   } else {

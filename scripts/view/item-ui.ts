@@ -23,12 +23,12 @@ export function mountInventory(parent:HTMLElement,config:ItemConfig,style:ItemSt
   #item-ui .slot[data-slot=primary]{height:62px} #item-ui .slot[aria-disabled=true]{border-style:dashed;opacity:.5;cursor:default}
   #item-ui .slot-outline{width:40px;height:40px;fill:none;stroke:#71877e;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
   #item-ui .slot-lock{position:absolute;right:4px;bottom:3px;width:11px;height:12px;fill:none;stroke:#819287;stroke-width:1.5}
-  #item-ui .grid-wrap{overflow:auto;max-width:100%;padding:1px} #item-ui .inventory-grid{position:relative;background-color:${style.colors.grid};background-image:linear-gradient(to right,${style.colors.line} 1px,transparent 1px),linear-gradient(to bottom,${style.colors.line} 1px,transparent 1px);border-right:1px solid ${style.colors.line};border-bottom:1px solid ${style.colors.line};touch-action:none}
+  #item-ui .grid-wrap{overflow:clip;max-width:100%;padding:1px} #item-ui .inventory-grid{position:relative;background-color:${style.colors.grid};background-image:linear-gradient(to right,${style.colors.line} 1px,transparent 1px),linear-gradient(to bottom,${style.colors.line} 1px,transparent 1px);border-right:1px solid ${style.colors.line};border-bottom:1px solid ${style.colors.line};touch-action:none;overflow:clip}
   #item-ui .inventory-item{position:absolute;display:flex;align-items:center;justify-content:center;padding:3px;user-select:none;touch-action:none;border-radius:2px;overflow:hidden;background:#35443e}
   #item-ui .inventory-item.selected,#item-ui .slot.selected{outline:2px solid ${style.colors.accent};outline-offset:-3px}
   #item-ui .quantity{position:absolute;right:4px;bottom:2px;background:#142020dd;padding:0 3px;font-size:11px;letter-spacing:0}
   #item-ui .item-icon{width:88%;height:88%;max-width:120px;max-height:94px;image-rendering:pixelated}
-  #item-ui .nearby-wrap{max-height:calc(100vh - 190px);overflow:auto;padding:1px}
+  #item-ui .container-tabs{display:flex;gap:8px;margin:0 0 12px} #item-ui .container-tabs button{padding:6px 12px;background:transparent;border-color:#40504b;color:#a8b9ae} #item-ui .container-tabs button[aria-selected=true]{border-color:#c8ae76;color:#efcf91;background:#263734} #item-ui .nearby-wrap{max-height:calc(100vh - 190px);overflow:auto;padding:1px}
   #item-ui .inventory-footer{margin-top:14px;display:flex;justify-content:space-between;gap:12px;font-size:11px;color:#92a69c}
   #item-ui .placement{position:absolute;pointer-events:none;border:2px solid;z-index:4;opacity:.65}
   #item-ui .item-tooltip,#item-ui .item-context{position:fixed;z-index:110;background:#111c20f5;border:1px solid #738779;box-shadow:0 12px 36px #0009;max-height:calc(100vh - 24px);overflow:auto}
@@ -45,7 +45,9 @@ export function mountInventory(parent:HTMLElement,config:ItemConfig,style:ItemSt
   let state:ItemProjection|undefined,selected:string|undefined,last='',modal:{type:'split'|'drop';id:string;max:number}|undefined;
   let hover:{id?:string;label?:string;x:number;y:number}|undefined,menu:{id:string;x:number;y:number}|undefined;
   let drag:{id:string;rotated:boolean;x:number;y:number;active:boolean;startX:number;startY:number}|undefined;
+  let activeContainer:string|undefined;
   const cell=style.cellSize;
+  const currentContainer=()=>activeContainer??state!.pocketsId;
   const definition=(id:string)=>config.definitions.find(d=>d.id===state?.items[id]?.definition)!;
   const text=(tag:string,value:string)=>{const el=doc.createElement(tag);el.textContent=value;return el;};
   const button=(label:string,action:()=>void)=>{const b=text('button',label) as HTMLButtonElement;b.type='button';b.onclick=action;return b;};
@@ -77,7 +79,7 @@ export function mountInventory(parent:HTMLElement,config:ItemConfig,style:ItemSt
     const i=hover.id&&state.items[hover.id];
     if(i){const d=definition(i.id),category=text('div',(d.category??'物资')+' · '+(d.usage??d.tags.join(' / ')));category.className='tooltip-meta';
       const mass=d.weight*i.quantity+(d.weapon?(i.loaded??0)*config.definitions.find(a=>a.id===d.weapon!.ammo)!.weight:0);
-      panel.append(category,text('h4',d.name),text('p',d.description),text('p','数量 '+i.quantity+' · 格型 '+d.size.join('×')+' · 堆叠 '+d.maxStack),text('p','载荷 '+mass.toFixed(2)+' kg'),text('p','参考价值 '+d.value+' / '+(d.valueQuantity??1)+(d.unit??'件')+' · 合计 '+(d.value*i.quantity/(d.valueQuantity??1)).toFixed(2)),text('p','归属：'+(i.location.kind==='world'?'附近地面':i.location.kind==='slot'?'角色装备':'背包')+' · 预留：无'));
+      panel.append(category,text('h4',d.name),text('p',d.description),text('p','数量 '+i.quantity+' · 格型 '+d.size.join('×')+' · 堆叠 '+d.maxStack),text('p','载荷 '+mass.toFixed(2)+' kg'),text('p','参考价值 '+d.value+' / '+(d.valueQuantity??1)+(d.unit??'件')+' · 合计 '+(d.value*i.quantity/(d.valueQuantity??1)).toFixed(2)),text('p','归属：'+(i.location.kind==='world'?'附近地面':i.location.kind==='slot'?'角色装备':i.location.kind==='grid'&&i.location.parent===state!.pocketsId?'随身':'背包')+' · 预留：无'));
       if(d.weapon)panel.append(text('p','枪内弹 '+i.loaded+' / '+d.weapon.capacity));
     }else panel.append(text('h4',hover.label??''));
     placeOverlay(panel,hover.x,hover.y);
@@ -98,8 +100,10 @@ export function mountInventory(parent:HTMLElement,config:ItemConfig,style:ItemSt
   function renderMenu(){
     if(!menu||!state||!state.items[menu.id]){closeMenu();return;}const i=state.items[menu.id],d=definition(i.id),panel=doc.createElement('div');panel.className='item-context';panel.setAttribute('role','menu');panel.setAttribute('aria-label',d.name+'操作');
     const action=(label:string,run:()=>void)=>{const b=button(label,()=>{closeMenu();hideTooltip();run();});b.setAttribute('role','menuitem');panel.append(b);};
-    if(i.location.kind==='world')action('拾取',()=>send({type:'take',id:i.id}));
+    if(i.location.kind==='world')action('拾取',()=>send({type:'take',id:i.id,parent:currentContainer()}));
     if(i.location.kind==='grid'){if(i.quantity>1)action('拆分',()=>quantity('split'));action('丢弃',()=>quantity('drop'));}
+    if(d.tags.includes('backpack'))action(i.location.kind==='slot'?'卸下':'装备',()=>send({type:i.location.kind==='slot'?'unequip':'equip',id:i.id}));
+    if(d.tags.includes('backpack')&&i.location.kind==='slot')action('丢弃',()=>send({type:'drop',id:i.id,quantity:1}));
     if(d.weapon&&i.location.kind!=='world'){
       action(i.location.kind==='slot'?'卸下':'装备',()=>send({type:i.location.kind==='slot'?'unequip':'equip',id:i.id}));action('装填',()=>send({type:'load',id:i.id}));action('卸弹',()=>send({type:'unload',id:i.id}));
     }
@@ -119,12 +123,12 @@ export function mountInventory(parent:HTMLElement,config:ItemConfig,style:ItemSt
     const character=doc.createElement('section');character.className='character-section';character.setAttribute('aria-label','人物与装备');character.append(text('h3','装备'));
     const loadout=doc.createElement('div');loadout.className='character-loadout';const stage=doc.createElement('div');stage.className='character-stage';
     const held=state.equipped&&state.items[state.equipped],weapon=held&&definition(held.id).weapon;
-    stage.append(characterPreview(doc,style,held&&weapon?{definition:held.definition,pose:weapon.pose}:undefined));loadout.append(stage);
+    stage.append(characterPreview(doc,style,held&&weapon?{definition:held.definition,pose:weapon.pose}:undefined,!!state.equippedBackpack));loadout.append(stage);
     const equipment=doc.createElement('div');equipment.className='equipment';
     for(const [slot,label] of [['head','头部 · 未开放'],['armor','护甲 · 未开放'],['primary','主武器'],['backpack','背包']]){
       const i=Object.values(state.items).find(i=>i.location.kind==='slot'&&i.location.parent===state!.playerId&&i.location.slot===slot);
       const b=button('',()=>{if(i){selected=i.id;render();}});b.className='slot'+(i&&selected===i.id?' selected':'');b.dataset.slot=slot;b.setAttribute('aria-label',label+(i?' · '+definition(i.id).name:''));
-      if(i){b.dataset.itemId=i.id;b.append(icon(i.id));bindItem(b,i.id,false,0,0,slot==='primary');if(definition(i.id).weapon){const n=text('span',i.loaded+'/'+definition(i.id).weapon!.capacity);n.className='quantity';b.append(n);}}
+      if(i){b.dataset.itemId=i.id;b.append(icon(i.id));bindItem(b,i.id,false,0,0,slot==='primary'||slot==='backpack');if(definition(i.id).weapon){const n=text('span',i.loaded+'/'+definition(i.id).weapon!.capacity);n.className='quantity';b.append(n);}}
       else {b.append(slotOutline(slot));b.onpointerenter=ev=>{hover={label,x:ev.clientX,y:ev.clientY};showTooltip();};b.onpointerleave=hideTooltip;}
       if(slot==='head'||slot==='armor'){b.setAttribute('aria-disabled','true');const lock=doc.createElementNS('http://www.w3.org/2000/svg','svg');lock.setAttribute('viewBox','0 0 12 14');lock.classList.add('slot-lock');lock.setAttribute('aria-hidden','true');const path=doc.createElementNS(lock.namespaceURI,'path');path.setAttribute('d','M3 6V4a3 3 0 0 1 6 0v2M2 6h8v6H2z');lock.append(path);b.append(lock);}
       equipment.append(b);
@@ -136,10 +140,12 @@ export function mountInventory(parent:HTMLElement,config:ItemConfig,style:ItemSt
       b.append(icon(i.id));const n=text('span','×'+i.quantity);n.className='quantity';b.append(n);
       bindItem(b,i.id,rotated,x,y);return b;
     };
-    for(const container of state.containers){
-      const wrap=doc.createElement('div');wrap.className='grid-wrap';wrap.append(text('h3','背包'));
-      wrap.append(mountGrid(doc,{id:container.id,label:'背包网格',columns:container.columns,rows:container.rows,cell,placements:container.items.map(item=>{const l=item.location as {x:number;y:number;rotated:boolean};return {item,...l};}),renderItem}));body.append(wrap);
-    }
+    if(!state.containers.some(g=>g.id===activeContainer))activeContainer=state.pocketsId;
+    const storage=doc.createElement('section');storage.className='storage-section';const tabs=doc.createElement('div');tabs.className='container-tabs';tabs.setAttribute('role','tablist');tabs.setAttribute('aria-label','携带容器');
+    for(const container of state.containers){const name=container.id===state.pocketsId?'随身':'背包',tab=button(name+' '+container.columns+'×'+container.rows,()=>{cancel();closeMenu();hideTooltip();activeContainer=container.id;render();});tab.onpointerenter=()=>{if(drag?.active&&activeContainer!==container.id){activeContainer=container.id;hideTooltip();render();}};tab.setAttribute('role','tab');tab.setAttribute('aria-selected',String(activeContainer===container.id));tabs.append(tab);}storage.append(tabs);
+    const container=state.containers.find(g=>g.id===activeContainer)!;
+    const wrap=doc.createElement('div');wrap.className='grid-wrap';
+    wrap.append(mountGrid(doc,{id:container.id,label:container.id===state.pocketsId?'随身网格':'背包网格',columns:container.columns,rows:container.rows,cell,placements:container.items.map(item=>{const l=item.location as {x:number;y:number;rotated:boolean};return {item,...l};}),renderItem}));storage.append(wrap);body.append(storage);
     const near=doc.createElement('div');near.append(text('h3','散落物'));const nearWrap=doc.createElement('div');nearWrap.className='nearby-wrap';
     const layout=nearbyLayout(state.nearby.map(id=>state!.items[id]).filter(Boolean),config,5);
     nearWrap.append(mountGrid(doc,{id:'nearby',label:'附近物品网格',columns:5,rows:Math.max(6,layout.rows),cell,placements:layout.placements,renderItem}));near.append(nearWrap);body.append(near);
@@ -152,25 +158,27 @@ export function mountInventory(parent:HTMLElement,config:ItemConfig,style:ItemSt
     }
   }
   function preview() {
-    if(!drag||!state)return;const grid=root.querySelector<HTMLElement>('[data-container-id="'+state.backpackId+'"]');if(!grid)return;
+    if(!drag||!state)return;const grid=root.querySelector<HTMLElement>('[data-container-id="'+currentContainer()+'"]');if(!grid)return;
     root.querySelector('.placement')?.remove();const p=doc.createElement('div');p.className='placement';const [w,h]=dimensions(definition(drag.id),drag.rotated);
-    let valid=canPlace(state,config,drag.id,state.backpackId,drag.x,drag.y,drag.rotated);
+    let valid=canPlace(state,config,drag.id,currentContainer(),drag.x,drag.y,drag.rotated);
     const own=state.items[drag.id];
-    if(!valid)valid=Object.values(state.items).some(i=>{const l=i.location;if(l.kind!=='grid'||l.parent!==state!.backpackId||i.id===own.id||i.definition!==own.definition||i.quantity>=definition(i.id).maxStack)return false;const [iw,ih]=dimensions(definition(i.id),l.rotated);return drag!.x>=l.x&&drag!.x<l.x+iw&&drag!.y>=l.y&&drag!.y<l.y+ih;});
-    p.style.cssText=`left:${drag.x*cell}px;top:${drag.y*cell}px;width:${w*cell}px;height:${h*cell}px;border-color:${valid?style.colors.valid:style.colors.invalid};background:${valid?style.colors.valid:style.colors.invalid}44`;grid.append(p);
+    if(!valid)valid=Object.values(state.items).some(i=>{const l=i.location;if(l.kind!=='grid'||l.parent!==currentContainer()||i.id===own.id||i.definition!==own.definition||i.quantity>=definition(i.id).maxStack)return false;const [iw,ih]=dimensions(definition(i.id),l.rotated);return drag!.x>=l.x&&drag!.x<l.x+iw&&drag!.y>=l.y&&drag!.y<l.y+ih;});
+    const left=Math.max(0,drag.x*cell),top=Math.max(0,drag.y*cell),width=Math.min(grid.clientWidth,(drag.x+w)*cell)-left,height=Math.min(grid.clientHeight,(drag.y+h)*cell)-top;
+    if(width<=0||height<=0)return;
+    p.style.cssText=`left:${left}px;top:${top}px;width:${width}px;height:${height}px;border-color:${valid?style.colors.valid:style.colors.invalid};background:${valid?style.colors.valid:style.colors.invalid}44`;grid.append(p);
   }
-  const move=(ev:PointerEvent)=>{if(!drag||!state)return;if(Math.hypot(ev.clientX-drag.startX,ev.clientY-drag.startY)>4)drag.active=true;if(!drag.active)return;const grid=root.querySelector('[data-container-id="'+state.backpackId+'"]');if(!grid)return;const r=grid.getBoundingClientRect();drag.x=Math.floor((ev.clientX-r.left)/cell);drag.y=Math.floor((ev.clientY-r.top)/cell);preview();};
+  const move=(ev:PointerEvent)=>{if(!drag||!state)return;if(Math.hypot(ev.clientX-drag.startX,ev.clientY-drag.startY)>4)drag.active=true;if(!drag.active)return;const grid=root.querySelector('[data-container-id="'+currentContainer()+'"]');if(!grid)return;const r=grid.getBoundingClientRect();drag.x=Math.floor((ev.clientX-r.left)/cell);drag.y=Math.floor((ev.clientY-r.top)/cell);preview();};
   const up=(ev:PointerEvent)=>{
     if(!drag||!state)return;const d=drag;cancel();selected=d.id;
     const hit=(selector:string)=>{const el=root.querySelector(selector),r=el?.getBoundingClientRect();return !!r&&ev.clientX>=r.left&&ev.clientX<r.right&&ev.clientY>=r.top&&ev.clientY<r.bottom;};
     if(d.active){
       const i=state.items[d.id];
-      if(hit('[data-slot="primary"]'))send({type:'equip',id:d.id});
-      else if(hit('[data-container-id="'+state.backpackId+'"]')){
-        if(i.location.kind==='world')send({type:'take',id:d.id,x:d.x,y:d.y,rotated:d.rotated});
-        else if(i.location.kind==='slot')send({type:'unequip',id:d.id});
-        else send({type:'move',id:d.id,parent:state.backpackId,x:d.x,y:d.y,rotated:d.rotated});
-      }else if(hit('[data-container-id="nearby"]')&&i.location.kind==='grid')quantity('drop');
+      if((hit('[data-slot="primary"]')&&definition(i.id).weapon)||(hit('[data-slot="backpack"]')&&definition(i.id).tags.includes('backpack')))send({type:'equip',id:d.id});
+      else if(hit('[data-container-id="'+currentContainer()+'"]')){
+        if(i.location.kind==='world')send({type:'take',id:d.id,parent:currentContainer(),x:d.x,y:d.y,rotated:d.rotated});
+        else if(i.location.kind==='slot')send({type:'unequip',id:d.id,parent:currentContainer(),x:d.x,y:d.y,rotated:d.rotated});
+        else send({type:'move',id:d.id,parent:currentContainer(),x:d.x,y:d.y,rotated:d.rotated});
+      }else if(hit('[data-container-id="nearby"]')&&(i.location.kind==='grid'||(i.location.kind==='slot'&&definition(i.id).tags.includes('backpack'))))quantity('drop');
     }render();
   };
   const key=(ev:KeyboardEvent)=>{
@@ -183,6 +191,6 @@ export function mountInventory(parent:HTMLElement,config:ItemConfig,style:ItemSt
   const outside=(ev:PointerEvent)=>{if(!(ev.target instanceof doc.defaultView!.Node))return;if(!root.querySelector('.item-context')?.contains(ev.target))closeMenu();};
   const blur=()=>{cancel();modal=undefined;closeMenu();hideTooltip();render();};
   doc.addEventListener('pointerdown',outside,true);doc.addEventListener('pointermove',move);doc.addEventListener('pointerup',up);doc.addEventListener('keydown',key,true);doc.defaultView!.addEventListener('blur',blur);
-  return {update(next:ItemProjection){const signature=JSON.stringify(next);state=next;if(signature!==last){last=signature;if(!drag&&!modal)render();}},isOpen:()=>!!state?.open,
+  return {update(next:ItemProjection){const signature=JSON.stringify(next);if(state&&next.equippedBackpack&&next.equippedBackpack!==state.equippedBackpack)activeContainer=next.equippedBackpack;state=next;if(signature!==last){last=signature;if(!drag&&!modal)render();}},isOpen:()=>!!state?.open,
     dispose(){doc.removeEventListener('pointerdown',outside,true);doc.removeEventListener('pointermove',move);doc.removeEventListener('pointerup',up);doc.removeEventListener('keydown',key,true);doc.defaultView!.removeEventListener('blur',blur);root.remove();css.remove();}};
 }

@@ -10,7 +10,7 @@ async function go(play,x,z) {
 }
 const gridItems=s=>Object.values(s.inventory.items).filter(i=>i.location.kind==='grid');
 const quantity=(s,definition,kind)=>Object.values(s.inventory.items).filter(i=>i.definition===definition&&(!kind||i.location.kind===kind)).reduce((n,i)=>n+i.quantity,0);
-async function press(play,key){await play.page.keyboard.press(key);await play.advance(.12,{render:true});}
+async function press(play,key){await play.page.keyboard.press(key);await play.advance(.12,{render:true});if(key==='Tab'&&(await play.state()).inventory.open)await play.page.getByRole('tab',{name:'背包 10×6',exact:true}).click();}
 async function drag(play,id,x,y,rotate=false){
   const grid=await play.page.locator('[aria-label="背包网格"]').boundingBox(),item=await play.page.locator(`[data-item-id="${id}"]`).boundingBox();assert.ok(grid&&item);
   await play.page.mouse.move(item.x+10,item.y+10);await play.page.mouse.down();await play.page.mouse.move(grid.x+x*44+12,grid.y+y*44+12,{steps:6});

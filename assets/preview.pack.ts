@@ -7,7 +7,7 @@ import type { Plugin } from '@forgeax/engine/plugin';
 import { Time, Update, FixedUpdate, FixedTime } from '@forgeax/engine/ecs';
 import { INPUT_SNAPSHOT_RESOURCE_KEY, type InputSnapshot } from '@forgeax/engine/input';
 import { bake, bakeItem, parts, collisionBoxes, type Part } from '../scripts/view/voxels.ts';
-import { Materials } from '@forgeax/engine/render';
+import { Outline, OutlineOcclusionValue, Materials } from '@forgeax/engine/render';
 import data from '../config/gameplay/world.json';
 import { createState, project, validateConfig } from '../scripts/logic/world.ts';
 import { createCamera, advanceCamera, groundPoint } from '../scripts/logic/camera.ts';
@@ -37,7 +37,7 @@ export const preview: Plugin.Object<{ meshes: Record<Part,string>; itemMeshes:Re
       validateItemStyle(itemStyle,itemsConfig);
       const inventory=createItems(itemsConfig,itemsWorld);
       const pending:ItemCommand[]=[];let lastProjection='',target:string|undefined;
-      let nearby:string[]=[];
+      let nearby:string[]=[];let readOutline:()=>number[]=()=>[];
       let view = createCamera([state.x,state.y,state.z],presentation.camera,presentation.zones);
       let pointer: {ray?:number[]; focused:boolean}={focused:true};
       const port=ctx.gameHost!.port;
@@ -50,7 +50,7 @@ export const preview: Plugin.Object<{ meshes: Record<Part,string>; itemMeshes:Re
       port.addEventListener('message',receive); port.start();
       yield ()=>port.removeEventListener('message',receive);
       const inventoryProjection=()=>projectItems(inventory,itemsConfig,target,nearby);
-      const read = ctx.gameHost!.gameProjection?.registerRead({ id: 'preview', title: 'Controller and Item state', read: () => ({...project(state),camera:JSON.parse(JSON.stringify(view)),aim:inventory.open?null:groundPoint(pointer.ray,state.y)??null,inventory:JSON.parse(JSON.stringify(inventoryProjection()))}) });
+      const read = ctx.gameHost!.gameProjection?.registerRead({ id: 'preview', title: 'Controller and Item state', read: () => ({...project(state),camera:JSON.parse(JSON.stringify(view)),aim:inventory.open?null:groundPoint(pointer.ray,state.y)??null,inventory:JSON.parse(JSON.stringify(inventoryProjection())),proximity:{outlined:readOutline()}}) });
       if (read) yield read;
       const assets = ctx.assets!;
       const material = (await assets.load(configAssets.material, 'material')).unwrap();
@@ -63,9 +63,12 @@ export const preview: Plugin.Object<{ meshes: Record<Part,string>; itemMeshes:Re
       yield ()=>{if(held)ctx.world.despawn(held);};
       const drops=new Map<string,ReturnType<typeof object>>();
       yield ()=>{for(const entity of drops.values())ctx.world.despawn(entity);};
-      const entities = new Map<Part,ReturnType<typeof object>>();
+      const entities = new Map<Part,ReturnType<typeof object>>(),partMeshes=new Map<Part,AssetHandle<'mesh'>>();
+      yield ()=>{for(const entity of entities.values())ctx.world.despawn(entity);};
       const eye = camera(ctx.world,view);
-      yield () => ctx.world.despawn(eye);
+      yield () => {readOutline=()=>[];ctx.world.despawn(eye);};
+      ctx.world.addComponent(eye,{component:Outline,data:{entities:[],visibleColor:itemStyle.proximity.outlineColor,hiddenColor:itemStyle.proximity.outlineColor,width:itemStyle.proximity.outlineWidth,occlusion:OutlineOcclusionValue.visible}}).unwrap();
+      readOutline=()=>Array.from(ctx.world.get(eye,Outline).unwrap().entities);
       const physical=spawnCollision(ctx.world,collisionBoxes(),config);
       const character=spawnCharacter(ctx.world,config);
       yield ()=>{ for(const entity of [...physical,character]) ctx.world.despawn(entity); };
@@ -101,6 +104,9 @@ export const preview: Plugin.Object<{ meshes: Record<Part,string>; itemMeshes:Re
         drawCamera(world,eye,view,size&&size.height>0?size.width/size.height:presentation.camera.aspect);
         const equipped=Object.values(inventory.items).find(i=>i.location.kind==='slot'&&i.location.parent===inventory.playerId&&i.location.slot==='primary');
         const weapon=itemsConfig.definitions.find(d=>d.id===equipped?.definition)?.weapon;
+        const bagEquipped=inventory.backpackId!==inventory.playerId;
+        if(!bagEquipped&&entities.has('backpack')){world.despawn(entities.get('backpack')!);entities.delete('backpack');}
+        if(bagEquipped&&!entities.has('backpack'))entities.set('backpack',object(world,'backpack',partMeshes.get('backpack')!,material,[0,0,0],[1,1,1]));
         draw(world, entities, project(state),weapon?.pose);
         if(heldDefinition!==equipped?.definition){if(held)world.despawn(held);held=undefined;heldDefinition=equipped?.definition;if(equipped)held=object(world,'Held '+equipped.definition,dropMeshes.get(equipped.definition)!,material,[0,0,0],[1,1,1]);}
         if(held&&weapon)world.set(held,Transform,heldTransform(project(state),weapon.pose)).unwrap();
@@ -111,6 +117,7 @@ export const preview: Plugin.Object<{ meshes: Record<Part,string>; itemMeshes:Re
           const scale=item.id===target?1.18:1;
           world.set(entity,Transform,{pos:item.location.position,scale:[scale,scale,scale]}).unwrap();
         }
+        world.set(eye,Outline,{entities:nearby.map(id=>drops.get(id)).filter((e):e is NonNullable<typeof e>=>e!==undefined)}).unwrap();
         const projection=inventoryProjection(),signature=JSON.stringify(projection);
         if(signature!==lastProjection){lastProjection=signature;port.postMessage({type:'item-projection',state:projection});}
       }}).unwrap();

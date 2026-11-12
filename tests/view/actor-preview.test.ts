@@ -8,10 +8,10 @@ import world from '../../config/gameplay/item-world.json';
 import styleRaw from '../../config/presentation/items.json';
 const style=validateItemStyle(styleRaw,validateItems(raw,world).config);
 it('projects the actual shared actor geometry with all five body parts',()=>{
- const parts:ActorPart[]=['body','left-leg','right-leg','left-arm','right-arm'],faces=characterFaces(style);
+ const parts:ActorPart[]=['body','left-leg','right-leg','left-arm','right-arm','backpack'],faces=characterFaces(style);
  expect(faces.length).toBe(parts.reduce((n,part)=>n+actorBoxes(part).length*6,0));
  expect(new Set(faces.map(f=>f.part))).toEqual(new Set(parts));expect(faces.every(f=>f.points.every(p=>p.every(Number.isFinite)))).toBe(true);
- expect(faces.every((f,i)=>i===0||f.depth>=faces[i-1].depth)).toBe(true);
+ expect(faces.every((f,i)=>i===0||f.depth>=faces[i-1].depth)).toBe(true);expect(characterFaces(style,undefined,false).some(f=>f.part==='backpack')).toBe(false);
 });
 it('reflects equipped weapon geometry and the same arm rest pose used in the scene',()=>{
  const pistol=characterFaces(style,{definition:'pistol',pose:'pistol'}),smg=characterFaces(style,{definition:'smg',pose:'smg'});

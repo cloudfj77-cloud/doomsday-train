@@ -1,3 +1,4 @@
+import { mountDropLabels } from '../scripts/view/drop-labels.ts';
 import { definePack, definePackageId } from '@forgeax/engine/pack/source';
 import { ok } from '@forgeax/engine/types';
 import type { Plugin } from '@forgeax/engine/plugin';
@@ -23,9 +24,10 @@ export const frontend: Plugin = { name: 'preview-frontend', inject: ['gameHost']
     const uiRoot=host.uiRoot??doc.getElementById('game-ui');
     if(!(uiRoot instanceof HTMLElement))throw Error('missing-inventory-ui-root');
     const ui=mountInventory(uiRoot,config,validateItemStyle(itemStyle,config),command=>port.postMessage({type:'item-command',command}));
-    const receive=(event:MessageEvent)=>{if(event.data?.type==='item-projection')ui.update(event.data.state as ItemProjection);};
+    const labels=mountDropLabels(uiRoot,canvas,config,validateItemStyle(itemStyle,config));
+    const receive=(event:MessageEvent)=>{if(event.data?.type==='item-projection'){ui.update(event.data.state as ItemProjection);labels.update(event.data.state as ItemProjection);}};
     port.addEventListener('message',receive);port.start();port.postMessage({type:'item-ready'});
-    yield ()=>{port.removeEventListener('message',receive);ui.dispose();};
+    yield ()=>{port.removeEventListener('message',receive);ui.dispose();labels.dispose();};
     let point: {x:number;y:number}|undefined, mapping:BarrelDistortionMapping|undefined;
     const publish=()=>{
       const rect=canvas.getBoundingClientRect();
@@ -39,7 +41,7 @@ export const frontend: Plugin = { name: 'preview-frontend', inject: ['gameHost']
     const resize=()=>{mapping=undefined;publish();};
     canvas.addEventListener('pointermove',move);canvas.addEventListener('pointerleave',leave);
     win.addEventListener('blur',leave);win.addEventListener('focus',publish);win.addEventListener('resize',resize);
-    yield subscribeBrowserFrameSubmitted(canvas,event=>{mapping=event.barrelDistortion;publish();});
+    yield subscribeBrowserFrameSubmitted(canvas,event=>{mapping=event.barrelDistortion;labels.frame(mapping);publish();});
     yield ()=>{canvas.removeEventListener('pointermove',move);canvas.removeEventListener('pointerleave',leave);win.removeEventListener('blur',leave);win.removeEventListener('focus',publish);win.removeEventListener('resize',resize);};
     publish();
   });

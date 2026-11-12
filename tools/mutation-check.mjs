@@ -10,7 +10,14 @@ function retryFile(action) {
 }
 const replace=(before,after)=>s=>s.replace(before,after);
 const cases=[
- ['scripts/view/actor-preview.ts',replace("['body','left-leg','right-leg','left-arm','right-arm']","['left-leg','right-leg','left-arm','right-arm']")],
+ ['scripts/logic/items.ts',replace('draft.backpackId=equippedBackpack(draft)??draft.playerId','draft.backpackId=draft.backpackId')],
+ ['scripts/logic/items.ts',replace('return bag?[bag,s.playerId]:[s.playerId]','return [s.playerId]')],
+ ['scripts/logic/items.ts',replace("if(l.kind!=='grid'&&l.kind!=='slot')return false;","if(l.kind!=='grid'&&l.kind!=='slot')return true;")],
+ ['scripts/logic/items.ts',replace('if(ancestors.has(cursor.id))return false','if(ancestors.has(cursor.id))return true')],
+ ['scripts/view/actor-preview.ts',replace("hasBackpack?['backpack']:[]","true?['backpack']:[]")],
+ ['config/presentation/items.json',replace('"outlineWidth": 2','"outlineWidth": 9')],
+
+ ['scripts/view/actor-preview.ts',replace("['body','left-leg'","['left-leg'")],
  ['scripts/view/actor-preview.ts',replace('return faces.sort((a,b)=>a.depth-b.depth)','return faces.sort((a,b)=>b.depth-a.depth)')],
  ['scripts/view/actor-model.ts',replace('pitch=-holding.armPitch','pitch=0')],
 

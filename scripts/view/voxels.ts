@@ -135,7 +135,7 @@ function terrain() {
 
 // These exact geometry descriptors also assemble the collision scene.
 export function collisionBoxes() { return terrain().boxes; }
-export const parts=['terrain','body','left-leg','right-leg','left-arm','right-arm','shade'] as const;
+export const parts=['terrain','body','left-leg','right-leg','left-arm','right-arm','backpack','shade'] as const;
 export type Part=typeof parts[number];
 export function bake(part:Part) {
   if(part==='terrain')return terrain().finish();
