@@ -1,17 +1,74 @@
 {
-  "playerDefinition":"player",
-  "backpackDefinition":"backpack",
-  "backpackSlot":"backpack",
-  "interactionDistance":1.5,
-  "dropRadius":0.65,
-  "dropClearance":0.5,
-  "dropHeight":0.6,
-  "drops":[
-    {"definition":"scrap","quantity":25,"position":[-3.6,0,3.8]},
-    {"definition":"ammo","quantity":6,"position":[-4.5,0,3.2]},
-    {"definition":"bandage","quantity":8,"position":[-2.7,0,3.7]},
-    {"definition":"water","quantity":3,"position":[-2.5,0,2.5]},
-    {"definition":"rifle","quantity":1,"position":[-4.5,0,4.4]},
-    {"definition":"backpack","quantity":1,"position":[-2.4,0,4.6]}
+  "playerDefinition": "player",
+  "backpackDefinition": "backpack",
+  "backpackSlot": "backpack",
+  "interactionDistance": 1.5,
+  "dropRadius": 0.65,
+  "dropClearance": 0.5,
+  "dropHeight": 0.6,
+  "drops": [
+    {
+      "definition": "scrap",
+      "quantity": 25,
+      "position": [
+        -3.6,
+        0,
+        3.8
+      ]
+    },
+    {
+      "definition": "ammo",
+      "quantity": 90,
+      "position": [
+        -4.5,
+        0,
+        3.2
+      ]
+    },
+    {
+      "definition": "bandage",
+      "quantity": 8,
+      "position": [
+        -2.7,
+        0,
+        3.7
+      ]
+    },
+    {
+      "definition": "water",
+      "quantity": 3,
+      "position": [
+        -2.5,
+        0,
+        2.5
+      ]
+    },
+    {
+      "definition": "pistol",
+      "quantity": 1,
+      "position": [
+        -4.5,
+        0,
+        4.4
+      ]
+    },
+    {
+      "definition": "backpack",
+      "quantity": 1,
+      "position": [
+        -2.4,
+        0,
+        4.6
+      ]
+    },
+    {
+      "definition": "smg",
+      "quantity": 1,
+      "position": [
+        -3.8,
+        0,
+        4.7
+      ]
+    }
   ]
 }
