@@ -1,3 +1,4 @@
+import { playerConfig } from '../config/game.ts';
 import { characterPreview } from './actor-preview.ts';
 import { mountGrid, nearbyLayout, type GridPlacement } from './inventory-grid.ts';
 import { canPlace, dimensions, type ItemConfig, type ItemCommand, type ItemProjection } from '../logic/items.ts';
@@ -15,7 +16,7 @@ export function mountInventory(parent:HTMLElement,config:ItemConfig,style:ItemSt
   #item-ui .inventory-window{width:min(1240px,98vw);max-height:96vh;overflow:auto;background:linear-gradient(115deg,#1b292b,#131f22);border:1px solid #53635f;box-shadow:0 20px 80px #0009;padding:18px 20px}
   #item-ui .inventory-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid #40504b}
   #item-ui h2{margin:0;font-size:20px;font-weight:500;letter-spacing:5px} #item-ui h3{margin:0 0 12px;font-size:13px;font-weight:500;letter-spacing:2px;color:#bdc8be}
-  #item-ui .inventory-body{display:grid;grid-template-columns:minmax(250px,1fr) 444px minmax(222px,.8fr);gap:18px;align-items:start}
+  #item-ui .inventory-body{display:grid;grid-template-columns:minmax(250px,1fr) 464px minmax(222px,.8fr);gap:18px;align-items:start}
   #item-ui .character-section{min-width:0} #item-ui .character-loadout{display:grid;grid-template-columns:minmax(120px,1fr) 78px;gap:12px;align-items:center;min-height:360px}
   #item-ui .character-stage{height:min(430px,calc(100vh - 220px));min-height:320px;background:radial-gradient(ellipse at 50% 45%,#34413b70,transparent 70%);display:flex;align-items:center;justify-content:center}
   #item-ui .character-model{width:100%;height:100%;filter:drop-shadow(0 14px 10px #0006)}
@@ -28,7 +29,18 @@ export function mountInventory(parent:HTMLElement,config:ItemConfig,style:ItemSt
   #item-ui .inventory-item.selected,#item-ui .slot.selected{outline:2px solid ${style.colors.accent};outline-offset:-3px}
   #item-ui .quantity{position:absolute;right:4px;bottom:2px;background:#142020dd;padding:0 3px;font-size:11px;letter-spacing:0}
   #item-ui .item-icon{width:88%;height:88%;max-width:120px;max-height:94px;image-rendering:pixelated}
-  #item-ui .container-tabs{display:flex;gap:8px;margin:0 0 12px} #item-ui .container-tabs button{padding:6px 12px;background:transparent;border-color:#40504b;color:#a8b9ae} #item-ui .container-tabs button[aria-selected=true]{border-color:#c8ae76;color:#efcf91;background:#263734} #item-ui .nearby-wrap{max-height:calc(100vh - 190px);overflow:auto;padding:1px}
+  #item-ui .storage-frame{position:relative;padding-right:18px;min-width:0}
+  #item-ui .storage-list{max-height:calc(100vh - 210px);overflow-y:auto;overflow-x:clip;scrollbar-width:none} #item-ui .storage-list::-webkit-scrollbar{display:none} #item-ui .container-section+.container-section{margin-top:18px}
+  #item-ui .storage-scrollbar{position:absolute;right:0;top:0;bottom:0;width:${style.scrollbar.width}px;background:${style.scrollbar.track};border-radius:3px;touch-action:none;cursor:pointer}
+  #item-ui .storage-scrollbar[hidden]{display:none} #item-ui .storage-thumb{position:absolute;left:1px;right:1px;border-radius:3px;background:${style.scrollbar.thumb};min-height:24px}
+  #item-ui .storage-scrollbar:hover .storage-thumb,#item-ui .storage-scrollbar:focus-visible .storage-thumb{background:${style.scrollbar.hover}}
+  @supports (-moz-appearance:none){#item-ui .nearby-wrap{scrollbar-width:thin;scrollbar-color:${style.scrollbar.thumb} ${style.scrollbar.track}}}
+  #item-ui .storage-list::-webkit-scrollbar,#item-ui .nearby-wrap::-webkit-scrollbar{width:${style.scrollbar.width}px}
+  #item-ui .storage-list::-webkit-scrollbar-track,#item-ui .nearby-wrap::-webkit-scrollbar-track{background:${style.scrollbar.track}}
+  #item-ui .storage-list::-webkit-scrollbar-thumb,#item-ui .nearby-wrap::-webkit-scrollbar-thumb{background:${style.scrollbar.thumb};border:2px solid ${style.scrollbar.track};border-radius:3px}
+  #item-ui .storage-list::-webkit-scrollbar-thumb:hover,#item-ui .nearby-wrap::-webkit-scrollbar-thumb:hover{background:${style.scrollbar.hover}}
+  #item-ui .nearby-wrap{max-height:calc(100vh - 190px);overflow:auto;padding:1px}
+
   #item-ui .inventory-footer{margin-top:14px;display:flex;justify-content:space-between;gap:12px;font-size:11px;color:#92a69c}
   #item-ui .placement{position:absolute;pointer-events:none;border:2px solid;z-index:4;opacity:.65}
   #item-ui .item-tooltip,#item-ui .item-context{position:fixed;z-index:110;background:#111c20f5;border:1px solid #738779;box-shadow:0 12px 36px #0009;max-height:calc(100vh - 24px);overflow:auto}
@@ -44,10 +56,12 @@ export function mountInventory(parent:HTMLElement,config:ItemConfig,style:ItemSt
   doc.head.append(css);
   let state:ItemProjection|undefined,selected:string|undefined,last='',modal:{type:'split'|'drop';id:string;max:number}|undefined;
   let hover:{id?:string;label?:string;x:number;y:number}|undefined,menu:{id:string;x:number;y:number}|undefined;
-  let drag:{id:string;rotated:boolean;x:number;y:number;active:boolean;startX:number;startY:number}|undefined;
-  let activeContainer:string|undefined;
+  let drag:{id:string;parent?:string;rotated:boolean;x:number;y:number;active:boolean;startX:number;startY:number}|undefined;
+  let storageScroll=0;
+  let storageObserver:ResizeObserver|undefined;
   const cell=style.cellSize;
-  const currentContainer=()=>activeContainer??state!.pocketsId;
+  const dragContainer=()=>{if(!drag?.parent)throw Error('missing-drag-container');return drag.parent;};
+  const gridAt=(x:number,y:number)=>Array.from(root.querySelectorAll<HTMLElement>('.storage-list .inventory-grid')).find(el=>{const r=el.getBoundingClientRect();return el.contains(doc.elementFromPoint(x,y))&&x>=r.left&&x<r.right&&y>=r.top&&y<r.bottom;});
   const definition=(id:string)=>config.definitions.find(d=>d.id===state?.items[id]?.definition)!;
   const text=(tag:string,value:string)=>{const el=doc.createElement(tag);el.textContent=value;return el;};
   const button=(label:string,action:()=>void)=>{const b=text('button',label) as HTMLButtonElement;b.type='button';b.onclick=action;return b;};
@@ -100,7 +114,7 @@ export function mountInventory(parent:HTMLElement,config:ItemConfig,style:ItemSt
   function renderMenu(){
     if(!menu||!state||!state.items[menu.id]){closeMenu();return;}const i=state.items[menu.id],d=definition(i.id),panel=doc.createElement('div');panel.className='item-context';panel.setAttribute('role','menu');panel.setAttribute('aria-label',d.name+'操作');
     const action=(label:string,run:()=>void)=>{const b=button(label,()=>{closeMenu();hideTooltip();run();});b.setAttribute('role','menuitem');panel.append(b);};
-    if(i.location.kind==='world')action('拾取',()=>send({type:'take',id:i.id,parent:currentContainer()}));
+    if(i.location.kind==='world')action('拾取',()=>send({type:'take',id:i.id}));
     if(i.location.kind==='grid'){if(i.quantity>1)action('拆分',()=>quantity('split'));action('丢弃',()=>quantity('drop'));}
     if(d.tags.includes('backpack'))action(i.location.kind==='slot'?'卸下':'装备',()=>send({type:i.location.kind==='slot'?'unequip':'equip',id:i.id}));
     if(d.tags.includes('backpack')&&i.location.kind==='slot')action('丢弃',()=>send({type:'drop',id:i.id,quantity:1}));
@@ -111,13 +125,14 @@ export function mountInventory(parent:HTMLElement,config:ItemConfig,style:ItemSt
     placeOverlay(panel,menu.x,menu.y);
   }
   function render() {
-    if(!state)return;root.replaceChildren();
-    const hud=text('div','Tab 背包  ·  WASD 移动  ·  Shift 跑步');hud.className='item-hud';
-    if(state.target&&!state.open){const i=state.items[state.target];hud.append(text('div',`E 拾取 ${definition(i.id).name} ×${i.quantity}`));}
+    if(!state)return;storageObserver?.disconnect();storageScroll=root.querySelector('.storage-list')?.scrollTop??storageScroll;root.replaceChildren();
+    const keyName=(key:string)=>key.replace(/^Key/,'').replace(/^Shift(Left|Right)$/,'Shift');
+    const hud=text('div',keyName(style.keys.toggle)+' 背包 · '+[playerConfig.keys.movement.up,playerConfig.keys.movement.left,playerConfig.keys.movement.down,playerConfig.keys.movement.right].map(keyName).join('')+' 移动 · '+keyName(playerConfig.keys.movement.run)+' 跑步');hud.className='item-hud';
+    if(state.target&&!state.open){const i=state.items[state.target];hud.append(text('div',keyName(style.keys.pickup)+' 拾取最近物品'));}
     if(!state.result.ok&&!state.open)hud.append(text('div',state.result.hint));if(!state.open)root.append(hud);
     if(!state.open){modal=undefined;hover=undefined;menu=undefined;cancel();return;}
     const shell=doc.createElement('div');shell.className='inventory-shell';const panel=doc.createElement('section');panel.className='inventory-window';panel.setAttribute('aria-label','角色背包');
-    const header=doc.createElement('div');header.className='inventory-header';const title=doc.createElement('div');title.append(text('h2','行囊'));header.append(title,button('关闭 · Tab',()=>{cancel();modal=undefined;hideTooltip();closeMenu();send({type:'close'});}));panel.append(header);
+    const header=doc.createElement('div');header.className='inventory-header';const title=doc.createElement('div');title.append(text('h2','行囊'));header.append(title,button('关闭 · '+keyName(style.keys.toggle),()=>{cancel();modal=undefined;hideTooltip();closeMenu();send({type:'close'});}));panel.append(header);
     shell.oncontextmenu=ev=>ev.preventDefault();
     const body=doc.createElement('div');body.className='inventory-body';
     const character=doc.createElement('section');character.className='character-section';character.setAttribute('aria-label','人物与装备');character.append(text('h3','装备'));
@@ -140,17 +155,30 @@ export function mountInventory(parent:HTMLElement,config:ItemConfig,style:ItemSt
       b.append(icon(i.id));const n=text('span','×'+i.quantity);n.className='quantity';b.append(n);
       bindItem(b,i.id,rotated,x,y);return b;
     };
-    if(!state.containers.some(g=>g.id===activeContainer))activeContainer=state.pocketsId;
-    const storage=doc.createElement('section');storage.className='storage-section';const tabs=doc.createElement('div');tabs.className='container-tabs';tabs.setAttribute('role','tablist');tabs.setAttribute('aria-label','携带容器');
-    for(const container of state.containers){const name=container.id===state.pocketsId?'随身':'背包',tab=button(name+' '+container.columns+'×'+container.rows,()=>{cancel();closeMenu();hideTooltip();activeContainer=container.id;render();});tab.onpointerenter=()=>{if(drag?.active&&activeContainer!==container.id){activeContainer=container.id;hideTooltip();render();}};tab.setAttribute('role','tab');tab.setAttribute('aria-selected',String(activeContainer===container.id));tabs.append(tab);}storage.append(tabs);
-    const container=state.containers.find(g=>g.id===activeContainer)!;
-    const wrap=doc.createElement('div');wrap.className='grid-wrap';
-    wrap.append(mountGrid(doc,{id:container.id,label:container.id===state.pocketsId?'随身网格':'背包网格',columns:container.columns,rows:container.rows,cell,placements:container.items.map(item=>{const l=item.location as {x:number;y:number;rotated:boolean};return {item,...l};}),renderItem}));storage.append(wrap);body.append(storage);
+    const storage=doc.createElement('section');storage.className='storage-list';storage.setAttribute('aria-label','携带容器列表');
+    for(const container of state.containers){
+      const section=doc.createElement('section');section.className='container-section';section.append(text('h3',(container.id===state.pocketsId?'随身':'背包')+' '+container.columns+'×'+container.rows));
+      const wrap=doc.createElement('div');wrap.className='grid-wrap';wrap.append(mountGrid(doc,{id:container.id,label:container.id===state.pocketsId?'随身网格':'背包网格',columns:container.columns,rows:container.rows,cell,placements:container.items.map(item=>{const l=item.location as {x:number;y:number;rotated:boolean};return {item,...l};}),renderItem}));section.append(wrap);storage.append(section);
+    }
+    const storageFrame=doc.createElement('div');storageFrame.className='storage-frame';
+    const rail=doc.createElement('div');rail.className='storage-scrollbar';rail.setAttribute('role','scrollbar');rail.setAttribute('aria-label','携带容器滚动条');rail.setAttribute('aria-orientation','vertical');rail.tabIndex=0;
+    const thumb=doc.createElement('div');thumb.className='storage-thumb';rail.append(thumb);storageFrame.append(storage,rail);body.append(storageFrame);
+    const syncScroll=()=>{
+      const max=storage.scrollHeight-storage.clientHeight;rail.hidden=max<=0;rail.setAttribute('aria-valuemin','0');rail.setAttribute('aria-valuemax',String(Math.max(0,max)));rail.setAttribute('aria-valuenow',String(storage.scrollTop));
+      const size=Math.max(24,storage.clientHeight*storage.clientHeight/storage.scrollHeight);thumb.style.height=size+'px';thumb.style.top=(max>0?storage.scrollTop/max*(storage.clientHeight-size):0)+'px';
+    };
+    storage.onscroll=()=>{storageScroll=storage.scrollTop;syncScroll();};
+    let thumbDrag:{y:number;scroll:number}|undefined;
+    rail.onpointerdown=ev=>{if(ev.button!==0)return;ev.preventDefault();ev.stopPropagation();hideTooltip();if(ev.target!==thumb)storage.scrollTop+=(ev.clientY<thumb.getBoundingClientRect().top?-1:1)*storage.clientHeight;thumbDrag={y:ev.clientY,scroll:storage.scrollTop};rail.setPointerCapture(ev.pointerId);syncScroll();};
+    rail.onpointermove=ev=>{if(!thumbDrag)return;const travel=storage.clientHeight-thumb.offsetHeight;if(travel>0)storage.scrollTop=thumbDrag.scroll+(ev.clientY-thumbDrag.y)*(storage.scrollHeight-storage.clientHeight)/travel;syncScroll();};
+    rail.onpointerup=rail.onpointercancel=()=>{thumbDrag=undefined;};
+    rail.onkeydown=ev=>{const step=ev.key==='ArrowDown'?44:ev.key==='ArrowUp'?-44:ev.key==='PageDown'?storage.clientHeight:ev.key==='PageUp'?-storage.clientHeight:0;if(step||ev.key==='Home'||ev.key==='End'){ev.preventDefault();ev.stopPropagation();storage.scrollTop=ev.key==='Home'?0:ev.key==='End'?storage.scrollHeight:storage.scrollTop+step;syncScroll();}};
+    storageObserver=new ResizeObserver(syncScroll);storageObserver.observe(storage);for(const section of storage.children)storageObserver.observe(section);
     const near=doc.createElement('div');near.append(text('h3','散落物'));const nearWrap=doc.createElement('div');nearWrap.className='nearby-wrap';
     const layout=nearbyLayout(state.nearby.map(id=>state!.items[id]).filter(Boolean),config,5);
     nearWrap.append(mountGrid(doc,{id:'nearby',label:'附近物品网格',columns:5,rows:Math.max(6,layout.rows),cell,placements:layout.placements,renderItem}));near.append(nearWrap);body.append(near);
     panel.append(body);const footer=doc.createElement('div');footer.className='inventory-footer';footer.append(text('span',`载荷 ${state.weight.toFixed(2)} kg`),text('span','悬停查看 · 右键操作 · 拖拽整理'));panel.append(footer);
-    const notice=text('div',state.result.ok?'':state.result.hint);notice.className='notice';notice.setAttribute('role','status');panel.append(notice);shell.append(panel);root.append(shell);showTooltip();renderMenu();
+    const notice=text('div',state.result.ok?'':state.result.hint);notice.className='notice';notice.setAttribute('role','status');panel.append(notice);shell.append(panel);root.append(shell);storage.scrollTop=storageScroll;syncScroll();showTooltip();renderMenu();
     if(modal) {
       const overlay=doc.createElement('div');overlay.className='quantity-overlay';const dialog=doc.createElement('form');dialog.className='quantity-dialog';dialog.setAttribute('role','dialog');dialog.setAttribute('aria-label',modal.type==='drop'?'丢弃数量':'拆分数量');
       dialog.append(text('strong',modal.type==='drop'?'丢弃到脚边':'拆分物品'));const input=doc.createElement('input');input.type='number';input.min='1';input.max=String(modal.max);input.step='1';input.value=String(modal.type==='drop'?modal.max:1);input.required=true;input.setAttribute('aria-label','数量');dialog.append(input,text('div',`可选数量：1—${modal.max}`));
@@ -158,26 +186,31 @@ export function mountInventory(parent:HTMLElement,config:ItemConfig,style:ItemSt
     }
   }
   function preview() {
-    if(!drag||!state)return;const grid=root.querySelector<HTMLElement>('[data-container-id="'+currentContainer()+'"]');if(!grid)return;
+    if(!drag||!state||!drag.parent)return;const grid=root.querySelector<HTMLElement>('[data-container-id="'+dragContainer()+'"]');if(!grid)return;
     root.querySelector('.placement')?.remove();const p=doc.createElement('div');p.className='placement';const [w,h]=dimensions(definition(drag.id),drag.rotated);
-    let valid=canPlace(state,config,drag.id,currentContainer(),drag.x,drag.y,drag.rotated);
+    let valid=canPlace(state,config,drag.id,dragContainer(),drag.x,drag.y,drag.rotated);
     const own=state.items[drag.id];
-    if(!valid)valid=Object.values(state.items).some(i=>{const l=i.location;if(l.kind!=='grid'||l.parent!==currentContainer()||i.id===own.id||i.definition!==own.definition||i.quantity>=definition(i.id).maxStack)return false;const [iw,ih]=dimensions(definition(i.id),l.rotated);return drag!.x>=l.x&&drag!.x<l.x+iw&&drag!.y>=l.y&&drag!.y<l.y+ih;});
+    if(!valid)valid=Object.values(state.items).some(i=>{const l=i.location;if(l.kind!=='grid'||l.parent!==dragContainer()||i.id===own.id||i.definition!==own.definition||i.quantity>=definition(i.id).maxStack)return false;const [iw,ih]=dimensions(definition(i.id),l.rotated);return drag!.x>=l.x&&drag!.x<l.x+iw&&drag!.y>=l.y&&drag!.y<l.y+ih;});
     const left=Math.max(0,drag.x*cell),top=Math.max(0,drag.y*cell),width=Math.min(grid.clientWidth,(drag.x+w)*cell)-left,height=Math.min(grid.clientHeight,(drag.y+h)*cell)-top;
     if(width<=0||height<=0)return;
     p.style.cssText=`left:${left}px;top:${top}px;width:${width}px;height:${height}px;border-color:${valid?style.colors.valid:style.colors.invalid};background:${valid?style.colors.valid:style.colors.invalid}44`;grid.append(p);
   }
-  const move=(ev:PointerEvent)=>{if(!drag||!state)return;if(Math.hypot(ev.clientX-drag.startX,ev.clientY-drag.startY)>4)drag.active=true;if(!drag.active)return;const grid=root.querySelector('[data-container-id="'+currentContainer()+'"]');if(!grid)return;const r=grid.getBoundingClientRect();drag.x=Math.floor((ev.clientX-r.left)/cell);drag.y=Math.floor((ev.clientY-r.top)/cell);preview();};
+  const move=(ev:PointerEvent)=>{
+    if(!drag||!state)return;if(Math.hypot(ev.clientX-drag.startX,ev.clientY-drag.startY)>4)drag.active=true;if(!drag.active)return;
+    const grid=gridAt(ev.clientX,ev.clientY);root.querySelector('.placement')?.remove();drag.parent=grid?.dataset.containerId;if(!grid)return;
+    const r=grid.getBoundingClientRect();drag.x=Math.floor((ev.clientX-r.left)/cell);drag.y=Math.floor((ev.clientY-r.top)/cell);preview();
+  };
   const up=(ev:PointerEvent)=>{
     if(!drag||!state)return;const d=drag;cancel();selected=d.id;
     const hit=(selector:string)=>{const el=root.querySelector(selector),r=el?.getBoundingClientRect();return !!r&&ev.clientX>=r.left&&ev.clientX<r.right&&ev.clientY>=r.top&&ev.clientY<r.bottom;};
     if(d.active){
-      const i=state.items[d.id];
+      const i=state.items[d.id],targetGrid=gridAt(ev.clientX,ev.clientY),parent=targetGrid?.dataset.containerId,r=targetGrid?.getBoundingClientRect();
+      if(r){d.x=Math.floor((ev.clientX-r.left)/cell);d.y=Math.floor((ev.clientY-r.top)/cell);}
       if((hit('[data-slot="primary"]')&&definition(i.id).weapon)||(hit('[data-slot="backpack"]')&&definition(i.id).tags.includes('backpack')))send({type:'equip',id:d.id});
-      else if(hit('[data-container-id="'+currentContainer()+'"]')){
-        if(i.location.kind==='world')send({type:'take',id:d.id,parent:currentContainer(),x:d.x,y:d.y,rotated:d.rotated});
-        else if(i.location.kind==='slot')send({type:'unequip',id:d.id,parent:currentContainer(),x:d.x,y:d.y,rotated:d.rotated});
-        else send({type:'move',id:d.id,parent:currentContainer(),x:d.x,y:d.y,rotated:d.rotated});
+      else if(parent){
+        if(i.location.kind==='world')send({type:'take',id:d.id,parent,x:d.x,y:d.y,rotated:d.rotated});
+        else if(i.location.kind==='slot')send({type:'unequip',id:d.id,parent,x:d.x,y:d.y,rotated:d.rotated});
+        else send({type:'move',id:d.id,parent,x:d.x,y:d.y,rotated:d.rotated});
       }else if(hit('[data-container-id="nearby"]')&&(i.location.kind==='grid'||(i.location.kind==='slot'&&definition(i.id).tags.includes('backpack'))))quantity('drop');
     }render();
   };
@@ -191,6 +224,6 @@ export function mountInventory(parent:HTMLElement,config:ItemConfig,style:ItemSt
   const outside=(ev:PointerEvent)=>{if(!(ev.target instanceof doc.defaultView!.Node))return;if(!root.querySelector('.item-context')?.contains(ev.target))closeMenu();};
   const blur=()=>{cancel();modal=undefined;closeMenu();hideTooltip();render();};
   doc.addEventListener('pointerdown',outside,true);doc.addEventListener('pointermove',move);doc.addEventListener('pointerup',up);doc.addEventListener('keydown',key,true);doc.defaultView!.addEventListener('blur',blur);
-  return {update(next:ItemProjection){const signature=JSON.stringify(next);if(state&&next.equippedBackpack&&next.equippedBackpack!==state.equippedBackpack)activeContainer=next.equippedBackpack;state=next;if(signature!==last){last=signature;if(!drag&&!modal)render();}},isOpen:()=>!!state?.open,
-    dispose(){doc.removeEventListener('pointerdown',outside,true);doc.removeEventListener('pointermove',move);doc.removeEventListener('pointerup',up);doc.removeEventListener('keydown',key,true);doc.defaultView!.removeEventListener('blur',blur);root.remove();css.remove();}};
+  return {update(next:ItemProjection){const signature=JSON.stringify(next);state=next;if(signature!==last){last=signature;if(!drag&&!modal)render();}},isOpen:()=>!!state?.open,
+    dispose(){storageObserver?.disconnect();doc.removeEventListener('pointerdown',outside,true);doc.removeEventListener('pointermove',move);doc.removeEventListener('pointerup',up);doc.removeEventListener('keydown',key,true);doc.defaultView!.removeEventListener('blur',blur);root.remove();css.remove();}};
 }

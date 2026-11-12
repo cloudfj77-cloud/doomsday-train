@@ -20,8 +20,8 @@ export function mountDropLabels(parent:HTMLElement,canvas:HTMLCanvasElement,conf
  }
  function paint(){
   root.hidden=!state||state.open||!mapping;if(root.hidden||!state||!mapping)return;const rect=canvas.getBoundingClientRect(),used:{x:number;y:number;width:number;height:number}[]=[];
-  const ids=new Set(state.nearby);for(const [id,node] of nodes)if(!ids.has(id)){node.el.remove();nodes.delete(id);}
-  for(const id of state.nearby){const i=state.items[id];if(i?.location.kind!=='world')continue;const d=config.definitions.find(d=>d.id===i.definition)!,value=d.name+' ×'+i.quantity;
+  const shown=state.hovered?[state.hovered]:[];const ids=new Set(shown);for(const [id,node] of nodes)if(!ids.has(id)){node.el.remove();nodes.delete(id);}
+  for(const id of shown){const i=state.items[id];if(i?.location.kind!=='world')continue;const d=config.definitions.find(d=>d.id===i.definition)!,value=d.name+' ×'+i.quantity;
    let node=nodes.get(id);if(!node||node.text!==value){node?.el.remove();node=make(id,value);nodes.set(id,node);}
    const point=projectDropLabel([i.location.position[0],i.location.position[1]+p.labelHeight,i.location.position[2]],mapping);node.el.hidden=!point;if(!point)continue;
    const anchor={x:rect.left+point.x*rect.width,y:rect.top+point.y*rect.height},x=Math.max(8,Math.min(anchor.x-node.width/2,doc.defaultView!.innerWidth-node.width-8));let y=anchor.y-node.height-p.gap;

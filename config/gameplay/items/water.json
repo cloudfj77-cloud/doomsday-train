@@ -1,0 +1,17 @@
+{
+  "id": "water",
+  "name": "水",
+  "description": "密封饮用水，本阶段尚不能使用。",
+  "tags": [
+    "supply"
+  ],
+  "size": [
+    1,
+    2
+  ],
+  "rotatable": true,
+  "maxStack": 5,
+  "weight": 0.5,
+  "value": 10,
+  "portable": true
+}

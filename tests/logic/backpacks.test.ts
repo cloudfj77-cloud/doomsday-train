@@ -1,6 +1,6 @@
 import {it,expect} from 'vitest';
-import raw from '../../config/gameplay/items.json';
-import world from '../../config/gameplay/item-world.json';
+import { itemConfig as raw } from '../../scripts/config/game.ts';
+import { itemWorldConfig as world } from '../../scripts/config/game.ts';
 import {validateItems,createItems,commandItems,projectItems,assertItemState,canPlace,carriedByPlayer,type ItemCommand} from '../../scripts/logic/items.ts';
 function setup(){const {config:c,world:w}=validateItems(structuredClone(raw),world),s=createItems(c,w),e={player:[-3.6,0,3.8] as [number,number,number],visible:()=>true,dropPosition:()=>[-3.3,0,3.8] as [number,number,number]|undefined};s.open=true;const run=(cmd:ItemCommand)=>commandItems(s,c,w,cmd,e);return {s,c,w,e,run};}
 it('always projects 2x3 pockets and removes the backpack tab when detached',()=>{

@@ -1,4 +1,5 @@
-import presentation from '../config/presentation/scene.json';
+import { pickTriangleDisplay } from '@forgeax/engine/picking';
+import { sceneConfig as presentation } from '../scripts/config/game.ts';
 import { validatePresentation } from '../scripts/view/presentation.ts';
 import { definePack, definePackageId } from '@forgeax/engine/pack/source';
 import { AssetGuid } from '@forgeax/engine/pack/guid';
@@ -8,7 +9,7 @@ import { Time, Update, FixedUpdate, FixedTime } from '@forgeax/engine/ecs';
 import { INPUT_SNAPSHOT_RESOURCE_KEY, type InputSnapshot } from '@forgeax/engine/input';
 import { bake, bakeItem, parts, collisionBoxes, type Part } from '../scripts/view/voxels.ts';
 import { Outline, OutlineOcclusionValue, Materials } from '@forgeax/engine/render';
-import data from '../config/gameplay/world.json';
+import { worldConfig as data } from '../scripts/config/game.ts';
 import { createState, project, validateConfig } from '../scripts/logic/world.ts';
 import { createCamera, advanceCamera, groundPoint } from '../scripts/logic/camera.ts';
 import { camera, drawCamera, object, draw, heldTransform } from '../scripts/view/scene.ts';
@@ -16,12 +17,13 @@ import physics3d from '@forgeax/engine/physics-rapier3d';
 import type { PhysicsWorld } from '@forgeax/engine/physics';
 import { spawnCharacter, spawnCollision, tickCharacter } from '../scripts/controller/movement.ts';
 import type {} from '@forgeax/engine/app';
-import itemData from '../config/gameplay/items.json';
-import itemWorldData from '../config/gameplay/item-world.json';
-import itemStyle from '../config/presentation/items.json';
+import { itemConfig as itemData } from '../scripts/config/game.ts';
+import { itemWorldConfig as itemWorldData } from '../scripts/config/game.ts';
+import { itemStyleConfig as itemStyle } from '../scripts/config/game.ts';
 import { createItems, validateItems, projectItems, commandItems, nearestItem, nearbyItems, type ItemCommand } from '../scripts/logic/items.ts';
 import { validateItemStyle } from '../scripts/view/item-presentation.ts';
 import { itemEnvironment } from '../scripts/controller/item-environment.ts';
+import type { BarrelDistortionMapping } from '@forgeax/engine/render';
 import { Transform } from '@forgeax/engine/scene';
 import type { AssetHandle } from '@forgeax/engine/types';
 
@@ -37,9 +39,9 @@ export const preview: Plugin.Object<{ meshes: Record<Part,string>; itemMeshes:Re
       validateItemStyle(itemStyle,itemsConfig);
       const inventory=createItems(itemsConfig,itemsWorld);
       const pending:ItemCommand[]=[];let lastProjection='',target:string|undefined;
-      let nearby:string[]=[];let readOutline:()=>number[]=()=>[];
+      let hovered:string|undefined;let readAppearance:()=>{backpackEntities:number[];bodyPositions:number;authoredBodyPositions:number}|null=()=>null;let nearby:string[]=[];let readOutline:()=>number[]=()=>[];
       let view = createCamera([state.x,state.y,state.z],presentation.camera,presentation.zones);
-      let pointer: {ray?:number[]; focused:boolean}={focused:true};
+      let pointer: {ray?:number[];display?:{x:number;y:number;mapping:BarrelDistortionMapping}; focused:boolean}={focused:true};
       const port=ctx.gameHost!.port;
       if(!port) throw Error('missing-controller-source-port');
       const receive=(event:MessageEvent)=>{
@@ -49,8 +51,8 @@ export const preview: Plugin.Object<{ meshes: Record<Part,string>; itemMeshes:Re
       };
       port.addEventListener('message',receive); port.start();
       yield ()=>port.removeEventListener('message',receive);
-      const inventoryProjection=()=>projectItems(inventory,itemsConfig,target,nearby);
-      const read = ctx.gameHost!.gameProjection?.registerRead({ id: 'preview', title: 'Controller and Item state', read: () => ({...project(state),camera:JSON.parse(JSON.stringify(view)),aim:inventory.open?null:groundPoint(pointer.ray,state.y)??null,inventory:JSON.parse(JSON.stringify(inventoryProjection())),proximity:{outlined:readOutline()}}) });
+      const inventoryProjection=()=>projectItems(inventory,itemsConfig,target,nearby,hovered);
+      const read = ctx.gameHost!.gameProjection?.registerRead({ id: 'preview', title: 'Controller and Item state', read: () => ({...project(state),camera:JSON.parse(JSON.stringify(view)),aim:inventory.open?null:groundPoint(pointer.ray,state.y)??null,inventory:JSON.parse(JSON.stringify(inventoryProjection())),proximity:{outlined:readOutline(),hovered:hovered??null},appearance:readAppearance()}) });
       if (read) yield read;
       const assets = ctx.assets!;
       const material = (await assets.load(configAssets.material, 'material')).unwrap();
@@ -63,6 +65,7 @@ export const preview: Plugin.Object<{ meshes: Record<Part,string>; itemMeshes:Re
       yield ()=>{if(held)ctx.world.despawn(held);};
       const drops=new Map<string,ReturnType<typeof object>>();
       yield ()=>{for(const entity of drops.values())ctx.world.despawn(entity);};
+      const backpackHistory=new Set<ReturnType<typeof object>>();
       const entities = new Map<Part,ReturnType<typeof object>>(),partMeshes=new Map<Part,AssetHandle<'mesh'>>();
       yield ()=>{for(const entity of entities.values())ctx.world.despawn(entity);};
       const eye = camera(ctx.world,view);
@@ -76,9 +79,11 @@ export const preview: Plugin.Object<{ meshes: Record<Part,string>; itemMeshes:Re
         const mesh = (await assets.load(configAssets.meshes[part], 'mesh')).unwrap();
         yield () => assets.release(mesh);
         const entity = object(ctx.world,part,mesh,material,[0,0,0],[1,1,1]);
-        entities.set(part,entity);
-        yield () => ctx.world.despawn(entity);
+        entities.set(part,entity);partMeshes.set(part,mesh);if(part==='backpack')backpackHistory.add(entity);
       }
+      const bodyData=assets.read(partMeshes.get('body')!).unwrap(),authoredBodyPositions=(bake('body').attributes.position as Float32Array).length;
+      if((bodyData.attributes.position as Float32Array).length!==authoredBodyPositions)throw Error('actor-body-geometry-outdated');
+      readAppearance=()=>({backpackEntities:Array.from(backpackHistory).filter(e=>ctx.world.get(e,Transform).ok),bodyPositions:(bodyData.attributes.position as Float32Array).length,authoredBodyPositions});
       draw(ctx.world, entities, project(state));
       const blockedKeys=new Set<string>();
       ctx.world.addSystem(FixedUpdate, { name: 'preview-movement', after:['physicsSyncBackend'],before:['physicsStepSimulation'],queries: [], fn(world) {
@@ -105,8 +110,8 @@ export const preview: Plugin.Object<{ meshes: Record<Part,string>; itemMeshes:Re
         const equipped=Object.values(inventory.items).find(i=>i.location.kind==='slot'&&i.location.parent===inventory.playerId&&i.location.slot==='primary');
         const weapon=itemsConfig.definitions.find(d=>d.id===equipped?.definition)?.weapon;
         const bagEquipped=inventory.backpackId!==inventory.playerId;
-        if(!bagEquipped&&entities.has('backpack')){world.despawn(entities.get('backpack')!);entities.delete('backpack');}
-        if(bagEquipped&&!entities.has('backpack'))entities.set('backpack',object(world,'backpack',partMeshes.get('backpack')!,material,[0,0,0],[1,1,1]));
+        if(!bagEquipped&&entities.has('backpack')){world.despawn(entities.get('backpack')!).unwrap();entities.delete('backpack');}
+        if(bagEquipped&&!entities.has('backpack')){const entity=object(world,'backpack',partMeshes.get('backpack')!,material,[0,0,0],[1,1,1]);entities.set('backpack',entity);backpackHistory.add(entity);}
         draw(world, entities, project(state),weapon?.pose);
         if(heldDefinition!==equipped?.definition){if(held)world.despawn(held);held=undefined;heldDefinition=equipped?.definition;if(equipped)held=object(world,'Held '+equipped.definition,dropMeshes.get(equipped.definition)!,material,[0,0,0],[1,1,1]);}
         if(held&&weapon)world.set(held,Transform,heldTransform(project(state),weapon.pose)).unwrap();
@@ -118,6 +123,8 @@ export const preview: Plugin.Object<{ meshes: Record<Part,string>; itemMeshes:Re
           world.set(entity,Transform,{pos:item.location.position,scale:[scale,scale,scale]}).unwrap();
         }
         world.set(eye,Outline,{entities:nearby.map(id=>drops.get(id)).filter((e):e is NonNullable<typeof e>=>e!==undefined)}).unwrap();
+        hovered=undefined;
+        if(!inventory.open&&pointer.focused&&pointer.display){const d=pointer.display,hit=pickTriangleDisplay(world,d.x,d.y,d.mapping,d.mapping.width,d.mapping.height);if(hit.status==='hit')hovered=nearby.find(id=>drops.get(id)===hit.hit.entity);}
         const projection=inventoryProjection(),signature=JSON.stringify(projection);
         if(signature!==lastProjection){lastProjection=signature;port.postMessage({type:'item-projection',state:projection});}
       }}).unwrap();

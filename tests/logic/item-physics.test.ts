@@ -6,9 +6,9 @@ import {spawnCollision,type Box} from '../../scripts/controller/movement.ts';
 import {itemEnvironment} from '../../scripts/controller/item-environment.ts';
 import {validateConfig} from '../../scripts/logic/world.ts';
 import {validateItems} from '../../scripts/logic/items.ts';
-import raw from '../../config/gameplay/items.json';
-import rawWorld from '../../config/gameplay/item-world.json';
-import data from '../../config/gameplay/world.json';
+import { itemConfig as raw } from '../../scripts/config/game.ts';
+import { itemWorldConfig as rawWorld } from '../../scripts/config/game.ts';
+import { worldConfig as data } from '../../scripts/config/game.ts';
 let rapier:Awaited<ReturnType<typeof loadRapier3D>>;
 beforeAll(async()=>{rapier=await loadRapier3D();});
 function fixture(boxes:Box[]) {

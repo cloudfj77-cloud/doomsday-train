@@ -1,0 +1,75 @@
+{
+  "item": {
+    "id": "player",
+    "name": "拾荒者",
+    "description": "角色躯壳",
+    "tags": [
+      "character"
+    ],
+    "size": [
+      1,
+      1
+    ],
+    "rotatable": false,
+    "maxStack": 1,
+    "weight": 0,
+    "value": 0,
+    "portable": false
+  },
+  "movement": {
+    "speed": 4,
+    "runSpeed": 6,
+    "turnTime": 0.08,
+    "aimDeadzone": 0.15
+  },
+  "body": {
+    "radius": 0.22,
+    "height": 1.5,
+    "skin": 0.01,
+    "maxSlope": 45,
+    "stepHeight": 0.25,
+    "stepWidth": 0.2,
+    "snapDistance": 0.15
+  },
+  "spawn": [
+    -3.5,
+    3
+  ],
+  "initialBackpack": "backpack",
+  "backpackSlot": "backpack",
+  "pockets": {
+    "columns": 2,
+    "rows": 3
+  },
+  "slots": {
+    "backpack": [
+      "backpack"
+    ],
+    "primary": [
+      "weapon"
+    ]
+  },
+  "baseStats": {
+    "health": 100
+  },
+  "reservedStats": {
+    "maxHealth": null,
+    "stamina": null,
+    "armor": null
+  },
+  "keys": {
+    "movement": {
+      "left": "KeyA",
+      "right": "KeyD",
+      "up": "KeyW",
+      "down": "KeyS",
+      "run": "ShiftLeft"
+    },
+    "inventory": {
+      "toggle": "Tab",
+      "close": "Escape",
+      "pickup": "KeyE",
+      "rotate": "KeyR"
+    }
+  }
+}

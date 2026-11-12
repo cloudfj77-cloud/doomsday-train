@@ -1,10 +1,10 @@
 import { actorBoxes } from './actor-model.ts';
 import { createBoxGeometry, meshFromInterleaved, withVertexColors } from '@forgeax/engine/geometry';
-import style from '../../config/presentation/scene.json';
-import data from '../../config/gameplay/world.json';
-import itemStyle from '../../config/presentation/items.json';
-import itemData from '../../config/gameplay/items.json';
-import itemWorld from '../../config/gameplay/item-world.json';
+import { sceneConfig as style } from '../config/game.ts';
+import { worldConfig as data } from '../config/game.ts';
+import { itemStyleConfig as itemStyle } from '../config/game.ts';
+import { itemConfig as itemData } from '../config/game.ts';
+import { itemWorldConfig as itemWorld } from '../config/game.ts';
 import { validateItems } from '../logic/items.ts';
 import { validateItemStyle } from './item-presentation.ts';
 

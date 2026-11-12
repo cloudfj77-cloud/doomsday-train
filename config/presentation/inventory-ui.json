@@ -1,0 +1,18 @@
+{
+  "cellSize": 44,
+  "colors": {
+    "panel": "#192326",
+    "grid": "#111b1e",
+    "line": "#40504b",
+    "accent": "#efb960",
+    "text": "#f4ead4",
+    "valid": "#58ba89",
+    "invalid": "#e46f62"
+  },
+  "scrollbar": {
+    "width": 8,
+    "track": "#0d171b",
+    "thumb": "#566f64",
+    "hover": "#d7b477"
+  }
+}

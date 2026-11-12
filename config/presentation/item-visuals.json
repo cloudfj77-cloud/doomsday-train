@@ -1,20 +1,4 @@
 {
-  "keys": {
-    "toggle": "Tab",
-    "close": "Escape",
-    "pickup": "KeyE",
-    "rotate": "KeyR"
-  },
-  "cellSize":44,
-  "colors": {
-    "panel": "#192326",
-    "grid": "#111b1e",
-    "line": "#40504b",
-    "accent": "#efb960",
-    "text": "#f4ead4",
-    "valid": "#58ba89",
-    "invalid": "#e46f62"
-  },
   "visuals": {
     "scrap": {
       "color": "#a6b3b4",
@@ -211,41 +195,5 @@
         ]
       ]
     }
-  },
-  "holding": {
-    "pistol": {
-      "armLift": 0.12,
-      "armForward": 0.28,
-      "gunRight": 0.16,
-      "gunHeight": 0.92,
-      "gunForward": 0.53,
-      "gunScale": 0.85,
-      "bob": 0.012,
-      "armPitch": 1.15
-    },
-    "smg": {
-      "armLift": 0.18,
-      "armForward": 0.34,
-      "gunRight": 0.06,
-      "gunHeight": 1,
-      "gunForward": 0.59,
-      "gunScale": 1,
-      "bob": 0.008,
-      "armPitch": 1.4
-    }
-  },
-  "proximity": {
-    "outlineColor": [
-      1,
-      0.72,
-      0.25
-    ],
-    "outlineWidth": 2,
-    "labelHeight": 0.65,
-    "fontSize": 10,
-    "pixelScale": 2,
-    "textColor": "#fff2bf",
-    "backgroundColor": "#162022",
-    "gap": 4
   }
 }

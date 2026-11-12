@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from 'vitest';
-import data from '../../config/gameplay/world.json';
+import { worldConfig as data } from '../../scripts/config/game.ts';
 import { createState, desiredMovement, resolveMovement, screenMovement, project, validateConfig } from '../../scripts/logic/world.ts';
 import { World, FixedUpdate, FixedTime } from '@forgeax/engine/ecs';
 import { registerPropagateTransforms, Transform, GlobalTransform } from '@forgeax/engine/scene';

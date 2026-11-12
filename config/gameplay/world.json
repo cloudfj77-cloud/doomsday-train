@@ -1,11 +1,5 @@
 {
-  "speed": 4,
   "limit": 9,
-  "radius": 0.22,
-  "start": [
-    -3.5,
-    3
-  ],
   "obstacles": [
     {
       "id": "outcrop",
@@ -32,16 +26,6 @@
       "height": 1.6
     }
   ],
-  "runSpeed": 6,
-  "height": 1.5,
-  "skin": 0.01,
-  "maxSlope": 45,
-  "stepHeight": 0.25,
-  "stepWidth": 0.2,
-  "snapDistance": 0.15,
-  "gravity": 20,
-  "turnTime": 0.08,
-  "aimDeadzone": 0.15,
   "surfaces": [
     {
       "id": "slope",

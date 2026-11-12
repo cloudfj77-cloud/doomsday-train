@@ -1,4 +1,4 @@
-import type scene from '../../config/presentation/scene.json';
+import type { sceneConfig as scene } from '../config/game.ts';
 export type CameraConfig = typeof scene.camera;
 export type Zone = typeof scene.zones[number];
 type Point = readonly number[];

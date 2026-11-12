@@ -3,9 +3,9 @@ import {actorBoxes,actorPartPose,type ActorPart} from '../../scripts/view/actor-
 import {characterFaces} from '../../scripts/view/actor-preview.ts';
 import {validateItemStyle} from '../../scripts/view/item-presentation.ts';
 import {validateItems} from '../../scripts/logic/items.ts';
-import raw from '../../config/gameplay/items.json';
-import world from '../../config/gameplay/item-world.json';
-import styleRaw from '../../config/presentation/items.json';
+import { itemConfig as raw } from '../../scripts/config/game.ts';
+import { itemWorldConfig as world } from '../../scripts/config/game.ts';
+import { itemStyleConfig as styleRaw } from '../../scripts/config/game.ts';
 const style=validateItemStyle(styleRaw,validateItems(raw,world).config);
 it('projects the actual shared actor geometry with all five body parts',()=>{
  const parts:ActorPart[]=['body','left-leg','right-leg','left-arm','right-arm','backpack'],faces=characterFaces(style);

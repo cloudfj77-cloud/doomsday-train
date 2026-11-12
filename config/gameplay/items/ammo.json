@@ -1,0 +1,21 @@
+{
+  "id": "ammo",
+  "name": "通用弹药",
+  "description": "适配基础手枪与冲锋枪，逐发装填和卸回背包。",
+  "tags": [
+    "ammo"
+  ],
+  "size": [
+    1,
+    1
+  ],
+  "rotatable": false,
+  "maxStack": 60,
+  "weight": 0.008333333333333333,
+  "value": 10,
+  "portable": true,
+  "valueQuantity": 30,
+  "unit": "发",
+  "category": "武器弹药",
+  "usage": "弹药／消耗品"
+}

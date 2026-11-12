@@ -1,6 +1,6 @@
 import {it,expect} from 'vitest';
-import raw from '../../config/gameplay/items.json';
-import world from '../../config/gameplay/item-world.json';
+import { itemConfig as raw } from '../../scripts/config/game.ts';
+import { itemWorldConfig as world } from '../../scripts/config/game.ts';
 import {validateItems,createItems,commandItems,assertItemState,projectItems,nearbyItems,type ItemCommand} from '../../scripts/logic/items.ts';
 function setup(){const {config:c,world:w}=validateItems(structuredClone(raw),world),s=createItems(c,w),e={player:[-3.8,0,4] as [number,number,number],visible:()=>true,dropPosition:()=>[0,0,0] as [number,number,number]};s.open=true;const run=(cmd:ItemCommand)=>commandItems(s,c,w,cmd,e);for(const id of ['item-2','item-5','item-7'])expect(run({type:'take',id}).ok).toBe(true);return {s,c,w,e,run};}
 it('conserves actual rounds across loading, equipment, dropping and unloading',()=>{

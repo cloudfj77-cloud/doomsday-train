@@ -1,6 +1,6 @@
 import {it,expect} from 'vitest';
-import raw from '../../config/gameplay/items.json';
-import world from '../../config/gameplay/item-world.json';
+import { itemConfig as raw } from '../../scripts/config/game.ts';
+import { itemWorldConfig as world } from '../../scripts/config/game.ts';
 import {validateItems,createItems,commandItems,projectContainer,assertItemState} from '../../scripts/logic/items.ts';
 it('reuses grid placement and split across independent container sizes',()=>{
  const {config:c,world:w}=validateItems(raw,world),s=createItems(c,w);

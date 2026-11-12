@@ -1,7 +1,7 @@
 import {it,expect} from 'vitest';
-import style from '../../config/presentation/items.json';
-import raw from '../../config/gameplay/items.json';
-import world from '../../config/gameplay/item-world.json';
+import { itemStyleConfig as style } from '../../scripts/config/game.ts';
+import { itemConfig as raw } from '../../scripts/config/game.ts';
+import { itemWorldConfig as world } from '../../scripts/config/game.ts';
 import {validateItems} from '../../scripts/logic/items.ts';
 import {validateItemStyle,itemKeyCommand} from '../../scripts/view/item-presentation.ts';
 import {createItems,projectItems} from '../../scripts/logic/items.ts';

@@ -1,5 +1,5 @@
-import style from '../../config/presentation/scene.json';
-import itemStyle from '../../config/presentation/items.json';
+import { sceneConfig as style } from '../config/game.ts';
+import { itemStyleConfig as itemStyle } from '../config/game.ts';
 export type ActorPart='body'|'left-leg'|'right-leg'|'left-arm'|'right-arm'|'backpack';
 export interface ActorBox {center:[number,number,number];size:[number,number,number];ink:keyof typeof style.palette}
 export function actorBoxes(part:ActorPart):ActorBox[] {

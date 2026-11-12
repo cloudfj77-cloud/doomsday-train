@@ -1,4 +1,4 @@
-import scene from '../../config/presentation/scene.json';
+import { sceneConfig as scene } from '../config/game.ts';
 import { actorBoxes, actorPartPose, type ActorPart } from './actor-model.ts';
 import type { ItemStyle } from './item-presentation.ts';
 type Point=[number,number,number];

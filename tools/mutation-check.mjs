@@ -9,13 +9,21 @@ function retryFile(action) {
  }
 }
 const replace=(before,after)=>s=>s.replace(before,after);
+const json=change=>source=>{const value=JSON.parse(source);change(value);return JSON.stringify(value);};
 const cases=[
+ ['config/gameplay/rogue.json',()=> '{}'],
+
+ ['config/gameplay/player.json',replace('"pickup": "KeyE"','"pickup": "KeyW"')],
+ ['config/gameplay/world.json',s=>JSON.stringify({...JSON.parse(s),speed:4})],
+ ['config/gameplay/player.json',replace('"initialBackpack": "backpack"','"initialBackpack": "missing"')],
+ ['config/presentation/inventory-ui.json',replace('"width": 8','"width": 0')],
+
  ['scripts/logic/items.ts',replace('draft.backpackId=equippedBackpack(draft)??draft.playerId','draft.backpackId=draft.backpackId')],
  ['scripts/logic/items.ts',replace('return bag?[bag,s.playerId]:[s.playerId]','return [s.playerId]')],
  ['scripts/logic/items.ts',replace("if(l.kind!=='grid'&&l.kind!=='slot')return false;","if(l.kind!=='grid'&&l.kind!=='slot')return true;")],
  ['scripts/logic/items.ts',replace('if(ancestors.has(cursor.id))return false','if(ancestors.has(cursor.id))return true')],
  ['scripts/view/actor-preview.ts',replace("hasBackpack?['backpack']:[]","true?['backpack']:[]")],
- ['config/presentation/items.json',replace('"outlineWidth": 2','"outlineWidth": 9')],
+ ['config/presentation/drop-outline.json',replace('"outlineWidth": 2','"outlineWidth": 9')],
 
  ['scripts/view/actor-preview.ts',replace("['body','left-leg'","['left-leg'")],
  ['scripts/view/actor-preview.ts',replace('return faces.sort((a,b)=>a.depth-b.depth)','return faces.sort((a,b)=>b.depth-a.depth)')],
@@ -26,12 +34,12 @@ const cases=[
  ['scripts/logic/items.ts',replace('const n=Math.min(need,ammo.quantity)','const n=ammo.quantity')],
  ['scripts/logic/items.ts',replace("if(!place)return fail('no-space','背包空间不足，无法放回原武器')","if(false)return fail('no-space','背包空间不足，无法放回原武器')")],
  ['scripts/logic/items.ts',replace('item.loaded!>d.weapon.capacity','false')],
- ['config/gameplay/items.json',replace('"capacity":12','"capacity":0')],
- ['config/presentation/items.json',replace('"armPitch": 1.15','"armPitch": -1')],
+ ['config/gameplay/items/pistol.json',json(v=>{v.weapon.capacity=0;})],
+ ['config/presentation/holding.json',replace('"armPitch": 1.15','"armPitch": -1')],
 
- ['config/gameplay/items.json',replace('"maxStack":20','"maxStack":0')],
- ['config/gameplay/item-world.json',replace('"interactionDistance":1.5','"interactionDistance":-1')],
- ['config/presentation/items.json',replace('"cellSize":44','"cellSize":1')],
+ ['config/gameplay/items/scrap.json',json(v=>{v.maxStack=0;})],
+ ['config/gameplay/interactions.json',replace('"interactionDistance": 1.5','"interactionDistance":-1')],
+ ['config/presentation/inventory-ui.json',replace('"cellSize": 44','"cellSize":1')],
  ['scripts/logic/items.ts',replace('ids.has(d.id)','false')],
  ['scripts/logic/items.ts',replace('x+width>grid.columns','false')],
  ['scripts/logic/items.ts',replace('return x+width<=l.x||l.x+ow<=x||y+height<=l.y||l.y+oh<=y','return true')],
@@ -50,7 +58,7 @@ const cases=[
  ['scripts/controller/item-environment.ts',replace('if(clear)return p','if(true)return p')],
  ['scripts/view/item-ui.ts',replace('parent.append(root)','doc.body.append(root)')],
  ['scripts/view/item-presentation.ts',replace('if(repeat)return','if(false)return')],
- ['config/presentation/scene.json',replace('"gravelCount": 195','"gravelCount": -2')],
+ ['config/presentation/environment.json',replace('"gravelCount": 195','"gravelCount": -2')],
  ['scripts/logic/world.ts',replace('ids.has(o.id)','false')],
  ['scripts/logic/world.ts',replace('if (!surface && c.start.every','if (false && !surface && c.start.every')],
  ['scripts/logic/world.ts',replace('Math.max(1,Math.hypot(...axis))','1')],
@@ -78,7 +86,7 @@ const cases=[
  ['scripts/logic/layout.test.ts',()=> '// misplaced test'],
  ['Documents/uncategorized.md',()=> '# misplaced document'],
  ['assets/world.json',()=> '{}'],
- ['config/gameplay/world.json',replace('"speed": 4','"speed": -1')],
+ ['config/gameplay/player.json',replace('"speed": 4','"speed": -1')],
  ['scripts/logic/world.ts',s=>s+'\n// document. forbidden boundary\n'],
  ['scripts/view/scene.ts',s=>s+'\n// step( forbidden boundary\n'],
  ['AGENTS.md',s=>s+'x'.repeat(20480)],

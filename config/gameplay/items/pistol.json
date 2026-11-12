@@ -1,0 +1,27 @@
+{
+  "id": "pistol",
+  "name": "基础手枪",
+  "description": "真实取得后可装备；支持通用弹药装填与卸弹，本期不支持射击。",
+  "tags": [
+    "weapon",
+    "equippable"
+  ],
+  "size": [
+    2,
+    1
+  ],
+  "rotatable": true,
+  "maxStack": 1,
+  "weight": 1,
+  "value": 120,
+  "valueQuantity": 1,
+  "unit": "把",
+  "category": "武器弹药",
+  "usage": "武器／手枪",
+  "portable": true,
+  "weapon": {
+    "ammo": "ammo",
+    "capacity": 12,
+    "pose": "pistol"
+  }
+}

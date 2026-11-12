@@ -1,0 +1,40 @@
+{
+  "camera": {
+    "aspect": 1.7777777777777777,
+    "background": [
+      0.55,
+      0.33,
+      0.22,
+      1
+    ],
+    "pitch": 55,
+    "yaw": -30,
+    "distance": 45,
+    "fov": 20,
+    "aimOffset": 5,
+    "followTime": 0.12,
+    "aimTime": 0.15,
+    "zoneTime": 0.25
+  },
+  "zones": [
+    {
+      "id": "depot",
+      "center": [
+        3,
+        -3
+      ],
+      "size": [
+        4,
+        4
+      ],
+      "blend": 1,
+      "priority": 1,
+      "camera": {
+        "pitch": 60,
+        "distance": 38,
+        "fov": 20,
+        "aimOffset": 3
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "scrap",
+  "name": "废铁",
+  "description": "铁路遗迹中的金属零件。",
+  "tags": [
+    "material"
+  ],
+  "size": [
+    1,
+    1
+  ],
+  "rotatable": false,
+  "maxStack": 20,
+  "weight": 0.2,
+  "value": 5,
+  "portable": true
+}

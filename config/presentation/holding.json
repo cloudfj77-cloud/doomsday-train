@@ -1,0 +1,24 @@
+{
+  "holding": {
+    "pistol": {
+      "armLift": 0.12,
+      "armForward": 0.28,
+      "gunRight": 0.16,
+      "gunHeight": 0.92,
+      "gunForward": 0.53,
+      "gunScale": 0.85,
+      "bob": 0.012,
+      "armPitch": 1.15
+    },
+    "smg": {
+      "armLift": 0.18,
+      "armForward": 0.34,
+      "gunRight": 0.06,
+      "gunHeight": 1,
+      "gunForward": 0.59,
+      "gunScale": 1,
+      "bob": 0.008,
+      "armPitch": 1.4
+    }
+  }
+}

@@ -1,11 +1,11 @@
 import {it,expect} from 'vitest';
-import raw from '../../config/gameplay/items.json';
-import world from '../../config/gameplay/item-world.json';
+import { itemConfig as raw } from '../../scripts/config/game.ts';
+import { itemWorldConfig as world } from '../../scripts/config/game.ts';
 import {createItems,validateItems} from '../../scripts/logic/items.ts';
 import {nearbyLayout} from '../../scripts/view/inventory-grid.ts';
 import {heldTransform} from '../../scripts/view/scene.ts';
 import {createState,validateConfig} from '../../scripts/logic/world.ts';
-import movement from '../../config/gameplay/world.json';
+import { worldConfig as movement } from '../../scripts/config/game.ts';
 it('lays out every nearby item without mutating world ownership or overlapping footprints',()=>{
  const {config:c,world:w}=validateItems(raw,world),s=createItems(c,w),items=Object.values(s.items).filter(i=>i.location.kind==='world'),before=JSON.stringify(items),layout=nearbyLayout(items,c,5),cells=new Set();
  expect(layout.placements.length).toBe(items.length);

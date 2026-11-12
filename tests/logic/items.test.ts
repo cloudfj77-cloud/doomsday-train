@@ -1,6 +1,6 @@
 import { describe,it,expect } from 'vitest';
-import configRaw from '../../config/gameplay/items.json';
-import worldRaw from '../../config/gameplay/item-world.json';
+import { itemConfig as configRaw } from '../../scripts/config/game.ts';
+import { itemWorldConfig as worldRaw } from '../../scripts/config/game.ts';
 import {validateItems,createItems,commandItems,assertItemState,stat,canPlace,projectItems,nearestItem,type Environment,type ItemCommand} from '../../scripts/logic/items.ts';
 const {config:c,world:w}=validateItems(configRaw,worldRaw);
 function setup() {

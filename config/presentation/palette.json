@@ -1,0 +1,24 @@
+{
+  "palette": {
+    "sand": "#eac28e",
+    "light": "#f4d7a2",
+    "ripple": "#d9ae7e",
+    "shadow": "#ab91a0",
+    "darkrock": "#a26c61",
+    "rock": "#c78465",
+    "strata": "#d89c79",
+    "cap": "#e4b88e",
+    "timber": "#75564d",
+    "grain": "#aa805e",
+    "steel": "#595864",
+    "rail": "#938481",
+    "red": "#b54e42",
+    "cream": "#f1d39e",
+    "coal": "#353946",
+    "teal": "#476668",
+    "coat": "#718985",
+    "skin": "#ce956e",
+    "leather": "#835d45",
+    "grass": "#b19260"
+  }
+}

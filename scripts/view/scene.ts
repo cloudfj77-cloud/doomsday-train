@@ -1,6 +1,6 @@
 import { actorPartPose } from './actor-model.ts';
-import itemStyle from '../../config/presentation/items.json';
-import presentation from '../../config/presentation/scene.json';
+import { itemStyleConfig as itemStyle } from '../config/game.ts';
+import { sceneConfig as presentation } from '../config/game.ts';
 import type { AssetHandle } from '@forgeax/engine/types';
 import { Transform, Name } from '@forgeax/engine/scene';
 import { Camera, MeshFilter, MeshRenderer, perspective } from '@forgeax/engine/render';

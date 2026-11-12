@@ -58,7 +58,7 @@ async function route(play,height) {
   assert.ok(Math.hypot(...s.camera.position.map((v,i)=>v-stable.camera.position[i]))<.05,'stationary pointer has no sustained camera drift');
   await shot('pointer-stable');
   await play.reload();await play.waitFor(s=>s.grounded);const reset=await play.state();assert.ok(Math.abs(reset.x+3.5)<.1&&Math.abs(reset.z-3)<.1);
-  await play.keyboard.hold('KeyD',120);s=await play.state();assert.ok(s.x>reset.x+.2,'movement survives reload');
+  await play.mouse.click([.5,.5]);await play.advance(.1,{render:true});await play.page.keyboard.down('KeyD');try{await play.advance(.15,{render:true});}finally{await play.page.keyboard.up('KeyD');}s=await play.state();assert.ok(s.x>reset.x+.2,'movement survives reload');
   await play.mouse.move([.8,.3]);await play.advance(.8,{render:true});s=await play.state();assert.ok(s.aim&&Math.hypot(...s.camera.offset)>1,'pointer survives reload');await shot('reload');
 }
 export default async function(play) {

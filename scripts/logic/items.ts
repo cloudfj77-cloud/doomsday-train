@@ -243,12 +243,12 @@ export function commandItems(s:ItemState,c:ItemConfig,w:ItemWorldConfig,cmd:Item
   }
   assertItemState(draft,c);Object.assign(s,draft);return s.result={ok:true,code:'ok',amount};
 }
-export function projectItems(s:ItemState,c:ItemConfig,target?:string,nearby:string[]=[]) {
+export function projectItems(s:ItemState,c:ItemConfig,target?:string,nearby:string[]=[],hovered?:string) {
   const bag=c.definitions.find(d=>d.id===s.items[s.backpackId].definition)!.container!;
   const equipped=Object.values(s.items).find(i=>i.location.kind==='slot'&&i.location.parent===s.playerId&&i.location.slot==='primary');
   const carried=Object.values(s.items).filter(i=>i.id!==s.playerId&&carriedByPlayer(s,i.id));
   const totalWeight=carried.reduce((n,i)=>{const d=c.definitions.find(d=>d.id===i.definition)!;return n+d.weight*i.quantity+(d.weapon?(i.loaded??0)*c.definitions.find(a=>a.id===d.weapon!.ammo)!.weight:0);},0);
-  const value=structuredClone({...s,grid:bag,pocketsId:s.playerId,equippedBackpack:equippedBackpack(s)??null,containers:[projectContainer(s,c,s.playerId),...(equippedBackpack(s)?[projectContainer(s,c,equippedBackpack(s)!)]:[])],equipped:equipped?.id??null,nearby,weight:totalWeight,target:target&&s.items[target]?.location.kind==='world'?target:null});
+  const value=structuredClone({...s,grid:bag,pocketsId:s.playerId,equippedBackpack:equippedBackpack(s)??null,containers:[projectContainer(s,c,s.playerId),...(equippedBackpack(s)?[projectContainer(s,c,equippedBackpack(s)!)]:[])],equipped:equipped?.id??null,nearby,hovered:hovered&&nearby.includes(hovered)&&s.items[hovered]?.location.kind==='world'?hovered:null,weight:totalWeight,target:target&&s.items[target]?.location.kind==='world'?target:null});
   const freeze=(v:unknown):void=>{if(v&&typeof v==='object'){Object.values(v).forEach(freeze);Object.freeze(v);}};freeze(value);return value;
 }
 export type ItemProjection=ReturnType<typeof projectItems>;

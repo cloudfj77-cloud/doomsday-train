@@ -10,8 +10,9 @@ async function go(play,x,z) {
 }
 const gridItems=s=>Object.values(s.inventory.items).filter(i=>i.location.kind==='grid');
 const quantity=(s,definition,kind)=>Object.values(s.inventory.items).filter(i=>i.definition===definition&&(!kind||i.location.kind===kind)).reduce((n,i)=>n+i.quantity,0);
-async function press(play,key){await play.page.keyboard.press(key);await play.advance(.12,{render:true});if(key==='Tab'&&(await play.state()).inventory.open)await play.page.getByRole('tab',{name:'背包 10×6',exact:true}).click();}
+async function press(play,key){await play.page.keyboard.press(key);await play.advance(.12,{render:true});if(key==='Tab'&&(await play.state()).inventory.open)await play.page.locator('[aria-label="背包网格"]').scrollIntoViewIfNeeded();}
 async function drag(play,id,x,y,rotate=false){
+  await play.page.locator('[aria-label="背包网格"]').scrollIntoViewIfNeeded();
   const grid=await play.page.locator('[aria-label="背包网格"]').boundingBox(),item=await play.page.locator(`[data-item-id="${id}"]`).boundingBox();assert.ok(grid&&item);
   await play.page.mouse.move(item.x+10,item.y+10);await play.page.mouse.down();await play.page.mouse.move(grid.x+x*44+12,grid.y+y*44+12,{steps:6});
   if(rotate)await play.page.keyboard.press('KeyR');await play.page.mouse.up();await play.advance(.12,{render:true});
@@ -37,7 +38,7 @@ async function route(play,height){
   await press(play,'Tab');let s=await play.state();assert.equal(s.inventory.open,true);assert.equal(gridItems(s).length,9);assert.equal(quantity(s,'scrap','grid'),25);
   await shot('backpack-seven-types');
   const pistol=gridItems(s).find(i=>i.definition==='pistol'),smg=gridItems(s).find(i=>i.definition==='smg');
-  const click=async(id,label)=>{await play.page.locator('[data-item-id="'+id+'"]').click({button:'right'});await play.page.getByRole('menuitem',{name:label,exact:true}).click();await play.advance(.15,{render:true});};
+  const click=async(id,label)=>{await play.page.locator('[aria-label="背包网格"]').scrollIntoViewIfNeeded();await play.page.locator('[data-item-id="'+id+'"]').click({button:'right'});await play.page.getByRole('menuitem',{name:label,exact:true}).click();await play.advance(.15,{render:true});};
   await click(pistol.id,'装填');s=await play.state();assert.equal(s.inventory.items[pistol.id].loaded,12);assert.equal(quantity(s,'ammo','grid'),78);await shot('pistol-loaded');
   const from=await play.page.locator('[data-item-id="'+pistol.id+'"]').boundingBox(),slot=await play.page.locator('[data-slot="primary"]').boundingBox();
   await play.page.mouse.move(from.x+10,from.y+10);await play.page.mouse.down();await play.page.mouse.move(slot.x+30,slot.y+20,{steps:6});await play.page.mouse.up();await play.advance(.15,{render:true});

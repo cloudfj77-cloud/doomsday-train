@@ -1,4 +1,4 @@
-import scene from '../../config/presentation/scene.json';
+import { sceneConfig as scene } from '../config/game.ts';
 import { validateCamera } from '../logic/camera.ts';
 
 const positive = (value: number) => Number.isFinite(value) && value > 0;
@@ -9,7 +9,7 @@ export function validatePresentation(value: typeof scene) {
   const { camera, layout, actor, palette, keys } = value;
   validateCamera(camera,value.zones);
   if (!vector(camera.background,4)) throw Error('invalid-scene-camera');
-  if (!Object.entries(keys).every(([name,key]) => name==='run'?key==='ShiftLeft':/^Key[A-Z]$/.test(key))
+  if (!Object.values(keys).every(key=>typeof key==='string'&&key.length>0)
     || new Set(Object.values(keys)).size !== 5) throw Error('invalid-scene-keys');
   if (!Object.values(actor).every(positive)) throw Error('invalid-scene-actor');
   if (!Object.values(palette).every(hex => /^#[a-f0-9]{6}$/i.test(hex))

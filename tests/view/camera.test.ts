@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import scene from '../../config/presentation/scene.json';
+import { sceneConfig as scene } from '../../scripts/config/game.ts';
 import { advanceCamera, createCamera, groundPoint, regionParameters, validateCamera } from '../../scripts/logic/camera.ts';
 const c=scene.camera;
 describe('camera ground ray and region mixing',()=>{
