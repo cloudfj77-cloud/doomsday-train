@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《Probably Stolen》逆向拆解报告</title>
+<style>
+:root{
+  --bg:#0d0f14;--panel:#151922;--panel2:#1b2030;--line:#2a3142;
+  --text:#e6e9ef;--dim:#9aa3b5;--mute:#6b7488;
+  --cyan:#2fe6d6;--pink:#ff4d8d;--amber:#ffb547;--lime:#9be15d;--violet:#a98bff;--red:#ff5d5d;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.75 -apple-system,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif}
+a{color:var(--cyan)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px 80px}
+header.hero{padding:64px 0 36px;border-bottom:1px solid var(--line);background:
+  radial-gradient(900px 300px at 15% 0%,rgba(47,230,214,.12),transparent 60%),
+  radial-gradient(700px 300px at 90% 10%,rgba(255,77,141,.12),transparent 60%)}
+.tag{display:inline-block;font:600 12px/1 ui-monospace,Menlo,monospace;letter-spacing:.12em;color:var(--cyan);border:1px solid rgba(47,230,214,.4);padding:6px 10px;border-radius:4px;margin-bottom:18px}
+h1{font-size:40px;line-height:1.2;margin:0 0 10px;letter-spacing:.01em}
+h1 em{font-style:normal;color:var(--pink)}
+.sub{color:var(--dim);font-size:16px;max-width:860px}
+nav.toc{position:sticky;top:0;z-index:5;background:rgba(13,15,20,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+nav.toc .wrap{display:flex;gap:4px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+nav.toc a{color:var(--dim);text-decoration:none;font-size:13px;padding:4px 10px;border-radius:4px}
+nav.toc a:hover{background:var(--panel2);color:var(--text)}
+section{padding-top:54px}
+h2{font-size:26px;margin:0 0 6px;display:flex;align-items:baseline;gap:12px}
+h2 .no{font:700 14px ui-monospace,Menlo,monospace;color:var(--pink)}
+h2+.lead{color:var(--dim);margin:0 0 22px}
+h3{font-size:18px;margin:30px 0 12px;color:var(--cyan)}
+p{margin:10px 0}
+.grid{display:grid;gap:14px}
+.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:860px){.g4,.g3{grid-template-columns:repeat(2,1fr)}.g2{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.card h4{margin:0 0 6px;font-size:15px}
+.card p{margin:4px 0;color:var(--dim);font-size:14px}
+.kpi .n{font:700 30px/1.1 ui-monospace,Menlo,monospace;color:var(--cyan)}
+.kpi .l{color:var(--dim);font-size:13px;margin-top:6px}
+.kpi:nth-child(4n+2) .n{color:var(--pink)}.kpi:nth-child(4n+3) .n{color:var(--amber)}.kpi:nth-child(4n+4) .n{color:var(--lime)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:10px 0 6px;background:var(--panel);border-radius:8px;overflow:hidden}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--panel2);color:var(--dim);font-weight:600;font-size:12.5px;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num,th.num{text-align:right;font-family:ui-monospace,Menlo,monospace}
+.tbl-scroll{overflow-x:auto}
+code,.mono{font-family:ui-monospace,Menlo,monospace;font-size:12.5px}
+code{background:var(--panel2);padding:1px 6px;border-radius:4px;color:#cfe}
+pre.formula{background:#0a0c10;border:1px solid var(--line);border-left:3px solid var(--cyan);border-radius:6px;padding:12px 16px;font:13px/1.7 ui-monospace,Menlo,monospace;color:#d6f5f1;overflow-x:auto;margin:10px 0}
+.callout{border-left:3px solid var(--amber);background:rgba(255,181,71,.07);padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0;color:#f3e3c7}
+.callout.pink{border-color:var(--pink);background:rgba(255,77,141,.07);color:#f6d6e2}
+.callout.cyan{border-color:var(--cyan);background:rgba(47,230,214,.06);color:#d2f3ef}
+.callout b{color:#fff}
+.pill{display:inline-block;font-size:11.5px;padding:1px 8px;border-radius:10px;border:1px solid var(--line);color:var(--dim);margin-right:4px}
+.pill.on{color:var(--lime);border-color:rgba(155,225,93,.45)}
+.pill.off{color:var(--red);border-color:rgba(255,93,93,.45)}
+.pill.half{color:var(--amber);border-color:rgba(255,181,71,.45)}
+.chart{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}
+.chart svg{width:100%;height:auto;display:block}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--dim);margin:6px 4px 0}
+.legend i{display:inline-block;width:12px;height:3px;margin-right:6px;vertical-align:middle}
+ul.tight{margin:6px 0;padding-left:20px}ul.tight li{margin:3px 0}
+.dim{color:var(--dim)}
+footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);color:var(--mute);font-size:13px}
+.bar{height:10px;border-radius:5px;background:var(--panel2);overflow:hidden}
+.bar>span{display:block;height:100%}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="tag">GAME TEARDOWN · UNITY 2021.3.45f2 · MONO</div>
+    <h1>《Probably Stolen》<em>逆向拆解</em>报告</h1>
+    <div class="sub">赛博朋克店主模拟｜Questing Goose Studio / tinyBuild｜2026-10-28 发售，两天售出 50 万份，Steam 同时在线峰值超过 16 万。<br>
+    本报告基于游戏本体的完整反编译（Assembly-CSharp，944 个类）和本地化表解包，从<b>核心循环、经济数值、顾客与风险、物品与产业线、成长系统、前作考古、技术架构</b>七个维度做拆解。所有数值都来自代码，并标注了来源文件。</div>
+  </div>
+</header>
+
+<nav class="toc"><div class="wrap">
+  <a href="#overview">总览</a><a href="#loop">核心循环</a><a href="#economy">经济</a><a href="#clients">顾客与议价</a><a href="#risk">风险与治安</a><a href="#items">物品与产业线</a><a href="#growth">成长</a><a href="#arch">前作考古</a><a href="#tech">技术架构</a><a href="#insight">设计洞察</a><a href="#bugs">代码里的问题</a>
+</div></nav>
+
+<div class="wrap">
+
+<!-- ============ 0 总览 ============ -->
+<section id="overview">
+  <h2><span class="no">00</span>一页总览</h2>
+  <p class="lead">一句话定位：<b>“Papers, Please 式的逐个顾客审查” + “背包网格的物品鉴定” + “房租压力下的经营模拟”</b>，再加上声望和罪证两本暗账。</p>
+  <div class="grid g4">
+    <div class="card kpi"><div class="n">944</div><div class="l">C# 类 / 约 24.5 万行反编译代码</div></div>
+    <div class="card kpi"><div class="n">~506</div><div class="l">在用物品 ID（共注册 565 个，59 个废弃）</div></div>
+    <div class="card kpi"><div class="n">~276</div><div class="l">顾客种类（387 个工厂函数）</div></div>
+    <div class="card kpi"><div class="n">6,900</div><div class="l">每种语言的文本条目（14 张表）</div></div>
+    <div class="card kpi"><div class="n">9 + 4</div><div class="l">可选开局职业 + 未完成的“开发中”职业</div></div>
+    <div class="card kpi"><div class="n">54</div><div class="l">王尔德人脉网络升级（基础 49 + 隐藏 1 + 高级 4）</div></div>
+    <div class="card kpi"><div class="n">48</div><div class="l">起始特性（3 点预算、4 个槽位）</div></div>
+    <div class="card kpi"><div class="n">18 / 21</div><div class="l">结局种类 / Steam 成就</div></div>
+  </div>
+  <div class="callout cyan"><b>最重要的发现：</b>
+    <ul class="tight">
+      <li><b>代码即数据。</b>物品、顾客、事件、升级、特性全部硬编码在 C# 里（<code>Add("id", () =&gt; Factory())</code>），没有外部配置表，所以反编译就能拿到完整数值。</li>
+      <li><b>这是一个“换皮重生”的项目。</b>前身 <i>Deepspace Emporium</i> 是开飞船的商人 roguelite，带回合制小队战斗。约 1.6 万行飞船、太空、战斗代码还躺在包里，靠 <code>GameMaster.InRaid() { return false; }</code> 这一行整体封存。保留下来的只有“背包网格 + 物品 + 机器 + 电力”这层底层框架。</li>
+      <li><b>“一天有多长”不由时钟决定，而由开门那一刻生成的顾客队列决定。</b>每位顾客都是一次独立的“审查 + 议价”决策单元。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 1 核心循环 ============ -->
+<section id="loop">
+  <h2><span class="no">01</span>核心循环：队列就是时钟</h2>
+  <p class="lead">日循环、周循环、整局循环三层嵌套。没有实时倒计时，节奏完全由“顾客队列 + 星期几”驱动。</p>
+  <div class="chart">
+  <svg viewBox="0 0 1100 430" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif">
+    <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6b7488"/></marker></defs>
+    <!-- day loop -->
+    <text x="20" y="28" fill="#2fe6d6" font-size="14" font-weight="700">日循环</text>
+    <g font-size="13">
+      <rect x="20" y="44" width="150" height="64" rx="8" fill="#1b2030" stroke="#2a3142"/><text x="95" y="70" fill="#e6e9ef" text-anchor="middle" font-weight="600">早晨</text><text x="95" y="92" fill="#9aa3b5" text-anchor="middle" font-size="11.5">夜报 / 报纸 / 晨间访客</text>
+      <rect x="200" y="44" width="170" height="64" rx="8" fill="#1b2030" stroke="#2fe6d6"/><text x="285" y="70" fill="#e6e9ef" text-anchor="middle" font-weight="600">开门：生成队列</text><text x="285" y="92" fill="#9aa3b5" text-anchor="middle" font-size="11.5">约 30 个 Handler 依次叠加</text>
+      <rect x="400" y="30" width="250" height="92" rx="8" fill="#22182a" stroke="#ff4d8d"/><text x="525" y="56" fill="#ff4d8d" text-anchor="middle" font-weight="700">逐个接待顾客</text><text x="525" y="78" fill="#e6e9ef" text-anchor="middle" font-size="12">验货 → 议价 / 易物 → 成交 / 拒绝</text><text x="525" y="98" fill="#9aa3b5" text-anchor="middle" font-size="11.5">举报 · 敲诈 · 贿赂 · 拔枪</text>
+      <rect x="680" y="44" width="140" height="64" rx="8" fill="#1b2030" stroke="#2a3142"/><text x="750" y="70" fill="#e6e9ef" text-anchor="middle" font-weight="600">打烊</text><text x="750" y="92" fill="#9aa3b5" text-anchor="middle" font-size="11.5">剩余顾客作废</text>
+      <rect x="850" y="44" width="230" height="64" rx="8" fill="#1b2030" stroke="#a98bff"/><text x="965" y="70" fill="#e6e9ef" text-anchor="middle" font-weight="600">夜间外出（可选）</text><text x="965" y="92" fill="#9aa3b5" text-anchor="middle" font-size="11.5">垃圾场 / 配给站 / 杰克逊 → 次日 −1 客</text>
+      <rect x="560" y="160" width="520" height="70" rx="8" fill="#1b2030" stroke="#ffb547"/><text x="820" y="186" fill="#ffb547" text-anchor="middle" font-weight="700">夜间结算 EndNight</text><text x="820" y="208" fill="#9aa3b5" text-anchor="middle" font-size="11.5">勾选服务扣费 · 机器产出 · 赃物降温 · 罪证增长 · 失窃判定 · day++</text>
+      <path d="M170 76 H198" stroke="#6b7488" stroke-width="1.5" marker-end="url(#ar)"/>
+      <path d="M370 76 H398" stroke="#6b7488" stroke-width="1.5" marker-end="url(#ar)"/>
+      <path d="M650 76 H678" stroke="#6b7488" stroke-width="1.5" marker-end="url(#ar)"/>
+      <path d="M820 76 H848" stroke="#6b7488" stroke-width="1.5" marker-end="url(#ar)"/>
+      <path d="M965 108 V158" stroke="#6b7488" stroke-width="1.5" marker-end="url(#ar)"/>
+      <path d="M560 195 H95 V110" stroke="#6b7488" stroke-width="1.5" fill="none" marker-end="url(#ar)"/>
+      <text x="300" y="186" fill="#6b7488" font-size="11.5" text-anchor="middle">下一天</text>
+    </g>
+    <!-- week loop -->
+    <text x="20" y="282" fill="#2fe6d6" font-size="14" font-weight="700">周循环（day % 7）</text>
+    <g font-size="12">
+      <rect x="20" y="296" width="1060" height="44" rx="8" fill="#151922" stroke="#2a3142"/>
+      <text x="40" y="323" fill="#e6e9ef">周日 <tspan fill="#ff4d8d" font-weight="700">交租</tspan>，交租日先来一个有预算的商人（流动性阀门） · 退休供货商按固定星期上门 · 周四彩票代表 · 周六开奖 · 股东分红按星期到货 · 杰克逊周一休息 / 周日 9 折</text>
+    </g>
+    <!-- run loop -->
+    <text x="20" y="378" fill="#2fe6d6" font-size="14" font-weight="700">整局循环</text>
+    <g font-size="12">
+      <rect x="20" y="390" width="200" height="34" rx="6" fill="#1b2030" stroke="#2a3142"/><text x="120" y="412" fill="#e6e9ef" text-anchor="middle">D1–13 教学剧情客 · 逐日开放系统</text>
+      <rect x="250" y="390" width="230" height="34" rx="6" fill="#1b2030" stroke="#2a3142"/><text x="365" y="412" fill="#e6e9ef" text-anchor="middle">中期：升级网络 · 产业线 · 派系声望</text>
+      <rect x="510" y="390" width="260" height="34" rx="6" fill="#22182a" stroke="#ff4d8d"/><text x="640" y="412" fill="#ff4d8d" text-anchor="middle" font-weight="700">目标：现金买断 或 还清按揭</text>
+      <rect x="800" y="390" width="280" height="34" rx="6" fill="#1b2030" stroke="#2a3142"/><text x="940" y="412" fill="#e6e9ef" text-anchor="middle">终局：高级页 · 超科技走私 · 无尽</text>
+      <path d="M220 407 H248" stroke="#6b7488" stroke-width="1.5" marker-end="url(#ar)"/><path d="M480 407 H508" stroke="#6b7488" stroke-width="1.5" marker-end="url(#ar)"/><path d="M770 407 H798" stroke="#6b7488" stroke-width="1.5" marker-end="url(#ar)"/>
+    </g>
+  </svg>
+  </div>
+  <h3>每天来多少客人</h3>
+  <pre class="formula">普通随机客名额 = clamp( [吸引力≥200] + [≥250] + [≥500] ± 特性修正 − [昨晚外出], 0, 6 )
+初始吸引力 250 → 每天 2 人；每次装修 +150；前 13 天（未跳过教程）只有剧情脚本客</pre>
+  <p class="dim">来源：<code>StoreClientManager.GenerateClient / GetNormalCustomerCount</code>。随机客只是“填空”，当日队列的大头来自剧情、周常 NPC、展示柜吸客、事件客、通缉犯等约 30 个 Handler。</p>
+</section>
+
+<!-- ============ 2 经济 ============ -->
+<section id="economy">
+  <h2><span class="no">02</span>经济系统：指数房租 vs 线性收入</h2>
+  <p class="lead">玩家的收入线性增长并带有阶梯，房租却每周复利上涨。中后期必须靠“质变”（升级、产业线、违禁品、买断）才能脱离压力。</p>
+
+  <h3>房租曲线与按揭“锁价”</h3>
+  <div class="chart">
+    <svg id="rentChart" viewBox="0 0 1100 380"></svg>
+    <div class="legend">
+      <span><i style="background:#9be15d"></i>轻松 ×1.025/周</span><span><i style="background:#2fe6d6"></i>普通 ×1.05/周</span><span><i style="background:#ff4d8d"></i>困难 / 挑战 ×1.10/周</span>
+      <span><i style="background:#ffb547;height:0;border-top:2px dashed #ffb547"></i>普通按揭周供 930（12 周）</span><span><i style="background:#a98bff;height:0;border-top:2px dashed #a98bff"></i>困难按揭周供 1616（16 周）</span>
+    </div>
+  </div>
+  <p class="dim">起租 200（部分开局为 240 或 250），每 7 天交一次。不管付没付都会涨，每周 <code>rent = (int)(rent × 倍率)</code>。困难难度第 26 周达到约 2100/周，大约第 23 周起房租会超过按揭周供，等于在<b>鼓励玩家中期锁定按揭</b>。</p>
+
+  <div class="grid g2">
+    <div class="card"><h4>胜利条件 A：现金买断</h4>
+      <pre class="formula">房价 = 基价 + max(0, 天数−50) × 日涨幅（有封顶）
+基价 12k / 12k / 24k / 36k
+封顶后最高 15k / 17k / 34k / 56k</pre></div>
+    <div class="card"><h4>胜利条件 B：高利贷按揭</h4>
+      <pre class="formula">首付 = 房价 × 比例，取整到 500
+周供 = ⌈(贷款 + 贷款 × 年利率 × 周数/52) / 周数⌉
+触发：交租日现金 ≥ 2 × 首付
+还不起：收走物品，物品不够则 Game Over</pre></div>
+  </div>
+
+  <h3>四档难度关键参数（共 41 项，节选）</h3>
+  <div class="tbl-scroll"><table>
+    <tr><th>参数</th><th>说明</th><th class="num">轻松</th><th class="num">普通</th><th class="num">困难</th><th class="num">挑战</th></tr>
+    <tr><td>retailMarkup</td><td>零售加价</td><td class="num">20%</td><td class="num">15%</td><td class="num">0</td><td class="num">0</td></tr>
+    <tr><td>rentIncreaseMultiplier</td><td>每周房租倍率</td><td class="num">1.025</td><td class="num">1.05</td><td class="num">1.10</td><td class="num">1.10</td></tr>
+    <tr><td>landlordGraceOwnedAtStart</td><td>开局自带一次租金宽限</td><td class="num">✔</td><td class="num">✔</td><td class="num">✘</td><td class="num">✘</td></tr>
+    <tr><td>vendorPermitFee</td><td>营业许可证</td><td class="num">500</td><td class="num">1500</td><td class="num">2000</td><td class="num">3000</td></tr>
+    <tr><td>upgradePriceMultiplier</td><td>升级价倍率</td><td class="num">1.0</td><td class="num">1.0</td><td class="num">1.5</td><td class="num">2.0</td></tr>
+    <tr><td>supplierMarkupMultiplier</td><td>供应商加价（基础 50%）倍率</td><td class="num">1</td><td class="num">1</td><td class="num">2</td><td class="num">3</td></tr>
+    <tr><td>merchantDiscount</td><td>交租日商人收购折扣</td><td class="num">10%</td><td class="num">15%</td><td class="num">20%</td><td class="num">25%</td></tr>
+    <tr><td>mortgage 利率 / 周数 / 首付</td><td>按揭三参数</td><td class="num">25% / 8 / 20%</td><td class="num">50% / 12 / 15%</td><td class="num">75% / 16 / 12.5%</td><td class="num">100% / 16 / 20%</td></tr>
+    <tr><td>reputation 获得 / 损失</td><td>声望倍率</td><td class="num">1.5 / 0.5</td><td class="num">1 / 1</td><td class="num">0.75 / 1.25</td><td class="num">0.5 / 2</td></tr>
+    <tr><td>tradeFavorRate</td><td>交易额转为“王尔德恩惠”的比例</td><td class="num">10%</td><td class="num">5%</td><td class="num">0</td><td class="num">0</td></tr>
+    <tr><td>wildBailout / 各类提示</td><td>一次性救济、冒充者破绽、事件倒计时</td><td class="num">✔</td><td class="num">✔</td><td class="num">✘</td><td class="num">✘</td></tr>
+  </table></div>
+  <div class="callout">难度的本质是<b>两层旋钮</b>：一层是<b>利润率</b>（零售加价、各类中间商加价），一层是<b>容错</b>（宽限、救济、提示）。有不少参数（发明家、黄牛、商人折扣、按揭细节）在难度面板上看不到，属于“隐藏难度”。</div>
+
+  <h3>夜间固定开支（普通难度）</h3>
+  <div class="tbl-scroll"><table>
+    <tr><th>服务</th><th>公式</th><th>不付的后果</th></tr>
+    <tr><td>电力</td><td><code>(天数/10 + 5) × 电费倍率</code></td><td>断电：店内变暗，只有电池供电的机器还能运转</td></tr>
+    <tr><td>保险</td><td><code>(净资产/400 + 3) × 保险倍率</code>，相当于<b>财富税</b></td><td>失窃概率 <code>33% + 5% × 连续未保天数</code>，被偷物品直接销毁</td></tr>
+    <tr><td>清洁</td><td><code>天数/10 + 3</code>，店铺被破坏时 +72</td><td>每晚垃圾 +2，吸引力下降</td></tr>
+    <tr><td>王尔德系订阅</td><td>推荐 10、罪犯人脉 45、善后人 25/45/70……</td><td>一部分费用按比例返还为恩惠</td></tr>
+  </table></div>
+  <p class="dim">典型账单：第 10 天约 18/晚，第 50 天约 46/晚（困难约 84，挑战约 112）。</p>
+
+  <h3>统一定价公式</h3>
+  <pre class="formula">售价 = round( ((基础价 × (1 + 内在品质%) + 容器价) × (1 + Σ市场修正%) + 子物品) × Π最终系数 )
+  · 内在品质：纯度 / 品相 / 真伪……
+  · 市场修正（先求和、再一次相乘）：零售加价 15%、事件 ±%、违禁品 +35 / 70 / 100 / 150%、游客税 +15%……
+  · 最终系数：议价折扣或加价</pre>
+  <p class="dim">来源：<code>GameItem.ComposeStagedValue</code>（GameItem.cs:1733）、<code>ItemFeatureList</code>。市场修正之所以采用加法，是为了避免多个修正叠乘后价格爆炸。</p>
+</section>
+
+<!-- ============ 3 顾客 ============ -->
+<section id="clients">
+  <h2><span class="no">03</span>顾客、派系与议价</h2>
+  <p class="lead">每位顾客 = 意图（买 / 卖 / 易物 / 对话）+ 预算（心理价位）+ 派系 + 隐藏身份（罪犯、冒充者、改造体）+ 验货能力。</p>
+
+  <div class="grid g2">
+    <div>
+      <h3 style="margin-top:0">派系</h3>
+      <table>
+        <tr><th>派系</th><th>声望条</th><th>特点</th></tr>
+        <tr><td>下层区</td><td><span class="pill on">有</span></td><td>客流主体；声望 ×0.66；每涨 1 点给 40 恩惠</td></tr>
+        <tr><td>上层区</td><td><span class="pill on">有</span></td><td>高预算；声望 ×1.2；适合卖假货</td></tr>
+        <tr><td>治安部</td><td><span class="pill on">有</span></td><td>拒收违禁品；盘查员、判决警官</td></tr>
+        <tr><td>黑市</td><td><span class="pill on">有</span></td><td>小偷、扒手；销赃对象</td></tr>
+        <tr><td>革命军</td><td><span class="pill on">有</span></td><td>−100 时柜台出现 C4 事件</td></tr>
+        <tr><td>13 区卡特尔</td><td><span class="pill half">限化学家</span></td><td>每周梦尘配额 + 纯度要求</td></tr>
+        <tr><td>游客</td><td><span class="pill">无</span></td><td>自动 +15% 游客税，认不出假货</td></tr>
+        <tr><td>神经教会</td><td><span class="pill off">死代码</span></td><td>入口函数从未被调用</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3 style="margin-top:0">客流构成随声望变化</h3>
+      <div class="card">
+        <p style="color:var(--text)">按顺序判定：先掷黑市池，再掷上层池，再掷革命池，都没中则进下层通用池</p>
+        <div id="poolBars"></div>
+        <p style="margin-top:10px">店铺越高档（吸引力 ≥400 / ≥650 时切换权重档），穷困的易物客、卖血客越少，最低只剩 1/1920 的权重。<b>声望和吸引力会直接改写“谁会来”。</b></p>
+      </div>
+    </div>
+  </div>
+
+  <h3>议价：六种动作与掷骰公式</h3>
+  <div class="tbl-scroll"><table>
+    <tr><th>动作</th><th>档位</th><th>判定</th><th>成功</th><th>失败</th></tr>
+    <tr><td>出售：打折</td><td>10 / 25 / 50 / 75%</td><td>必定成功</td><td>顾客预算 + 预算 × p × 2；声望奖励</td><td>—</td></tr>
+    <tr><td>出售：加价</td><td>10 / 25 / 50 / 75%</td><td>掷骰</td><td>物品 +p%，扣声望（“贪心税”）</td><td>拒绝但留下，或走人且派系 −3</td></tr>
+    <tr><td>收购：压价</td><td>同上</td><td>掷骰</td><td>对方物品 −p%</td><td>同上</td></tr>
+    <tr><td>收购：主动加价</td><td>同上</td><td>必定成功</td><td>多付钱换声望</td><td>—</td></tr>
+    <tr><td>敲诈</td><td>20%</td><td><code>60 + 声望/4</code>，只对罪犯有效</td><td>买卖两边都对你有利 20%</td><td>−5；敲诈清白顾客 −7 或 −10</td></tr>
+    <tr><td>威胁</td><td>20%</td><td>对真改造体必定成功</td><td>两边都对你有利 20%</td><td>误威胁普通人 −7 或 −10</td></tr>
+  </table></div>
+  <div class="grid g2">
+    <pre class="formula">声望加成 = 派系声望 / 6   （为负时 ×2）
+接受线 A = 100 − 2.0·p + 声望加成 + 事件客 15 + 交易机
+留下线 B = 100 − 1.2·p + 声望加成 + 事件客 15
+掷骰 r ∈ [0,99]：r&lt;A 接受；r&lt;B 拒绝但留下；否则走人，派系 −3</pre>
+    <table>
+      <tr><th>加价 p（声望 0）</th><th class="num">接受</th><th class="num">拒绝留下</th><th class="num">走人</th></tr>
+      <tr><td>10%</td><td class="num">80%</td><td class="num">8%</td><td class="num">12%</td></tr>
+      <tr><td>25%</td><td class="num">50%</td><td class="num">20%</td><td class="num">30%</td></tr>
+      <tr><td>50%</td><td class="num">0%</td><td class="num">40%</td><td class="num">60%</td></tr>
+      <tr><td>75%</td><td class="num">0%</td><td class="num">10%</td><td class="num">90%</td></tr>
+    </table>
+  </div>
+  <div class="callout pink"><b>隐性账单：</b>每笔成交都会按 <code>原价 × 倍率 × 派系系数 ÷ 400</code> 改变声望。打折让利时倍率增加 0.65 到 2.9；加价成功时倍率变成 −0.5 到 −5。也就是说，<b>每次贪心都会在另一本账上扣分</b>：今天多赚的钱，会改写明天谁来、甚至你会不会死。<br>例：卖 400 给下层区，原价成交 +0.66；打九折 +1.09；加价 10% 成功 −0.33。</div>
+
+  <h3>声望阈值与剧情线</h3>
+  <div class="grid g2">
+    <div class="card"><h4>声望 ±200，阈值 ±20 / 40 / 60 / 80 / 100</h4>
+      <p>正负阈值各自解锁派系 Perk（已接入 40 个），跌回阈值以下立即失效。</p>
+      <p>下层区、治安部、卡特尔声望到 −100：清晨上门，直接 Game Over。</p>
+      <p>任一派系 ≤ −20：每晚有 <code>|声望|/5</code>% 的概率被涂鸦。</p></div>
+    <div class="card"><h4>主要剧情线（名义开始日）</h4>
+      <p><b>乔治奥（D6）</b> 喜剧线：借钱造飞船，最后 4 倍还款</p>
+      <p><b>伦警官（D11）</b> 止痛药成瘾，逐渐滑向腐败</p>
+      <p><b>埃莉诺（D23）</b> 赃物箱陷阱，二选一结局</p>
+      <p><b>塞尔皮科（D40）</b> 反腐线，革命军 / 黑市 / 治安部三种阵营结局</p>
+      <p><b>卢</b> 悬赏 1500 的长线：炸弹、伪装盘查员、追踪器</p></div>
+  </div>
+</section>
+
+<!-- ============ 4 风险 ============ -->
+<section id="risk">
+  <h2><span class="no">04</span>风险与治安：延迟引爆的罪证系统</h2>
+  <p class="lead">游戏里的“突袭”并不是一个战斗系统，而是由盘查、罪证累积、判决警官、晨间上门、炸弹、派系行动合成的风险管理玩法。</p>
+  <div class="chart">
+  <svg viewBox="0 0 1100 200" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="12.5">
+    <defs><marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6b7488"/></marker></defs>
+    <rect x="10" y="20" width="190" height="80" rx="8" fill="#1b2030" stroke="#2a3142"/><text x="105" y="46" text-anchor="middle" fill="#e6e9ef" font-weight="700">违法行为</text><text x="105" y="68" text-anchor="middle" fill="#9aa3b5">卖违禁品 / 赃物 / 假货</text><text x="105" y="86" text-anchor="middle" fill="#9aa3b5">贿赂 / 无证经营</text>
+    <rect x="240" y="20" width="190" height="80" rx="8" fill="#1b2030" stroke="#ffb547"/><text x="335" y="46" text-anchor="middle" fill="#ffb547" font-weight="700">罪值（按罪名累计）</text><text x="335" y="68" text-anchor="middle" fill="#9aa3b5">记罪 = 成交价（按派系 ÷2 / ÷3）</text><text x="335" y="86" text-anchor="middle" fill="#9aa3b5">证据 &lt;80 时每晚 −20</text>
+    <rect x="470" y="20" width="200" height="80" rx="8" fill="#1b2030" stroke="#ff4d8d"/><text x="570" y="46" text-anchor="middle" fill="#ff4d8d" font-weight="700">证据进度 0→100</text><text x="570" y="68" text-anchor="middle" fill="#9aa3b5">每天 +0 / 2 / 6 / 9 / 12 / 20 / 33</text><text x="570" y="86" text-anchor="middle" fill="#9aa3b5">（随总罪值分档）</text>
+    <rect x="710" y="20" width="160" height="80" rx="8" fill="#22182a" stroke="#ff5d5d"/><text x="790" y="46" text-anchor="middle" fill="#ff5d5d" font-weight="700">判决警官上门</text><text x="790" y="68" text-anchor="middle" fill="#9aa3b5">证据满 100 的次日</text>
+    <rect x="910" y="10" width="180" height="30" rx="6" fill="#1b2030" stroke="#2a3142"/><text x="1000" y="30" text-anchor="middle" fill="#e6e9ef">罪值 &lt;300 → 罚款</text>
+    <rect x="910" y="45" width="180" height="30" rx="6" fill="#1b2030" stroke="#2a3142"/><text x="1000" y="65" text-anchor="middle" fill="#e6e9ef">&lt;1500 → 逮捕（结局）</text>
+    <rect x="910" y="80" width="180" height="30" rx="6" fill="#1b2030" stroke="#ff5d5d"/><text x="1000" y="100" text-anchor="middle" fill="#ff5d5d">≥1500 → 处决（结局）</text>
+    <path d="M200 60 H238" stroke="#6b7488" stroke-width="1.5" marker-end="url(#ar2)"/><path d="M430 60 H468" stroke="#6b7488" stroke-width="1.5" marker-end="url(#ar2)"/><path d="M670 60 H708" stroke="#6b7488" stroke-width="1.5" marker-end="url(#ar2)"/><path d="M870 60 H906" stroke="#6b7488" stroke-width="1.5" marker-end="url(#ar2)"/>
+    <rect x="240" y="130" width="430" height="56" rx="8" fill="#151922" stroke="#2a3142"/><text x="455" y="153" text-anchor="middle" fill="#2fe6d6" font-weight="700">平行线：例行盘查</text><text x="455" y="174" text-anchor="middle" fill="#9aa3b5">走私罪值 ≥50 启动；罪值越高，间隔从 3–5 天缩到 1–2 天</text>
+    <rect x="710" y="130" width="380" height="56" rx="8" fill="#151922" stroke="#2a3142"/><text x="900" y="153" text-anchor="middle" fill="#2fe6d6" font-weight="700">盘查员人格：严格 / 可贿赂 / 懒惰 各 1/3</text><text x="900" y="174" text-anchor="middle" fill="#9aa3b5">贿赂 = clamp(100+2×天数−2×治安声望, 40, 400)，每累计 250 转成 1 次贿赂罪</text>
+    <path d="M335 100 V128" stroke="#6b7488" stroke-width="1.5" marker-end="url(#ar2)"/>
+  </svg>
+  </div>
+  <div class="grid g2">
+    <table>
+      <tr><th>违禁品等级</th><th>被盘查发现</th><th class="num">售价溢价</th></tr>
+      <tr><td>C1 低级</td><td>只警告，不没收</td><td class="num">+35%</td></tr>
+      <tr><td>C2 中级</td><td>没收</td><td class="num">+70%</td></tr>
+      <tr><td>C3 高级</td><td>没收 + 按货值罚款（付不起则逮捕）</td><td class="num">+100%</td></tr>
+      <tr><td>C4 高危级</td><td>当场逮捕，游戏结束</td><td class="num">+150%</td></tr>
+    </table>
+    <div class="card"><h4>赃物“热度”就是被发现的概率</h4>
+      <p>按基础价，初始热度为 25 / 50 / 75 / 100。每晚热度 −18，降到 0 就洗白。收赃时自动打 10% 到 25% 的折扣。</p>
+      <p>藏匿手段：走私暗格、锁住的容器、海报后的 2×2 暗格都不会被查。</p>
+      <p>通缉犯：举报正确得赏金且治安 +5；误报治安 −8、罚 50；<b>不举报没有任何数值惩罚</b>，要不要举报完全交给玩家的良心。</p></div>
+  </div>
+</section>
+
+<!-- ============ 5 物品 ============ -->
+<section id="items">
+  <h2><span class="no">05</span>物品与产业线：标签值 vs 实际值</h2>
+  <p class="lead">整个鉴定和造假玩法建立在一个数据结构上：每个物品特征同时存“标签上写的”和“实际的”两个值。</p>
+  <div class="grid g3">
+    <div class="card"><h4>① 收货鉴定</h4><p>玩家用放大镜、试纸、扫描仪揭穿供货方虚报的标签值，按实际值压价。目检指出瑕疵后收货价再 −15%；指错了，该派系声望 −2。</p></div>
+    <div class="card"><h4>② 出货造假</h4><p>贴标机改写标签值：幽灵水标成纯水，价格 ×2.6；失效注射器标成真品，价格 ×20。</p></div>
+    <div class="card"><h4>③ 被顾客识破</h4><p>识破能力按派系写死：黑市和治安部自带试纸，游客和上层区认不出假烟。被识破时派系声望 −4。</p></div>
+  </div>
+  <div class="callout">造假的主要惩罚不是当场被抓，而是<b>延迟累积的犯罪账本</b>：卖出错标的水按“毫升 × 权重”累计，每晚只减 5，累计到 2500 就记罪并收到威胁信。一瓶幽灵水标成纯水就会超线；卖给游客则不计入。</div>
+
+  <h3>产业线一览：各自的利润曲线和毁灭方式</h3>
+  <div class="tbl-scroll"><table>
+    <tr><th>产业线</th><th>开局职业</th><th>核心链路</th><th>关键数值</th><th>利润曲线</th><th>毁灭方式</th></tr>
+    <tr><td><b>水</b></td><td>水商</td><td>水分收集器 → 净水器 → 瓶装 / 贴标</td><td>40 cr/L × 纯度修正（纯水 +100%，沟渠水 −90%）；收集器 850 mL/夜</td><td>纯度台阶式上涨</td><td>假水账本慢慢累积</td></tr>
+    <tr><td><b>化学</b></td><td>化学家</td><td>搅拌 → 加热板控温 → 蒸发 → 成型压片</td><td>纯度 7 档（+135% 到 −95%）再叠违禁溢价；药用级梦尘约 57/剂</td><td>杠杆最高</td><td>一次被查就完</td></tr>
+    <tr><td><b>枪械</b></td><td>枪械匠</td><td>熔炉铸锭 → 3D 打印 → 改装 → 订单</td><td>打印 24 进度/夜；订单三档约 90 / 200 / 360</td><td>订单驱动</td><td>没有许可证或许可证被吊销</td></tr>
+    <tr><td><b>水培</b></td><td>农场主</td><td>种植 → 基因分析 → DNA 编辑 → 回种</td><td>8 进度/夜；编辑成功率 95 − 5 × 复杂度；性状强度 ∝ 等级<sup>0.75</sup></td><td>像复利</td><td>水质环境崩溃</td></tr>
+    <tr><td><b>水产</b></td><td>养殖户</td><td>RAS 循环水 → 饲料 → 繁殖 / 取卵</td><td>罗非鱼 13 天成熟；鲟鱼取卵 10 罐 × 240</td><td>长周期大回报</td><td>废水浓度 3% 开始掉血，8% 致死</td></tr>
+    <tr><td><b>畜牧（鼠）</b></td><td>养鼠人</td><td>笼养 → 投喂 → 屠宰</td><td>成鼠约 174 cr 肉</td><td>稳定</td><td>用鼠肉喂鼠会传播朊病毒</td></tr>
+    <tr><td><b>酿酒</b></td><td>（升级解锁）</td><td>酿造 → 催陈器陈化</td><td>100 cr × 酒质；每夜陈化 +3 cr</td><td>时间换钱</td><td>用脏水酿酒会扣酒质</td></tr>
+    <tr><td><b>销赃</b></td><td>销赃人</td><td>低价收赃 → 等热度降下来 → 卖给黑市</td><td>热度每夜 −18；卖给黑市时声望 ×1.5 到 3</td><td>赚时间差</td><td>热度没降完就被盘查</td></tr>
+  </table></div>
+  <p class="dim">所有机器都在夜间结算一次产出，共约 25 种机器（熔炉 200、3D 打印机 350、DNA 编辑器 1000……）。器官、采矿、打捞、肉类培养是前作遗留或尚未上线的内容。</p>
+
+  <h3>物品数据模型与网格</h3>
+  <ul class="tight">
+    <li><code>GameItem</code> 本身字段很少，只有 <code>unitValue</code>、<code>unitCount</code> 和网格形状。真伪、纯度、耐久、热度、违禁等级都存在字符串键值包 <code>TagSystem</code>（约 845 个键）和 <code>ItemFeature</code> 里。</li>
+    <li>行为是约 50 个委托钩子，由约 100 个 <code>*Helper.InitXxx(item)</code> 把函数挂上去“组装”。多个函数挂在同一钩子上时，结果按与 / 或 / 最大 / 最小合并。</li>
+    <li>网格形状<b>由精灵图的透明度逐格采样自动生成</b>，可以旋转、翻转、层层嵌套。店铺分区：主库存 24×10、前后台各 18×4、展柜 7×5、海报后暗格 2×2。</li>
+    <li>位置也是玩法：能量阵列和电鳗给相邻设备供电，模组看相邻节点给加成。</li>
+    <li>价格分布：中位数 40 cr，最高 15000（超科技涡轮增压器）。</li>
+  </ul>
+</section>
+
+<!-- ============ 6 成长 ============ -->
+<section id="growth">
+  <h2><span class="no">06</span>成长系统：开局组合 × 浅而宽的升级网</h2>
+  <p class="lead">重玩性主要来自开局组合：4 档难度 × 9 个职业 × 48 个特性。局内成长则是一张浅而宽的升级网，加上 6 条派系声望轴。</p>
+  <h3>开局职业（专精 = 免费送一条产业线的入门升级 + 一套设备，代价是现金和房租）</h3>
+  <div class="tbl-scroll"><table>
+    <tr><th>职业</th><th class="num">开局现金</th><th>房租</th><th>赠送</th><th>特点</th></tr>
+    <tr><td>学徒</td><td class="num">550</td><td>—</td><td>破旧储藏区 + 日用品</td><td>新手推荐</td></tr>
+    <tr><td>水商</td><td class="num">400</td><td>—</td><td>WATER_TRADER（300）+ 全套水设备</td><td></td></tr>
+    <tr><td>销赃人</td><td class="num">450</td><td>+50</td><td>走私暗格、梦尘、自制枪、钥匙卡；黑市 +30、治安 −30</td><td>解锁地下交易所</td></tr>
+    <tr><td>一贫如洗</td><td class="num">0</td><td>—</td><td>什么都没有，同时关闭救济和提醒</td><td>极限挑战</td></tr>
+    <tr><td>水培农场主</td><td class="num">450</td><td>+40</td><td>RETIRED_FARMER（350）+ 旧水培机</td><td>进阶</td></tr>
+    <tr><td>枪械匠</td><td class="num">150</td><td>+50</td><td>枪证 I + 退休枪匠（950）+ 打印机和枪械</td><td>进阶</td></tr>
+    <tr><td>化学家</td><td class="num">300</td><td>—</td><td>退休化学家（1000）+ 全套化学设备；解锁卡特尔派系</td><td>独占第 6 个派系</td></tr>
+    <tr><td>养鼠人</td><td class="num">600</td><td>—</td><td>退休牧场主（750）+ 鼠笼和 6 只鼠</td><td>不扣钱，强度偏高</td></tr>
+    <tr><td>水产养殖户</td><td class="num">150</td><td>+40</td><td>AQUACULTURE（400）+ 2 套 RAS + 鱼</td><td>后加的职业</td></tr>
+    <tr><td class="dim">器官贩子 / 小吃摊 / 私酒 / 药剂师 / 废料客</td><td colspan="4" class="dim">显示为“开发中”，前四个在代码里没有开局实现，废料客有实现但被锁</td></tr>
+  </table></div>
+  <div class="grid g3">
+    <div class="card"><h4>王尔德人脉网络</h4><p>共 54 个升级：基础页可见 49 个，合计 29,790；高级页 4 个，合计 20,000，必须先买下店铺才出现。前置链最长只有 3 级。</p><p>三类升级：内容解锁（新产业线、新周常 NPC）、数值加成、风险对冲（善后人、证据清除、线人）。</p></div>
+    <div class="card"><h4>恩惠货币闭环</h4><p>付款时先扣恩惠，不够再扣现金。恩惠来自下层声望（每点 40）、交易抽成和订阅费返还。</p><p>形成“花钱订阅 → 返还恩惠 → 买下一个升级”的循环。</p></div>
+    <div class="card"><h4>终局回收开局取舍</h4><p>买断店铺后可以接触超科技走私贩，他卖“心智重编程器”，可以在局中删除开局选的负面特性，把开局时的取舍放到终局去回收。</p></div>
+  </div>
+  <h3>外围玩法</h3>
+  <ul class="tight">
+    <li><b>夜间外出</b>：每晚 1 次，3 个地点（垃圾场、配给站、杰克逊博士），7 个原版事件按星期排期。代价是第二天少 1 个顾客。</li>
+    <li><b>彩票 / 刮刮乐</b>：返还率约 57% 和 59%（刮刮乐按 40 万次模拟），长期是负期望，属于氛围玩法。</li>
+    <li><b>配给站</b>：食品券按固定价格买货，补货量随市场短缺或过剩变化，是一个套利窗口。</li>
+    <li><b>电话供货商</b>：6 个号码，累计消费达到门槛后才能订大单；入股后按固定星期收到分红货物。</li>
+  </ul>
+</section>
+
+<!-- ============ 7 考古 ============ -->
+<section id="arch">
+  <h2><span class="no">07</span>前作考古：从 Deepspace Emporium 到 Probably Stolen</h2>
+  <p class="lead">tinyBuild CEO 公开说过，前作的 Demo 同时在线峰值只有 28 人。代码证实，这次转型是“保留引擎，换掉玩法”。</p>
+  <div class="tbl-scroll"><table>
+    <tr><th>系统</th><th>状态</th><th>证据 / 去向</th></tr>
+    <tr><td>飞船开局（4 艘船、4 名船员）</td><td><span class="pill off">封存</span></td><td><code>ShipItemDirectory.InitDirectory()</code> 是空函数</td></tr>
+    <tr><td>太空航行与 21 个太空事件</td><td><span class="pill off">封存</span></td><td>只能由旧的 <code>TurnManager.NextTurn</code> 触发；文本全是硬编码英文</td></tr>
+    <tr><td>回合制小队战斗 / 登船突袭</td><td><span class="pill off">封存</span></td><td><code>InRaid() =&gt; false</code>，一行代码切断全部战斗分支（45 个技能、100 多个效果、异种生物敌人）</td></tr>
+    <tr><td>船员生存（口渴、饥饿）</td><td><span class="pill off">封存</span></td><td>Survival.cs，没有调用入口</td></tr>
+    <tr><td>飞船舱室模块</td><td><span class="pill on">复用</span></td><td>变成店铺的储藏区和走私暗格</td></tr>
+    <tr><td>网格背包 / 物品图 / 像素窗口</td><td><span class="pill on">复用</span></td><td>柜台、展示柜、垃圾桶，是整个 UI 的基础</td></tr>
+    <tr><td>飞船机械与电力</td><td><span class="pill on">复用</span></td><td>店内机器的功耗；函数里还留着 <code>isFromShip</code> 参数</td></tr>
+    <tr><td>雇员 / 远征</td><td><span class="pill half">半成品</span></td><td>正式版时期新写的；<code>CreateExpedition()</code> 从未被调用，11 个雇员特质全部没用上</td></tr>
+    <tr><td>派系力量值 / 戒严 / 暴乱</td><td><span class="pill half">半成品</span></td><td>力量修正字段从未被读取，高阶派系行动基本不可达</td></tr>
+  </table></div>
+  <div class="callout cyan"><b>转型路径：</b>“移动探索”降维成“夜间外出 + 周常 NPC”；“战斗”降维成“治安博弈 + 风险对冲升级”；“空间站大事件”（政变、恐袭、连环杀手）缩小为市场供需和派系动态。原型里留下的开发者 Todo 写着“拜访发明家 / 弄个熔炉炼锭 / <b>去超市</b>”，其中“超市”最终变成了配给站。</div>
+</section>
+
+<!-- ============ 8 技术 ============ -->
+<section id="tech">
+  <h2><span class="no">08</span>技术架构</h2>
+  <p class="lead">内部代号 <code>dse</code>（Deep Space Emporium）。单程序集、静态单例加 Helper，内容全部写在代码里，工具链做得相当用心。</p>
+  <div class="grid g2">
+    <div>
+      <h3 style="margin-top:0">代码规模构成</h3>
+      <div class="card" id="codeBars"></div>
+    </div>
+    <div>
+      <h3 style="margin-top:0">插件栈</h3>
+      <table>
+        <tr><th>插件</th><th>用途</th></tr>
+        <tr><td>Easy Save 3</td><td>存档（JSON，不加密）</td></tr>
+        <tr><td>TextMeshPro / Unity Localization</td><td>文本与 13 种语言</td></tr>
+        <tr><td>Steamworks.NET</td><td>成就、云存档、创意工坊</td></tr>
+        <tr><td>Harmony + DseCecil</td><td>Mod 补丁 / IL 安全扫描</td></tr>
+        <tr><td>DOTween</td><td>只用于顾客走动</td></tr>
+        <tr><td>Febucci TextAnimator</td><td>对话打字机效果</td></tr>
+        <tr><td>Quantum Console</td><td>F8 调试控制台（30 条命令）</td></tr>
+        <tr><td>RNGNeeds</td><td>掉落表</td></tr>
+        <tr><td class="dim">Hot Reload / Recorder / VisualScripting</td><td class="dim">代码里没有引用，只是被一起打进了包</td></tr>
+      </table>
+    </div>
+  </div>
+  <h3>值得重点关注：Mod 安全体系（约 1 万行）</h3>
+  <div class="grid g4">
+    <div class="card"><h4>① 能力声明</h4><p><code>manifest.xml</code> 必须声明文件、网络、反射、Steam 等 8 类能力；纯数据 mod 也必须带一个实现 IMod 的 DLL。</p></div>
+    <div class="card"><h4>② IL 静态扫描</h4><p>用 Cecil 读取 mod 的 IL：未声明的能力需要玩家确认；窃密特征、启动进程、工坊发布、自带 Harmony、高熵资源一律直接拒绝。</p></div>
+    <div class="card"><h4>③ 信任链</h4><p>用 SHA-256 给 manifest 和 DLL 做指纹，本机保存批准记录；mod 更新后只要能力没有扩大就自动放行。另有 RSA 签名的远程信任列表、全局停用开关和防回滚。</p></div>
+    <div class="card"><h4>④ 运行时熔断</h4><p>Harmony 拦截 Steam 账号类 API 和 <code>Process.Start</code>，触发即永久停用该 mod 版本；每 10 秒自检一次守卫补丁是否还在。</p></div>
+  </div>
+  <h3>其他工程要点</h3>
+  <ul class="tight">
+    <li><b>存档</b>：ES3 每个存档槽两个键，约 160 个字段；物品只存 ID 和状态，读档时重新跑工厂函数，所以行为不进存档。按天保留历史快照，有完整性检查、损坏隔离、IO 重试。</li>
+    <li><b>UI 四代并存</b>：整数像素 <code>PixelElement</code>、47 个传统 <code>*UIManager</code>、由代码生成预制体的 “UI3”，以及链式 <code>CustomUIBuilder</code>（mod、设置、调试面板共用）。</li>
+    <li><b>本地化</b>：代码里内置英文兜底，表里缺 key 就显示英文；有性别和敬语标记；按 Unicode 区间逐串切换中日韩字体。</li>
+    <li><b>开发工具</b>：游戏目录放一个 <code>dev.txt</code> 就能开启 F9 调试面板（里面有一组 Marketing 按钮，专门为录预告片摆场景）；卡顿看门狗；游戏内纸张文档编辑器（可导出成 C# 代码）。埋了 19 个分析事件，但发行版用常量开关全部关掉了。</li>
+    <li><b>技术债</b>：<code>PlayerStore</code> 有 4213 行，被引用 3773 次；原型代码还留在主循环里；29 处 <code>[RuntimeInitializeOnLoadMethod]</code> 写在实例方法上，不会生效；26 个空 <code>catch</code>。</li>
+  </ul>
+</section>
+
+<!-- ============ 9 洞察 ============ -->
+<section id="insight">
+  <h2><span class="no">09</span>设计洞察：为什么能爆</h2>
+  <div class="grid g2">
+    <div class="card"><h4>1. 每个顾客都是一场“能算期望、但只能押一次”的赌局</h4><p>信息不对称（身份、真伪、罪犯）加上公开的概率（议价 tooltip 直接显示成功率）。玩家能算期望，却只能下一次注，每一次举报、敲诈、加价都带着张力。</p></div>
+    <div class="card"><h4>2. 双账本互相牵制</h4><p>现金账（看得见）对上声望账和罪证账（延迟兑现）。贪心的收益是即时的，代价是延迟的，这正是“再来一天”的心理钩子。</p></div>
+    <div class="card"><h4>3. 一套底层，多条产业线</h4><p>标签值与实际值的双值结构、夜间结算、三段定价、按派系写死的识破能力、衰减式犯罪账本，这一套底层被复用到 8 条产业线。每条线只换原料、工艺和品质变量，内容产出效率极高。</p></div>
+    <div class="card"><h4>4. 压力曲线由数学保证</h4><p>指数房租对上线性收入，加上“交租日必来商人”的流动性阀门，以及“中期锁定按揭”的明确出口，玩家永远有一个看得见的目标。</p></div>
+    <div class="card"><h4>5. 道德留白</h4><p>不举报通缉犯没有数值惩罚，熟人剧情把交易和背叛绑在一起，玩家自己选择要当什么样的店主。这一点继承了 Papers, Please 的核心魅力。</p></div>
+    <div class="card"><h4>6. 题材包装的胜利</h4><p>机制框架基本延续前作，换上赛博朋克加灰色地带交易的包装之后，同时在线从 28 人涨到 16 万人。好的系统需要一个让人一眼就想玩的“幻想”。</p></div>
+  </div>
+  <div class="callout"><b>可借鉴的短板：</b>升级树太浅、互斥取舍太弱，钱够了就能全买，后期策略深度不足；夜间外出这条线到后期没有任何成长空间。还没做完的远征和雇员系统正好是补这块的，大概率会出现在后续更新里。</div>
+</section>
+
+<!-- ============ 10 bugs ============ -->
+<section id="bugs">
+  <h2><span class="no">10</span>代码里发现的问题与文案不一致</h2>
+  <div class="tbl-scroll"><table>
+    <tr><th>问题</th><th>说明</th><th>位置</th></tr>
+    <tr><td>难度开局费用加成失效</td><td><code>start*CostBonus</code> 在第一次打烊重算费用时就被覆盖，实际账单里不起作用</td><td>PlayerStore / StoreServiceSheet</td></tr>
+    <tr><td>预算 Perk 作用范围过大</td><td>“好评如潮 +25%”、“可靠供应商 +50%” 对所有顾客生效，和描述写的派系范围不符</td><td>StoreReputationPerk</td></tr>
+    <tr><td>“盗亦有道”倍率不符</td><td>描述写声望流失 ×1.5，代码实际是 ×2</td><td>RepPerkTable</td></tr>
+    <tr><td>彩票中奖条件</td><td>代码中 2 个号码就发 35，游戏内说明写“至少中 3 个”</td><td>LotteryHelper</td></tr>
+    <tr><td>Perk 不可达</td><td><code>UL_HITMAN</code>、<code>SEC_CONTRABAND_TOLERANCE</code> 没加进列表</td><td>StoreReputationPerk</td></tr>
+    <tr><td>无证经营结局</td><td><code>vendor_permit</code> 结局只有文本，代码里没有任何地方触发</td><td>PlayerStore.ExecuteGameOver</td></tr>
+    <tr><td>学徒文案</td><td>说明写“增加初始信用点”，代码里是 −50（只是比其他职业扣得少）</td><td>StartingScenario</td></tr>
+    <tr><td>Prodigious 成就</td><td>要求第 50 天前拥有店铺，按揭最少 8 周来不及，实际只能现金买断</td><td>AchievementTracker</td></tr>
+  </table></div>
+</section>
+
+<footer>
+  详细笔记（共约 2,700 行，每条结论都标注了源文件和行号）：<a href="notes/01_economy.md">01 经济</a> · <a href="notes/02_clients.md">02 顾客与风险</a> · <a href="notes/03_items.md">03 物品与产业线</a> · <a href="notes/04_progression.md">04 成长与考古</a> · <a href="notes/05_tech.md">05 技术架构</a><br>
+  本地化文本解包：<code>loc/chinese.json</code>、<code>loc/english.json</code>。反编译源码位于本机 <code>~/ps_work/src/</code>，仅供学习研究，请勿二次分发。<br>
+  分析版本：游戏 1.0.0.6 构建（Unity 2021.3.45f2）· 报告生成于 2026-11-07
+</footer>
+</div>
+
+<script>
+(function(){
+  // ---- rent chart ----
+  const svg=document.getElementById('rentChart');
+  const W=1100,H=380,L=60,R=20,T=20,B=40,weeks=30,ymax=3600;
+  const x=w=>L+(W-L-R)*w/weeks, y=v=>T+(H-T-B)*(1-v/ymax);
+  let s='';
+  for(let v=0;v<=ymax;v+=600){s+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="#2a3142" stroke-width="1"/><text x="${L-8}" y="${y(v)+4}" fill="#6b7488" font-size="11" text-anchor="end">${v}</text>`;}
+  for(let w=0;w<=weeks;w+=5){s+=`<text x="${x(w)}" y="${H-B+18}" fill="#6b7488" font-size="11" text-anchor="middle">第${w}周</text>`;}
+  const series=[[1.025,'#9be15d'],[1.05,'#2fe6d6'],[1.10,'#ff4d8d']];
+  series.forEach(([m,c])=>{let r=200,pts=[];for(let w=0;w<=weeks;w++){pts.push(`${x(w)},${y(Math.min(r,ymax))}`);r=Math.floor(r*m);}s+=`<polyline points="${pts.join(' ')}" fill="none" stroke="${c}" stroke-width="2.5"/>`;});
+  // mortgage lines
+  [[930,12,'#ffb547','普通按揭 930 × 12 周'],[1616,16,'#a98bff','困难按揭 1616 × 16 周']].forEach(([v,n,c,lab])=>{s+=`<line x1="${x(0)}" x2="${x(weeks)}" y1="${y(v)}" y2="${y(v)}" stroke="${c}" stroke-width="1.6" stroke-dasharray="6 5"/><text x="${x(0)+6}" y="${y(v)-6}" fill="${c}" font-size="11.5">${lab}</text>`;});
+  // annotate hard crossing
+  let r=200,cross=0;for(let w=0;w<=weeks;w++){if(r>1616){cross=w;break;}r=Math.floor(r*1.1);}
+  s+=`<circle cx="${x(cross)}" cy="${y(1616)}" r="5" fill="#ff4d8d"/><text x="${x(cross)+8}" y="${y(1616)+18}" fill="#ff4d8d" font-size="11.5">第${cross}周：困难房租超过按揭周供</text>`;
+  svg.innerHTML=s;
+
+  // ---- pool bars ----
+  const pools=[['全派系中立',[7,7.4,2.6,83]],['全派系声望 ≥50',[17,12.8,6.4,63.9]]];
+  const pc=['#a98bff','#ffb547','#ff4d8d','#2fe6d6'],pn=['黑市','上层区','革命军','下层区'];
+  let h='';pools.forEach(([n,v])=>{h+=`<div style="margin:10px 0 4px;font-size:13px;color:#e6e9ef">${n}</div><div style="display:flex;height:22px;border-radius:5px;overflow:hidden">`;v.forEach((p,i)=>{h+=`<div title="${pn[i]} ${p}%" style="width:${p}%;background:${pc[i]};color:#0d0f14;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center">${p>=6?pn[i]+' '+p+'%':''}</div>`;});h+='</div>';});
+  h+=`<div class="legend">${pn.map((n,i)=>`<span><i style="background:${pc[i]};height:10px;width:10px;border-radius:2px"></i>${n}</span>`).join('')}</div>`;
+  document.getElementById('poolBars').innerHTML=h;
+
+  // ---- code bars ----
+  const code=[['UI 框架与各界面',16.2],['物品行为 Helper',15.7],['顾客 / 对话 / 谈判',14.9],['商店核心循环',14.4],['物品 / 库存模型',7.1],['前作遗留原型',6.4],['机器',5.8],['数据目录 Directory',5.7],['纸张文档 + 编辑器',4.2],['Mod 系统',4.1],['调试 / 埋点 / 存档 / 本地化等',5.5]];
+  let c='';code.forEach(([n,p],i)=>{const col=n.includes('遗留')?'#ff5d5d':(i<4?'#2fe6d6':'#a98bff');c+=`<div style="display:flex;align-items:center;gap:10px;margin:7px 0;font-size:13px"><div style="width:190px;color:#9aa3b5">${n}</div><div class="bar" style="flex:1"><span style="width:${p/16.2*100}%;background:${col}"></span></div><div class="mono" style="width:44px;text-align:right">${p}%</div></div>`;});
+  c+='<p style="margin-top:8px">“内容即代码”（顾客、物品 Helper、物品目录）合计约 37%；工具和平台类代码（Mod、纸张、调试、埋点）约 11%。</p>';
+  document.getElementById('codeBars').innerHTML=c;
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+{
+ "name": "Base",
+ "level": 5,
+ "renderers": 423,
+ "verts": 104853,
+ "tris": 95461,
+ "unique_verts": 68267,
+ "focus": [
+  [
+   -27.39900016784668,
+   -1.2079999148845673,
+   -86.04575176239014
+  ],
+  [
+   30.96879270226081,
+   3.548600013926625,
+   0.0
+  ]
+ ],
+ "draw_groups": 39,
+ "materials": 88,
+ "textures": 76,
+ "bbox": [
+  [
+   -29.471080780029297,
+   -1.715000033378601,
+   -90.0
+  ],
+  [
+   46.27043914794922,
+   8.736568450927734,
+   -40.0
+  ]
+ ],
+ "stats": {
+  "renderers": 423,
+  "skipfx": 29,
+  "inactive": 170,
+  "disabled": 15,
+  "instanced_groups": 38,
+  "instances": 277
+ },
+ "top_meshes": [
+  [
+   "pCube336",
+   40
+  ],
+  [
+   "SM_Fabric_01",
+   25
+  ],
+  [
+   "SM_BarbedWire_01_03",
+   23
+  ],
+  [
+   "SM_Stairs_New_10",
+   18
+  ],
+  [
+   "SodaPointLightMesh",
+   17
+  ],
+  [
+   "SM_SteelFrame_01_3",
+   15
+  ],
+  [
+   "SM_CementMold3",
+   13
+  ],
+  [
+   "pTorus6",
+   8
+  ],
+  [
+   "SM_Stairs_New_08",
+   8
+  ],
+  [
+   "SM_PaperBox_01_2",
+   8
+  ],
+  [
+   "pCube337",
+   8
+  ],
+  [
+   "Quad",
+   7
+  ],
+  [
+   "polySurface9",
+   7
+  ],
+  [
+   "SM_Garbage_01_6",
+   7
+  ],
+  [
+   "SM_BagTile2",
+   6
+  ],
+  [
+   "SM_MetalBoard_01_3",
+   6
+  ],
+  [
+   "SM_Soda_Ironframe2",
+   6
+  ],
+  [
+   "SM_Stairs_01",
+   5
+  ],
+  [
+   "SM_WoodBox_01_2",
+   4
+  ],
+  [
+   "SM_Truck_02_Tyre2",
+   4
+  ],
+  [
+   "SM_Soda_ExhaustSystem10",
+   4
+  ],
+  [
+   "SM_Ventilation_Soda3",
+   4
+  ],
+  [
+   "SM_Soda_Pipe_1",
+   4
+  ],
+  [
+   "SM_Computer_01_1_1",
+   3
+  ],
+  [
+   "SM_MetalBoard_01_9",
+   3
+  ]
+ ],
+ "size_mb": 3.8,
+ "sec": 4.7
+}

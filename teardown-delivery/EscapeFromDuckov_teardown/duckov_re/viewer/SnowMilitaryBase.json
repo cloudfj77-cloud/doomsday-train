@@ -1,0 +1,149 @@
+{
+ "name": "SnowMilitaryBase",
+ "level": 48,
+ "renderers": 19355,
+ "verts": 9655878,
+ "tris": 8698565,
+ "unique_verts": 1549795,
+ "focus": [
+  [
+   -1146.4146082028747,
+   -3.7100000381469727,
+   141.8819983506369
+  ],
+  [
+   -107.91410446579124,
+   3.420130813121805,
+   876.3999908447265
+  ]
+ ],
+ "draw_groups": 1063,
+ "materials": 724,
+ "textures": 368,
+ "bbox": [
+  [
+   -1637.0,
+   -83.60089874267578,
+   -617.0
+  ],
+  [
+   429.0,
+   100.45984649658203,
+   1923.0
+  ]
+ ],
+ "stats": {
+  "renderers": 19355,
+  "disabled": 1652,
+  "inactive": 2700,
+  "skipfx": 471,
+  "nomesh": 52,
+  "instanced_groups": 1062,
+  "instances": 18893,
+  "terrain": 1
+ },
+ "top_meshes": [
+  [
+   "SM_Snowrock02",
+   1194
+  ],
+  [
+   "SM_BarbedWire_01_03",
+   1002
+  ],
+  [
+   "SM_Wall_01_3",
+   558
+  ],
+  [
+   "SM_Roadblock12",
+   504
+  ],
+  [
+   "SM_Wall_01_1",
+   504
+  ],
+  [
+   "pCube338",
+   352
+  ],
+  [
+   "SM_WaterButt_02",
+   297
+  ],
+  [
+   "SM_Weapons",
+   273
+  ],
+  [
+   "Cube",
+   267
+  ],
+  [
+   "SM_VillaWall_03",
+   251
+  ],
+  [
+   "SM_VinesWall2",
+   249
+  ],
+  [
+   "SM_WoodBox_01_2",
+   243
+  ],
+  [
+   "SM_CementMold4",
+   228
+  ],
+  [
+   "SM_WoodenPallet_01",
+   228
+  ],
+  [
+   "Girder_Box_LP_Low_poly",
+   208
+  ],
+  [
+   "SM_Stone_01_04",
+   207
+  ],
+  [
+   "SM_Tyre_02",
+   199
+  ],
+  [
+   "SM_Container_L",
+   191
+  ],
+  [
+   "SM_Container_Back",
+   191
+  ],
+  [
+   "SM_Container_R",
+   191
+  ],
+  [
+   "SM_BagTile2",
+   182
+  ],
+  [
+   "SM_OilBarrel01",
+   169
+  ],
+  [
+   "SM_Wall_01_4",
+   157
+  ],
+  [
+   "SM_CementMold2",
+   156
+  ],
+  [
+   "SM_Fence_8_1",
+   152
+  ]
+ ],
+ "size_mb": 71.8,
+ "sec": 29.7
+}

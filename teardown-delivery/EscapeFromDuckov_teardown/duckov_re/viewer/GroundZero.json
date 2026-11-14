@@ -1,0 +1,149 @@
+{
+ "name": "GroundZero",
+ "level": 14,
+ "renderers": 3788,
+ "verts": 1204822,
+ "tris": 1159670,
+ "unique_verts": 275013,
+ "focus": [
+  [
+   -507.0346865081787,
+   -7.353821516036987,
+   59.97172164916992
+  ],
+  [
+   -203.39166778564453,
+   18.471675459135803,
+   307.19144633317353
+  ]
+ ],
+ "draw_groups": 237,
+ "materials": 158,
+ "textures": 126,
+ "bbox": [
+  [
+   -1024.0880126953125,
+   -11.451632499694824,
+   0.004999999888241291
+  ],
+  [
+   -0.08799999952316284,
+   85.51887512207031,
+   1024.0050048828125
+  ]
+ ],
+ "stats": {
+  "renderers": 3788,
+  "skipfx": 58,
+  "disabled": 218,
+  "inactive": 1202,
+  "nomesh": 4,
+  "instanced_groups": 236,
+  "instances": 3791,
+  "terrain": 1
+ },
+ "top_meshes": [
+  [
+   "SM_Wall_01_3",
+   436
+  ],
+  [
+   "SM_BarbedWire_01_03",
+   278
+  ],
+  [
+   "SM_Rock_02_04",
+   171
+  ],
+  [
+   "SM_BagTile2",
+   145
+  ],
+  [
+   "SM_RopeFence_03_2",
+   145
+  ],
+  [
+   "SM_Fabric_01",
+   130
+  ],
+  [
+   "SM_Rock_01_03",
+   114
+  ],
+  [
+   "SM_Container_L",
+   71
+  ],
+  [
+   "SM_Container_Back",
+   71
+  ],
+  [
+   "SM_Container_R",
+   71
+  ],
+  [
+   "SM_Container_Ceiling",
+   67
+  ],
+  [
+   "SM_Container_Ground",
+   67
+  ],
+  [
+   "SM_Stone_01_04",
+   66
+  ],
+  [
+   "SM_OilBarrel01",
+   51
+  ],
+  [
+   "SM_Fence01_3",
+   50
+  ],
+  [
+   "SM_Toolbox_02",
+   47
+  ],
+  [
+   "SM_BarbedWire_01_04",
+   46
+  ],
+  [
+   "SM_WoodBox_01_2",
+   45
+  ],
+  [
+   "SM_WaterButt_02",
+   42
+  ],
+  [
+   "SM_WoodenPallet_01",
+   37
+  ],
+  [
+   "pCube337",
+   37
+  ],
+  [
+   "SodaPointLightMesh",
+   33
+  ],
+  [
+   "SM_Bridge_01",
+   30
+  ],
+  [
+   "SM_Bulletbox_02",
+   28
+  ],
+  [
+   "SM_Starter",
+   27
+  ]
+ ],
+ "size_mb": 13.6,
+ "sec": 9.4
+}

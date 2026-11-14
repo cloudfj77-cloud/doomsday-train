@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>TeamSoda.Duckov.Utilities</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <TargetFramework>net40</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>12.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="Sirenix.OdinInspector.Attributes">
+      <HintPath>../../../../../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/ESCAPE FROM DUCKOV/DUCKOV_DATA/MANAGED/Sirenix.OdinInspector.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>../../../../../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/ESCAPE FROM DUCKOV/DUCKOV_DATA/MANAGED/UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core">
+      <HintPath>../../../../../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/ESCAPE FROM DUCKOV/DUCKOV_DATA/MANAGED/System.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SodaLocalization">
+      <HintPath>../../../../../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/ESCAPE FROM DUCKOV/DUCKOV_DATA/MANAGED/SodaLocalization.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

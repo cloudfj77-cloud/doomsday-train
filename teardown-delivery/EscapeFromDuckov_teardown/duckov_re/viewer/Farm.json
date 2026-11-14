@@ -1,0 +1,149 @@
+{
+ "name": "Farm",
+ "level": 10,
+ "renderers": 29875,
+ "verts": 9816628,
+ "tris": 8557366,
+ "unique_verts": 1475604,
+ "focus": [
+  [
+   -845.742958786212,
+   -2.047004222869873,
+   196.42706262725673
+  ],
+  [
+   -132.77999877929688,
+   5.547842502593994,
+   799.1781811523438
+  ]
+ ],
+ "draw_groups": 1168,
+ "materials": 596,
+ "textures": 333,
+ "bbox": [
+  [
+   -1000.0,
+   -12.711999893188477,
+   0.0
+  ],
+  [
+   277.57373046875,
+   91.55648803710938,
+   1088.79736328125
+  ]
+ ],
+ "stats": {
+  "renderers": 29875,
+  "skipfx": 790,
+  "inactive": 4265,
+  "disabled": 1679,
+  "nomesh": 106,
+  "instanced_groups": 1167,
+  "instances": 30564,
+  "terrain": 1
+ },
+ "top_meshes": [
+  [
+   "SM_BarbedWire_01_03",
+   1949
+  ],
+  [
+   "SM_Roadblock12",
+   1079
+  ],
+  [
+   "SM_SteelFrame_01_3",
+   699
+  ],
+  [
+   "SM_WoodBox_01_2",
+   525
+  ],
+  [
+   "SM_Container_L",
+   511
+  ],
+  [
+   "SM_Container_Back",
+   511
+  ],
+  [
+   "SM_Container_R",
+   511
+  ],
+  [
+   "SM_Rock_03",
+   511
+  ],
+  [
+   "SM_Fabric_01",
+   482
+  ],
+  [
+   "SM_Container_Ceiling",
+   466
+  ],
+  [
+   "SM_Container_Ground",
+   466
+  ],
+  [
+   "SM_Wall_01_3",
+   451
+  ],
+  [
+   "pCube339",
+   445
+  ],
+  [
+   "SM_Fence_5_2",
+   350
+  ],
+  [
+   "SM_CementMold4",
+   335
+  ],
+  [
+   "pCube338",
+   330
+  ],
+  [
+   "SM_Wall_01_4",
+   302
+  ],
+  [
+   "SM_WaterButt_02",
+   292
+  ],
+  [
+   "SM_WoodenPallet_01",
+   292
+  ],
+  [
+   "SM_OilBarrel01",
+   286
+  ],
+  [
+   "SM_MetalBoard_01_6",
+   268
+  ],
+  [
+   "Wood_Box",
+   249
+  ],
+  [
+   "SM_Wall_02",
+   240
+  ],
+  [
+   "SodaPointLightMesh",
+   231
+  ],
+  [
+   "SM_Bags2",
+   217
+  ]
+ ],
+ "size_mb": 68.9,
+ "sec": 20.8
+}

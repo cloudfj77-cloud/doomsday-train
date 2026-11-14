@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>游戏逆向拆解总览 · 逃离鸭科夫 × 可能是偷的</title>
+<style>
+:root{--bg:#f6f4ef;--card:#fff;--line:#e4e0d6;--text:#23222a;--dim:#6c6a77;--mute:#9a97a3;
+--ps:#c2410c;--ps-l:#fff1e8;--dk:#1d6fb8;--dk-l:#e8f2fc;--ok:#1d9e75;--ok-l:#e3f5ee;--half:#b7791f;--half-l:#fbf0dc;--no:#b23b3b;--no-l:#fbe9e9}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.75 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px 80px}
+header{padding:52px 0 30px;border-bottom:1px solid var(--line)}
+.eyebrow{font:500 12px/1 ui-monospace,Menlo,monospace;letter-spacing:.14em;color:var(--dim)}
+h1{font-size:36px;line-height:1.25;margin:12px 0 10px;font-weight:600}
+.sub{color:var(--dim);max-width:900px}
+nav{position:sticky;top:0;z-index:5;background:rgba(246,244,239,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+nav .wrap{padding-top:9px;padding-bottom:9px;display:flex;gap:4px;flex-wrap:wrap}
+nav a{color:var(--dim);text-decoration:none;font-size:13px;padding:3px 10px;border-radius:5px}nav a:hover{background:#ebe7de;color:var(--text)}
+section{padding-top:50px}
+h2{font-size:26px;margin:0 0 6px;font-weight:600;display:flex;gap:12px;align-items:baseline}
+h2 .no{font:600 13px ui-monospace,Menlo,monospace;color:var(--mute)}
+h2+.lead{color:var(--dim);margin:0 0 20px}
+h3{font-size:18px;margin:32px 0 12px;font-weight:600}
+.ps h3{color:var(--ps)}.dk h3{color:var(--dk)}
+.grid{display:grid;gap:14px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr}.g2{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.card h4{margin:0 0 4px;font-size:15px}.card p{margin:4px 0;color:var(--dim);font-size:13.5px}
+.proj{border-top:4px solid}.proj.ps{border-top-color:var(--ps)}.proj.dk{border-top-color:var(--dk)}
+.proj .name{font-size:22px;font-weight:600}.proj .en{color:var(--mute);font-size:13px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 6px}
+.fact b{display:block;font:600 22px/1.2 ui-monospace,Menlo,monospace}.fact span{font-size:12px;color:var(--dim)}
+.ps .fact b{color:var(--ps)}.dk .fact b{color:var(--dk)}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:10px;margin:2px 4px 2px 0;background:#f0ede6;color:var(--dim)}
+.pill{display:inline-block;font-size:12px;padding:1px 9px;border-radius:10px;white-space:nowrap}
+.pill.ok{background:var(--ok-l);color:var(--ok)}.pill.half{background:var(--half-l);color:var(--half)}.pill.no{background:var(--no-l);color:var(--no)}.pill.na{background:#f0ede6;color:var(--mute)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13.5px}
+th,td{padding:9px 12px;border-bottom:1px solid #eeeae1;text-align:left;vertical-align:top}tr:last-child td{border-bottom:none}
+th{background:#f3f0e8;font-weight:600;color:var(--dim);font-size:12.5px}
+td small{color:var(--mute)}
+.sys{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.sys .card{padding:14px 16px}.sys .k{font:600 12px ui-monospace,Menlo,monospace;color:var(--mute)}
+.sys h4{font-size:15px;margin:2px 0 4px}
+.ps .sys .card{border-left:3px solid var(--ps)}.dk .sys .card{border-left:3px solid var(--dk)}
+figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+figure img{width:100%;display:block;background:#1e1e24}
+figure.light img{background:#eeeae2}
+figcaption{padding:10px 14px;font-size:13px;color:var(--dim)}figcaption b{color:var(--text)}
+.px img{image-rendering:pixelated}
+.band{display:flex;height:16px;border-radius:8px;overflow:hidden;background:#ece8df;margin:6px 0 2px}
+.band i{display:block;height:100%}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--dim);flex-wrap:wrap}.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.callout{border-left:3px solid var(--half);background:var(--half-l);padding:12px 16px;border-radius:0 10px 10px 0;margin:14px 0;color:#5c4210;font-size:14px}
+.callout.blue{border-color:var(--dk);background:var(--dk-l);color:#163e66}
+ul.t{margin:6px 0;padding-left:20px}ul.t li{margin:3px 0}
+a{color:var(--dk)}
+footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--line);color:var(--mute);font-size:13px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="eyebrow">GAME TEARDOWN HUB · 2026-11-09</div>
+  <h1>游戏逆向拆解总览</h1>
+  <div class="sub">两款都是 Unity + Mono 打包的商业游戏，代码可以完整反编译。这一页把两边拆出来的<b>系统、数值、叙事、场景、人物、动作、物品、UI</b>汇总在一起，标出哪些已经拆透、哪些只拆了一部分、哪些还没动，最后列出对《末日列车》的借鉴点。</div>
+</div></header>
+
+<nav><div class="wrap">
+  <a href="#overview">项目对比</a><a href="#coverage">拆解覆盖度</a><a href="#ps">可能是偷的</a><a href="#dk">逃离鸭科夫</a><a href="#train">对末日列车的启发</a><a href="#todo">未拆清单</a><a href="#files">文件索引</a>
+</div></nav>
+
+<div class="wrap">
+
+<!-- 对比 -->
+<section id="overview">
+  <h2><span class="no">01</span>两个项目一览</h2>
+  <p class="lead">一个是 2D 像素风的店主模拟，一个是 3D 俯视角的搜打撤射击。技术底子相近，美术路线完全不同。</p>
+  <div class="grid g2">
+    <div class="card proj ps">
+      <div class="name">《可能是偷的》</div><div class="en">Probably Stolen · Questing Goose / tinyBuild · 2026-10 发售</div>
+      <div class="facts">
+        <div class="fact"><b>24.5 万</b><span>行反编译 C#（944 个类）</span></div>
+        <div class="fact"><b>1.0 GB</b><span>游戏资源</span></div>
+        <div class="fact"><b>907</b><span>张贴图已全量导出</span></div>
+        <div class="fact"><b>~200</b><span>个顾客 / NPC 立绘</span></div>
+        <div class="fact"><b>31 层</b><span>还原店铺主场景</span></div>
+        <div class="fact"><b>~2,700</b><span>行拆解笔记</span></div>
+      </div>
+      <span class="tag">Unity 2021.3 · Mono</span><span class="tag">2D 像素 960×540</span><span class="tag">店主模拟 / 鉴定 / 走私</span><span class="tag">类 Papers, Please</span>
+    </div>
+    <div class="card proj dk">
+      <div class="name">《逃离鸭科夫》</div><div class="en">Escape from Duckov · TeamSoda / bilibili · v2.3.30</div>
+      <div class="facts">
+        <div class="fact"><b>~15 万</b><span>行自研 C#</span></div>
+        <div class="fact"><b>2.9 GB</b><span>游戏资源</span></div>
+        <div class="fact"><b>8 张</b><span>地图还原成可浏览 3D 场景</span></div>
+        <div class="fact"><b>1,272</b><span>个图标 / UI 切片</span></div>
+        <div class="fact"><b>63</b><span>个场景文件（11 张主地图）</span></div>
+        <div class="fact"><b>~440 / 65</b><span>物品 / 任务</span></div>
+      </div>
+      <span class="tag">Unity 2022.3 · URP 延迟渲染 · Mono</span><span class="tag">3D 低模俯视</span><span class="tag">搜打撤 / 塔科夫 like</span><span class="tag">插件拼装型</span>
+    </div>
+  </div>
+</section>
+
+<!-- 覆盖度 -->
+<section id="coverage">
+  <h2><span class="no">02</span>拆解覆盖度</h2>
+  <p class="lead">按内容类别看，哪些已经拆透，哪些只抽了样，哪些还没动。</p>
+  <div class="legend" style="margin-bottom:8px"><span><i style="background:var(--ok)"></i>已拆透</span><span><i style="background:var(--half)"></i>部分 / 抽样</span><span><i style="background:var(--no)"></i>未拆</span><span><i style="background:#cfcbc2"></i>不适用</span></div>
+  <table>
+    <tr><th style="width:15%">类别</th><th style="width:42%">《可能是偷的》</th><th>《逃离鸭科夫》</th></tr>
+    <tr><td><b>代码逻辑</b></td><td><span class="pill ok">已拆透</span> 游戏主逻辑全部反编译，按 5 个方向写了拆解笔记</td><td><span class="pill ok">已拆透</span> 核心程序集全部反编译，报告覆盖 9 个方向</td></tr>
+    <tr><td><b>数值 / 公式</b></td><td><span class="pill ok">已拆透</span> 难度 41 参数、房租、议价、声望、罪证、定价公式全部带出处</td><td><span class="pill half">重点抽取</span> 伤害、护甲、枪械、镜头、掉落、搜刮读条；物品数值表未逐项导出</td></tr>
+    <tr><td><b>文本 / 叙事</b></td><td><span class="pill ok">已拆透</span> 中英文本 6,900 条/语言；5 条剧情线、18 种结局已梳理</td><td><span class="pill half">文本已导出</span> 71 份对话/任务/物品表（中日英）；剧情结构还没梳理</td></tr>
+    <tr><td><b>场景</b></td><td><span class="pill ok">已还原</span> 店铺主场景按坐标叠图还原；4 个外出地点背景；层级树 3,515 节点</td><td><span class="pill ok">已还原</span> 8 张地图导出为 3D 模型，可旋转浏览；26 张小地图、30 张宣传图</td></tr>
+    <tr><td><b>人物</b></td><td><span class="pill ok">全量</span> 约 200 个半身立绘，按派系分组</td><td><span class="pill half">抽样</span> 鸭子本体与部件模型、LV1–6 装备贴图；196 个蒙皮角色没有全量导出</td></tr>
+    <tr><td><b>动作 / 动画</b></td><td><span class="pill ok">全量</span> 只有帧动画：行人走路、顾客中枪倒下等；Unity 动画仅 3 段</td><td><span class="pill no">未拆</span> 238 段动画、37 个状态机都没导出（只统计了数量）</td></tr>
+    <tr><td><b>物品 / 图标</b></td><td><span class="pill ok">全量</span> 1,000+ 物品切片，34 张图集</td><td><span class="pill ok">全量</span> 1,272 个图标 / UI 切片</td></tr>
+    <tr><td><b>贴图 / 模型</b></td><td><span class="pill ok">全量</span> 907 张贴图（2D 游戏没有模型）</td><td><span class="pill half">抽样</span> 4,381 张贴图里导出 299 张；3,887 个模型里导出 16 个</td></tr>
+    <tr><td><b>UI 布局</b></td><td><span class="pill half">部分</span> UI 素材全导出；界面画布的摆放没还原</td><td><span class="pill half">部分</span> UI 素材全导出；界面布局没还原</td></tr>
+    <tr><td><b>着色器 / 特效</b></td><td><span class="pill na">基本不涉及</span> 2D 游戏，64 个着色器只统计了数量</td><td><span class="pill half">参数级</span> 自研着色器的属性和用途已分析；3,182 个粒子系统没导出</td></tr>
+    <tr><td><b>音频</b></td><td><span class="pill no">未拆</span> 276 段（音效 + 磁带音乐）</td><td><span class="pill no">未拆</span> FMOD 音频库（主库 55MB）</td></tr>
+  </table>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><h4>《可能是偷的》整体完成度</h4>
+      <div class="band"><i style="width:68%;background:var(--ok)"></i><i style="width:14%;background:var(--half)"></i><i style="width:18%;background:var(--no)"></i></div>
+      <p>玩法、数值、叙事、2D 美术基本拆透，只差音频和 UI 布局。</p></div>
+    <div class="card"><h4>《逃离鸭科夫》整体完成度</h4>
+      <div class="band"><i style="width:40%;background:var(--ok)"></i><i style="width:38%;background:var(--half)"></i><i style="width:22%;background:var(--no)"></i></div>
+      <p>代码架构和地图场景拆得最好；动画、角色、音频、数值表还有空间。另一个任务还在继续拆，这里是 11-09 11:23 的快照。</p></div>
+  </div>
+  <p style="font-size:12.5px;color:var(--mute);margin-top:6px">完成度为按上表类别的粗略估计，不是精确统计。</p>
+</section>
+
+<!-- PS -->
+<section id="ps" class="ps">
+  <h2><span class="no">03</span>《可能是偷的》拆解内容</h2>
+  <p class="lead">每位顾客都是一次“审查 + 议价”的赌局，背后是指数涨的房租和两本延迟兑现的暗账（声望、罪证）。</p>
+
+  <h3>拆出来的系统</h3>
+  <div class="sys">
+    <div class="card"><div class="k">核心循环</div><h4>队列就是时钟</h4><p>没有倒计时；开门那一刻生成当天顾客队列，人走完就打烊。周日交租，周循环固定上门 NPC。</p></div>
+    <div class="card"><div class="k">经济</div><h4>指数房租 vs 线性收入</h4><p>房租每周 ×1.025 / 1.05 / 1.10；胜利条件是现金买断或高利贷按揭。4 档难度共 41 个参数。</p></div>
+    <div class="card"><div class="k">顾客</div><h4>约 30 个生成器叠队列</h4><p>276 种顾客，6 个派系；声望和店铺吸引力改写“谁会来”。</p></div>
+    <div class="card"><div class="k">议价</div><h4>6 种动作 + 公开概率</h4><p>接受率 = 100 − 2×加价% + 声望/6；贪心成交会扣声望。</p></div>
+    <div class="card"><div class="k">声望</div><h4>±200，±20/40/60/80/100 阈值</h4><p>解锁 40 个派系特权；跌到 −100 会被上门清算。</p></div>
+    <div class="card"><div class="k">风险</div><h4>罪证延迟引爆</h4><p>罪值 → 证据进度 → 判决警官（罚款 / 逮捕 / 处决）；盘查员三种人格；赃物热度每晚 −18。</p></div>
+    <div class="card"><div class="k">物品</div><h4>标签值 vs 实际值</h4><p>鉴定、贴假标、被识破共用一个双值结构；约 506 个在用物品。</p></div>
+    <div class="card"><div class="k">产业线</div><h4>8 条生产链</h4><p>水、化学、枪械、水培、水产、养鼠、酿酒、销赃，各有利润曲线和“毁灭方式”。</p></div>
+    <div class="card"><div class="k">成长</div><h4>开局组合 × 浅升级网</h4><p>9 个职业、48 个特性、54 个升级（恩惠货币闭环）。</p></div>
+    <div class="card"><div class="k">外围</div><h4>夜间外出 / 彩票 / 配给站</h4><p>每晚外出一次，代价是次日少一个顾客；彩票返还率约 57%。</p></div>
+    <div class="card"><div class="k">技术</div><h4>Mod 安全体系约 1 万行</h4><p>能力声明、IL 扫描、签名信任列表、运行时熔断；存档带滚动快照。</p></div>
+    <div class="card"><div class="k">考古</div><h4>前作 1.6 万行被封存</h4><p>飞船、太空、回合制战斗靠 <code>InRaid() =&gt; false</code> 一行切断，底层框架改造成店铺。</p></div>
+  </div>
+
+  <h3>叙事</h3>
+  <div class="grid g3">
+    <div class="card"><h4>5 条剧情线</h4><p>乔治奥（D6，喜剧）、伦警官（D11，成瘾腐败）、埃莉诺（D23，二选一）、塞尔皮科（D40，三阵营结局）、卢（悬赏追猎）。</p></div>
+    <div class="card"><h4>18 种结局 · 21 个成就</h4><p>欠租、按揭收回、被捕、处决、炸弹……另有现金买断和还清按揭两种胜利。</p></div>
+    <div class="card"><h4>事件系统</h4><p>15 种市场事件改品类价格；派系行动提前 4 天排入；报纸每天播报。</p></div>
+  </div>
+
+  <h3>美术：场景</h3>
+  <div class="grid g2">
+    <figure class="px"><img src="img/ps/store.jpg" alt="店铺主场景还原"><figcaption><b>店铺主场景（还原）</b> · 按场景数据里的坐标和前后顺序重新叠图，和游戏画面一致。基准 960×540。</figcaption></figure>
+    <figure class="px"><img src="img/ps/layers.jpg" alt="31 张图层"><figcaption><b>31 张全屏透明图层</b> · 每个可交互物件单独一层叠放，美术直接在整张画面里画。</figcaption></figure>
+  </div>
+  <figure class="px" style="margin-top:14px"><img src="img/ps/locations.jpg" alt="外出地点"><figcaption><b>夜间外出地点</b> · 杰克逊博士、垃圾场、配给站、集市。</figcaption></figure>
+
+  <h3>美术：人物与动作</h3>
+  <figure class="px light"><img src="img/ps/portraits.jpg" alt="立绘"><figcaption><b>约 200 个顾客 / NPC 立绘</b> · 全是 288×211 半身像，按派系打包：下层区、上层区、拾荒者、黑市、革命军、治安部、各职业、剧情角色。</figcaption></figure>
+  <div class="grid g2" style="margin-top:14px">
+    <figure class="px light"><img src="img/ps/anim.jpg" alt="帧动画"><figcaption><b>动作</b> · 全是逐帧精灵动画：行人走路（远中近三档）、顾客中枪倒下、伤口血迹。Unity 动画只有 3 段，“动起来”大多靠代码换帧。</figcaption></figure>
+    <figure class="px light"><img src="img/ps/inspect.jpg" alt="鉴定素材"><figcaption><b>鉴定小游戏素材</b> · 125 张“正确 / 错误”对照（字母、Logo、封条、颜色卡）+ 33 张义手部件（材质 × 磨损 × 附件）。</figcaption></figure>
+  </div>
+  <figure class="px light" style="margin-top:14px"><img src="img/ps/items.jpg" alt="物品图集"><figcaption><b>物品图集节选</b> · 1,000+ 个物品切片，以 16 像素为一格，和背包网格一一对应。</figcaption></figure>
+</section>
+
+<!-- Duckov -->
+<section id="dk" class="dk">
+  <h2><span class="no">04</span>《逃离鸭科夫》拆解内容</h2>
+  <p class="lead">“插件拼装 + 数据驱动 + 小团队高效”：角色、物品、伤害都走统一的 Stat + Item 树；美术用低模小贴图，把预算花在灯光和后处理上。</p>
+
+  <h3>拆出来的系统</h3>
+  <div class="sys">
+    <div class="card"><div class="k">动作</div><h4>优先级抢占</h4><p>不是大状态机：新动作优先级 ≥ 当前才能打断；冲刺耗体力 10、冷却 0.5 秒。</p></div>
+    <div class="card"><div class="k">伤害</div><h4>护甲曲线 2/(A−P+2)</h4><p>暴击即爆头、打头甲；元素伤害按抗性分摊；骨折 / 流血按概率附加。</p></div>
+    <div class="card"><div class="k">枪械</div><h4>全部参数都是 Stat</h4><p>射速、散布、后坐、穿甲都可被配件 / Buff 修改；特殊枪用组合扩展。</p></div>
+    <div class="card"><div class="k">镜头</div><h4>俯仰 55° · FOV 20°</h4><p>镜头参数挂在 URP Volume 上，美术摆个区域就能平滑改机位。</p></div>
+    <div class="card"><div class="k">AI</div><h4>视锥 + 听觉 + 行为树</h4><p>夜晚视距衰减；枪声脚步广播；NodeCanvas + A* 寻路；敌人按权重随机配装。</p></div>
+    <div class="card"><div class="k">核心循环</div><h4>搜打撤</h4><p>基地 → 选图带装 → 搜刮 → 战斗 → 撤离 / 死亡 → 回基地。主场景 + 子场景叠加加载。</p></div>
+    <div class="card"><div class="k">掉落</div><h4>Tag 权重 × 品质权重</h4><p>搜刮读条时长按品质递增，越稀有越久，制造开箱期待。</p></div>
+    <div class="card"><div class="k">成长经济</div><h4>任务 / 天赋 / 商店 / 建造</h4><p>约 65 个任务、天赋树、黑市、ATM、挖矿机、合成分解、种植、钓鱼、捏脸。</p></div>
+    <div class="card"><div class="k">环境</div><h4>昼夜 + 天气</h4><p>影响 AI 视野和元素伤害（下雨火伤 −0.15、电伤 +0.2）。</p></div>
+    <div class="card"><div class="k">系统服务</div><h4>存档 / Mod / 埋点</h4><p>ES3 存档 10 份滚动备份；Mod 只需 info.ini + 同名 DLL；B站埋点 34 种事件。</p></div>
+    <div class="card"><div class="k">彩蛋</div><h4>游戏机小游戏</h4><p>内置黄金矿工（65 个类）、泡泡龙、贪吃蛇、躲鼠标。</p></div>
+    <div class="card"><div class="k">渲染</div><h4>自研 SodaLit 着色器</h4><p>受击闪白、热成像、雪覆盖、换色做成参数；延迟渲染支撑 1,650 盏灯。</p></div>
+  </div>
+
+  <h3>叙事</h3>
+  <div class="grid g3">
+    <div class="card"><h4>任务 ~65 个</h4><p>数据驱动：任务 → 条件 → 奖励；文本含中日英三语。</p></div>
+    <div class="card"><h4>对话与过场</h4><p>对话用 NodeCanvas 编辑；有序章、基地引导、结局等独立场景。</p></div>
+    <div class="card"><h4>待梳理</h4><p>文本已导出，剧情主线和 NPC 关系还没整理成结构图。</p></div>
+  </div>
+
+  <h3>美术：场景</h3>
+  <figure><img src="img/duckov/scenes3d.jpg" alt="8 张地图 3D 还原"><figcaption><b>8 张地图还原成 3D 场景</b> · 基地、零号区、仓库区、农场镇、J-Lab、沙漠、风暴区、37 号实验区。按场景文件的真实摆放导出，带游戏内小地图对照。</figcaption></figure>
+  <div class="grid g2" style="margin-top:14px">
+    <figure><img src="img/duckov/explorer.jpg" alt="3D 浏览器"><figcaption><b>3D 场景浏览器</b> · 可平移、旋转、剖切屋顶、切线框；单张地图约 100 万–870 万三角面。</figcaption></figure>
+    <figure class="light"><img src="img/duckov/minimaps.jpg" alt="小地图"><figcaption><b>26 张游戏内小地图</b></figcaption></figure>
+  </div>
+  <figure style="margin-top:14px"><img src="img/duckov/keyart.jpg" alt="宣传图"><figcaption><b>30 张宣传图、封面、地图横幅</b> · 含多语言 Logo 和小游戏封面。</figcaption></figure>
+
+  <h3>美术：人物、物品与动作</h3>
+  <div class="grid g2">
+    <figure class="light"><img src="img/duckov/meshes.jpg" alt="模型"><figcaption><b>16 个模型样本</b> · 鸭子 = 身体 + 嘴 + 脚 + 手套 + 帽 / 衣 / 背包，模块化拼装；模型中位数只有 402 个顶点。</figcaption></figure>
+    <figure class="light"><img src="img/duckov/tex_char.jpg" alt="角色装备贴图"><figcaption><b>角色装备贴图</b> · 头盔 / 衣服分 LV1–LV6，等级越高越军事化。</figcaption></figure>
+    <figure class="light"><img src="img/duckov/sprites_icons.jpg" alt="物品图标"><figcaption><b>1,272 个图标切片</b> · 物品图标是把 3D 模型统一打光渲染出来的；Buff / 天赋用扁平线性图标。</figcaption></figure>
+    <figure class="light"><img src="img/duckov/tex_weapon.jpg" alt="武器贴图"><figcaption><b>武器贴图</b> · 写实但低饱和，和极简圆润的鸭子形成反差。</figcaption></figure>
+  </div>
+  <div class="callout blue"><b>动作这块还是空白：</b>游戏有 238 段动画、37 个动画状态机（待机、四向走、翻滚、近战、弓……），由 Animancer 在代码里混合，目前只统计了数量，没有导出预览。如果需要，下一步可以把动画导出成带骨骼的模型文件逐段播放。</div>
+</section>
+
+<!-- 末日列车 -->
+<section id="train">
+  <h2><span class="no">05</span>对《末日列车》的启发</h2>
+  <p class="lead">《末日列车》现在的循环是“跑线 → 买卖 → 日结 → 还款”，和《可能是偷的》的经营骨架非常接近，可以直接参考的点不少。</p>
+  <div class="grid g2">
+    <div class="card"><h4 style="color:var(--ps)">来自《可能是偷的》</h4>
+      <ul class="t">
+        <li><b>还款压力用指数曲线</b>：每周 ×1.05 的房租配合中期“锁定按揭”出口，压力有上限也有解法。</li>
+        <li><b>还款日必来一个收购商</b>：给玩家一个打折变现的“流动性阀门”，防止卡死。</li>
+        <li><b>标签值 / 实际值双值物品</b>：货物可以有“宣称品质”和“真实品质”，自然长出鉴定、掺假、被识破的玩法。</li>
+        <li><b>延迟兑现的暗账</b>：声望、通缉、罪证这种“今天赚、明天还”的账，最能制造“再跑一站”。</li>
+        <li><b>市场事件改品类价格</b>：车站之间的价差可以由新闻事件驱动，事件客再给议价加成。</li>
+      </ul></div>
+    <div class="card"><h4 style="color:var(--dk)">来自《逃离鸭科夫》</h4>
+      <ul class="t">
+        <li><b>Item 即一切 + Stat/Modifier</b>：车厢、货物、改装件都做成 Item 树，加新内容几乎零代码。</li>
+        <li><b>掉落 = Tag 权重 × 品质权重</b>：沿线站点 / 废墟搜刮的随机表直接可用。</li>
+        <li><b>读条时长绑定品质</b>：越稀有越久，开箱期待感几乎零成本。</li>
+        <li><b>护甲 2/(A−P+2)</b>：如果列车防御有战斗，这条收益递减曲线简单好调。</li>
+        <li><b>低模 + 统一着色器 + 强灯光</b>：小团队把美术预算放在光照氛围上，而不是资产精度。</li>
+      </ul></div>
+  </div>
+</section>
+
+<!-- 未拆 -->
+<section id="todo">
+  <h2><span class="no">06</span>还没拆的内容</h2>
+  <div class="grid g2">
+    <div class="card"><h4 style="color:var(--ps)">《可能是偷的》</h4>
+      <ul class="t"><li>音频 276 段（含主题曲完好 / 损坏三个版本）</li><li>界面画布的布局还原（平板、窗口元素摆放）</li><li>掉落表数据（存在资源文件里，不在代码中）</li><li>法、德、日、俄、西、波 6 种语言文本</li><li>64 个着色器的具体效果</li></ul></div>
+    <div class="card"><h4 style="color:var(--dk)">《逃离鸭科夫》</h4>
+      <ul class="t"><li>238 段动画、37 个状态机</li><li>196 个蒙皮角色与装备的完整模型</li><li>物品 / 任务数值表逐项导出</li><li>剧情主线和 NPC 关系梳理</li><li>FMOD 音频、3,182 个粒子特效</li><li>贴图（4,381 张只导出 299 张）和模型（3,887 个只导出 16 个）的全量</li></ul></div>
+  </div>
+</section>
+
+<!-- 文件 -->
+<section id="files">
+  <h2><span class="no">07</span>详细报告与文件索引</h2>
+  <table>
+    <tr><th>内容</th><th>位置</th></tr>
+    <tr><td>《可能是偷的》可视化拆解报告</td><td><a href="probably-stolen/report.html">probably-stolen/report.html</a></td></tr>
+    <tr><td>《可能是偷的》5 份详细笔记（经济 / 顾客风险 / 物品产业 / 成长考古 / 技术）</td><td><a href="probably-stolen/notes/01_economy.md">probably-stolen/notes/</a></td></tr>
+    <tr><td>《逃离鸭科夫》代码 + 美术拆解报告</td><td><a href="escape-from-duckov/report.html">escape-from-duckov/report.html</a></td></tr>
+    <tr><td>《可能是偷的》美术图鉴（全部贴图、立绘、物品切片）</td><td><small>仅本机：~/ps_work/art_full/index.html</small></td></tr>
+    <tr><td>《逃离鸭科夫》3D 场景浏览器（9 个场景模型，共 274MB）</td><td><small>仅本机：~/WorkBuddy/spaces/2026_11_07_15-28-09/duckov_re/explorer.html</small></td></tr>
+    <tr><td>两边的反编译代码</td><td><small>仅本机，不外传</small></td></tr>
+  </table>
+</section>
+
+<footer>本页仅用于内部学习研究。游戏代码与美术资源版权分别归 Questing Goose / tinyBuild 与 TeamSoda / bilibili 所有；页面中的图片为缩小后的分析示例，请勿再分发或用于商业项目。</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>11.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="Unity.Services.Analytics">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/Unity.Services.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/Unity.Services.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="QFSW.QC">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/QFSW.QC.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Localization">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/Unity.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ResourceManager">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/Unity.ResourceManager.dll</HintPath>
+    </Reference>
+    <Reference Include="RNGNeeds">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/RNGNeeds.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="com.rlabrecque.steamworks.net">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/com.rlabrecque.steamworks.net.dll</HintPath>
+    </Reference>
+    <Reference Include="Febucci.TextAnimator.Runtime">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/Febucci.TextAnimator.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenPro">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/DOTweenPro.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.PixelPerfect">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/Unity.2D.PixelPerfect.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
+    <Reference Include="DseCecil">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/DseCecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Febucci.Attributes.Runtime">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/Febucci.Attributes.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Environments">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/Unity.Services.Core.Environments.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/Unity.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/UnityEngine.ScreenCaptureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/Probably Stolen/Probably Stolen_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

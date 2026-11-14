@@ -1,0 +1,401 @@
+[
+ {
+  "name": "Map_StormZone",
+  "file": "resources.assets",
+  "w": 1024,
+  "h": 320,
+  "kind": "keyart"
+ },
+ {
+  "name": "Title",
+  "file": "resources.assets",
+  "w": 2048,
+  "h": 1201,
+  "kind": "keyart"
+ },
+ {
+  "name": "level2-4 wal",
+  "file": "resources.assets",
+  "w": 256,
+  "h": 256,
+  "kind": "keyart"
+ },
+ {
+  "name": "Splash01",
+  "file": "resources.assets",
+  "w": 2048,
+  "h": 1024,
+  "kind": "keyart"
+ },
+ {
+  "name": "Cover",
+  "file": "resources.assets",
+  "w": 2048,
+  "h": 1201,
+  "kind": "keyart"
+ },
+ {
+  "name": "Map_GroundZero",
+  "file": "resources.assets",
+  "w": 1024,
+  "h": 320,
+  "kind": "keyart"
+ },
+ {
+  "name": "Map_Hiddenwarehouse",
+  "file": "resources.assets",
+  "w": 1024,
+  "h": 320,
+  "kind": "keyart"
+ },
+ {
+  "name": "Cover_BubblePopper",
+  "file": "resources.assets",
+  "w": 512,
+  "h": 512,
+  "kind": "keyart"
+ },
+ {
+  "name": "map_64dp_FFFFFF_FILL1_wght400_GRAD0_opsz48",
+  "file": "resources.assets",
+  "w": 256,
+  "h": 256,
+  "kind": "keyart"
+ },
+ {
+  "name": "Cover_MouseDodger",
+  "file": "resources.assets",
+  "w": 512,
+  "h": 512,
+  "kind": "keyart"
+ },
+ {
+  "name": "Map_Farm",
+  "file": "resources.assets",
+  "w": 1024,
+  "h": 320,
+  "kind": "keyart"
+ },
+ {
+  "name": "Logo_schinese",
+  "file": "resources.assets",
+  "w": 1024,
+  "h": 1024,
+  "kind": "keyart"
+ },
+ {
+  "name": "Map_Farm_2",
+  "file": "resources.assets",
+  "w": 1024,
+  "h": 320,
+  "kind": "keyart"
+ },
+ {
+  "name": "Cover_Island",
+  "file": "resources.assets",
+  "w": 512,
+  "h": 512,
+  "kind": "keyart"
+ },
+ {
+  "name": "Cover_GoldMiner",
+  "file": "resources.assets",
+  "w": 512,
+  "h": 512,
+  "kind": "keyart"
+ },
+ {
+  "name": "Map_JLab_2",
+  "file": "resources.assets",
+  "w": 2048,
+  "h": 640,
+  "kind": "keyart"
+ },
+ {
+  "name": "Splash01_alpha",
+  "file": "resources.assets",
+  "w": 2048,
+  "h": 1024,
+  "kind": "keyart"
+ },
+ {
+  "name": "Map_Snow",
+  "file": "resources.assets",
+  "w": 1024,
+  "h": 320,
+  "kind": "keyart"
+ },
+ {
+  "name": "Background",
+  "file": "sharedassets0.assets",
+  "w": 32,
+  "h": 32,
+  "kind": "keyart"
+ },
+ {
+  "name": "Logo_english",
+  "file": "sharedassets1.assets",
+  "w": 2048,
+  "h": 2048,
+  "kind": "keyart"
+ },
+ {
+  "name": "Logo_japanese",
+  "file": "sharedassets1.assets",
+  "w": 1024,
+  "h": 1024,
+  "kind": "keyart"
+ },
+ {
+  "name": "MainMenuBackground",
+  "file": "sharedassets1.assets",
+  "w": 1024,
+  "h": 1024,
+  "kind": "keyart"
+ },
+ {
+  "name": "Logo_tchinese",
+  "file": "sharedassets1.assets",
+  "w": 1024,
+  "h": 1024,
+  "kind": "keyart"
+ },
+ {
+  "name": "MiniMap_Base_SceneV2",
+  "file": "sharedassets3.assets",
+  "w": 512,
+  "h": 512,
+  "kind": "minimap"
+ },
+ {
+  "name": "MiniMap_Base_SceneV2_Sub_01",
+  "file": "sharedassets3.assets",
+  "w": 512,
+  "h": 512,
+  "kind": "minimap"
+ },
+ {
+  "name": "Splash",
+  "file": "sharedassets5.assets",
+  "w": 1024,
+  "h": 1024,
+  "kind": "keyart"
+ },
+ {
+  "name": "MiniMap_Level_Farm_01",
+  "file": "sharedassets11.assets",
+  "w": 2048,
+  "h": 2048,
+  "kind": "minimap"
+ },
+ {
+  "name": "MiniMap_Level_GroundZero_1",
+  "file": "sharedassets13.assets",
+  "w": 2048,
+  "h": 2048,
+  "kind": "minimap"
+ },
+ {
+  "name": "MiniMap_Prologue_1",
+  "file": "sharedassets16.assets",
+  "w": 1024,
+  "h": 1024,
+  "kind": "minimap"
+ },
+ {
+  "name": "MiniMap_Prologue_Main_Combined",
+  "file": "sharedassets16.assets",
+  "w": 512,
+  "h": 512,
+  "kind": "minimap"
+ },
+ {
+  "name": "MiniMap_Level_HiddenWarehouse",
+  "file": "sharedassets18.assets",
+  "w": 2048,
+  "h": 2048,
+  "kind": "minimap"
+ },
+ {
+  "name": "MiniMap_Level_Guide_2",
+  "file": "sharedassets25.assets",
+  "w": 1024,
+  "h": 1024,
+  "kind": "minimap"
+ },
+ {
+  "name": "MiniMap_Level_Guide_1",
+  "file": "sharedassets25.assets",
+  "w": 1024,
+  "h": 1024,
+  "kind": "minimap"
+ },
+ {
+  "name": "MiniMap_Level_JLab_1",
+  "file": "sharedassets30.assets",
+  "w": 2048,
+  "h": 2048,
+  "kind": "minimap"
+ },
+ {
+  "name": "MiniMap_Level_JLab_2",
+  "file": "sharedassets30.assets",
+  "w": 2048,
+  "h": 2048,
+  "kind": "minimap"
+ },
+ {
+  "name": "BossScene_AlbedoTransparency",
+  "file": "sharedassets32.assets",
+  "w": 512,
+  "h": 512,
+  "kind": "keyart"
+ },
+ {
+  "name": "MiniMap_Level_Desert",
+  "file": "sharedassets33.assets",
+  "w": 2048,
+  "h": 2048,
+  "kind": "minimap"
+ },
+ {
+  "name": "MiniMap_Level_Desert_Boss",
+  "file": "sharedassets33.assets",
+  "w": 2048,
+  "h": 2048,
+  "kind": "minimap"
+ },
+ {
+  "name": "MiniMap_Level_DemoChallenge_1",
+  "file": "sharedassets37.assets",
+  "w": 2048,
+  "h": 2048,
+  "kind": "minimap"
+ },
+ {
+  "name": "MiniMap_Level_ChallengeSnow",
+  "file": "sharedassets38.assets",
+  "w": 2048,
+  "h": 2048,
+  "kind": "minimap"
+ },
+ {
+  "name": "MiniMap_Level_StormZone_B3",
+  "file": "sharedassets40.assets",
+  "w": 1024,
+  "h": 1024,
+  "kind": "minimap"
+ },
+ {
+  "name": "MiniMap_Level_StormZone_B2",
+  "file": "sharedassets40.assets",
+  "w": 1024,
+  "h": 1024,
+  "kind": "minimap"
+ },
+ {
+  "name": "MiniMap_Level_StormZone_B4",
+  "file": "sharedassets40.assets",
+  "w": 1024,
+  "h": 1024,
+  "kind": "minimap"
+ },
+ {
+  "name": "MiniMap_Level_StormZone_1",
+  "file": "sharedassets40.assets",
+  "w": 2048,
+  "h": 2048,
+  "kind": "minimap"
+ },
+ {
+  "name": "MiniMap_Level_StormZone_B0",
+  "file": "sharedassets40.assets",
+  "w": 2048,
+  "h": 2048,
+  "kind": "minimap"
+ },
+ {
+  "name": "MiniMap_Level_StormZone_B1",
+  "file": "sharedassets40.assets",
+  "w": 1024,
+  "h": 1024,
+  "kind": "minimap"
+ },
+ {
+  "name": "TagillaPoster3",
+  "file": "sharedassets48.assets",
+  "w": 512,
+  "h": 512,
+  "kind": "keyart"
+ },
+ {
+  "name": "D_SnowTownHall_Logo",
+  "file": "sharedassets48.assets",
+  "w": 512,
+  "h": 512,
+  "kind": "keyart"
+ },
+ {
+  "name": "TagillaPoster",
+  "file": "sharedassets48.assets",
+  "w": 512,
+  "h": 512,
+  "kind": "keyart"
+ },
+ {
+  "name": "TagillaPoster2",
+  "file": "sharedassets48.assets",
+  "w": 512,
+  "h": 256,
+  "kind": "keyart"
+ },
+ {
+  "name": "MiniMap_Level_SnowFactory",
+  "file": "sharedassets49.assets",
+  "w": 2048,
+  "h": 2048,
+  "kind": "minimap"
+ },
+ {
+  "name": "MiniMap_Level_SnowMilitaryBase",
+  "file": "sharedassets49.assets",
+  "w": 2048,
+  "h": 2048,
+  "kind": "minimap"
+ },
+ {
+  "name": "MiniMap_Level_SnowMilitaryBase_ColdStorage",
+  "file": "sharedassets51.assets",
+  "w": 2048,
+  "h": 2048,
+  "kind": "minimap"
+ },
+ {
+  "name": "MapCrop",
+  "file": "sharedassets54.assets",
+  "w": 1024,
+  "h": 1024,
+  "kind": "keyart"
+ },
+ {
+  "name": "MiniMap_Level_StormPast_1",
+  "file": "sharedassets58.assets",
+  "w": 1024,
+  "h": 1024,
+  "kind": "minimap"
+ },
+ {
+  "name": "MiniMap_Level_SurivalChallenge",
+  "file": "sharedassets61.assets",
+  "w": 2048,
+  "h": 2048,
+  "kind": "minimap"
+ },
+ {
+  "name": "CoverLow",
+  "file": "sharedassets62.assets",
+  "w": 1024,
+  "h": 600,
+  "kind": "keyart"
+ }
+]

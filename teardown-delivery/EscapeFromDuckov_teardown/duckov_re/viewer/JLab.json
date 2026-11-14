@@ -1,0 +1,148 @@
+{
+ "name": "JLab",
+ "level": 31,
+ "renderers": 13302,
+ "verts": 3438331,
+ "tris": 3137609,
+ "unique_verts": 400738,
+ "focus": [
+  [
+   -162.8080029964447,
+   -0.03461599722504616,
+   -128.60000574588776
+  ],
+  [
+   147.16439514160152,
+   4.0,
+   109.88999940762054
+  ]
+ ],
+ "draw_groups": 476,
+ "materials": 282,
+ "textures": 179,
+ "bbox": [
+  [
+   -187.6922149658203,
+   -14.62518310546875,
+   -158.60000610351562
+  ],
+  [
+   186.0,
+   24.867576599121094,
+   147.39999389648438
+  ]
+ ],
+ "stats": {
+  "renderers": 13302,
+  "skipfx": 3027,
+  "disabled": 1638,
+  "inactive": 349,
+  "nomesh": 2,
+  "instanced_groups": 475,
+  "instances": 10639
+ },
+ "top_meshes": [
+  [
+   "Quad",
+   2256
+  ],
+  [
+   "Cube",
+   1664
+  ],
+  [
+   "SM_SteelFrame_01_5",
+   509
+  ],
+  [
+   "SM_CementMold4",
+   284
+  ],
+  [
+   "SM_JLABWall2",
+   182
+  ],
+  [
+   "SM_BoxGroup_01",
+   173
+  ],
+  [
+   "Flask_01",
+   170
+  ],
+  [
+   "SM_Chair_01_2",
+   165
+  ],
+  [
+   "SM_Computer_01_3_3",
+   145
+  ],
+  [
+   "SM_Fence_3",
+   141
+  ],
+  [
+   "SM_Table_02_1",
+   139
+  ],
+  [
+   "OfficeServer01",
+   118
+  ],
+  [
+   "SM_JLAB_Probe_Rack_01",
+   117
+  ],
+  [
+   "SM_Stone_01_06",
+   116
+  ],
+  [
+   "SodaPointLightMesh",
+   115
+  ],
+  [
+   "SM_Computer_01_1_2",
+   112
+  ],
+  [
+   "SM_Computer_01_1_1",
+   112
+  ],
+  [
+   "SM_PaperBox_01_4",
+   110
+  ],
+  [
+   "SM_FileCabient_L1",
+   103
+  ],
+  [
+   "SM_JALB_WallPart1",
+   91
+  ],
+  [
+   "polySurface9",
+   86
+  ],
+  [
+   "Shelves_model",
+   84
+  ],
+  [
+   "SM_JALB_WallPart2",
+   84
+  ],
+  [
+   "SM_BarbedWire_01_03",
+   78
+  ],
+  [
+   "OfficePartition01_2",
+   77
+  ]
+ ],
+ "size_mb": 20.4,
+ "sec": 17.5
+}

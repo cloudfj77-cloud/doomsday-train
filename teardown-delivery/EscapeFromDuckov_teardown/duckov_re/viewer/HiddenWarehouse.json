@@ -1,0 +1,149 @@
+{
+ "name": "HiddenWarehouse",
+ "level": 19,
+ "renderers": 6106,
+ "verts": 1707032,
+ "tris": 1573946,
+ "unique_verts": 387079,
+ "focus": [
+  [
+   -451.29219351690176,
+   -7.998560707501279,
+   54.87835998535156
+  ],
+  [
+   -57.564619534735364,
+   5.943607425689694,
+   331.29570829169563
+  ]
+ ],
+ "draw_groups": 354,
+ "materials": 208,
+ "textures": 162,
+ "bbox": [
+  [
+   -518.1000366210938,
+   -14.930195808410645,
+   0.0
+  ],
+  [
+   26.10000991821289,
+   61.430259704589844,
+   510.1113586425781
+  ]
+ ],
+ "stats": {
+  "renderers": 6106,
+  "skipfx": 53,
+  "inactive": 589,
+  "disabled": 224,
+  "nomesh": 10,
+  "instanced_groups": 353,
+  "instances": 6039,
+  "terrain": 1
+ },
+ "top_meshes": [
+  [
+   "SM_Rock_03",
+   668
+  ],
+  [
+   "SM_Stone_01_03",
+   357
+  ],
+  [
+   "pCube338",
+   347
+  ],
+  [
+   "SM_Wall_01_3",
+   299
+  ],
+  [
+   "SM_Stone_01_04",
+   296
+  ],
+  [
+   "SM_Container_L",
+   190
+  ],
+  [
+   "SM_Container_Back",
+   190
+  ],
+  [
+   "SM_Container_R",
+   190
+  ],
+  [
+   "SM_Container_Ceiling",
+   172
+  ],
+  [
+   "SM_Container_Ground",
+   172
+  ],
+  [
+   "SM_Wall_01_1",
+   130
+  ],
+  [
+   "SM_WaterButt_01",
+   124
+  ],
+  [
+   "SM_WaterButt_02",
+   115
+  ],
+  [
+   "SM_BagTile2",
+   71
+  ],
+  [
+   "SM_Stone_01_07",
+   65
+  ],
+  [
+   "SM_OilBarrel01",
+   60
+  ],
+  [
+   "SM_RopeFence_03_2",
+   58
+  ],
+  [
+   "SM_WaterTank_01",
+   54
+  ],
+  [
+   "SM_Rock_01_03",
+   51
+  ],
+  [
+   "SM_Bags2",
+   50
+  ],
+  [
+   "SM_Rock_02_04",
+   49
+  ],
+  [
+   "SM_Roadblock12",
+   47
+  ],
+  [
+   "SM_Wall_02",
+   46
+  ],
+  [
+   "SM_Stone_01_06",
+   44
+  ],
+  [
+   "SM_Crane_Track_03",
+   40
+  ]
+ ],
+ "size_mb": 18.7,
+ "sec": 13.1
+}

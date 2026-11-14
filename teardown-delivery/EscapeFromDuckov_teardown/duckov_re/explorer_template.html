@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="data:,">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>逃离鸭科夫 · 美术与场景浏览器</title>
+<style>
+:root{--bg:#f6f5f1;--card:#fff;--ink:#1f2328;--sub:#646b75;--line:#e3e1d9;--acc:#e8a317;--acc2:#2f6fde}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font:14px/1.6 -apple-system,"PingFang SC","Helvetica Neue",Arial,sans-serif}
+header{display:flex;align-items:center;gap:22px;padding:0 20px;height:54px;border-bottom:1px solid var(--line);background:#fff}
+header h1{font-size:16px;margin:0;white-space:nowrap}
+header h1 span{background:var(--acc);border-radius:4px;padding:1px 7px;margin-right:8px;font-size:12px}
+.tabs{display:flex;gap:4px;overflow:auto}
+.tabs button{border:0;background:none;padding:8px 12px;border-radius:8px;font:inherit;color:var(--sub);cursor:pointer;white-space:nowrap}
+.tabs button.on{background:#1f2328;color:#fff}
+.tabs button i{font-style:normal;opacity:.6;font-size:12px;margin-left:4px}
+main{height:calc(100% - 54px)}
+.pane{display:none;height:100%}.pane.on{display:flex}
+/* scene */
+#sceneList{width:270px;flex:none;overflow:auto;border-right:1px solid var(--line);background:#fff;padding:10px}
+.sc{display:flex;gap:10px;padding:8px;border-radius:10px;cursor:pointer;border:1px solid transparent;margin-bottom:4px}
+.sc:hover{background:#f6f5f1}.sc.on{border-color:var(--acc);background:#fffaf0}
+.sc img{width:62px;height:62px;border-radius:6px;background:#1e2024;object-fit:contain;flex:none}
+.sc b{display:block;font-size:14px}.sc small{color:var(--sub);font-size:12px;line-height:1.45;display:block}
+#vp{flex:1;position:relative;min-width:0}
+#vp canvas{display:block}
+.bar{position:absolute;top:12px;left:12px;right:12px;display:flex;gap:6px;flex-wrap:wrap;pointer-events:none}
+.bar>*{pointer-events:auto}
+.btn{border:1px solid var(--line);background:rgba(255,255,255,.92);border-radius:8px;padding:5px 11px;font:inherit;font-size:13px;cursor:pointer;color:var(--ink)}
+.btn.on{background:#1f2328;color:#fff;border-color:#1f2328}
+.info{position:absolute;left:12px;bottom:12px;background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:12.5px;max-width:360px}
+.info b{font-size:15px}
+.mini{position:absolute;right:12px;bottom:12px;width:220px;border-radius:10px;border:1px solid var(--line);background:#1e2024;overflow:hidden}
+.mini img{width:100%;display:block}.mini div{position:absolute;left:8px;top:6px;color:#fff;font-size:12px;opacity:.85}
+#load{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(246,245,241,.75);font-size:15px;flex-direction:column;gap:10px}
+#load .pb{width:260px;height:6px;background:#e3e1d9;border-radius:3px;overflow:hidden}#load .pb i{display:block;height:100%;width:0;background:var(--acc)}
+.hint{position:absolute;right:12px;top:52px;font-size:12px;color:var(--sub);background:rgba(255,255,255,.85);border-radius:6px;padding:3px 8px}
+/* gallery */
+.gal{flex-direction:column;overflow:auto;padding:16px 20px;width:100%}
+.gtool{display:flex;gap:10px;align-items:center;margin-bottom:12px;color:var(--sub);font-size:13px}
+.gtool input{border:1px solid var(--line);border-radius:8px;padding:6px 10px;font:inherit;width:240px;background:#fff}
+.grid{display:grid;gap:10px}
+.cell{background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px;cursor:zoom-in;overflow:hidden}
+.cell .im{background:#ecebe5;border-radius:6px;display:flex;align-items:center;justify-content:center;aspect-ratio:1}
+.cell.dark .im{background:#1e2024}
+.cell img{max-width:100%;max-height:100%;object-fit:contain}
+.cell p{margin:4px 2px 0;font-size:11.5px;color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wide .cell .im{aspect-ratio:16/9}
+#lb{position:fixed;inset:0;background:rgba(20,22,26,.86);display:none;align-items:center;justify-content:center;flex-direction:column;z-index:20;cursor:zoom-out}
+#lb img{max-width:92vw;max-height:84vh;background:#2a2c31}#lb p{color:#eee;margin:10px}
+/* models */
+#mList{width:230px;flex:none;overflow:auto;border-right:1px solid var(--line);background:#fff;padding:10px}
+#mvp{flex:1;position:relative}
+</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+</head>
+<body>
+<header>
+  <h1><span>RE</span>逃离鸭科夫 · 美术与场景浏览器</h1>
+  <nav class="tabs" id="tabs"></nav>
+</header>
+<main>
+  <section class="pane on" id="p-scene">
+    <div id="sceneList"></div>
+    <div id="vp">
+      <div class="bar">
+        <button class="btn on" data-view="iso">游戏视角</button>
+        <button class="btn" data-view="top">俯视</button>
+        <button class="btn" data-view="low">低空</button>
+        <span style="width:10px"></span>
+        <button class="btn on" id="bTex">贴图</button>
+        <button class="btn" id="bWire">线框</button>
+        <button class="btn" id="bFog">雾</button>
+        <button class="btn" id="bRot">自动旋转</button>
+        <span style="width:10px"></span>
+        <button class="btn" id="bCut">剖切屋顶</button>
+        <span class="btn" id="cutBox" style="display:none;align-items:center;gap:8px">高度 <input type="range" id="cutH" step="0.1" style="width:150px"> <b id="cutV" style="font-weight:500;min-width:44px"></b></span>
+      </div>
+      <div class="hint">左键平移 · 右键旋转 · 滚轮缩放</div>
+      <div class="info" id="info"></div>
+      <div class="mini" id="mini"><img id="miniImg" alt=""><div>游戏内小地图</div></div>
+      <div id="load"><div id="loadTxt">加载中…</div><div class="pb"><i id="loadBar"></i></div></div>
+    </div>
+  </section>
+  <section class="pane gal" id="p-minimap"></section>
+  <section class="pane gal" id="p-keyart"></section>
+  <section class="pane gal" id="p-sprites"></section>
+  <section class="pane gal" id="p-tex"></section>
+  <section class="pane" id="p-models"><div id="mList"></div><div id="mvp"><div class="info" id="mInfo"></div></div></section>
+</main>
+<div id="lb"><img id="lbImg" alt=""><p id="lbTxt"></p></div>
+
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { MapControls } from 'three/addons/controls/MapControls.js';
+
+const M = /*__MANIFEST__*/null;
+const $ = s => document.querySelector(s);
+const fmt = n => n >= 1e6 ? (n / 1e6).toFixed(2) + 'M' : n >= 1e3 ? (n / 1e3).toFixed(1) + 'k' : String(n);
+
+/* ---------- tabs ---------- */
+const TABS = [['scene', '3D 场景', M.scenes.length], ['minimap', '小地图', M.minimaps.length], ['keyart', '宣传与封面', M.keyart.length], ['sprites', '图标 / UI', M.sprites.length], ['tex', '贴图样本', M.tex.length], ['models', '3D 模型', M.models.length]];
+const built = {};
+TABS.forEach(([k, n, c], i) => {
+  const b = document.createElement('button'); b.innerHTML = `${n}<i>${c}</i>`; if (!i) b.className = 'on';
+  b.onclick = () => { document.querySelectorAll('.tabs button').forEach(x => x.classList.remove('on')); b.classList.add('on');
+    document.querySelectorAll('.pane').forEach(p => p.classList.remove('on')); $('#p-' + k).classList.add('on');
+    if (!built[k]) { built[k] = 1; BUILD[k] && BUILD[k](); } onResize(); };
+  $('#tabs').appendChild(b);
+});
+
+/* ---------- lightbox ---------- */
+function lb(src, txt) { $('#lbImg').src = src; $('#lbTxt').textContent = txt; $('#lb').style.display = 'flex'; }
+$('#lb').onclick = () => $('#lb').style.display = 'none';
+
+function gallery(pane, items, { min = 120, dark = false, wide = false, title = '' } = {}) {
+  const el = $('#p-' + pane);
+  el.innerHTML = `<div class="gtool"><b style="color:#1f2328">${title}</b><span>${items.length} 项</span><input placeholder="按名称筛选…"></div><div class="grid ${wide ? 'wide' : ''}" style="grid-template-columns:repeat(auto-fill,minmax(${min}px,1fr))"></div>`;
+  const g = el.querySelector('.grid');
+  const render = q => {
+    g.innerHTML = '';
+    items.filter(it => !q || it.n.toLowerCase().includes(q)).forEach(it => {
+      const c = document.createElement('div'); c.className = 'cell' + (dark ? ' dark' : '');
+      c.innerHTML = `<div class="im"><img loading="lazy" src="${it.f}" alt=""></div><p title="${it.n}">${it.n}${it.wh ? ` · ${it.wh[0]}×${it.wh[1]}` : ''}</p>`;
+      c.onclick = () => lb(it.f, it.n + (it.wh ? `  (${it.wh[0]}×${it.wh[1]})` : ''));
+      g.appendChild(c);
+    });
+  };
+  el.querySelector('input').oninput = e => render(e.target.value.trim().toLowerCase());
+  render('');
+}
+const BUILD = {
+  minimap: () => gallery('minimap', M.minimaps, { min: 230, dark: true, title: '游戏内小地图（每个子场景一张，2048px 俯视烘焙图）' }),
+  keyart: () => gallery('keyart', M.keyart, { min: 280, dark: true, wide: true, title: 'Logo / 封面 / 地图横幅 / 小游戏封面 / 海报' }),
+  sprites: () => gallery('sprites', M.sprites, { min: 104, dark: true, title: '物品图标、Buff 图标、UI 图元（Sprite）' }),
+  tex: () => gallery('tex', M.tex, { min: 150, title: '角色 / 武器 / 道具贴图（Albedo 抽样）' }),
+  models: buildModels,
+};
+
+/* ---------- scene viewer ---------- */
+const vp = $('#vp');
+const renderer = new THREE.WebGLRenderer({ antialias: true, logarithmicDepthBuffer: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+vp.prepend(renderer.domElement);
+const scene = new THREE.Scene();
+const SKY = new THREE.Color(0xdfe6ec);
+scene.background = SKY;
+const camera = new THREE.PerspectiveCamera(35, 1, 0.5, 20000);
+const controls = new MapControls(camera, renderer.domElement);
+controls.enableDamping = true; controls.dampingFactor = 0.12; controls.screenSpacePanning = false; controls.maxPolarAngle = Math.PI * 0.49;
+scene.add(new THREE.HemisphereLight(0xf3f6ff, 0x6b6253, 1.25));
+const sun = new THREE.DirectionalLight(0xfff1dc, 2.1); sun.position.set(-0.6, 1, 0.45).multiplyScalar(1000); scene.add(sun);
+const amb = new THREE.AmbientLight(0xffffff, 0.25); scene.add(amb);
+let root = null, cur = null, focus = null, texOn = true, wire = false;
+const loader = new GLTFLoader();
+const IS_FILE = location.protocol === 'file:';
+function loadScript(src) { return new Promise((res, rej) => { const el = document.createElement('script'); el.src = src; el.onload = () => { el.remove(); res(); }; el.onerror = () => { el.remove(); rej(new Error('找不到 ' + src)); }; document.head.appendChild(el); }); }
+function b64ToBuf(b64) { const bin = atob(b64); const u8 = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i); return u8.buffer; }
+async function loadGLB(url, onProg) {
+  if (!IS_FILE) return new Promise((res, rej) => loader.load(url, res, onProg, rej));
+  const name = url.split('/').pop().replace(/\.glb$/, '');
+  await loadScript('viewer/js/' + name + '.glb.js');
+  const buf = b64ToBuf(window.__GLB[name]); delete window.__GLB[name];
+  return new Promise((res, rej) => loader.parse(buf, '', res, rej));
+}
+async function loadOBJText(m) {
+  if (!IS_FILE) return (await fetch(m.f)).text();
+  await loadScript('viewer/js/' + m.n + '.obj.js'); const t = window.__OBJ[m.n]; delete window.__OBJ[m.n]; return t;
+}
+
+
+function frame(view) {
+  if (!focus) return;
+  const [a, b] = focus; const c = new THREE.Vector3((a[0] + b[0]) / 2, (a[1] + b[1]) / 2, (a[2] + b[2]) / 2);
+  const span = Math.max(b[0] - a[0], b[2] - a[2], 30);
+  let d, dir;
+  if (view === 'top') { d = span * 1.45; dir = new THREE.Vector3(0, 1, -0.0001); }
+  else if (view === 'low') { d = span * 0.45; const p = 22 * Math.PI / 180, y = 30 * Math.PI / 180; dir = new THREE.Vector3(-Math.sin(y) * Math.cos(p), Math.sin(p), -Math.cos(y) * Math.cos(p)); }
+  else { d = span * 1.05; const p = 55 * Math.PI / 180, y = 30 * Math.PI / 180; dir = new THREE.Vector3(-Math.sin(y) * Math.cos(p), Math.sin(p), -Math.cos(y) * Math.cos(p)); }
+  camera.position.copy(c).addScaledVector(dir.normalize(), d); controls.target.copy(c); camera.near = Math.max(0.3, d / 3000); camera.far = d * 12; camera.updateProjectionMatrix(); controls.update();
+  scene.fog = $('#bFog').classList.contains('on') ? new THREE.Fog(SKY, d * 0.6, d * 2.4) : null;
+  document.querySelectorAll('[data-view]').forEach(x => x.classList.toggle('on', x.dataset.view === view));
+}
+document.querySelectorAll('[data-view]').forEach(b => b.onclick = () => frame(b.dataset.view));
+function applyMats() {
+  if (!root) return;
+  root.traverse(o => { if (o.isMesh) (Array.isArray(o.material) ? o.material : [o.material]).forEach(m => {
+    if (m.userData.map === undefined) m.userData.map = m.map;
+    m.map = texOn ? m.userData.map : null; m.wireframe = wire; m.needsUpdate = true; }); });
+}
+$('#bTex').onclick = e => { texOn = !texOn; e.target.classList.toggle('on', texOn); applyMats(); };
+$('#bWire').onclick = e => { wire = !wire; e.target.classList.toggle('on', wire); applyMats(); };
+$('#bFog').onclick = e => { e.target.classList.toggle('on'); frame([...document.querySelectorAll('[data-view].on')][0]?.dataset.view || 'iso'); };
+$('#bRot').onclick = e => { controls.autoRotate = !controls.autoRotate; controls.autoRotateSpeed = 0.6; e.target.classList.toggle('on', controls.autoRotate); };
+
+const cutPlane = new THREE.Plane(new THREE.Vector3(0, -1, 0), 0);
+function setCut(on, h) {
+  $('#bCut').classList.toggle('on', on); $('#cutBox').style.display = on ? 'inline-flex' : 'none';
+  if (h !== undefined) $('#cutH').value = h;
+  cutPlane.constant = +$('#cutH').value; $('#cutV').textContent = (+$('#cutH').value).toFixed(1) + ' m';
+  renderer.clippingPlanes = on ? [cutPlane] : [];
+}
+$('#bCut').onclick = () => setCut(!$('#bCut').classList.contains('on'));
+$('#cutH').oninput = () => setCut(true);
+function disposeRoot() {
+  if (!root) return; scene.remove(root);
+  root.traverse(o => { if (o.isMesh) { o.geometry.dispose(); (Array.isArray(o.material) ? o.material : [o.material]).forEach(m => { m.map && m.map.dispose(); m.dispose(); }); } });
+  root = null;
+}
+async function loadScene(s) {
+  if (cur === s.key) return; cur = s.key;
+  document.querySelectorAll('.sc').forEach(x => x.classList.toggle('on', x.dataset.k === s.key));
+  $('#miniImg').src = s.minimap;
+  $('#info').innerHTML = `<b>${s.cn}</b> <span style="color:#646b75">${s.key}</span><br>渲染物体 ${fmt(s.renderers)} · 三角面 ${fmt(s.tris)}<br>实例化摆放 ${fmt(s.instances)} 次 · 贴图 ${s.textures} 张 · GLB ${s.mb} MB<br><span style="color:#646b75">高频模块件：${s.top.slice(0, 5).map(t => t[0] + '×' + t[1]).join('、')}</span>`;
+  $('#load').style.display = 'flex'; $('#loadBar').style.width = '0';
+  disposeRoot();
+  const grp = new THREE.Group(); const total = s.glbs.length; let done = 0;
+  let err = null;
+  if (IS_FILE) $('#loadTxt').textContent = `读取本地文件 ${s.cn}（约 ${s.mb.toFixed(0)} MB，需几秒）…`;
+  for (const url of s.glbs) {
+    const g = await loadGLB(url, ev => {
+      const p = ev.total ? ev.loaded / ev.total : 0; $('#loadBar').style.width = ((done + p) / total * 100).toFixed(0) + '%';
+      $('#loadTxt').textContent = `加载 ${s.cn} … ${(ev.loaded / 1e6).toFixed(0)} / ${(s.mb).toFixed(0)} MB`; }).catch(e => { err = e; return null; });
+    if (cur !== s.key) return;
+    if (g) grp.add(g.scene); done++; $('#loadBar').style.width = (done / total * 100).toFixed(0) + '%';
+  }
+  if (!grp.children.length) { $('#loadTxt').textContent = '加载失败：' + (err ? err.message : '未知错误'); return; }
+  grp.traverse(o => { if (o.isMesh) { o.frustumCulled = !o.isInstancedMesh; (Array.isArray(o.material) ? o.material : [o.material]).forEach(m => { m.side = THREE.DoubleSide; if (m.map) m.map.anisotropy = 4; }); } });
+  root = grp; scene.add(root); focus = s.focus; applyMats(); frame('iso');
+  { const bb = new THREE.Box3().setFromObject(root); const lo = Math.max(bb.min.y, s.focus[0][1] - 10), hi = Math.min(bb.max.y, s.focus[1][1] + 40);
+    $('#cutH').min = lo.toFixed(1); $('#cutH').max = hi.toFixed(1); setCut(s.cut !== undefined, s.cut !== undefined ? s.cut : hi); }
+  $('#load').style.display = 'none';
+}
+M.scenes.forEach(s => {
+  const d = document.createElement('div'); d.className = 'sc'; d.dataset.k = s.key;
+  d.innerHTML = `<img src="${s.minimap}" alt=""><div><b>${s.cn}</b><small>${s.key}<br>${fmt(s.tris)} 三角面 · ${s.mb} MB</small></div>`;
+  d.onclick = () => loadScene(s); $('#sceneList').appendChild(d);
+});
+$('#sceneList').insertAdjacentHTML('afterbegin', '<div style="font-size:12px;color:#646b75;margin:2px 6px 10px">从游戏场景文件按层级还原的真实摆放；颜色取自材质主贴图，不含游戏内光照 / 后处理 / 特效。</div>');
+
+/* ---------- model viewer ---------- */
+let mR, mS, mC, mCtl, mObj;
+function buildModels() {
+  const host = $('#mvp');
+  mR = new THREE.WebGLRenderer({ antialias: true }); mR.setPixelRatio(Math.min(devicePixelRatio, 2)); host.prepend(mR.domElement);
+  mS = new THREE.Scene(); mS.background = new THREE.Color(0xeeede8);
+  mS.add(new THREE.HemisphereLight(0xffffff, 0x8a8478, 1.6)); const dl = new THREE.DirectionalLight(0xffffff, 1.6); dl.position.set(-2, 3, 2); mS.add(dl);
+  const grid = new THREE.GridHelper(4, 16, 0xc9c6bc, 0xdcd9d0); mS.add(grid);
+  mC = new THREE.PerspectiveCamera(35, 1, 0.01, 100); mCtl = new OrbitControls(mC, mR.domElement); mCtl.enableDamping = true; mCtl.autoRotate = true; mCtl.autoRotateSpeed = 1.5;
+  M.models.forEach((m, i) => { const d = document.createElement('div'); d.className = 'sc'; d.style.padding = '8px 10px';
+    d.innerHTML = `<div><b>${m.n}</b><small>${fmt(m.v)} 顶点 · ${fmt(m.t)} 面</small></div>`; d.onclick = () => showModel(m, d); $('#mList').appendChild(d); if (!i) showModel(m, d); });
+  onResize();
+}
+function showModel(m, el) {
+  document.querySelectorAll('#mList .sc').forEach(x => x.classList.remove('on')); el.classList.add('on');
+  loadOBJText(m).then(txt => { const o = new OBJLoader().parse(txt);
+    if (mObj) mS.remove(mObj); mObj = o;
+    const duck = /duck/i.test(m.n);
+    o.traverse(c => { if (c.isMesh) { c.material = new THREE.MeshStandardMaterial({ color: duck ? 0xf2c14e : 0x8f9bab, roughness: .6, metalness: duck ? 0 : .25, side: THREE.DoubleSide, flatShading: false });
+      const w = new THREE.LineSegments(new THREE.WireframeGeometry(c.geometry), new THREE.LineBasicMaterial({ color: 0x1f2328, transparent: true, opacity: .12 })); c.add(w); } });
+    const box = new THREE.Box3().setFromObject(o), sz = box.getSize(new THREE.Vector3()), s = 1.6 / Math.max(sz.x, sz.y, sz.z);
+    o.scale.setScalar(s); const c = box.getCenter(new THREE.Vector3()).multiplyScalar(s); o.position.set(-c.x, -box.min.y * s, -c.z);
+    mS.add(o); mC.position.set(1.8, 1.4, 2.2); mCtl.target.set(0, sz.y * s / 2, 0);
+    $('#mInfo').innerHTML = `<b>${m.n}</b><br>${m.v} 顶点 · ${m.t} 三角面<br><span style="color:#646b75">从 resources.assets 导出的纯几何（无骨骼/贴图）</span>`;
+  }).catch(e => { $('#mInfo').textContent = '模型加载失败：' + e.message; });
+}
+
+/* ---------- loop ---------- */
+function onResize() {
+  const w = vp.clientWidth, h = vp.clientHeight; if (w && h) { renderer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix(); }
+  if (mR) { const e = $('#mvp'), W = e.clientWidth, H = e.clientHeight; if (W && H) { mR.setSize(W, H); mC.aspect = W / H; mC.updateProjectionMatrix(); } }
+}
+addEventListener('resize', onResize); onResize();
+renderer.setAnimationLoop(() => {
+  if ($('#p-scene').classList.contains('on')) { controls.update(); renderer.render(scene, camera); }
+  if (mR && $('#p-models').classList.contains('on')) { mCtl.update(); mR.render(mS, mC); }
+});
+{ const h = location.hash.slice(1).split('&'); const w = M.scenes.find(x => x.key === h[0]) || M.scenes[0]; if (w) loadScene(w).then(() => { if (h[1]) frame(h[1]); if (h[2]) setCut(true, +h[2]); }); }
+</script>
+</body>
+</html>

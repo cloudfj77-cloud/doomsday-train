@@ -1,0 +1,69 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <TargetFramework>net40</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>12.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>../../../../../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/ESCAPE FROM DUCKOV/DUCKOV_DATA/MANAGED/UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>../../../../../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/ESCAPE FROM DUCKOV/DUCKOV_DATA/MANAGED/UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>../../../../../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/ESCAPE FROM DUCKOV/DUCKOV_DATA/MANAGED/UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>../../../../../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/ESCAPE FROM DUCKOV/DUCKOV_DATA/MANAGED/UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>../../../../../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/ESCAPE FROM DUCKOV/DUCKOV_DATA/MANAGED/UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+      <HintPath>../../../../../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/ESCAPE FROM DUCKOV/DUCKOV_DATA/MANAGED/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>../../../../../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/ESCAPE FROM DUCKOV/DUCKOV_DATA/MANAGED/UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>../../../../../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/ESCAPE FROM DUCKOV/DUCKOV_DATA/MANAGED/UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UISplineRenderer">
+      <HintPath>../../../../../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/ESCAPE FROM DUCKOV/DUCKOV_DATA/MANAGED/UISplineRenderer.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Splines">
+      <HintPath>../../../../../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/ESCAPE FROM DUCKOV/DUCKOV_DATA/MANAGED/Unity.Splines.dll</HintPath>
+    </Reference>
+    <Reference Include="KAnimationCore.Runtime">
+      <HintPath>../../../../../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/ESCAPE FROM DUCKOV/DUCKOV_DATA/MANAGED/KAnimationCore.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="FOW">
+      <HintPath>../../../../../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/ESCAPE FROM DUCKOV/DUCKOV_DATA/MANAGED/FOW.dll</HintPath>
+    </Reference>
+    <Reference Include="ECM2">
+      <HintPath>../../../../../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/ESCAPE FROM DUCKOV/DUCKOV_DATA/MANAGED/ECM2.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>../../../../../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/ESCAPE FROM DUCKOV/DUCKOV_DATA/MANAGED/Cinemachine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>../../../../../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/ESCAPE FROM DUCKOV/DUCKOV_DATA/MANAGED/UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core">
+      <HintPath>../../../../../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/ESCAPE FROM DUCKOV/DUCKOV_DATA/MANAGED/System.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>../../../../../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/ESCAPE FROM DUCKOV/DUCKOV_DATA/MANAGED/Unity.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>../../../../../../Volumes/itfs/019fcbbb-1cd0-74cd-a4b9-0ddeebf1d361/ESCAPE FROM DUCKOV/DUCKOV_DATA/MANAGED/UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

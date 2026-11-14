@@ -1,0 +1,3515 @@
+ReputationUIManager
+Shooting_camera  [inactive]
+Emporium_camera
+LootTable
+  TableMaster
+  TableGroupMaster
+AdvCalendarUIManager
+--InventorScene  [inactive]
+  inventor_scene
+MultiPageUIManager
+Walker1  [inactive]
+Walker1  [inactive]
+EMPORIUM_CODE_ENTRY
+  MouseSetting
+GameOptionUIManager
+_SecGameObject1
+NegociationUIManager
+EmporiumOption
+Logger
+WaterScannerUIManager
+Main Camera  [inactive]
+LabelerUIManager
+  LabelerBlueUIManager
+_BodyGameObject  [inactive]
+EventSystem
+_SecGameObject2
+ExchangeUManager
+LoanPanelUIManager
+EndOfDayUIManager
+MapUIManager
+PCUIManager
+_ShootingAnimation  [inactive]
+ChemFinisherUI
+Init
+WildUIManager
+InspectionUIManager
+AudioSource2
+InitInputControls
+SecurityRecordUIManager
+AudioSourceAmbient
+AudioSourceMusic
+AudioDirectory
+--BazarScene  [inactive]
+  Commissary
+Particle System
+PlantAnalyserUIManager
+ClienteleUIManager
+Walker1  [inactive]
+RepublicLogoUIManager
+GameOverUIManager
+DirectoriesInit
+--
+  test3  [inactive]
+  test3 (1)  [inactive]
+WantedUIManager
+EmporiumAudioPlayer
+--------------------
+EmporiumRTSController
+PaperUIManager
+--ScavScene  [inactive]
+  DumpingGround
+--Interactable
+  --Localize Below--
+  phoneGlow
+  wall_phone
+  ClienteleDisplayGlow
+  ClienteleDisplay
+  Door
+  CreditDisplayGlow
+  CreditDisplay
+  ShutterButton
+  CalendarGlow
+  Calendar
+  CalendarTop
+  NegociationTablet
+  Bell
+  ClientDisplayGlow
+  ClientDisplay
+  ClientDisplayTop
+  transferButton
+  dismissButton
+  SecButton
+    Light
+  Recorder
+  feedback_box
+  SleepingBag
+  PC  [inactive]
+    pc_notif  [inactive]
+      pc_alert
+    shadow
+    connecting wire
+  VendingMachine
+  VendingFountain
+  _Shotgun  [inactive]
+    GameObject
+  _Arm  [inactive]
+    _MuzzleFlash
+  _MagnifyingWindow  [inactive]
+  _MagnifyingWindowCollapsed
+NotebookUIManager
+ScratcherUIManager
+ChemScannerUIManager
+EmptyInit
+DialogUIManager
+StartOfDayUIManager
+EscapeMenuUIManager
+StoreSoundsPlayer
+AudioSource
+PhoneUIManager
+_ShootingWound  [inactive]
+Typewriter Audio Source
+RightLeave
+  _ClientGameObject
+HandnoteUIManager
+StoreUIManager
+  DialogueBubble
+  GenericConfirmationUIManager
+  WalkerManager
+  DialogSettingUIManager
+WaterStripUIManager
+LogUIManager
+--Physical Store--
+  BackgroundGroup
+    store_back
+    walkerFarTransform
+    store_back_stairs
+    store_mid
+    store_mid_rail
+    store_mid_stairs
+    walkerMidTransform
+    store_front_floor
+    store_front_wall
+    store_front_lamp
+  Desk
+  DeskAnimation
+  DeskAnimation (1)
+  DeskAnimation (2)
+  DeskAnimation (3)
+  ShutterDoor
+  ShutterGlassDoor
+  shutterFrame
+  shutterFrameTop
+  NutruifruitPoster
+  HiddenSpace
+  front_counter
+  wires
+  showcase
+  EmporiumWall
+  Radio
+  Lighting
+  Door Lock
+  Calendar_Wire
+  Table Wires
+NewspaperUIManager
+Post-Process-Volume
+TooltipManager
+RecorderUIManager
+CommisaryUIManager
+AudioSource3
+BargainUIManager
+DialogPhoneUIManager
+RTSController
+PerkUIController
+  PerkIconLoader
+FontLoader
+CanvasPaperUI
+  _NotebookPanel  [inactive]
+    itemName
+    CloseButton
+    ItemTypeGroup
+      typeContraband  [inactive]
+        Image
+          Text (TMP)
+      typeMedical  [inactive]
+        Image
+          Text (TMP)
+      typeHousehold  [inactive]
+        Image
+          Text (TMP)
+      typeFood  [inactive]
+        Image
+          Text (TMP)
+      typeMaterial  [inactive]
+        Image
+          Text (TMP)
+      typeWeapon  [inactive]
+        Image
+          Text (TMP)
+      typeWater  [inactive]
+        Image
+          Text (TMP)
+    LayoutGroup
+      NotebookElementPrefab  [inactive]
+  _BookPanel  [inactive]
+    CloseButton
+    title
+    subtitle
+    body
+    signature  [inactive]
+    page
+    ButtonIndex
+      Text (TMP)
+    ButtonLeft
+      Text (TMP)
+    ButtonRight
+      Text (TMP)
+    _IndexGroup  [inactive]
+      Text (TMP)
+      Text (TMP) (1)
+      Text (TMP) (2)
+      Text (TMP) (3)
+      Text (TMP) (4)
+      Text (TMP) (5)
+      Text (TMP) (6)
+      Text (TMP) (7)
+      Text (TMP) (8)
+      Text (TMP) (9)
+  _LoanPanel  [inactive]
+    title
+    body (1)
+    termsTMP
+    body (2)
+    body (4)
+    body (5)
+    body (6)
+    Text (TMP)
+    Text (TMP) (1)
+    CloseButton
+  _CodeBook  [inactive]
+    Text (TMP)
+    CloseButton
+    content
+    content (1)
+    Text (TMP) (1)
+  _SecCard  [inactive]
+    CloseButton
+  _StartOfDayPanel  [inactive]
+    CloseButton
+    Header
+    contentGroup
+      __StartOfDayTMPPrefab
+    startbutton  [inactive]
+      Text (TMP)
+    Estimate
+    Estimate (1)
+    Postit_pink
+      RentReminderTMP
+    Postit_blue
+      Text (TMP)
+  _InspectionUI  [inactive]
+    Title  [inactive]
+    ConfrontPanel
+      Title
+      Button
+        Text (TMP)
+      Group
+        Toggle1
+          Background
+            Checkmark
+          Label
+        Toggle2
+          Background
+            Checkmark
+          Label
+        Toggle3
+          Background
+            Checkmark
+          Label
+        Toggle4
+          Background
+            Checkmark
+          Label
+        Toggle5
+          Background
+            Checkmark
+          Label
+    AppraisalPanel
+      PanelTitle
+      LayoutGroup
+        -20
+          Text (TMP)
+        -10
+          Text (TMP)
+        -5
+          Text (TMP)
+        -1
+          Text (TMP)
+        InputField (TMP)
+          Text Area
+            Placeholder
+            Text
+        +1
+          Text (TMP)
+        +5
+          Text (TMP)
+        +10
+          Text (TMP)
+        +20
+          Text (TMP)
+      buttonSend
+        Text (TMP)
+    _CigaretteInspection  [inactive]
+      Boxes
+        BoxCorrect
+          PaleColor  [inactive]
+          DarkColor  [inactive]
+          ShiftColor1  [inactive]
+          ShiftColor2  [inactive]
+      Lettering
+        LetteringCorrect  [inactive]
+        LetteringFont  [inactive]
+        LetteringOff1  [inactive]
+        LetteringOff2  [inactive]
+        LetteringOff3  [inactive]
+        LetteringOff4  [inactive]
+        LetteringOffChinese  [inactive]
+        LetteringOff5  [inactive]
+      Logos
+        LogoCorrect  [inactive]
+        LogoSimple  [inactive]
+        LogoComplex  [inactive]
+        LogoComplex2  [inactive]
+        LogoOffInverted  [inactive]
+      Seals
+        SealCorrect  [inactive]
+        SealTeared  [inactive]
+    _FoodStampInspection  [inactive]
+      Card
+      Image
+      Logo
+        Correct
+        LogoM1  [inactive]
+        LogoM2  [inactive]
+        LogoM3  [inactive]
+        LogoM4  [inactive]
+        LogoM5  [inactive]
+      Lettering
+        Correct
+        LetterM1  [inactive]
+        LetterM2  [inactive]
+        LetterM3  [inactive]
+        LetterM4  [inactive]
+        LetterM5  [inactive]
+        LetterM6  [inactive]
+        LetterM7  [inactive]
+        LetterM8  [inactive]
+      Seal
+        SealOk  [inactive]
+        SealM1  [inactive]
+      Amount
+        Amount
+        FoodStamp
+      Chip
+        ChipOk
+        ChipM1  [inactive]
+        ChipM2  [inactive]
+        ChipM3  [inactive]
+    _Fuel  [inactive]
+      Color
+        ColorStandard
+        ColorHighQuality
+        ColorPoor1
+        ColorPoor2
+      Casing
+        CasingStandard
+      Condition
+        ConditionCrack
+        ConditionWear
+        ConditionWearHeavy
+        ConditionReinforced
+        ConditionUncovered
+      Seal
+        SealZhongHua  [inactive]
+        SealLL  [inactive]
+        SealRepublic  [inactive]
+        SealIgnitionLab  [inactive]
+      Serial
+        Serial1  [inactive]
+        SerialTMP  [inactive]
+        SerialTMP (1)  [inactive]
+        SerialTMP (2)  [inactive]
+    _InjectorInspection  [inactive]
+      Base
+      Body
+        BodyCorrect
+        BodyWrongColor1  [inactive]
+        BodyWrongColor2  [inactive]
+        BodyBroken1  [inactive]
+        BodyBroken2  [inactive]
+        BodyBroken3  [inactive]
+      Label  [inactive]
+      Display
+        DisplayCorrect
+        DisplayExpired  [inactive]
+        DisplayMissing  [inactive]
+        DisplaySpent  [inactive]
+      SerialTMP
+      CompanyTMP
+      ProductNameTMP
+      Window
+    _Ribwich  [inactive]
+      Bottom_Bun
+        bottomBun
+      Meat
+        meatNormal
+      Pickles
+        picklesExtra  [inactive]
+        picklesNormal
+      Top_Bun
+        topBunNormal
+        topBunDeluxe  [inactive]
+      DoubleMeat  [inactive]
+      Wrap
+        wrapNormal
+        wrapOpen  [inactive]
+        wrapOpenFlipped  [inactive]
+      DavreLogo
+        davreLogoCorrect
+        davreLogoIncorrect
+        davreLogoIncorrect (1)
+        davreLogoIncorrect (2)
+        davreLogoIncorrect (3)
+        davreLogoIncorrect (4)
+        davreLogoIncorrect (5)
+        davreLogoIncorrect (6)
+      RibwichLogo
+        RibwichLogoCorrect
+        RibwichLogoIncorrect
+        RibwichLogoIncorrect (1)
+        RibwichLogoIncorrect (2)
+      Barcode
+        BatchTMP
+      Facility
+        PackingFacilityTMP
+        PackingFacilityNumberTMP
+    _App1Hand  [inactive]
+      steel_hands
+        steel_hand_normal
+        steel_hand_wear
+        steel_hand_damage
+      steel_addons
+        steel_addon_armor
+        steel_addon_blade
+      steel_interface_full
+        steel_inferface_emg
+        steel_inferface_emgp
+        steel_inferface_ni
+      steel_interface_symbol
+        steel_inferface_emg
+        steel_inferface_emgp
+        steel_inferface_ni
+      carbon_hands
+        steel_hand_normal
+        steel_hand_wear
+        steel_hand_damage
+      carbon_addons
+        steel_addon_armor
+        steel_addon_blade
+      carbon_interface_full
+        steel_inferface_emg
+        steel_inferface_emgp
+        steel_inferface_ni
+      carbon_interface_symbol
+        steel_inferface_emg
+        steel_inferface_emgp
+        steel_inferface_ni
+      gold_hands
+        steel_hand_normal
+        steel_hand_wear
+        steel_hand_damage
+      gold_addons
+        steel_addon_armor
+        steel_addon_blade
+      gold_interface_full
+        steel_inferface_emg
+        steel_inferface_emgp
+        steel_inferface_ni
+      gold_interface_symbol
+        steel_inferface_emg
+        steel_inferface_emgp
+        steel_inferface_ni
+    _InsBerry  [inactive]
+      berryNormal
+      berryUnder1
+      berryUnder2
+      berryOver
+      berryMold
+      berrySmall
+    CloseButton
+    MagnifiyingGlasse
+      Mask
+        BlockerTray
+        _InjectorInspection  [inactive]
+          Base
+          Body
+            BodyCorrect
+            BodyWrongColor1  [inactive]
+            BodyWrongColor2  [inactive]
+            BodyBroken1  [inactive]
+            BodyBroken2  [inactive]
+            BodyBroken3  [inactive]
+          Label  [inactive]
+          Display
+            DisplayCorrect
+            DisplayExpired  [inactive]
+            DisplayMissing  [inactive]
+            DisplaySpent  [inactive]
+          SerialTMP
+          CompanyTMP
+          ProductNameTMP
+          Window
+        _CigaretteInspection  [inactive]
+          Boxes
+            BoxCorrect
+              PaleColor  [inactive]
+              DarkColor  [inactive]
+              ShiftColor1  [inactive]
+              ShiftColor2  [inactive]
+          Lettering
+            LetteringCorrect  [inactive]
+            LetteringFont  [inactive]
+            LetteringOff1  [inactive]
+            LetteringOff2  [inactive]
+            LetteringOff3  [inactive]
+            LetteringOff4  [inactive]
+            LetteringOffChinese  [inactive]
+            LetteringOff5  [inactive]
+          Logos
+            LogoCorrect  [inactive]
+            LogoSimple  [inactive]
+            LogoComplex  [inactive]
+            LogoComplex2  [inactive]
+            LogoOffInverted  [inactive]
+          Seals
+            SealCorrect  [inactive]
+            SealTeared  [inactive]
+        _FoodStampInspection  [inactive]
+          Card
+          Image
+          Logo
+            Correct
+            LogoM1  [inactive]
+            LogoM2  [inactive]
+            LogoM3  [inactive]
+            LogoM4  [inactive]
+            LogoM5  [inactive]
+          Lettering
+            Correct
+            LetterM1  [inactive]
+            LetterM2  [inactive]
+            LetterM3  [inactive]
+            LetterM4  [inactive]
+            LetterM5  [inactive]
+            LetterM6  [inactive]
+            LetterM7  [inactive]
+            LetterM8  [inactive]
+          Seal
+            SealOk  [inactive]
+            SealM1  [inactive]
+          Amount
+            Amount
+            FoodStamp
+          Chip
+            ChipOk
+            ChipM1  [inactive]
+            ChipM2  [inactive]
+            ChipM3  [inactive]
+        _Fuel  [inactive]
+          Color
+            ColorStandard
+            ColorHighQuality
+            ColorPoor1
+            ColorPoor2
+          Casing
+            CasingStandard
+          Condition
+            ConditionCrack
+            ConditionWear
+            ConditionWearHeavy
+            ConditionReinforced
+            ConditionUncovered
+          Seal
+            SealZhongHua  [inactive]
+            SealLL  [inactive]
+            SealRepublic  [inactive]
+            SealIgnitionLab  [inactive]
+          Serial
+            Serial1  [inactive]
+            SerialTMP  [inactive]
+            SerialTMP (1)  [inactive]
+            SerialTMP (2)  [inactive]
+        _Ribwich  [inactive]
+          Bottom_Bun
+            bottomBun
+          Meat
+            meatNormal
+          Pickles
+            picklesExtra  [inactive]
+            picklesNormal
+          Top_Bun
+            topBunNormal
+            topBunDeluxe  [inactive]
+          DoubleMeat  [inactive]
+          Wrap
+            wrapNormal
+            wrapOpen  [inactive]
+            wrapOpenFlipped  [inactive]
+          DavreLogo
+            davreLogoCorrect
+            davreLogoIncorrect
+            davreLogoIncorrect (1)
+            davreLogoIncorrect (2)
+            davreLogoIncorrect (3)
+            davreLogoIncorrect (4)
+            davreLogoIncorrect (5)
+            davreLogoIncorrect (6)
+          RibwichLogo
+            RibwichLogoCorrect
+            RibwichLogoIncorrect
+            RibwichLogoIncorrect (1)
+            RibwichLogoIncorrect (2)
+          Barcode
+            BatchTMP
+          Facility
+            PackingFacilityTMP
+            PackingFacilityNumberTMP
+        _App1Hand  [inactive]
+          steel_hands
+            steel_hand_normal
+            steel_hand_wear
+            steel_hand_damage
+          steel_addons
+            steel_addon_armor
+            steel_addon_blade
+          steel_interface_full
+            steel_inferface_emg
+            steel_inferface_emgp
+            steel_inferface_ni
+          steel_interface_symbol
+            steel_inferface_emg
+            steel_inferface_emgp
+            steel_inferface_ni
+          carbon_hands
+            steel_hand_normal
+            steel_hand_wear
+            steel_hand_damage
+          carbon_addons
+            steel_addon_armor
+            steel_addon_blade
+          carbon_interface_full
+            steel_inferface_emg
+            steel_inferface_emgp
+            steel_inferface_ni
+          carbon_interface_symbol
+            steel_inferface_emg
+            steel_inferface_emgp
+            steel_inferface_ni
+          gold_hands
+            steel_hand_normal
+            steel_hand_wear
+            steel_hand_damage
+          gold_addons
+            steel_addon_armor
+            steel_addon_blade
+          gold_interface_full
+            steel_inferface_emg
+            steel_inferface_emgp
+            steel_inferface_ni
+          gold_interface_symbol
+            steel_inferface_emg
+            steel_inferface_emgp
+            steel_inferface_ni
+        _InsBerry  [inactive]
+          berryNormal
+          berryUnder1
+          berryUnder2
+          berryOver
+          berryMold
+          berrySmall
+  _WildUpgrade  [inactive]
+    CloseButton
+    Title
+    CreditGroup
+      CreditCounter
+    FavorGroup
+      CreditCounter
+    DetailPanel
+      TextArea
+      Title
+      Subtitle
+      Description
+      CooldownTMP
+      CostTMP
+      UnlockButton
+        Text (TMP)
+      SpecialTMP
+    Panel1 (3)
+      NetworkElement (8)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (9)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (6)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (7)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (3)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (2)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (4)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (5)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (10)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (11)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+    Recommended
+    Recommended (1)  [inactive]
+    Title
+    Panel1 (1)
+      NetworkElement
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (1)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (1)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (2)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (3)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (4)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+    Title
+    Panel1 (2)
+      NetworkElement
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (1)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (2)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+    Title
+    Panel1
+      NetworkElement
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (1)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (2)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (3)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (4)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (5)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+    Title
+    Panel1 (4)
+      NetworkElement
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (1)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (2)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (3)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (4)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (5)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+    Title
+    Panel1 (5)
+      NetworkElement
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (1)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (2)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+      NetworkElement (3)
+        Content
+          padlock  [inactive]
+          Artwork
+          refresh  [inactive]
+          CostArea
+          Cost
+          check  [inactive]
+    Title
+    NetworkElement (4)  [inactive]
+      Content
+        padlock  [inactive]
+        Artwork
+        refresh  [inactive]
+        CostArea  [inactive]
+        Cost  [inactive]
+        check  [inactive]
+  _MultiPage  [inactive]
+    BookRibwich  [inactive]
+      Page1  [inactive]
+        StationTradeCommission (1)
+        Title (1)
+        Text (TMP) (2)
+        Section0
+          Section1Title
+          Text (TMP) (3)
+        Section1
+          Section1Title
+          Text (TMP) (3)
+        Section1 (1)
+          Section1Title
+          Text (TMP) (4)
+          Text (TMP) (3)
+          Text (TMP) (5)
+          Text (TMP) (6)
+          Text (TMP) (7)
+      Page2  [inactive]
+        StationTradeCommission (1)
+        Title (1)
+        Section1 (2)
+          Section1Title
+          Text (TMP) (4)
+          Text (TMP) (3)
+          Text (TMP) (5)
+          Text (TMP) (6)
+          Text (TMP) (7)
+        Text (TMP) (8)
+        _Ribwich
+          Bottom_Bun
+            bottomBun
+          Meat
+            meatNormal
+          Pickles
+            picklesExtra  [inactive]
+            picklesNormal
+          Top_Bun
+            topBunNormal
+            topBunDeluxe  [inactive]
+          DoubleMeat  [inactive]
+          Wrap
+            wrapNormal
+            wrapOpen  [inactive]
+            wrapOpenFlipped  [inactive]
+          DavreLogo
+            davreLogoCorrect
+            davreLogoIncorrect  [inactive]
+            davreLogoIncorrect (1)  [inactive]
+            davreLogoIncorrect (2)  [inactive]
+            davreLogoIncorrect (3)  [inactive]
+            davreLogoIncorrect (4)  [inactive]
+            davreLogoIncorrect (5)  [inactive]
+            davreLogoIncorrect (6)  [inactive]
+          RibwichLogo
+            RibwichLogoCorrect
+            RibwichLogoIncorrect  [inactive]
+            RibwichLogoIncorrect (1)  [inactive]
+            RibwichLogoIncorrect (2)  [inactive]
+          Barcode
+            BatchTMP
+          Facility
+            PackingFacilityTMP
+            PackingFacilityNumberTMP
+      Page3  [inactive]
+        StationTradeCommission (1)
+        Title (1)
+        Section1 (2)
+          Section1Title
+          Text (TMP) (4)
+          Text (TMP) (3)
+          Text (TMP) (6)
+        Section1 (3)
+          Section1Title
+          Text (TMP) (4)
+          Text (TMP) (6)
+        Section1 (4)
+          Section1Title
+          Text (TMP) (4)
+          Image
+          Text (TMP) (7)
+          Image (1)
+          Text (TMP) (8)
+        Section5
+          Section1Title (1)
+          Text (TMP) (5)
+          Image (2)
+          Text (TMP) (9)
+          Image (3)
+          Text (TMP) (10)
+    BookFuel  [inactive]
+      Page1  [inactive]
+        StationTradeCommission (1)
+        Title (1)
+        Text (TMP) (2)
+        Section0  [inactive]
+          Section1Title
+          Text (TMP) (3)
+        Section1  [inactive]
+          Section1Title
+          Text (TMP) (3)
+        Section1 (1)  [inactive]
+          Section1Title
+          Text (TMP) (4)
+        Image (1)
+        Image
+        Text (TMP) (3)
+        Text (TMP) (5)
+        Text (TMP) (7)
+      Page2  [inactive]
+        StationTradeCommission (2)
+        Title (2)
+        Section1Title (1)
+        Text (TMP) (4)
+        Image (8)
+        Image (9)
+        Text (TMP) (6)
+        Image (5)
+        Image
+        Text (TMP) (4)
+        Image (6)
+        Image (7)
+        Text (TMP) (5)
+        Image
+        Image (1)
+      Page3  [inactive]
+        StationTradeCommission (2)
+        Title (2)
+        Section1Title (2)
+        Image (5)
+        Image
+        Image (1)
+        Text (TMP) (4)
+        Image (6)
+        Image (7)
+        Image (10)
+        Text (TMP) (5)
+        Image (8)
+        Image (9)
+        Image (11)
+        Text (TMP) (6)
+      Page4  [inactive]
+        StationTradeCommission (3)
+        Title (3)
+        Section1Title (2)
+        Text (TMP) (6)
+        Image (12)
+        Image (13)
+        Text (TMP) (7)
+        Image (14)
+        Image (15)
+        Text (TMP) (7)
+        Image (16)
+        Image (17)
+        Text (TMP) (7)
+      Page5  [inactive]
+        StationTradeCommission (4)
+        Title (4)
+        Section1Title (3)
+        LL
+          Text (TMP) (6)
+          Text (TMP) (7)
+          Text (TMP) (9)
+          Text (TMP) (10)
+          Image (18)
+          Image (19)
+          Image (20)
+          Image (21)
+        Zhonghua
+          Text (TMP) (6)
+          Text (TMP) (7)
+          Text (TMP) (9)
+          Text (TMP) (10)
+          Image (21)
+          Image (22)
+          Image (23)
+      Page6  [inactive]
+        StationTradeCommission (5)
+        Title (5)
+        Section1Title (4)
+        LL
+          Text (TMP) (6)
+          Text (TMP) (7)
+          Text (TMP) (9)
+          Text (TMP) (10)
+          Image (21)
+          Image (22)
+          Image (23)
+          Image (24)
+        Zhonghua
+          Text (TMP) (6)
+          Text (TMP) (7)
+          Text (TMP) (9)
+          Text (TMP) (10)
+          Image (24)
+          Image (25)
+          Image (26)
+      Page7  [inactive]
+        StationTradeCommission (5)
+        Title (5)
+        Section1Title (4)
+        LL
+          Text (TMP) (7)
+          Image (21)
+          Image (25)
+          Image (22)
+          Image (23)
+          Image (24)
+        Zhonghua
+          Text (TMP) (7)
+          Image (24)
+          Image (25)
+          Image (26)
+    BookWater  [inactive]
+      Page1  [inactive]
+        Title
+        Section1
+          SectionDivider (2)
+            Text (TMP) (2)
+          Text (TMP) (2)
+          Group
+            Text (TMP) (3)
+            Text (TMP) (9)
+            Text (TMP) (10)
+            Text (TMP) (11)
+            Text (TMP) (12)
+            Text (TMP) (13)
+            Text (TMP) (4)
+            Text (TMP) (5)
+            Text (TMP) (06)
+            Text (TMP) (07)
+            Text (TMP) (08)
+            Text (TMP) (09)
+          SectionDivider (3)
+            Text (TMP) (2)
+        Section2
+          SectionDivider (3)
+            Text (TMP) (2)
+          Text (TMP) (3)
+          identification
+            Image
+            Image (1)
+            Image (3)
+          Text (TMP) (4)
+      Page2  [inactive]
+        Title
+        Section1
+          SectionDivider (2)
+            Text (TMP) (2)
+          Text (TMP) (2)
+          purification
+            Image (3)
+            Image (5)
+            Image (4)
+            Text (TMP) (3)
+            Image (6)
+            Image (8)
+            Text (TMP) (4)
+          SectionDivider (4)
+            Text (TMP) (3)
+          SectionDivider (6)
+            Text (TMP) (3)
+          SectionDivider (5)
+            Text (TMP) (3)
+        Section2  [inactive]
+          SectionDivider (3)
+            Text (TMP) (2)
+          Text (TMP) (3)
+          identification
+            Image
+            Image (1)
+            Image (3)
+          Text (TMP) (4)
+      Page3  [inactive]
+        Title (1)
+        SectionDivider (3)
+          Text (TMP) (2)
+        Group
+          SectionDivider (4)
+            Text (TMP) (2)
+            Text (TMP)
+          SectionDivider (5)
+            Text (TMP) (2)
+            Text (TMP)
+          SectionDivider (6)
+            Text (TMP) (2)
+            Text (TMP)
+          SectionDivider (7)
+            Text (TMP) (2)
+            Text (TMP)
+          SectionDivider (8)
+            Text (TMP) (2)
+            Text (TMP)
+          SectionDivider (9)
+            Text (TMP) (2)
+            Text (TMP)
+      Page4  [inactive]
+        Title (2)
+        SectionDivider (4)
+          Text (TMP) (2)
+        Group
+          Image
+          Text (TMP) (4)
+          Text (TMP)
+          Text (TMP) (9)
+          Text (TMP) (10)
+          Image (1)
+          Text (TMP) (7)
+          Text (TMP) (8)
+    BookFarm  [inactive]
+      Page1  [inactive]
+        Title (1)
+        SectionDivider (4)
+          Text (TMP) (2)
+        Text (TMP) (2)
+        Image
+        Image (1)
+        Image (4)
+        Text (TMP) (3)
+        SectionDivider (5)
+          Text (TMP) (2)
+        Text (TMP) (5)
+        Image (3)
+        Image (6)
+          Image (7)
+      Page2  [inactive]
+        Title (2)
+        SectionDivider (6)
+          Text (TMP) (2)
+        Image (7)
+        Text (TMP) (8)
+        Text (TMP) (6)
+        Text (TMP) (9)
+        Text (TMP) (10)
+        Image (8)
+        Image (9)
+        Image (10)
+        Text (TMP) (11)
+        Text (TMP) (12)
+        Image (11)
+    BookChemistry  [inactive]
+      Page1  [inactive]
+        Title (2)
+        SectionDivider (6)
+          Text (TMP) (2)
+        GameObject (5)
+          Image (11)
+          Text (TMP) (11)
+          Text (TMP) (12)
+          Image (12)
+        GameObject
+          Image (10)
+          Text (TMP) (14)
+          Text (TMP) (15)
+        GameObject (4)
+          Image (7)
+          Text (TMP) (8)
+          Text (TMP) (6)
+        GameObject (3)
+          Image (8)
+          Text (TMP) (9)
+          Text (TMP) (10)
+        GameObject (2)
+          Image (12)
+          Text (TMP) (16)
+          Text (TMP) (17)
+        GameObject (1)
+          Image (11)
+          Text (TMP) (11)
+          Text (TMP) (12)
+        Image (9)
+        Text (TMP) (13)
+      Page2  [inactive]
+        Title (3)
+        Title (4)
+        Section1
+          SectionDivider (7)
+            Text (TMP) (2)
+          Text (TMP) (2)
+          Image
+          Image (3)
+          Image (9)
+        Section2
+          SectionDivider (8)
+            Text (TMP) (2)
+          Text (TMP) (2)
+          Image
+          Image (3)
+          Image (9)  [inactive]
+        Text (TMP) (3)
+        Section2 (1)
+          SectionDivider (9)
+            Text (TMP) (2)
+          Text (TMP) (2)
+          Image
+          Image (3)  [inactive]
+          Image (9)  [inactive]
+        Section2 (2)
+          SectionDivider (10)
+            Text (TMP) (2)
+          Text (TMP) (2)
+          Image
+          Image (3)
+          Image (9)  [inactive]
+          Image (5)
+      Page3  [inactive]
+        Title (5)
+        Title (6)
+        Section1
+          SectionDivider (8)
+            Text (TMP) (2)
+          Text (TMP) (2)
+          Image
+          Image (3)
+          Image (9)
+        Section2
+          SectionDivider (9)
+            Text (TMP) (2)
+          Text (TMP) (2)
+          Image
+          Image (3)
+          Image (9)  [inactive]
+        Text (TMP) (3)
+        Section2 (1)
+          SectionDivider (10)
+            Text (TMP) (2)
+          Text (TMP) (2)
+          Image
+          Image (3)  [inactive]
+          Image (9)  [inactive]
+        Section2 (2)
+          SectionDivider (10)
+            Text (TMP) (2)
+          Text (TMP) (2)
+          Image
+          Image (3)
+          Image (9)  [inactive]
+          Image (5)
+      Page4  [inactive]
+        Title (7)
+        Title (8)
+        Text (TMP) (3)
+        Section1
+          SectionDivider (9)
+            Text (TMP) (2)
+          Text (TMP) (2)
+          Image
+          Image (3)
+          Image (9)  [inactive]
+        Section2
+          SectionDivider (10)
+            Text (TMP) (2)
+          Text (TMP) (2)
+          Image  [inactive]
+          Image (3)  [inactive]
+          Image (9)  [inactive]
+        Section2 (1)
+          SectionDivider (11)
+            Text (TMP) (2)
+          Text (TMP) (2)
+          Image
+          Image (3)  [inactive]
+          Image (9)  [inactive]
+        Text (TMP) (4)
+        Section2 (2)
+          SectionDivider (12)
+            Text (TMP) (2)
+          Text (TMP) (2)
+          Image
+          Image (3)  [inactive]
+          Image (9)  [inactive]
+          Image (5)  [inactive]
+      Page5  [inactive]
+        Title (9)
+        Title (10)
+        Text (TMP) (3)
+        GameObject
+          Section1
+            Image (4)
+            Text (TMP) (1)
+            Text (TMP) (2)
+          Section2
+            Image (4)
+            Text (TMP) (1)
+            Text (TMP) (2)
+          Section2 (1)
+            Image (4)
+            Text (TMP) (1)
+            Text (TMP) (2)
+          Section2 (2)
+            Image (4)
+            Text (TMP) (1)
+            Text (TMP) (2)
+          Section2 (3)
+            Image (4)
+            Text (TMP) (1)
+            Text (TMP) (2)
+          Section2 (4)
+            Image (4)
+            Text (TMP) (1)
+            Text (TMP) (2)
+          Section2 (5)
+            Image (4)
+            Text (TMP) (1)
+            Text (TMP) (2)
+    BookIngot  [inactive]
+      Page1
+        Title
+        SectionDivider
+          Text (TMP) (2)
+        Text (TMP) (1)
+        SectionDivider (1)
+          Text (TMP) (2)
+        Text (TMP) (2)
+    BookHand  [inactive]
+      Page1  [inactive]
+        StationTradeCommission
+        Title (1)
+        Text (TMP) (2)
+        Section0
+          Section1Title
+          Text (TMP) (3)
+        Section1
+          Section1Title
+          Image
+          Text (TMP) (3)
+          Text (TMP) (6)
+          Image (1)
+          Text (TMP) (4)
+          Text (TMP) (7)
+          Image (2)
+          Text (TMP) (5)
+          Text (TMP) (8)
+        Section1 (1)  [inactive]
+          Section1Title
+          Text (TMP) (4)
+          Text (TMP) (3)
+          Text (TMP) (5)
+          Text (TMP) (6)
+          Text (TMP) (7)
+      Page2  [inactive]
+        StationTradeCommission
+        Title (1)
+        Section1
+          Section1Title
+          Image
+          Text (TMP) (3)
+          Text (TMP) (6)
+          Image (1)
+          Text (TMP) (4)
+          Text (TMP) (7)
+          Image (2)
+          Text (TMP) (5)
+          Text (TMP) (8)
+        Section2
+          Section1Title
+          Image
+          Image (3)
+          Text (TMP) (3)
+          Text (TMP) (6)
+          Image (1)
+          Image (2)
+          Text (TMP) (4)
+          Text (TMP) (5)
+          Image (4)
+          Image (5)
+          Text (TMP) (7)
+          Text (TMP) (8)
+          Text (TMP) (9)
+          Text (TMP) (10)
+      Page3  [inactive]
+        StationTradeCommission
+        Title (1)
+        Section1
+          Section1Title
+          Image
+          Image (3)
+          Text (TMP) (3)
+          Text (TMP) (6)
+          Image (1)
+          Image (4)
+          Text (TMP) (4)
+          Text (TMP) (7)
+          Text (TMP) (8)
+        Section1 (1)
+          Section1Title
+          Text (TMP) (8)
+          Text (TMP) (9)
+          Text (TMP) (9)
+          Text (TMP) (10)
+          Text (TMP) (11)
+      Page4  [inactive]
+        StationTradeCommission
+        Title (1)
+        Section1
+          Section1Title
+          Image
+          Image (5)
+          Text (TMP) (3)
+          Image (1)
+          Text (TMP) (4)
+    BookWine  [inactive]
+      Page1  [inactive]
+        Guide
+        Title (2)
+        SectionDivider (6)  [inactive]
+          Text (TMP) (2)
+        waterGroup
+          Text (TMP) (12)
+          Text (TMP) (13)
+          Text (TMP) (14)
+          Text (TMP) (15)
+        berryGroup
+          Text (TMP) (11)
+        yeastGroup
+          Text (TMP) (14)
+      Page2  [inactive]
+        Title (2)
+        Title (7)
+        SectionDivider (6)
+          Text (TMP) (2)
+          Text (TMP) (13)
+          Image
+        SectionDivider (7)
+          Text (TMP) (2)
+          Text (TMP) (13)
+          Image (1)
+        SectionDivider (8)
+          Text (TMP) (2)
+          Text (TMP) (13)
+          Image (2)
+        Image (10)
+      Page3  [inactive]
+        Title (2)
+        Title (7)
+        SectionDivider (6)
+          Text (TMP) (2)
+          Image (10)
+            Text (TMP) (13)
+          Image (11)
+            Text (TMP) (13)
+          Image (12)
+            Text (TMP) (13)
+          Image (13)
+            Text (TMP) (13)
+    BookTemplate  [inactive]
+      Page1
+    BookOldPages  [inactive]
+      Page1
+      Page3 Old
+        Text (TMP)
+        Image (4)
+        Text (TMP) (1)
+        Text (TMP) (2)
+        Image
+        Image (1)  [inactive]
+        Text (TMP) (3)
+        Image (2)
+        Image (5)
+        Text (TMP) (4)
+        Text (TMP) (5)
+        Image (3)
+        Image (6)
+        Image (7)
+        Image (8)
+    LeftCornerButton
+    PageTMP
+    RightCornerButton
+    WindowButton
+    CloseButton
+  _WantedPanel  [inactive]
+    ScreenButton
+    CloseButton
+    SecSeal (1)
+      Text (TMP) (3)
+    Title
+    Grid
+      WantedElement
+        Portait  [inactive]
+        Name
+        Reward
+        Cross
+      WantedElement (1)
+        Portait  [inactive]
+        Name
+        Reward
+        Cross
+      WantedElement (2)
+        Portait  [inactive]
+        Name
+        Reward
+        Cross
+      WantedElement (3)
+        Portait  [inactive]
+        Name
+        Reward
+        Cross
+      WantedElement (4)
+        Portait  [inactive]
+        Name
+        Reward
+        Cross
+      WantedElement (5)
+        Portait  [inactive]
+        Name
+        Reward
+        Cross
+      WantedElement (6)
+        Portait  [inactive]
+        Name
+        Reward
+        Cross
+      WantedElement (7)
+        Portait  [inactive]
+        Name
+        Reward
+        Cross
+      WantedElement (8)
+        Portait  [inactive]
+        Name
+        Reward
+        Cross
+  _SecurityRecord  [inactive]
+    Top Left
+    Top Right
+    SecSeal
+      Text (TMP) (3)
+    Text (TMP) (1)
+    Text (TMP)
+    Grid
+      SolidCell
+        Text (TMP) (3)
+      SolidCell (1)
+        Text (TMP) (3)  [inactive]
+      Cell
+        Image
+        Text (TMP) (3)
+      Cell (1)
+        Image
+        Text (TMP) (3)
+      Cell (2)
+        Image
+        Text (TMP) (3)
+      Cell (3)
+        Image
+        Text (TMP) (3)
+      Cell (4)
+        Image
+        Text (TMP) (3)
+      Cell (5)
+        Image
+        Text (TMP) (3)
+    Grid (3)
+      SolidCell
+        Text (TMP) (3)
+      Cell
+        Image
+        OfficerNoteTMP
+    Grid (1)
+      SolidCell
+        Text (TMP) (3)
+      Cell
+        Image
+        SuspectedCrimeTMP
+    Grid (2)
+      SolidCell
+        Text (TMP) (3)
+      SolidCell (1)
+        Text (TMP) (3)  [inactive]
+      Cell
+        Image
+        Text (TMP) (3)
+      Cell (1)
+        Image
+        RecommandedActionTMP
+      Cell (2)
+        Image
+        Text (TMP) (3)
+      Cell (3)
+        Image
+        OfficierNameTMP
+      Cell (4)
+        Image
+        Text (TMP) (3)
+      Cell (5)
+        Image
+        ActiveOperationTMP
+      Cell (6)
+        Image
+        Text (TMP) (3)
+      Cell (7)
+        Image
+        EvidenceLevelTMP
+      Cell (8)
+        Image
+        Text (TMP) (3)
+      Cell (9)
+        Image
+        ProjectSentanceTMP
+    Top Left (1)  [inactive]
+      Text (TMP) (3)
+    SolidCell  [inactive]
+      Text (TMP) (3)
+    Cell  [inactive]
+      Image
+      Text (TMP) (3)
+    BottomTMP
+    Bottom Line
+    WindowButton
+    CloseButton
+  _AugGuide  [inactive]
+    WindowButton
+    CloseButton
+    Top Left
+    Top Right
+    SecSeal
+      Text (TMP) (3)
+    Text (TMP) (1)
+    Text (TMP)
+    Grid (2)
+      SolidCell
+        Text (TMP) (3)
+      Cell
+        Image
+          Image
+            SuspectedCrimeTMP (1)
+            SuspectedCrimeTMP (2)
+            SuspectedCrimeTMP (3)
+    Grid (1)
+      SolidCell
+        Text (TMP) (3)
+      Cell
+        Image
+        SuspectedCrimeTMP
+    Bottom Line
+  _NewspaperPanel  [inactive]
+    Topbar
+      titleTMP
+      subtitleTMP
+    Layout1  [inactive]
+      L2Left (1)
+        title
+        content
+    Layout2  [inactive]
+      L2Left
+        title
+        content
+      L2Right
+        title
+        content
+    Layout3  [inactive]
+      L3Left
+        title
+        content
+      L3Right
+        title
+        content
+      L3RightBottom
+        title
+        content
+    Layout4  [inactive]
+      L4Left
+        title
+        content
+      L4LeftBottom
+        title
+        content
+      L4Right
+        title
+        content
+      L4RightBottom
+        title
+        content
+    ScreenButton
+    CloseButton
+  _BargainSubPanel  [inactive]
+    BargainTMP
+    CloseButton
+    VerticalGroup
+      SellDiscountGroup
+        OfferTMP (2)
+        LayoutGroup
+          AcceptAll (1)
+            Text (TMP)
+          AcceptAll (2)
+            Text (TMP)
+          AcceptAll (3)
+            Text (TMP)
+          AcceptAll (4)
+            Text (TMP)
+      SellMarkupGroup
+        OfferTMP (2)
+        LayoutGroup
+          AcceptAll (1)
+            Text (TMP)
+          AcceptAll (2)
+            Text (TMP)
+          AcceptAll (3)
+            Text (TMP)
+          AcceptAll (4)  [inactive]
+            Text (TMP)
+      BuyingMarkupGroup
+        OfferTMP (2)
+        LayoutGroup
+          AcceptAll (1)
+            Text (TMP)
+          AcceptAll (2)
+            Text (TMP)
+          AcceptAll (3)
+            Text (TMP)
+          AcceptAll (4)
+            Text (TMP)
+      BuyDiscountGroup
+        OfferTMP (2)
+        LayoutGroup
+          AcceptAll (1)
+            Text (TMP)
+          AcceptAll (2)
+            Text (TMP)
+          AcceptAll (3)
+            Text (TMP)
+          AcceptAll (4)  [inactive]
+            Text (TMP)
+      BlackmailGroup
+        OfferTMP (2)
+        LayoutGroup
+          AcceptAll (1)
+            Text (TMP)
+      ThreathenGroup
+        OfferTMP (2)
+        LayoutGroup
+          AcceptAll (1)
+            Text (TMP)
+    RepGainGroup
+      RepGainMultTitle
+      RepGainMultTMP
+  _NegociationPanel  [inactive]
+    OfferTMP
+    attractedByTitle
+    attractedBy
+    clientBudgetTMPText
+    clientBudgetTMP
+    TagContainer
+      SecBubble
+        Text (TMP)
+      Variety
+        Text (TMP)
+      Contraband
+        Text (TMP)
+    TypeContainer
+      _TypeElement  [inactive]
+        Text (TMP)
+    ItemName
+    bodyTMP
+    OfferContent
+      featureTMP1  [inactive]
+      featureTMP1 (1)  [inactive]
+      featureTMP1 (2)  [inactive]
+      featureTMP1 (3)  [inactive]
+      featureTMP1 (4)  [inactive]
+      featureTMP1 (5)  [inactive]
+      featureTMP1 (6)  [inactive]
+      featureTMP1 (7)  [inactive]
+      featureTMP1 (8)  [inactive]
+      featureTMP1 (9)  [inactive]
+      featureTMP1 (10)  [inactive]
+      featureTMP1 (11)  [inactive]
+    costTMP
+    costWholesaleTMP
+    AcceptAllTMP
+    AcceptOffer
+      Text (TMP)
+    AcceptWholesale
+      Text (TMP)
+    AcceptAll
+      Text (TMP)
+    _TutorialBargain  [inactive]
+      DialogueTMP
+    _TutorialBargain2  [inactive]
+      DialogueTMP
+    InterrogationButton  [inactive]
+      Text (TMP)
+    GlasseButton  [inactive]
+      Text (TMP)
+    _AppraisalPanel(Outdated)  [inactive]
+      PanelTitle
+      CurrentOfferTMP
+      CurrentOfferValueTMP
+      GameObject
+        Button (4)
+          Text (TMP)
+        Button (8)
+          Text (TMP)
+        Button (9)
+          Text (TMP)
+        InputField (TMP)
+          Text Area
+            Placeholder
+            Text
+        Button (5)
+          Text (TMP)
+        Button (6)
+          Text (TMP)
+        Button (7)
+          Text (TMP)
+      Button (2)
+        Text (TMP)
+      Button (3)
+        Text (TMP)
+    _AppraisalServicePanel  [inactive]
+      CurrentOfferTMP
+      pricebox
+        CurrentOfferValueTMP
+      PanelTitle  [inactive]
+      LayoutGroup
+        -20
+          Text (TMP)
+        -5
+          Text (TMP)
+        -1
+          Text (TMP)
+        InputField (TMP)
+          Text Area
+            Placeholder
+            Text
+        +1
+          Text (TMP)
+        +5
+          Text (TMP)
+        +20
+          Text (TMP)
+      buttonSend
+        Text (TMP)
+      Button (3)  [inactive]
+        Text (TMP)
+    WindowButton
+    BargainButton
+    CloseButton
+    _ArrowLeft  [inactive]
+      Image
+    _ArrowRight  [inactive]
+      Image
+  _ContractPanel  [inactive]
+    title
+    body (1)
+    Text (TMP)
+    Text (TMP) (1)
+    CloseButton
+  _DeedPanel  [inactive]
+    title (1)
+    body (3)
+    Text (TMP) (2)
+    Text (TMP) (3)
+    CloseButton
+  _TutorialNote  [inactive]
+    WindowButton
+    CloseButton
+    title
+    body
+    signature
+  _SlipPanel  [inactive]
+    CloseButton
+    titleTMP
+    clientTMP
+    bodyTMP
+    dueDateTMP
+  _GeneralSlipPanel  [inactive]
+    CloseButton
+    titleTMP
+    clientTMP  [inactive]
+    bodyTMP
+    dueDateTMP  [inactive]
+  _RecorderPanel  [inactive]
+    Top
+      Text (TMP)
+    WindowButton
+    CloseButton
+    Content
+    Scroll View
+      Viewport
+        Content
+      Scrollbar Vertical
+        Sliding Area
+          Handle
+  _LabelerPanel  [inactive]
+    titleTMP
+    CloseButton
+    currentTargetTMP  [inactive]
+    VerticalLayoutGroup
+      LabelerElement  [inactive]
+        featureCategorieTMP
+        HorizontalLayoutG
+          featureCategorieTMP (1)
+          Arrow
+          Dropdown
+            Label
+            Arrow
+            Template  [inactive]
+              Viewport
+                Content
+                  Item
+                    Item Background
+                    Item Checkmark
+                    Item Label
+              Scrollbar
+                Sliding Area
+                  Handle
+    rewindButton
+  _LabelerBluePanel  [inactive]
+    titleTMP
+    CloseButton
+    InputField (TMP)
+      Text Area
+        Placeholder
+        Text
+    CloseButton (1)
+  _ReputationPanel  [inactive]
+    Panel
+      UITitle  [inactive]
+      CloseButton
+      UITitle (1)  [inactive]
+      infoIcon
+    Layout
+      ReputationElement  [inactive]
+        ElementTitle
+        ReputationStatus
+        ReputationNumber
+        Meter
+          Green
+          Red
+        Indicator  [inactive]
+        Grid
+        ReputationPerkElement  [inactive]
+        MeterOverLay
+    NotePanel
+      HoverTitleTMP
+      HoverDescTMP
+      HoverFlavorTMP
+  _CigaretteGuide  [inactive]
+    grid
+    WindowButton
+    CloseButton
+    StationTradeCommission
+    Title
+    Text (TMP) (1)
+    Section1Title
+    SectionDescription
+    Section1 Detail
+      Image
+      Text (TMP) (3)
+      Image (1)
+      Text (TMP) (5)
+      Image (2)
+      Text (TMP) (4)
+    Section2
+      Section2Title
+      Section2Sub  [inactive]
+      Image (2)
+      Text (TMP) (3)
+      Image (3)
+      Text (TMP) (4)
+    Section4
+      Section4Title
+      Section4Text
+      Image (2)
+      Text (TMP) (3)
+      Image (3)
+      Text (TMP) (4)
+    Section3
+      Section3Title
+      Section3Title (1)
+      Image (3)
+      Text (TMP) (3)
+      Image (2)
+      Text (TMP) (4)
+    NoteTMP
+    Section5  [inactive]
+      Section4Title
+      Section5Desc
+  _CigaretteColorPanel  [inactive]
+    CloseButton
+  _StampGuide  [inactive]
+    WindowButton
+    CloseButton
+    Title
+    subtitle
+    Text (TMP) (1)
+    Section1Title
+    SectionDescription
+    Section1 Detail
+      Image
+      Text (TMP) (3)
+      Image (1)
+      Text (TMP) (5)
+      Image (2)
+      Text (TMP) (4)
+    Section2
+      Section2Title
+      Section2Sub
+      Image (4)
+      Text (TMP) (3)
+      Image (5)
+      Text (TMP) (4)
+    Section3
+      Section3Title
+      Section3Title (1)
+      Seal
+    Section4
+      Section4Title
+      Section4Text
+    Section5
+      Section4Title
+      Section5Desc
+      ChipCorrect
+      Text (TMP) (3)
+      ChipCorrect (1)
+      Text (TMP) (4)
+    Text (TMP) (5)
+    grid  [inactive]
+  _RepublicLogoCheckPanel  [inactive]
+    Panel
+    CloseButton
+    Slider
+      Background
+      Fill Area
+        Fill
+      Handle Slide Area
+        Handle
+  _InjectorGuide  [inactive]
+    WindowButton
+    CloseButton
+    StationTradeCommission
+    Title
+    Text (TMP) (1)
+    Section1Title
+    SectionSub
+    Section1 Detail
+      Image
+      Text (TMP) (3)
+      Image (1)
+      Text (TMP) (4)
+      Image (2)
+      Text (TMP) (5)
+    Section2
+      Section2Title
+      Section2Sub
+      Image (4)
+        CompanyTMP
+        ProductNameTMP
+      Text (TMP) (3)
+      Text (TMP) (5)
+    Section3
+      Section3Title
+      Section3Title (1)
+      Section3Title (2)
+      Section3Title (3)
+      Text (TMP) (4)
+      Section3Title (4)
+      Text (TMP) (5)
+      Section3Title (5)
+      Text (TMP) (6)
+    Section4
+      Section4Title
+      Section4Text
+    Section5
+      Section4Title
+      Color
+      Text (TMP) (3)
+  _Phone  [inactive]
+    CloseButton
+    NumberDisplay
+    status
+    ButtonEndCall
+      ImageUp
+      ImageHover  [inactive]
+      ImageDown  [inactive]
+      Text (TMP)
+    ButtonCall  [inactive]
+      ImageUp
+      ImageHover  [inactive]
+      ImageDown  [inactive]
+      Text (TMP)
+    Grid
+      PhoneElement
+        ImageUp
+        ImageHover  [inactive]
+        ImageDown  [inactive]
+        Text (TMP)
+      PhoneElement (1)
+        ImageUp
+        ImageHover  [inactive]
+        ImageDown  [inactive]
+        Text (TMP)
+      PhoneElement (2)
+        ImageUp
+        ImageHover  [inactive]
+        ImageDown  [inactive]
+        Text (TMP)
+      PhoneElement (3)
+        ImageUp
+        ImageHover  [inactive]
+        ImageDown  [inactive]
+        Text (TMP)
+      PhoneElement (4)
+        ImageUp
+        ImageHover  [inactive]
+        ImageDown  [inactive]
+        Text (TMP)
+      PhoneElement (5)
+        ImageUp
+        ImageHover  [inactive]
+        ImageDown  [inactive]
+        Text (TMP)
+      PhoneElement (6)
+        ImageUp
+        ImageHover  [inactive]
+        ImageDown  [inactive]
+        Text (TMP)
+      PhoneElement (7)
+        ImageUp
+        ImageHover  [inactive]
+        ImageDown  [inactive]
+        Text (TMP)
+      PhoneElement (8)
+        ImageUp
+        ImageHover  [inactive]
+        ImageDown  [inactive]
+        Text (TMP)
+      PhoneElement (9)
+        ImageUp
+        ImageHover  [inactive]
+        ImageDown  [inactive]
+        Text (TMP)
+      PhoneElement (10)
+        ImageUp
+        ImageHover  [inactive]
+        ImageDown  [inactive]
+        Text (TMP)
+      PhoneElement (11)
+        ImageUp
+        ImageHover  [inactive]
+        ImageDown  [inactive]
+        Text (TMP)
+    _DialogueBubblePhoneClient  [inactive]
+      DialogueTMP
+    _DialogueClientNameBubblePhone  [inactive]
+      Text (TMP)
+    _DialogueBubblePlayerPhone  [inactive]
+      DialogueTMP
+    PhoneDialogGroup
+      _DialogueChoice1  [inactive]
+        DialogueTMP
+      _DialogueChoice2  [inactive]
+        DialogueTMP
+      _DialogueChoice3  [inactive]
+        DialogueTMP
+    _PhoneBook  [inactive]
+      CloseButton (1)  [inactive]
+      HeaderTMP
+      Scroll View
+        Viewport
+          Content
+            _ContactElement  [inactive]
+              Button
+                Name
+                Status
+        Scrollbar Vertical
+          Sliding Area
+            Handle
+  _Commissary  [inactive]
+    CloseButton
+    Title
+    TitlePanel  [inactive]
+    Credit Count STR
+      Credit Count
+    LayoutElement
+      CommissaryElement
+        Panel
+          Image
+        ProductName
+        ProductPrice
+        ProductStock
+        Button
+          Text (TMP)
+      CommissaryElement (3)
+        Panel
+          Image
+        ProductName
+        ProductPrice
+        ProductStock
+        Button
+          Text (TMP)
+      CommissaryElement (1)
+        Panel
+          Image
+        ProductName
+        ProductPrice
+        ProductStock
+        Button
+          Text (TMP)
+      CommissaryElement (2)
+        Panel
+          Image
+        ProductName
+        ProductPrice
+        ProductStock
+        Button
+          Text (TMP)
+      CommissaryElement (4)
+        Panel
+          Image
+        ProductName
+        ProductPrice
+        ProductStock
+        Button
+          Text (TMP)
+      CommissaryElement (5)
+        Panel
+          Image
+        ProductName
+        ProductPrice
+        ProductStock
+        Button
+          Text (TMP)
+      CommissaryElement (6)
+        Panel
+          Image
+        ProductName
+        ProductPrice
+        ProductStock
+        Button
+          Text (TMP)
+    RedeemLotteryButton  [inactive]
+      Text (TMP)
+    RedeemButton
+      Text (TMP)
+  _JoeCard  [inactive]
+    CloseButton
+    Text (TMP)
+    Text (TMP) (1)
+  _BrewerCard  [inactive]
+    CloseButton
+  _MiningCard  [inactive]
+    CloseButton
+    Text (TMP)
+    Text (TMP) (1)
+  _ChemCard  [inactive]
+    CloseButton
+    Text (TMP) (2)
+    Text (TMP) (3)
+  _PharmaCard  [inactive]
+    Text (TMP) (2)
+    Text (TMP) (3)
+    CloseButton
+  _RevCard  [inactive]
+    CloseButton
+    Text (TMP)
+  _BackingBlock  [inactive]
+  _EndOfDayPanel  [inactive]
+    CloseButton (1)
+    topbarTMP
+    VerticalLayout
+      TotalGroup
+        bar
+        subtotal
+        current
+        bar (1)
+        new balance
+    warning
+    EndDayButton
+      Text (TMP)
+    _TutorialNightlyService  [inactive]
+      DialogueTMP
+  _SecSlip  [inactive]
+    CloseButton
+    Text (TMP)
+    Text (TMP) (1)
+    Text (TMP) (2)
+  _MarketplaceRquestPC  [inactive]
+    CloseButton
+    Scroll View
+      Viewport
+        Layout
+          PCElement  [inactive]
+            TitleTMP
+            FactionTMP
+            DescriptionTMP
+            RequesterTMP
+            requirementBlock
+            RequestedItemTMP
+            RewardTitleTMP
+            RewardContentTMP
+            DurationTMP
+            Button
+              Text (TMP)
+      Scrollbar Vertical
+        Sliding Area
+          Handle
+  _DebugPanel  [inactive]
+    CloseButton
+    TMP
+    TMP (1)
+    TMP (2)
+    TMP (3)
+    TMP (4)
+    GroupSpawn
+      Button (2)
+        Text (TMP)
+      Button (4)
+        Text (TMP)
+      Button (16)
+        Text (TMP)
+      Button (17)
+        Text (TMP)
+      Button (18)
+        Text (TMP)
+      Button (19)
+        Text (TMP)
+    GroupKit
+      Button (5)
+        Text (TMP)
+      Button (15)
+        Text (TMP)
+      Button (12)
+        Text (TMP)
+      Button (8)
+        Text (TMP)
+      Button (9)
+        Text (TMP)
+      Button (10)
+        Text (TMP)
+      Button (11)
+        Text (TMP)
+      Button (13)
+        Text (TMP)
+    GroupUI
+      Button (6)
+        Text (TMP)
+      Button (14)
+        Text (TMP)
+      Button (15)
+        Text (TMP)
+      Button (16)
+        Text (TMP)
+    GroupCommands
+      Button (8)
+        Text (TMP)
+      Button (16)
+        Text (TMP)
+      Button (13)
+        Text (TMP)
+      Button (21)
+        Text (TMP)
+      Button (11)
+        Text (TMP)
+      Button (10)
+        Text (TMP)
+      Button (9)
+        Text (TMP)
+      Button (7)
+        Text (TMP)
+      Button (12)
+        Text (TMP)
+      Button (14)
+        Text (TMP)
+      Button (15)
+        Text (TMP)
+      Button (18)
+        Text (TMP)
+      Button (17)
+        Text (TMP)
+      Button (19)
+        Text (TMP)
+      Button (20)
+        Text (TMP)
+      Button (22)
+        Text (TMP)
+    GroupCommands (1)
+  _DebugEventPanel  [inactive]
+    CloseButton
+    TMP
+    CurrentEvent
+    CooldownEvent (1)
+  _DebugPricePanel  [inactive]
+    CloseButton
+    TitleTMP
+    Line1TMP
+    Line2TMP
+    Line3TMP
+  _SellConfirm  [inactive]
+    CloseButton
+    Text (TMP)
+    CloseButton (1)
+      Text (TMP)
+    CloseButton (2)
+      Text (TMP)
+  _WaterTestingStripPanel  [inactive]
+    CloseButton
+    Image
+    testTMP
+    labelTMP
+    purityTMP
+    ConfrontButton
+      Text (TMP)
+    MatchButton
+      Text (TMP)
+    outdatedTMP  [inactive]
+  _WaterScannerPanel  [inactive]
+    CloseButton
+    RefreshButton  [inactive]
+    ConfrontButton
+      Text (TMP)
+    MatchButton
+      Text (TMP)
+    testTMP
+    labelTMP
+    contaminantTMP
+  _ChemScannerPanel  [inactive]
+    CloseButton
+    RefreshButton  [inactive]
+    ConfrontButton
+      Text (TMP)
+    MatchButton
+      Text (TMP)
+    productNameTMP
+    testTMP
+    labelTMP
+    contaminantTMP
+    totalVolumeTMP
+    ChemPropertyTMP  [inactive]
+    chemPropertyGroup
+      effectEuphoria
+        Image
+        ChemPropertyTMP
+      effectToxicity
+        Image
+        ChemPropertyTMP
+      effectSynaprest
+        Image
+        ChemPropertyTMP
+      effectContraceptive
+        Image
+        ChemPropertyTMP
+  _Handnote  [inactive]
+    CloseButton
+    TitleTMP
+    BodyTMP
+    SignTMP
+  _ExchangePanel  [inactive]
+    WindowButton
+    CloseButton
+    Text (TMP)
+    ColorBlock
+      Text (TMP) (3)
+      PermaSection
+        ExchangeElement
+          InputNote
+          InputGroup
+            Image (2)
+            +TMP
+            Image (3)
+            +TMP (1)
+            Image (4)
+          OutputNote
+          OutputGroup
+            Image (4)
+          CountTMP
+          Image
+          Image (1)
+        ExchangeElement (7)
+          InputNote
+          InputGroup
+            Image (2)
+            +TMP
+            Image (3)
+            +TMP (1)  [inactive]
+            Image (4)  [inactive]
+          OutputNote
+          OutputGroup
+            Image (4)  [inactive]
+            Image (4)
+            Image (5)
+            Image (7)
+            Image (6)
+            Image (8)
+            Image (9)
+          CountTMP
+          Image
+          Image (1)
+        ExchangeElement (8)
+          InputNote
+          InputGroup
+            Image (2)
+            +TMP
+            Image (3)
+            +TMP (1)  [inactive]
+            Image (4)  [inactive]
+          OutputNote
+          OutputGroup
+            Image (4)  [inactive]
+          CountTMP
+          Image
+          Image (1)
+        ExchangeElement (9)
+          InputNote
+          InputGroup
+            Image (2)
+            +TMP  [inactive]
+            Image (3)  [inactive]
+            +TMP (1)  [inactive]
+            Image (4)  [inactive]
+          OutputNote
+          OutputGroup
+            Image (4)  [inactive]
+            Image (7)
+            Image (8)
+            Image (9)
+          CountTMP
+          Image
+          Image (1)
+        ExchangeElement (10)
+          InputNote
+          InputGroup
+            Image (2)
+            +TMP
+            Image (3)
+            +TMP (1)  [inactive]
+            Image (4)  [inactive]
+          OutputNote  [inactive]
+          OutputGroup
+            Image (4)
+          CountTMP
+          Image
+          Image (1)
+        ExchangeElement (11)
+          InputNote
+          InputGroup
+            Image (2)
+            +TMP
+            Image (3)
+            +TMP (1)  [inactive]
+            Image (4)  [inactive]
+          OutputNote
+          OutputGroup
+            Image (4)  [inactive]
+            Image (7)
+            Image (8)
+            Image (9)
+          CountTMP
+          Image
+          Image (1)
+        ExchangeElement (12)
+          InputNote
+          InputGroup
+            Image (2)
+            +TMP
+            Image (3)
+            +TMP (1)  [inactive]
+            Image (4)  [inactive]
+          OutputNote
+          OutputGroup
+            Image (4)
+          CountTMP
+          Image
+          Image (1)
+    ColorBlock (1)
+      Text (TMP) (4)
+      PromotionalSection
+        ExchangeElement (1)  [inactive]
+          InputNote
+          InputGroup
+            Image (2)
+            +TMP
+            Image (3)
+            +TMP (1)
+            Image (4)
+            +TMP (2)
+            Image (5)
+          OutputNote
+          OutputGroup
+            Image (4)  [inactive]
+          CountTMP
+          Image
+          Image (1)
+        ExchangeElement (2)  [inactive]
+          InputNote
+          InputGroup
+            Image (2)
+            +TMP
+            Image (3)
+            +TMP (1)
+            Image (4)
+          OutputNote  [inactive]
+          OutputGroup
+            Image (4)
+          CountTMP
+          Image
+          Image (1)
+        ExchangeElement (3)  [inactive]
+          InputNote
+          InputGroup
+            Image (2)
+            +TMP
+            Image (3)
+            +TMP (1)
+            Image (4)
+            +TMP (2)
+            Image (5)
+          OutputNote  [inactive]
+          OutputGroup
+            Image (4)
+          CountTMP
+          Image
+          Image (1)
+        ExchangeElement (4)  [inactive]
+          InputNote
+          InputGroup
+            Image (2)
+            +TMP
+            Image (3)
+            +TMP (1)
+            Image (4)
+            +TMP (2)
+            Image (5)
+          OutputNote  [inactive]
+          OutputGroup
+            Image (4)
+          CountTMP
+          Image
+          Image (1)
+        ExchangeElement (5)  [inactive]
+          InputNote
+          InputGroup
+            Image (2)
+            +TMP  [inactive]
+            Image (3)
+            +TMP (1)  [inactive]
+            Image (4)
+            +TMP (2)  [inactive]
+            Image (5)
+            Image (6)
+          OutputNote  [inactive]
+          OutputGroup
+            Image (4)
+          CountTMP
+          Image
+          Image (1)
+        ExchangeElement (6)  [inactive]
+          InputNote
+          InputGroup
+            Image (2)
+            +TMP  [inactive]
+            Image (3)  [inactive]
+            +TMP (1)  [inactive]
+            Image (4)  [inactive]
+            +TMP (2)  [inactive]
+          OutputNote
+          OutputGroup
+            Image (4)  [inactive]
+          CountTMP
+          Image
+          Image (1)
+        ExchangeElement (7)  [inactive]
+          InputNote
+          InputGroup
+            Image (2)
+            +TMP
+            Image (3)
+            +TMP (1)  [inactive]
+            Image (4)  [inactive]
+            +TMP (2)  [inactive]
+          OutputNote
+          OutputGroup
+            Image (4)
+          CountTMP
+          Image
+          Image (1)
+    Text (TMP) (2)
+    Text (TMP) (1)
+    logo
+  _PlantAnalyser  [inactive]
+    CloseButton
+    TitleTMP
+    nutrientRangeTMP
+    nutrientUseTMP
+    waterUseTMP
+    contaminantSensiTMP
+    growthScoreTMP
+    Image
+    Image (1)
+    Image (2)
+    Image (3)
+    growthScoreBase
+    growthScoreFiller
+  _ChemFinisherConfigPanel  [inactive]
+    HeaderTMP
+    CloseButton (1)
+    Scroll
+      LayoutGroup
+        ChemFinisherElement  [inactive]
+          Text (TMP)
+          Text (TMP) (1)
+          Text (TMP) (2)
+          Select
+            Text (TMP) (2)
+  _AdvCalendar  [inactive]
+    HeaderTMP  [inactive]
+    CloseButton
+    TopToggleGroup
+      CalendarButton
+        Text (TMP)
+      NightlyButton
+        Text (TMP)
+      StatusButton
+        Text (TMP)
+    _CalendarTab  [inactive]
+      CalendarGrid
+        DayElement  [inactive]
+          LayoutGroup
+            EventElement  [inactive]
+              topLayer
+              eventTMP
+          _todayBackground  [inactive]
+          Text (TMP)
+      DetailPanel
+        detailNameTMP
+        detailDescTMP
+      landlordNotice
+        landlordTMP
+      mentorNotice
+        mentorTMP
+    _NightlyTab  [inactive]
+      ContentGroup
+      DisplayCaseNotice
+        Text (TMP) (1)
+      _RentNotice  [inactive]
+        RentNoticeTMP
+      AttractivenessMeterGroup
+        attractivenessTMP
+        Text (TMP) (2)
+        Text (TMP) (3)
+        Image
+        Image (1)
+        Image (2)
+        Image (3)
+        ReplaceI
+        Image (4)
+        Image (5)
+        ReplaceII
+        Image (7)
+        Image (6)
+        AttractivenessMeter
+          BaseMeter
+            Text (TMP) (5)
+          ProjectorMeter
+            Text (TMP) (6)
+          TrashMeter
+            Text (TMP) (6)
+    _StatusTab  [inactive]
+      PerkContainer
+      ActivePerksTMP
+      TotalWealth
+        Text (TMP) (2)
+        currentCreditTMP
+        Text (TMP)
+        totalWealthTMP
+        Text (TMP) (1)
+        redeemedTokenTMP
+      Health  [inactive]
+        HealthStatusTitle
+        WoundsTMP
+  __BusinessCardTemplate  [inactive]
+    CloseButton
+  __TutorialSheetTemplate  [inactive]
+    CloseButton
+  __GuideSheetTemplate  [inactive]
+    CloseButton
+  _LogPanel  [inactive]
+    Top
+      Text (TMP)
+    CloseButton
+    Content
+    Scroll View
+      Viewport
+        Content
+      Scrollbar Vertical
+        Sliding Area
+          Handle
+  _LotteryInfographic  [inactive]
+    CloseButton
+    StationTradeCommission
+    Title
+    Text (TMP) (1)
+    Section1Title
+    SectionDescription
+    Section2
+      Section2Title
+      SectionDescription (1)
+      SectionDescription (2)
+      SectionDescription (3)
+      SectionDescription (4)
+      SectionDescription (5)
+    Section2 (1)
+      Section2Title
+      GameObject
+        SectionDescription (2)
+        SectionDescription (3)
+        SectionDescription (4)
+        SectionDescription (5)
+        SectionDescription (6)
+        SectionDescription (7)
+        SectionDescription (8)
+        SectionDescription (9)
+        SectionDescription (10)
+        SectionDescription (11)
+  _Scratch  [inactive]
+    LayoutGroup
+      scratchArea
+      scratchArea (1)
+      scratchArea (2)
+    Text (TMP)
+    _Back  [inactive]
+      Text (TMP) (1)
+      Text (TMP) (2)
+        GameObject
+          Image
+          Image (1)
+          Image (2)
+      Text (TMP) (3)
+        GameObject (1)
+          Image
+          Image (1)
+          Image (2)
+      Text (TMP) (4)
+        GameObject (2)
+          Image
+          Image (1)
+          Image (2)
+      Text (TMP) (5)
+        GameObject (3)
+          Image
+          Image (1)
+          Image (2)
+    Image
+    Image (1)
+    CloseButton
+    TurnButton
+  _ClientelePanel  [inactive]
+    TitleTMP
+    CloseButton
+    MerchBuyerTitleTMP
+    MerchBuyerTMP
+    NormalClientTitleTMP
+    NormalClientTMP
+CanvasScreen
+  _GoOutConfirm  [inactive]
+    Darkness
+    CloseButton  [inactive]
+    Text (TMP)
+    CloseButton (1)
+      Text (TMP)
+    CloseButton (2)
+      Text (TMP)
+  _BlackScreen  [inactive]
+  _DebtsPanel  [inactive]
+  _NegociationTarget  [inactive]
+  _IntroductionPanel  [inactive]
+    Text (TMP)
+    raison  [inactive]
+    description
+    Button
+      Text (TMP)
+  _CloseShutterConfirmation  [inactive]
+    Text (TMP)
+    Button
+      Text (TMP)
+    Button (1)
+      Text (TMP)
+    CloseButton
+  _ReputationPerkTooltip  [inactive]
+    ElementTitle
+    ElementStatus
+    ElementProgress
+    ElementDiscription
+    ElementFlavorText
+  _ReputationNotification  [inactive]
+    DialogueTMP
+  _Darkness  [inactive]
+  _Saving  [inactive]
+  GameVersionTMP  [inactive]
+  _ShootingUI  [inactive]
+    GameObject
+      Text (TMP)
+    GameObject (1)
+      Text (TMP)
+  _ZoomingUI  [inactive]
+    GameObject
+      Text (TMP)
+    GameObject (1)
+      Text (TMP)
+TestClientObject  [inactive]
+WindowUICanvas
+  TempRootObject  [inactive]
+  WindowRootObject
+  BlockerMask
+    Blocker
+CanvasBack
+  _DialogueBubbleClient  [inactive]
+    DialogueTMP
+  _DialogueClientNameBubble  [inactive]
+    Text (TMP)
+  _DialogueBubbleSec  [inactive]
+    DialogueTMP
+  _DialogueClientNameSec  [inactive]
+    Text (TMP)
+  _DialogueBubblePlayer  [inactive]
+    DialogueTMP
+  _DialogueChoice1  [inactive]
+    DialogueTMP
+  _DialogueChoice2  [inactive]
+    DialogueTMP
+  _DialogueChoice3  [inactive]
+    DialogueTMP
+  _TutorialAdvanceDialog  [inactive]
+    DialogueTMP
+  TutorialGroup
+    _TutorialOpenShutter  [inactive]
+      DialogueTMP
+    _TutorialBubble1 (1)  [inactive]
+      DialogueTMP
+    _TutorialBubble1 (2)  [inactive]
+      DialogueTMP
+    _TutorialBubble1 2.1  [inactive]
+      DialogueTMP
+    _TutorialCloseShutter  [inactive]
+      DialogueTMP
+    _TutorialDoubleClick  [inactive]
+      DialogueTMP
+    _TutorialDrag  [inactive]
+      DialogueTMP
+    _TutorialQuickTransfer  [inactive]
+      DialogueTMP
+    _TutorialRecorder  [inactive]
+      DialogueTMP
+    _TutorialDossier  [inactive]
+      DialogueTMP
+    _TutorialBuyDrag  [inactive]
+      DialogueTMP
+    _TutorialBuyTablet  [inactive]
+      DialogueTMP
+    _TutorialSellDrag  [inactive]
+      DialogueTMP
+    _TutorialSleep  [inactive]
+      DialogueTMP
+    _TutorialTransferAll  [inactive]
+      DialogueTMP
+    _TutorialBarter  [inactive]
+      DialogueTMP
+    _TutorialOutside  [inactive]
+      DialogueTMP
+    _TutorialDisplayCase  [inactive]
+      DialogueTMP
+    _TutorialClienteleUI  [inactive]
+      DialogueTMP
+    _TutorialReputation  [inactive]
+      DialogueTMP
+    _TutorialDragSelect  [inactive]
+      DialogueTMP
+    _TutorialSortUI  [inactive]
+      DialogueTMP
+WindowUICanvas2(Overlay)
+  OverlayRootObject
+CanvasWorldStoreInteract
+  moneyTeshMeshPro
+  clientCounterTMP
+  rentTMP
+  scaleTMP  [inactive]
+CanvasScreenLayer2
+  _ColorPicker  [inactive]
+    Green
+    Red
+  _Darkness  [inactive]
+  _Map  [inactive]
+    Image
+      Title
+      CloseButton
+      SleepButton  [inactive]
+        Text (TMP)
+      AlleyButton  [inactive]
+        Text (TMP)
+      Image
+        Inventor
+          Text (TMP)
+        SuperMarket
+          Text (TMP)
+        Scavenging
+          Text (TMP)
+  _ControlOverLay  [inactive]
+    Phone
+      Text (TMP)
+    DiplayCase
+      Text (TMP)
+    CustomerCounter
+      Text (TMP)
+    NegociationCounter
+      Text (TMP)
+    StartEndDay
+      Text (TMP)
+    CallCustomer
+      Text (TMP)
+    NegociationInterface
+      Text (TMP)
+    VoiceRecorder
+      Text (TMP)
+    Sleeping Bag
+      Text (TMP)
+    Reputation
+      Text (TMP)
+    KeyHint
+      Text (TMP)
+    Shortcut
+      Text (TMP)
+      TransferInv
+        Button
+          Text (TMP)
+        Text (TMP)
+        Button (1)
+          Text (TMP)
+      TransferDisplay
+        Button
+          Text (TMP)
+        Text (TMP)
+        Button (1)
+          Text (TMP)
+      TransferCounter
+        Button
+          Text (TMP)
+        Text (TMP)
+        Button (1)
+          Text (TMP)
+      RotateCounter
+        Button
+          Text (TMP)
+        Text (TMP)
+        Button (1)
+          Text (TMP)
+      RotateClock
+        Button
+          Text (TMP)
+        Text (TMP)
+        Button (1)
+          Text (TMP)
+      Flip
+        Button
+          Text (TMP)
+        Text (TMP)
+        Button (1)
+          Text (TMP)
+      CloseUI
+        Button
+          Text (TMP)
+      SkipDialogue
+        Button
+          Text (TMP)
+      VerticalLayout
+        Text (TMP) (1)
+        Text (TMP) (1)
+        Text (TMP) (1)
+        Text (TMP) (1)
+        Text (TMP) (1)
+        Text (TMP) (1)
+        Text (TMP) (1)
+        Text (TMP) (1)
+    Autosave
+    CloseOverlayButton
+      Text (TMP)
+  _EscapeMenuBG  [inactive]
+    DemoButtonGroup
+      WishlistButton  [inactive]
+        Discord
+        DiscordNote
+      FeedbackButton  [inactive]
+        Discord
+        DiscordNote
+      DiscordButton
+        Discord
+        DiscordNote
+    _EscapeMenu
+      ButtonResume
+        Text (TMP)
+      ButtonOverlay
+        Text (TMP)
+      ButtonOption
+        Text (TMP)
+      ButtonDiscord  [inactive]
+        Text (TMP)
+        Logo
+      ButtonMainMenu
+        Text (TMP)
+      ButtonExit
+        Text (TMP)
+      Autosave (1)
+  _GameOptionPanel  [inactive]
+    Panel
+      Line  [inactive]
+      UITitle
+      CloseButton
+      GameSectionTMP
+        Line
+        AutoCallNextTMP
+          Toggle
+            Background
+              Checkmark
+            Text (TMP)
+        BackgroundFPSCapTMP
+          Toggle
+            Background
+              Checkmark
+            Text (TMP)
+        ShareGameplayDataTMP
+          Toggle
+            Background
+              Checkmark
+            Text (TMP)
+        InstantNextCustomerTMP
+          Toggle
+            Background
+              Checkmark
+            Text (TMP)
+        InstantSecurityTMP
+          Toggle
+            Background
+              Checkmark
+            Text (TMP)
+        InstantDismissTMP
+          Toggle
+            Background
+              Checkmark
+            Text (TMP)
+      MusicSectionTMP
+        Line (1)
+        MasterSliderTMP
+          MasterSlider
+            Background
+            Fill Area
+              Fill
+            Handle Slide Area
+              Handle
+        MusicSliderTMP
+          MusicSlider
+            Background
+            Fill Area
+              Fill
+            Handle Slide Area
+              Handle
+      GraphicSectionTMP
+        Line (2)
+        ResolutionSupport
+        ResTMP
+          DropdownRes
+            Label
+            Arrow
+            Template  [inactive]
+              Viewport
+                Content
+                  Item
+                    Item Background
+                    Item Checkmark
+                    Item Label
+              Scrollbar
+                Sliding Area
+                  Handle
+        ResFullScreen
+          DropdownFullScreen
+            Label
+            Arrow
+            Template  [inactive]
+              Viewport
+                Content
+                  Item
+                    Item Background
+                    Item Checkmark
+                    Item Label
+              Scrollbar
+                Sliding Area
+                  Handle
+      DialogueSection
+        Line (3)
+      DialogSpeedTMP
+        DialogSpeedSlider
+          Background
+          Fill Area
+            Fill
+          Handle Slide Area
+            Handle
+      DialogVolumeTMP
+        DialogVolumeSlider
+          Background
+          Fill Area
+            Fill
+          Handle Slide Area
+            Handle
+      UseTypewriterToggle
+        Toggle
+          Background
+            Checkmark
+          Text (TMP)
+      AutoNextDialogToggle
+        Toggle
+          Background
+            Checkmark
+          Text (TMP)
+      ApplyButton
+        Text (TMP)
+  _DialogueOptionUI  [inactive]
+    Panel
+      CloseButton (1)
+      DialogueSection
+      DialogSpeedTMP
+        DialogSpeedSlider
+          Background
+          Fill Area
+            Fill
+          Handle Slide Area
+            Handle
+      DialogVolumeTMP
+        DialogVolumeSlider
+          Background
+          Fill Area
+            Fill
+          Handle Slide Area
+            Handle
+      UseTypewriterToggle
+        Toggle
+          Background
+            Checkmark
+          Text (TMP)
+      AutoNextDialogToggle
+        Toggle
+          Background
+            Checkmark
+          Text (TMP)
+      DialogOptionReminder
+      ApplyButton
+        Text (TMP)
+  _PerkTooltip  [inactive]
+    PerkTitleTMP
+    PerkPointTMP
+    PerkDescriptionTMP
+    PerkIncompatibleTMP
+  _GameOverPanel  [inactive]
+    Art
+    Text (TMP)  [inactive]
+    raison
+    description
+    LayoutGroup
+      Button
+        Text (TMP)
+      Button (1)  [inactive]
+        Text (TMP)
+    Image  [inactive]
+  _UICommissary  [inactive]
+    TradeButton
+      Text (TMP)
+    ReturnButton
+      Text (TMP)
+  _ULUpgradeInventor  [inactive]
+    ReturnButton
+      Text (TMP)
+  _ULScavenging  [inactive]
+    Panel
+      Title (1)
+      TimeTMP
+      injuryTMP
+      injuryMajorTMP
+      ReturnButton
+        Text (TMP)
+      ScavButton
+        Text (TMP)
+  _GenericConfirmationDarkness  [inactive]
+  _GenericConfirmationPanel  [inactive]
+    Body
+    ButtonGroup
+      ConfirmButton
+        Text (TMP)
+      CancelButton
+        Text (TMP)
+  _MetaConfirmPanelPrefab  [inactive]
+    BodyTMP
+    YesButton
+      Text (TMP)
+    NoButton
+      Text (TMP)
+  _TooltipObject  [inactive]
+    TooltipText
+  _PlaytestExitUI  [inactive]
+    _EscapeMenu
+      ThanksTMP
+      ThanksTMP (1)
+      DemoButtonGroup
+        WishlistButton
+          Discord
+          DiscordNote
+        FeedbackButton
+          Discord
+          DiscordNote
+        ButtonExit
+          Text (TMP)

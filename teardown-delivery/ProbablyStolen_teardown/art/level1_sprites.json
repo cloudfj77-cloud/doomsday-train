@@ -1,0 +1,2214 @@
+[
+{
+"go": "CalendarTop",
+"active": true,
+"path": "--Interactable/CalendarTop",
+"sprite": "calendar_top-Sheet_0",
+"tex": "calendar_top-Sheet",
+"tw": 405,
+"th": 63,
+"rect": [
+1.0,
+1.0,
+100.0,
+61.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 11,
+"enabled": true,
+"x": -2.41,
+"y": 2.084,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "wall_phone",
+"active": true,
+"path": "--Interactable/wall_phone",
+"sprite": "phone",
+"tex": "phone",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 10,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "store_front_wall",
+"active": true,
+"path": "--Physical Store--/BackgroundGroup/store_front_wall",
+"sprite": "store_front_wall_lit",
+"tex": "store_front_wall_lit",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": -2,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "DeskAnimation (2)",
+"active": true,
+"path": "--Physical Store--/DeskAnimation (2)",
+"sprite": "desk animations3_0",
+"tex": "desk animations3",
+"tw": 180,
+"th": 15,
+"rect": [
+0.0,
+0.0,
+20.0,
+15.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 6,
+"enabled": true,
+"x": 4.31,
+"y": -0.855,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "dismissButton",
+"active": true,
+"path": "--Interactable/dismissButton",
+"sprite": "button_dismiss",
+"tex": "button_dismiss",
+"tw": 16,
+"th": 16,
+"rect": [
+0.0,
+0.0,
+16.0,
+16.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 10,
+"enabled": true,
+"x": -0.379,
+"y": -0.8,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "NegociationTablet",
+"active": true,
+"path": "--Interactable/NegociationTablet",
+"sprite": "negociation_tablet",
+"tex": "negociation_tablet",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 10,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "shadow",
+"active": true,
+"path": "--Interactable/PC/shadow",
+"sprite": "screen shadow",
+"tex": "screen shadow",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 8,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "Walker1",
+"active": false,
+"path": "Walker1",
+"sprite": "walker1_0",
+"tex": "walker1",
+"tw": 1144,
+"th": 273,
+"rect": [
+0.0,
+0.0,
+143.0,
+273.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 2,
+"enabled": true,
+"x": 1.465,
+"y": 0.164,
+"sx": 0.66,
+"sy": 0.66,
+"flipX": false
+},
+{
+"go": "VendingFountain",
+"active": true,
+"path": "--Interactable/VendingFountain",
+"sprite": "fountain0",
+"tex": "items_vending",
+"tw": 512,
+"th": 512,
+"rect": [
+16.0,
+128.0,
+64.0,
+112.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 0,
+"enabled": true,
+"x": -1.14,
+"y": 1.37,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "_Shotgun",
+"active": false,
+"path": "--Interactable/_Shotgun",
+"sprite": "shotgun_shadow",
+"tex": "shotgun_shadow",
+"tw": 49,
+"th": 158,
+"rect": [
+0.0,
+0.0,
+49.0,
+158.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 10,
+"enabled": true,
+"x": 2.575,
+"y": -1.66,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "DeskAnimation (3)",
+"active": true,
+"path": "--Physical Store--/DeskAnimation (3)",
+"sprite": "desk animations4_0",
+"tex": "desk animations4",
+"tw": 441,
+"th": 15,
+"rect": [
+0.0,
+0.0,
+49.0,
+15.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 6,
+"enabled": true,
+"x": 3.755,
+"y": -0.935,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "Walker1",
+"active": false,
+"path": "Walker1",
+"sprite": "walker1_0",
+"tex": "walker1",
+"tw": 1144,
+"th": 273,
+"rect": [
+0.0,
+0.0,
+143.0,
+273.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 2,
+"enabled": true,
+"x": 1.312,
+"y": 0.01,
+"sx": 0.7,
+"sy": 0.7,
+"flipX": false
+},
+{
+"go": "Bell",
+"active": true,
+"path": "--Interactable/Bell",
+"sprite": "bell_button_sheet_0",
+"tex": "bell_button_sheet",
+"tw": 101,
+"th": 34,
+"rect": [
+0.0,
+0.0,
+33.66666793823242,
+34.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 10,
+"enabled": true,
+"x": 1.688,
+"y": -0.531,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "DumpingGround",
+"active": true,
+"path": "--ScavScene/DumpingGround",
+"sprite": "dumping_ground",
+"tex": "dumping_ground",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 20,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "Table Wires",
+"active": true,
+"path": "--Physical Store--/Table Wires",
+"sprite": "wires_table",
+"tex": "wires_table",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 7,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "_SecGameObject1",
+"active": true,
+"path": "_SecGameObject1",
+"sprite": "maleSec_0",
+"tex": "maleSec",
+"tw": 1728,
+"th": 211,
+"rect": [
+0.0,
+0.0,
+288.0,
+211.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 1,
+"enabled": true,
+"x": -2.88,
+"y": 0.065,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "CalendarGlow",
+"active": true,
+"path": "--Interactable/CalendarGlow",
+"sprite": "halo_glow",
+"tex": "halo_glow",
+"tw": 256,
+"th": 256,
+"rect": [
+0.0,
+0.0,
+256.0,
+256.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 8,
+"enabled": true,
+"x": -2.411,
+"y": 2.062,
+"sx": 0.948,
+"sy": 0.669,
+"flipX": false
+},
+{
+"go": "ShutterDoor",
+"active": true,
+"path": "--Physical Store--/ShutterDoor",
+"sprite": "shutter_door",
+"tex": "shutter_door",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 9,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "_BodyGameObject",
+"active": false,
+"path": "_BodyGameObject",
+"sprite": "body",
+"tex": "body",
+"tw": 90,
+"th": 48,
+"rect": [
+0.0,
+0.0,
+90.0,
+48.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 0,
+"enabled": true,
+"x": 0.0,
+"y": 0.82,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "store_front_floor",
+"active": true,
+"path": "--Physical Store--/BackgroundGroup/store_front_floor",
+"sprite": "store_front_floor",
+"tex": "store_front_floor",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": -3,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "_SecGameObject2",
+"active": true,
+"path": "_SecGameObject2",
+"sprite": "maleSec_1",
+"tex": "maleSec",
+"tw": 1728,
+"th": 211,
+"rect": [
+288.0,
+0.0,
+288.0,
+211.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 1,
+"enabled": true,
+"x": -2.88,
+"y": 1.051,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "CreditDisplay",
+"active": true,
+"path": "--Interactable/CreditDisplay",
+"sprite": "credit_display",
+"tex": "credit_display",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 10,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "Calendar",
+"active": true,
+"path": "--Interactable/Calendar",
+"sprite": "calendar",
+"tex": "calendar",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 10,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "store_back_stairs",
+"active": true,
+"path": "--Physical Store--/BackgroundGroup/store_back_stairs",
+"sprite": "store_background_rail",
+"tex": "store_background_rail",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": -8,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "TestClientObject",
+"active": false,
+"path": "TestClientObject",
+"sprite": "wild_pat",
+"tex": "wild_pat",
+"tw": 135,
+"th": 145,
+"rect": [
+0.0,
+0.0,
+135.0,
+145.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 2,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 2.0,
+"sy": 2.0,
+"flipX": false
+},
+{
+"go": "Lighting",
+"active": true,
+"path": "--Physical Store--/Lighting",
+"sprite": "lighting",
+"tex": "lighting",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 8,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "CreditDisplayGlow",
+"active": true,
+"path": "--Interactable/CreditDisplayGlow",
+"sprite": "halo_glow",
+"tex": "halo_glow",
+"tw": 256,
+"th": 256,
+"rect": [
+0.0,
+0.0,
+256.0,
+256.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 9,
+"enabled": true,
+"x": -3.362,
+"y": 1.803,
+"sx": 0.398,
+"sy": 0.249,
+"flipX": false
+},
+{
+"go": "ClientDisplayTop",
+"active": true,
+"path": "--Interactable/ClientDisplayTop",
+"sprite": "client_counter-Sheet_0",
+"tex": "client_counter-Sheet",
+"tw": 150,
+"th": 25,
+"rect": [
+2.0,
+2.0,
+35.0,
+21.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 11,
+"enabled": true,
+"x": 2.412,
+"y": 1.296,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "EmporiumWall",
+"active": true,
+"path": "--Physical Store--/EmporiumWall",
+"sprite": "wall",
+"tex": "wall",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 3,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "ShutterGlassDoor",
+"active": true,
+"path": "--Physical Store--/ShutterGlassDoor",
+"sprite": "glass_door",
+"tex": "glass_door",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 8,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "ClienteleDisplay",
+"active": true,
+"path": "--Interactable/ClienteleDisplay",
+"sprite": "clientele-Sheet_0",
+"tex": "clientele-Sheet",
+"tw": 105,
+"th": 48,
+"rect": [
+1.0,
+1.0,
+25.0,
+46.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 9,
+"enabled": true,
+"x": -3.766,
+"y": 0.947,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "DeskAnimation",
+"active": true,
+"path": "--Physical Store--/DeskAnimation",
+"sprite": "desk animations1_0",
+"tex": "desk animations1",
+"tw": 360,
+"th": 29,
+"rect": [
+0.0,
+0.0,
+40.0,
+29.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 6,
+"enabled": true,
+"x": 4.6,
+"y": -0.865,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "front_counter",
+"active": true,
+"path": "--Physical Store--/front_counter",
+"sprite": "front_counter",
+"tex": "front_counter",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 7,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "_ShootingAnimation",
+"active": false,
+"path": "_ShootingAnimation",
+"sprite": "shot_animation_body_0",
+"tex": "shot_animation_body",
+"tw": 2048,
+"th": 256,
+"rect": [
+0.0,
+0.0,
+256.0,
+256.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 0,
+"enabled": true,
+"x": 0.028,
+"y": 1.822,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "wires",
+"active": true,
+"path": "--Physical Store--/wires",
+"sprite": "wires",
+"tex": "wires",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 9,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "phoneGlow",
+"active": true,
+"path": "--Interactable/phoneGlow",
+"sprite": "halo_glow",
+"tex": "halo_glow",
+"tw": 256,
+"th": 256,
+"rect": [
+0.0,
+0.0,
+256.0,
+256.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 9,
+"enabled": true,
+"x": -1.941,
+"y": -0.201,
+"sx": 0.31,
+"sy": 0.251,
+"flipX": false
+},
+{
+"go": "Door",
+"active": true,
+"path": "--Interactable/Door",
+"sprite": "door",
+"tex": "door",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 11,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "PC",
+"active": false,
+"path": "--Interactable/PC",
+"sprite": "marketplace_pc",
+"tex": "marketplace_pc",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 11,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "_MagnifyingWindowCollapsed",
+"active": true,
+"path": "--Interactable/_MagnifyingWindowCollapsed",
+"sprite": "magnifying_screen",
+"tex": "magnifying_screen",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 20,
+"enabled": true,
+"x": 0.0,
+"y": 1.986,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "SecButton",
+"active": true,
+"path": "--Interactable/SecButton",
+"sprite": "button_sec",
+"tex": "button_sec",
+"tw": 16,
+"th": 16,
+"rect": [
+0.0,
+0.0,
+16.0,
+16.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 10,
+"enabled": true,
+"x": -0.159,
+"y": -0.801,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "Calendar_Wire",
+"active": true,
+"path": "--Physical Store--/Calendar_Wire",
+"sprite": "calendar wire",
+"tex": "calendar wire",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 9,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "HiddenSpace",
+"active": true,
+"path": "--Physical Store--/HiddenSpace",
+"sprite": "hidden_space",
+"tex": "hidden_space",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 9,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "NutruifruitPoster",
+"active": true,
+"path": "--Physical Store--/NutruifruitPoster",
+"sprite": "poster_no_shadow",
+"tex": "poster_no_shadow",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 10,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "Light",
+"active": true,
+"path": "--Interactable/SecButton/Light",
+"sprite": "sec lamps green",
+"tex": "sec lamps green",
+"tw": 7,
+"th": 16,
+"rect": [
+0.0,
+0.0,
+7.0,
+16.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 10,
+"enabled": true,
+"x": -0.044,
+"y": -0.801,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "connecting wire",
+"active": true,
+"path": "--Interactable/PC/connecting wire",
+"sprite": "connectimg wire",
+"tex": "connectimg wire",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 9,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "ShutterButton",
+"active": true,
+"path": "--Interactable/ShutterButton",
+"sprite": "shutter_button_sheet_0",
+"tex": "shutter_button_sheet",
+"tw": 101,
+"th": 34,
+"rect": [
+0.0,
+0.0,
+33.66666793823242,
+34.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 10,
+"enabled": true,
+"x": 1.908,
+"y": 1.23,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "test3",
+"active": false,
+"path": "--/test3",
+"sprite": "inventor_main",
+"tex": "inventor_main",
+"tw": 48,
+"th": 32,
+"rect": [
+0.0,
+0.0,
+48.0,
+32.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 100,
+"enabled": true,
+"x": 0.0,
+"y": 0.226,
+"sx": 2.0,
+"sy": 2.0,
+"flipX": false
+},
+{
+"go": "store_mid",
+"active": true,
+"path": "--Physical Store--/BackgroundGroup/store_mid",
+"sprite": "store_mid",
+"tex": "store_mid",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": -4,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "Recorder",
+"active": true,
+"path": "--Interactable/Recorder",
+"sprite": "tape anim-Sheet_0",
+"tex": "tape anim-Sheet",
+"tw": 332,
+"th": 40,
+"rect": [
+0.0,
+0.0,
+55.33333206176758,
+40.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 10,
+"enabled": true,
+"x": 2.157,
+"y": -0.421,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "Walker1",
+"active": false,
+"path": "Walker1",
+"sprite": "walker1_0",
+"tex": "walker1",
+"tw": 1144,
+"th": 273,
+"rect": [
+0.0,
+0.0,
+143.0,
+273.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 2,
+"enabled": true,
+"x": -1.643,
+"y": -0.027,
+"sx": 0.7,
+"sy": 0.7,
+"flipX": true
+},
+{
+"go": "inventor_scene",
+"active": true,
+"path": "--InventorScene/inventor_scene",
+"sprite": "drjackson2",
+"tex": "drjackson2",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 1,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "_ClientGameObject",
+"active": true,
+"path": "RightLeave/_ClientGameObject",
+"sprite": "client_shadow_small",
+"tex": "client_shadow_small",
+"tw": 48,
+"th": 64,
+"rect": [
+0.0,
+0.0,
+48.0,
+64.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 2,
+"enabled": true,
+"x": -2.88,
+"y": 1.365,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "shutterFrameTop",
+"active": true,
+"path": "--Physical Store--/shutterFrameTop",
+"sprite": "window_top",
+"tex": "window_top",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 12,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "_MuzzleFlash",
+"active": true,
+"path": "--Interactable/_Arm/_MuzzleFlash",
+"sprite": "muzzleflash2",
+"tex": "muzzleflash2",
+"tw": 173,
+"th": 156,
+"rect": [
+0.0,
+0.0,
+173.0,
+156.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 14,
+"enabled": true,
+"x": 0.386,
+"y": 0.646,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "Commissary",
+"active": true,
+"path": "--BazarScene/Commissary",
+"sprite": "commissary",
+"tex": "commissary",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 25,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "store_mid_rail",
+"active": true,
+"path": "--Physical Store--/BackgroundGroup/store_mid_rail",
+"sprite": "store_mid_rail",
+"tex": "store_mid_rail",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": -4,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "store_back",
+"active": true,
+"path": "--Physical Store--/BackgroundGroup/store_back",
+"sprite": "store_background",
+"tex": "store_background",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": -10,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "Radio",
+"active": true,
+"path": "--Physical Store--/Radio",
+"sprite": "radio",
+"tex": "radio",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 10,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "store_front_lamp",
+"active": true,
+"path": "--Physical Store--/BackgroundGroup/store_front_lamp",
+"sprite": "store_front_lamp",
+"tex": "store_front_lamp",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": -1,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "_Arm",
+"active": false,
+"path": "--Interactable/_Arm",
+"sprite": "one_hand",
+"tex": "one_hand",
+"tw": 160,
+"th": 112,
+"rect": [
+0.0,
+0.0,
+160.0,
+112.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 15,
+"enabled": true,
+"x": 1.2,
+"y": 0.2,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "feedback_box",
+"active": true,
+"path": "--Interactable/feedback_box",
+"sprite": "reputation_box",
+"tex": "reputation_box",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 12,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "ClienteleDisplayGlow",
+"active": true,
+"path": "--Interactable/ClienteleDisplayGlow",
+"sprite": "halo_glow",
+"tex": "halo_glow",
+"tw": 256,
+"th": 256,
+"rect": [
+0.0,
+0.0,
+256.0,
+256.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 8,
+"enabled": true,
+"x": -3.776,
+"y": 0.939,
+"sx": 0.252,
+"sy": 0.359,
+"flipX": false
+},
+{
+"go": "pc_alert",
+"active": true,
+"path": "--Interactable/PC/pc_notif/pc_alert",
+"sprite": "pc_count-Sheet_0",
+"tex": "pc_count-Sheet",
+"tw": 128,
+"th": 32,
+"rect": [
+0.0,
+0.0,
+32.0,
+32.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 13,
+"enabled": true,
+"x": 3.72,
+"y": 2.4,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "GameObject",
+"active": true,
+"path": "--Interactable/_Shotgun/GameObject",
+"sprite": "shotgun_shadow_only",
+"tex": "shotgun_shadow_only",
+"tw": 49,
+"th": 158,
+"rect": [
+0.0,
+0.0,
+49.0,
+158.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 9,
+"enabled": true,
+"x": 2.575,
+"y": -1.66,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "VendingMachine",
+"active": true,
+"path": "--Interactable/VendingMachine",
+"sprite": "vending0",
+"tex": "items_vending",
+"tw": 512,
+"th": 512,
+"rect": [
+16.0,
+384.0,
+64.0,
+112.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 0,
+"enabled": true,
+"x": 1.17,
+"y": 1.37,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "pc_notif",
+"active": false,
+"path": "--Interactable/PC/pc_notif",
+"sprite": "marketplace_pc_notif",
+"tex": "marketplace_pc_notif",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 12,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "_ShootingWound",
+"active": false,
+"path": "_ShootingWound",
+"sprite": "shot_animation_wound_0",
+"tex": "shot_animation_wound",
+"tw": 2048,
+"th": 256,
+"rect": [
+0.0,
+0.0,
+256.0,
+256.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 3,
+"enabled": true,
+"x": 0.028,
+"y": 1.822,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "ClientDisplayGlow",
+"active": true,
+"path": "--Interactable/ClientDisplayGlow",
+"sprite": "halo_glow",
+"tex": "halo_glow",
+"tw": 256,
+"th": 256,
+"rect": [
+0.0,
+0.0,
+256.0,
+256.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 8,
+"enabled": true,
+"x": 2.391,
+"y": 1.24,
+"sx": 0.434,
+"sy": 0.366,
+"flipX": false
+},
+{
+"go": "shutterFrame",
+"active": true,
+"path": "--Physical Store--/shutterFrame",
+"sprite": "window",
+"tex": "window",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 8,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "SleepingBag",
+"active": true,
+"path": "--Interactable/SleepingBag",
+"sprite": "sleeping_bag",
+"tex": "sleeping_bag",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 20,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "Door Lock",
+"active": true,
+"path": "--Physical Store--/Door Lock",
+"sprite": "door lock",
+"tex": "door lock",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 10,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "test3 (1)",
+"active": false,
+"path": "--/test3 (1)",
+"sprite": "inventor_main",
+"tex": "inventor_main",
+"tw": 48,
+"th": 32,
+"rect": [
+0.0,
+0.0,
+48.0,
+32.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 24,
+"enabled": true,
+"x": -0.946,
+"y": -0.603,
+"sx": 3.0,
+"sy": 3.0,
+"flipX": false
+},
+{
+"go": "store_mid_stairs",
+"active": true,
+"path": "--Physical Store--/BackgroundGroup/store_mid_stairs",
+"sprite": "store_mid_stairs",
+"tex": "store_mid_stairs",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": -5,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "_MagnifyingWindow",
+"active": false,
+"path": "--Interactable/_MagnifyingWindow",
+"sprite": "magnifying_screen",
+"tex": "magnifying_screen",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 20,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "transferButton",
+"active": true,
+"path": "--Interactable/transferButton",
+"sprite": "button_transfer",
+"tex": "button_transfer",
+"tw": 16,
+"th": 16,
+"rect": [
+0.0,
+0.0,
+16.0,
+16.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 10,
+"enabled": true,
+"x": -0.6,
+"y": -0.801,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "showcase",
+"active": true,
+"path": "--Physical Store--/showcase",
+"sprite": "display_case",
+"tex": "display_case",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 10,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "ClientDisplay",
+"active": true,
+"path": "--Interactable/ClientDisplay",
+"sprite": "client_display",
+"tex": "client_display",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 10,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "Desk",
+"active": true,
+"path": "--Physical Store--/Desk",
+"sprite": "desk",
+"tex": "desk",
+"tw": 960,
+"th": 540,
+"rect": [
+0.0,
+0.0,
+960.0,
+540.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 5,
+"enabled": true,
+"x": 0.0,
+"y": 0.0,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+},
+{
+"go": "DeskAnimation (1)",
+"active": true,
+"path": "--Physical Store--/DeskAnimation (1)",
+"sprite": "desk animations2_0",
+"tex": "desk animations2",
+"tw": 160,
+"th": 15,
+"rect": [
+0.0,
+0.0,
+20.0,
+15.0
+],
+"pivot": [
+0.5,
+0.5
+],
+"ppu": 100.0,
+"layer": 0,
+"order": 6,
+"enabled": true,
+"x": 4.11,
+"y": -0.855,
+"sx": 1.0,
+"sy": 1.0,
+"flipX": false
+}
+]

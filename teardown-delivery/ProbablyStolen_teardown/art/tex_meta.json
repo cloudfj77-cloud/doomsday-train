@@ -1,0 +1,8165 @@
+[
+{
+"file": "background__18.png",
+"name": "background",
+"src": "resources.assets",
+"w": 256,
+"h": 128,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "background_fill__19.png",
+"name": "background_fill",
+"src": "resources.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "elements_inner__20.png",
+"name": "elements_inner",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "elements_outer__21.png",
+"name": "elements_outer",
+"src": "resources.assets",
+"w": 256,
+"h": 128,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "items_medical__23.png",
+"name": "items_medical",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 64
+},
+{
+"file": "items_winemaking__24.png",
+"name": "items_winemaking",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 23
+},
+{
+"file": "items_mod__25.png",
+"name": "items_mod",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 51
+},
+{
+"file": "background__26.png",
+"name": "background",
+"src": "resources.assets",
+"w": 128,
+"h": 94,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "slider_thumb_normal__27.png",
+"name": "slider_thumb_normal",
+"src": "resources.assets",
+"w": 16,
+"h": 8,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "items_backpack2__28.png",
+"name": "items_backpack2",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 12
+},
+{
+"file": "water_container3__29.png",
+"name": "water_container3",
+"src": "resources.assets",
+"w": 512,
+"h": 1024,
+"filter": 0,
+"sprites": 183
+},
+{
+"file": "items_amenities__30.png",
+"name": "items_amenities",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 54
+},
+{
+"file": "intake__31.png",
+"name": "intake",
+"src": "resources.assets",
+"w": 4,
+"h": 4,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "radio_pressed__32.png",
+"name": "radio_pressed",
+"src": "resources.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "vent__33.png",
+"name": "vent",
+"src": "resources.assets",
+"w": 2,
+"h": 3,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "items_sign__34.png",
+"name": "items_sign",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 19
+},
+{
+"file": "radio_on__35.png",
+"name": "radio_on",
+"src": "resources.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "bevel_frame__36.png",
+"name": "bevel_frame",
+"src": "resources.assets",
+"w": 4,
+"h": 4,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "radio_off_hover__37.png",
+"name": "radio_off_hover",
+"src": "resources.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "button_pressed__38.png",
+"name": "button_pressed",
+"src": "resources.assets",
+"w": 8,
+"h": 8,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "cell__39.png",
+"name": "cell",
+"src": "resources.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "items_organ__40.png",
+"name": "items_organ",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 6
+},
+{
+"file": "slider_thumb_hover__41.png",
+"name": "slider_thumb_hover",
+"src": "resources.assets",
+"w": 16,
+"h": 8,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "items_construction__42.png",
+"name": "items_construction",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 5
+},
+{
+"file": "items_furniture__43.png",
+"name": "items_furniture",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 11
+},
+{
+"file": "items_hydroponic_plant__44.png",
+"name": "items_hydroponic_plant",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 55
+},
+{
+"file": "items_aquaculture__45.png",
+"name": "items_aquaculture",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 51
+},
+{
+"file": "items_weapons_ranged_antique__46.png",
+"name": "items_weapons_ranged_antique",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 20
+},
+{
+"file": "items_weapons_melee__47.png",
+"name": "items_weapons_melee",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 22
+},
+{
+"file": "borderOld__48.png",
+"name": "borderOld",
+"src": "resources.assets",
+"w": 88,
+"h": 34,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "elements_outer__49.png",
+"name": "elements_outer",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "items_ship__50.png",
+"name": "items_ship",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 34
+},
+{
+"file": "items_broken_machine__51.png",
+"name": "items_broken_machine",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 40
+},
+{
+"file": "radio_on_hover__52.png",
+"name": "radio_on_hover",
+"src": "resources.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "radio_off__53.png",
+"name": "radio_off",
+"src": "resources.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "items_tool2__54.png",
+"name": "items_tool2",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 39
+},
+{
+"file": "items_weapons_ranged_energy__55.png",
+"name": "items_weapons_ranged_energy",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 9
+},
+{
+"file": "beer_case__56.png",
+"name": "beer_case",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 12
+},
+{
+"file": "itematlas__57.png",
+"name": "itematlas",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 50
+},
+{
+"file": "items_material__58.png",
+"name": "items_material",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 20
+},
+{
+"file": "items_food__59.png",
+"name": "items_food",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 53
+},
+{
+"file": "background_fill__60.png",
+"name": "background_fill",
+"src": "resources.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "EP Outline logo__61.png",
+"name": "EP Outline logo",
+"src": "resources.assets",
+"w": 864,
+"h": 274,
+"filter": 1,
+"sprites": 0
+},
+{
+"file": "button_normal__62.png",
+"name": "button_normal",
+"src": "resources.assets",
+"w": 6,
+"h": 6,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "flat__63.png",
+"name": "flat",
+"src": "resources.assets",
+"w": 2,
+"h": 2,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "tab_plate__64.png",
+"name": "tab_plate",
+"src": "resources.assets",
+"w": 4,
+"h": 4,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "items_misc__65.png",
+"name": "items_misc",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 60
+},
+{
+"file": "items_tool3__66.png",
+"name": "items_tool3",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 16
+},
+{
+"file": "items_armor__67.png",
+"name": "items_armor",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 7
+},
+{
+"file": "dossier__68.png",
+"name": "dossier",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 4
+},
+{
+"file": "icon_note__69.png",
+"name": "icon_note",
+"src": "resources.assets",
+"w": 8,
+"h": 8,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "border__70.png",
+"name": "border",
+"src": "resources.assets",
+"w": 88,
+"h": 34,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "progress_frame__71.png",
+"name": "progress_frame",
+"src": "resources.assets",
+"w": 6,
+"h": 6,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "plate_notched__72.png",
+"name": "plate_notched",
+"src": "resources.assets",
+"w": 4,
+"h": 4,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "items_husbandry__73.png",
+"name": "items_husbandry",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 31
+},
+{
+"file": "items_module__74.png",
+"name": "items_module",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 52
+},
+{
+"file": "button_hover__75.png",
+"name": "button_hover",
+"src": "resources.assets",
+"w": 6,
+"h": 6,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "items_sec__76.png",
+"name": "items_sec",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 23
+},
+{
+"file": "border-export__77.png",
+"name": "border-export",
+"src": "resources.assets",
+"w": 88,
+"h": 34,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "EmojiOne__78.png",
+"name": "EmojiOne",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 1,
+"sprites": 0
+},
+{
+"file": "items_vending__79.png",
+"name": "items_vending",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 14
+},
+{
+"file": "water_container4__80.png",
+"name": "water_container4",
+"src": "resources.assets",
+"w": 512,
+"h": 1024,
+"filter": 0,
+"sprites": 50
+},
+{
+"file": "items_inspectable__81.png",
+"name": "items_inspectable",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 3
+},
+{
+"file": "items_container__82.png",
+"name": "items_container",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 23
+},
+{
+"file": "Tmp_Icon__83.png",
+"name": "Tmp_Icon",
+"src": "resources.assets",
+"w": 960,
+"h": 960,
+"filter": 1,
+"sprites": 2
+},
+{
+"file": "elements_inner__84.png",
+"name": "elements_inner",
+"src": "resources.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 60
+},
+{
+"file": "icon_power__85.png",
+"name": "icon_power",
+"src": "resources.assets",
+"w": 15,
+"h": 7,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "Checkmark__50.png",
+"name": "Checkmark",
+"src": "sharedassets0.assets",
+"w": 64,
+"h": 64,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "UISprite__51.png",
+"name": "UISprite",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "Background__52.png",
+"name": "Background",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "InputFieldBackground__53.png",
+"name": "InputFieldBackground",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "UIMask__54.png",
+"name": "UIMask",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "Logo__55.png",
+"name": "Logo",
+"src": "sharedassets0.assets",
+"w": 1500,
+"h": 1500,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "card_plate__56.png",
+"name": "card_plate",
+"src": "sharedassets0.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "vertical_scroll_bar_handle_2x__57.png",
+"name": "vertical_scroll_bar_handle_2x",
+"src": "sharedassets0.assets",
+"w": 16,
+"h": 64,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "option_bg__58.png",
+"name": "option_bg",
+"src": "sharedassets0.assets",
+"w": 494,
+"h": 480,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "minimalist__59.png",
+"name": "minimalist",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "slider_handle_n__60.png",
+"name": "slider_handle_n",
+"src": "sharedassets0.assets",
+"w": 18,
+"h": 12,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "panel__61.png",
+"name": "panel",
+"src": "sharedassets0.assets",
+"w": 352,
+"h": 212,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "steam_icon__62.png",
+"name": "steam_icon",
+"src": "sharedassets0.assets",
+"w": 960,
+"h": 960,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "settings_hl__63.png",
+"name": "settings_hl",
+"src": "sharedassets0.assets",
+"w": 42,
+"h": 42,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "gen_button_2x_n__64.png",
+"name": "gen_button_2x_n",
+"src": "sharedassets0.assets",
+"w": 194,
+"h": 68,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "slider_bar_filled_2x__65.png",
+"name": "slider_bar_filled_2x",
+"src": "sharedassets0.assets",
+"w": 238,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "frame_hl__66.png",
+"name": "frame_hl",
+"src": "sharedassets0.assets",
+"w": 320,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "save_element__68.png",
+"name": "save_element",
+"src": "sharedassets0.assets",
+"w": 353,
+"h": 43,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "slot_frame__69.png",
+"name": "slot_frame",
+"src": "sharedassets0.assets",
+"w": 84,
+"h": 84,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "slot_selected__70.png",
+"name": "slot_selected",
+"src": "sharedassets0.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "load_magnify_normal__71.png",
+"name": "load_magnify_normal",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "short_sleeper__72.png",
+"name": "short_sleeper",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "button_generic_x2__73.png",
+"name": "button_generic_x2",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "blabbermouth__74.png",
+"name": "blabbermouth",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "checkbox_checked_orange__75.png",
+"name": "checkbox_checked_orange",
+"src": "sharedassets0.assets",
+"w": 13,
+"h": 13,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "perks_tooltip__76.png",
+"name": "perks_tooltip",
+"src": "sharedassets0.assets",
+"w": 442,
+"h": 178,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "button_load__77.png",
+"name": "button_load",
+"src": "sharedassets0.assets",
+"w": 47,
+"h": 20,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "dropdown_button__78.png",
+"name": "dropdown_button",
+"src": "sharedassets0.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "button_load_hl__79.png",
+"name": "button_load_hl",
+"src": "sharedassets0.assets",
+"w": 47,
+"h": 20,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "handle__80.png",
+"name": "handle",
+"src": "sharedassets0.assets",
+"w": 16,
+"h": 256,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "working_pipes__81.png",
+"name": "working_pipes",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "padlock__82.png",
+"name": "padlock",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "button_main_menu_n__83.png",
+"name": "button_main_menu_n",
+"src": "sharedassets0.assets",
+"w": 220,
+"h": 35,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "MenuMockupExportedNoText__84.png",
+"name": "MenuMockupExportedNoText",
+"src": "sharedassets0.assets",
+"w": 640,
+"h": 320,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "seperator__85.png",
+"name": "seperator",
+"src": "sharedassets0.assets",
+"w": 900,
+"h": 2,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "recorder_x2__86.png",
+"name": "recorder_x2",
+"src": "sharedassets0.assets",
+"w": 394,
+"h": 584,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "slider_handle_h__87.png",
+"name": "slider_handle_h",
+"src": "sharedassets0.assets",
+"w": 18,
+"h": 12,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "sawyer_crew__88.png",
+"name": "sawyer_crew",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "frame__89.png",
+"name": "frame",
+"src": "sharedassets0.assets",
+"w": 320,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "dropdown_option__90.png",
+"name": "dropdown_option",
+"src": "sharedassets0.assets",
+"w": 101,
+"h": 15,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "close_button_h__91.png",
+"name": "close_button_h",
+"src": "sharedassets0.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "cassette__93.png",
+"name": "cassette",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "slot_normal__94.png",
+"name": "slot_normal",
+"src": "sharedassets0.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "dropdown_panel__95.png",
+"name": "dropdown_panel",
+"src": "sharedassets0.assets",
+"w": 101,
+"h": 14,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "dropdown_2x__96.png",
+"name": "dropdown_2x",
+"src": "sharedassets0.assets",
+"w": 206,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "gen_button_2x_h__97.png",
+"name": "gen_button_2x_h",
+"src": "sharedassets0.assets",
+"w": 194,
+"h": 68,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "magnify_hl__98.png",
+"name": "magnify_hl",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "dropdown_template_bg__99.png",
+"name": "dropdown_template_bg",
+"src": "sharedassets0.assets",
+"w": 352,
+"h": 212,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "noun-flyer-7880108-FFFFFF__100.png",
+"name": "noun-flyer-7880108-FFFFFF",
+"src": "sharedassets0.assets",
+"w": 100,
+"h": 100,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "load_magnify_hover__101.png",
+"name": "load_magnify_hover",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "alert__102.png",
+"name": "alert",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "DragArrow__103.png",
+"name": "DragArrow",
+"src": "sharedassets0.assets",
+"w": 512,
+"h": 512,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "scroll__104.png",
+"name": "scroll",
+"src": "sharedassets0.assets",
+"w": 16,
+"h": 797,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "colorful__105.png",
+"name": "colorful",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "checkbox_hl__107.png",
+"name": "checkbox_hl",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "intimidating__108.png",
+"name": "intimidating",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "perk_slot_hover__109.png",
+"name": "perk_slot_hover",
+"src": "sharedassets0.assets",
+"w": 64,
+"h": 72,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "prime_real_estate__110.png",
+"name": "prime_real_estate",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "clipboard__111.png",
+"name": "clipboard",
+"src": "sharedassets0.assets",
+"w": 128,
+"h": 128,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "close_pressed__112.png",
+"name": "close_pressed",
+"src": "sharedassets0.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "playtest_button_feedback__113.png",
+"name": "playtest_button_feedback",
+"src": "sharedassets0.assets",
+"w": 75,
+"h": 30,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "slot_border_hover__114.png",
+"name": "slot_border_hover",
+"src": "sharedassets0.assets",
+"w": 84,
+"h": 84,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "perk_slot_lock__115.png",
+"name": "perk_slot_lock",
+"src": "sharedassets0.assets",
+"w": 16,
+"h": 18,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "snitch__116.png",
+"name": "snitch",
+"src": "sharedassets0.assets",
+"w": 36,
+"h": 36,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "vending__117.png",
+"name": "vending",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "vertical_scroll_bar__118.png",
+"name": "vertical_scroll_bar",
+"src": "sharedassets0.assets",
+"w": 8,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "arrow_next_normal__119.png",
+"name": "arrow_next_normal",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "tab_active__120.png",
+"name": "tab_active",
+"src": "sharedassets0.assets",
+"w": 256,
+"h": 42,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "close_button_p__122.png",
+"name": "close_button_p",
+"src": "sharedassets0.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "noun-beaker-7821176-FFFFFF__123.png",
+"name": "noun-beaker-7821176-FFFFFF",
+"src": "sharedassets0.assets",
+"w": 100,
+"h": 100,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "convict__124.png",
+"name": "convict",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "source_icon_local__126.png",
+"name": "source_icon_local",
+"src": "sharedassets0.assets",
+"w": 20,
+"h": 20,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "price_tag_unavailable__127.png",
+"name": "price_tag_unavailable",
+"src": "sharedassets0.assets",
+"w": 56,
+"h": 22,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "discord__128.png",
+"name": "discord",
+"src": "sharedassets0.assets",
+"w": 619,
+"h": 470,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "rev__129.png",
+"name": "rev",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "gen_button_2x_p__130.png",
+"name": "gen_button_2x_p",
+"src": "sharedassets0.assets",
+"w": 194,
+"h": 68,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "checkbox_arrow__131.png",
+"name": "checkbox_arrow",
+"src": "sharedassets0.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "uibacktop1__132.png",
+"name": "uibacktop1",
+"src": "sharedassets0.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "load_icon_ring__134.png",
+"name": "load_icon_ring",
+"src": "sharedassets0.assets",
+"w": 42,
+"h": 42,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "icons__135.png",
+"name": "icons",
+"src": "sharedassets0.assets",
+"w": 190,
+"h": 38,
+"filter": 0,
+"sprites": 12
+},
+{
+"file": "MenuMockupExported__136.png",
+"name": "MenuMockupExported",
+"src": "sharedassets0.assets",
+"w": 640,
+"h": 320,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "selected_perk__137.png",
+"name": "selected_perk",
+"src": "sharedassets0.assets",
+"w": 455,
+"h": 80,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "loadgame_base__138.png",
+"name": "loadgame_base",
+"src": "sharedassets0.assets",
+"w": 394,
+"h": 480,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "checkbox_orange__139.png",
+"name": "checkbox_orange",
+"src": "sharedassets0.assets",
+"w": 13,
+"h": 13,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "secret_admirer__140.png",
+"name": "secret_admirer",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "scav__141.png",
+"name": "scav",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "arrow_prev_normal__143.png",
+"name": "arrow_prev_normal",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "checkbox__144.png",
+"name": "checkbox",
+"src": "sharedassets0.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "slider_bar_2x__146.png",
+"name": "slider_bar_2x",
+"src": "sharedassets0.assets",
+"w": 238,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "magnify__147.png",
+"name": "magnify",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "tab_hover__148.png",
+"name": "tab_hover",
+"src": "sharedassets0.assets",
+"w": 256,
+"h": 42,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "playtest_button_steam__149.png",
+"name": "playtest_button_steam",
+"src": "sharedassets0.assets",
+"w": 75,
+"h": 30,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "load_duplicate_hover__150.png",
+"name": "load_duplicate_hover",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "side_street__151.png",
+"name": "side_street",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "shortcut_x2__152.png",
+"name": "shortcut_x2",
+"src": "sharedassets0.assets",
+"w": 764,
+"h": 418,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "finalelog__153.png",
+"name": "finalelog",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "diplomatic__155.png",
+"name": "diplomatic",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "close_pressed_down__156.png",
+"name": "close_pressed_down",
+"src": "sharedassets0.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "uiback1__157.png",
+"name": "uiback1",
+"src": "sharedassets0.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "frame_2_square__158.png",
+"name": "frame_2_square",
+"src": "sharedassets0.assets",
+"w": 6,
+"h": 6,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "perk_tooltip_lock__159.png",
+"name": "perk_tooltip_lock",
+"src": "sharedassets0.assets",
+"w": 16,
+"h": 18,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "card_header_plate__160.png",
+"name": "card_header_plate",
+"src": "sharedassets0.assets",
+"w": 64,
+"h": 42,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "MagnifyingGlass__161.png",
+"name": "MagnifyingGlass",
+"src": "sharedassets0.assets",
+"w": 1024,
+"h": 1024,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "illiterate__162.png",
+"name": "illiterate",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "key_box__163.png",
+"name": "key_box",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "option_line_single__164.png",
+"name": "option_line_single",
+"src": "sharedassets0.assets",
+"w": 337,
+"h": 12,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "tooltip_2x__165.png",
+"name": "tooltip_2x",
+"src": "sharedassets0.assets",
+"w": 78,
+"h": 116,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "close_normal__166.png",
+"name": "close_normal",
+"src": "sharedassets0.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "glass_button__167.png",
+"name": "glass_button",
+"src": "sharedassets0.assets",
+"w": 48,
+"h": 16,
+"filter": 0,
+"sprites": 3
+},
+{
+"file": "scroll_track__168.png",
+"name": "scroll_track",
+"src": "sharedassets0.assets",
+"w": 2,
+"h": 64,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "arrow_next_hover__169.png",
+"name": "arrow_next_hover",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "uiback1LDarkTan__170.png",
+"name": "uiback1LDarkTan",
+"src": "sharedassets0.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "scroll_bar_top_x2__171.png",
+"name": "scroll_bar_top_x2",
+"src": "sharedassets0.assets",
+"w": 16,
+"h": 84,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "load_delete_hover__172.png",
+"name": "load_delete_hover",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "cross_hover__173.png",
+"name": "cross_hover",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "tab_active__174.png",
+"name": "tab_active",
+"src": "sharedassets0.assets",
+"w": 129,
+"h": 31,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "connected__176.png",
+"name": "connected",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "modding__177.png",
+"name": "modding",
+"src": "sharedassets0.assets",
+"w": 800,
+"h": 480,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "slot_border_purchased__178.png",
+"name": "slot_border_purchased",
+"src": "sharedassets0.assets",
+"w": 84,
+"h": 84,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "source_icon_steam__179.png",
+"name": "source_icon_steam",
+"src": "sharedassets0.assets",
+"w": 20,
+"h": 20,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "check__180.png",
+"name": "check",
+"src": "sharedassets0.assets",
+"w": 20,
+"h": 20,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "option_line__181.png",
+"name": "option_line",
+"src": "sharedassets0.assets",
+"w": 394,
+"h": 480,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "modding_layout_2x__182.png",
+"name": "modding_layout_2x",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "load_duplicate_normal__183.png",
+"name": "load_duplicate_normal",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "blackmail__184.png",
+"name": "blackmail",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "perk_slot_normal__185.png",
+"name": "perk_slot_normal",
+"src": "sharedassets0.assets",
+"w": 64,
+"h": 72,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "noun-people-6240743-FFFFFF__186.png",
+"name": "noun-people-6240743-FFFFFF",
+"src": "sharedassets0.assets",
+"w": 256,
+"h": 256,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "tab__187.png",
+"name": "tab",
+"src": "sharedassets0.assets",
+"w": 129,
+"h": 31,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "slider_gauge__188.png",
+"name": "slider_gauge",
+"src": "sharedassets0.assets",
+"w": 320,
+"h": 8,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "cross_hover__189.png",
+"name": "cross_hover",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "UIBevel__190.png",
+"name": "UIBevel",
+"src": "sharedassets0.assets",
+"w": 256,
+"h": 256,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "credit_line__191.png",
+"name": "credit_line",
+"src": "sharedassets0.assets",
+"w": 394,
+"h": 480,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "load_delete_normal__192.png",
+"name": "load_delete_normal",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "bad_lease__193.png",
+"name": "bad_lease",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "new_game_bg__194.png",
+"name": "new_game_bg",
+"src": "sharedassets0.assets",
+"w": 556,
+"h": 480,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "playtest_button_discord__195.png",
+"name": "playtest_button_discord",
+"src": "sharedassets0.assets",
+"w": 75,
+"h": 30,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "stopwatch__196.png",
+"name": "stopwatch",
+"src": "sharedassets0.assets",
+"w": 100,
+"h": 100,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "checkbox__197.png",
+"name": "checkbox",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "dropdown_box__198.png",
+"name": "dropdown_box",
+"src": "sharedassets0.assets",
+"w": 101,
+"h": 14,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "slider_track__199.png",
+"name": "slider_track",
+"src": "sharedassets0.assets",
+"w": 320,
+"h": 8,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "slider_thumb_hl__200.png",
+"name": "slider_thumb_hl",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 22,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "2perkSet2__201.png",
+"name": "2perkSet2",
+"src": "sharedassets0.assets",
+"w": 828,
+"h": 36,
+"filter": 0,
+"sprites": 16
+},
+{
+"file": "close_button_n__202.png",
+"name": "close_button_n",
+"src": "sharedassets0.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "dropdown_button__203.png",
+"name": "dropdown_button",
+"src": "sharedassets0.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "perk_p__204.png",
+"name": "perk_p",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "button_main_menu_h__205.png",
+"name": "button_main_menu_h",
+"src": "sharedassets0.assets",
+"w": 220,
+"h": 35,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "noun-flag-7646741-FFFFFF__206.png",
+"name": "noun-flag-7646741-FFFFFF",
+"src": "sharedassets0.assets",
+"w": 100,
+"h": 100,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "button_main_menu_p__207.png",
+"name": "button_main_menu_p",
+"src": "sharedassets0.assets",
+"w": 220,
+"h": 35,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "delete_save_button__208.png",
+"name": "delete_save_button",
+"src": "sharedassets0.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "uiback1LTan_embossed__209.png",
+"name": "uiback1LTan_embossed",
+"src": "sharedassets0.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "arrow_prev_hover__210.png",
+"name": "arrow_prev_hover",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "slot_border_normal__211.png",
+"name": "slot_border_normal",
+"src": "sharedassets0.assets",
+"w": 84,
+"h": 84,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "saving__212.png",
+"name": "saving",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "tab_normal__213.png",
+"name": "tab_normal",
+"src": "sharedassets0.assets",
+"w": 256,
+"h": 42,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "slot_inset__214.png",
+"name": "slot_inset",
+"src": "sharedassets0.assets",
+"w": 76,
+"h": 76,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "scroll_bar_bot_x2__215.png",
+"name": "scroll_bar_bot_x2",
+"src": "sharedassets0.assets",
+"w": 16,
+"h": 568,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "perk_n__216.png",
+"name": "perk_n",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "meta_section_2x__217.png",
+"name": "meta_section_2x",
+"src": "sharedassets0.assets",
+"w": 910,
+"h": 126,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "lucky__219.png",
+"name": "lucky",
+"src": "sharedassets0.assets",
+"w": 36,
+"h": 36,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "checkbox_mark__220.png",
+"name": "checkbox_mark",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "uiback1LTan__221.png",
+"name": "uiback1LTan",
+"src": "sharedassets0.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "addiction_narcotic__222.png",
+"name": "addiction_narcotic",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "welfare_program__223.png",
+"name": "welfare_program",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "cross__224.png",
+"name": "cross",
+"src": "sharedassets0.assets",
+"w": 20,
+"h": 20,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "load_dialog_cap__225.png",
+"name": "load_dialog_cap",
+"src": "sharedassets0.assets",
+"w": 12,
+"h": 42,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "additionc_alcohol__226.png",
+"name": "additionc_alcohol",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "cross__227.png",
+"name": "cross",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "cross_normal__228.png",
+"name": "cross_normal",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "price_tag_normal__229.png",
+"name": "price_tag_normal",
+"src": "sharedassets0.assets",
+"w": 56,
+"h": 22,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "sentinel__230.png",
+"name": "sentinel",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "model_citizen__231.png",
+"name": "model_citizen",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "dropdownElement__232.png",
+"name": "dropdownElement",
+"src": "sharedassets0.assets",
+"w": 320,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "scroll_thumb__233.png",
+"name": "scroll_thumb",
+"src": "sharedassets0.assets",
+"w": 6,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "mods_warning__234.png",
+"name": "mods_warning",
+"src": "sharedassets0.assets",
+"w": 20,
+"h": 19,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "bazaar__235.png",
+"name": "bazaar",
+"src": "sharedassets0.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "header_bar__236.png",
+"name": "header_bar",
+"src": "sharedassets0.assets",
+"w": 64,
+"h": 42,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "networkIcons__237.png",
+"name": "networkIcons",
+"src": "sharedassets0.assets",
+"w": 682,
+"h": 493,
+"filter": 0,
+"sprites": 50
+},
+{
+"file": "connector__238.png",
+"name": "connector",
+"src": "sharedassets0.assets",
+"w": 24,
+"h": 4,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "delete_save_button_hl__239.png",
+"name": "delete_save_button_hl",
+"src": "sharedassets0.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "settings__240.png",
+"name": "settings",
+"src": "sharedassets0.assets",
+"w": 42,
+"h": 42,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "option_bg__241.png",
+"name": "option_bg",
+"src": "sharedassets0.assets",
+"w": 394,
+"h": 480,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "additionc_gambling__242.png",
+"name": "additionc_gambling",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "items_tool__243.png",
+"name": "items_tool",
+"src": "sharedassets0.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 2
+},
+{
+"file": "window_frame__244.png",
+"name": "window_frame",
+"src": "sharedassets0.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "slider_thumb__245.png",
+"name": "slider_thumb",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 22,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "additionc_nicotine__247.png",
+"name": "additionc_nicotine",
+"src": "sharedassets0.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "frame_2_square__248.png",
+"name": "frame_2_square",
+"src": "sharedassets0.assets",
+"w": 6,
+"h": 6,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "iconWater__17.png",
+"name": "iconWater",
+"src": "sharedassets1.assets",
+"w": 9,
+"h": 14,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "Nellis__18.png",
+"name": "Nellis",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "blue_button_2x__19.png",
+"name": "blue_button_2x",
+"src": "sharedassets1.assets",
+"w": 160,
+"h": 44,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "phone_button1p__20.png",
+"name": "phone_button1p",
+"src": "sharedassets1.assets",
+"w": 11,
+"h": 10,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "lease_doc__21.png",
+"name": "lease_doc",
+"src": "sharedassets1.assets",
+"w": 333,
+"h": 465,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "one_hand__22.png",
+"name": "one_hand",
+"src": "sharedassets1.assets",
+"w": 160,
+"h": 112,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_28__23.png",
+"name": "LDR_LLL1_28",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "tablet__24.png",
+"name": "tablet",
+"src": "sharedassets1.assets",
+"w": 322,
+"h": 409,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "desk animations2__25.png",
+"name": "desk animations2",
+"src": "sharedassets1.assets",
+"w": 160,
+"h": 15,
+"filter": 0,
+"sprites": 8
+},
+{
+"file": "arrow__26.png",
+"name": "arrow",
+"src": "sharedassets1.assets",
+"w": 16,
+"h": 12,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "example_logo2__27.png",
+"name": "example_logo2",
+"src": "sharedassets1.assets",
+"w": 55,
+"h": 39,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "postit_blue__28.png",
+"name": "postit_blue",
+"src": "sharedassets1.assets",
+"w": 17,
+"h": 13,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "top_bun_deluxe__29.png",
+"name": "top_bun_deluxe",
+"src": "sharedassets1.assets",
+"w": 265,
+"h": 104,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "drjackson2__30.png",
+"name": "drjackson2",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "letter incorrect2__31.png",
+"name": "letter incorrect2",
+"src": "sharedassets1.assets",
+"w": 137,
+"h": 96,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "farGasmask__32.png",
+"name": "farGasmask",
+"src": "sharedassets1.assets",
+"w": 128,
+"h": 45,
+"filter": 0,
+"sprites": 4
+},
+{
+"file": "letter incorrect8__33.png",
+"name": "letter incorrect8",
+"src": "sharedassets1.assets",
+"w": 137,
+"h": 96,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "dust__34.png",
+"name": "dust",
+"src": "sharedassets1.assets",
+"w": 3,
+"h": 3,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "calendar_stripped__35.png",
+"name": "calendar_stripped",
+"src": "sharedassets1.assets",
+"w": 729,
+"h": 496,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "wall__36.png",
+"name": "wall",
+"src": "sharedassets1.assets",
+"w": 640,
+"h": 360,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "galaxy__37.png",
+"name": "galaxy",
+"src": "sharedassets1.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "ending__38.png",
+"name": "ending",
+"src": "sharedassets1.assets",
+"w": 48,
+"h": 48,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "femaleMerc__39.png",
+"name": "femaleMerc",
+"src": "sharedassets1.assets",
+"w": 1152,
+"h": 211,
+"filter": 0,
+"sprites": 4
+},
+{
+"file": "LDR_LLL1_26__40.png",
+"name": "LDR_LLL1_26",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "store_background_rail__41.png",
+"name": "store_background_rail",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "frame_2__42.png",
+"name": "frame_2",
+"src": "sharedassets1.assets",
+"w": 6,
+"h": 6,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "wrap_open_flipped__43.png",
+"name": "wrap_open_flipped",
+"src": "sharedassets1.assets",
+"w": 265,
+"h": 104,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_35__44.png",
+"name": "LDR_LLL1_35",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "slot__45.png",
+"name": "slot",
+"src": "sharedassets1.assets",
+"w": 231,
+"h": 39,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "bargain_spine__46.png",
+"name": "bargain_spine",
+"src": "sharedassets1.assets",
+"w": 24,
+"h": 311,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "Check__47.png",
+"name": "Check",
+"src": "sharedassets1.assets",
+"w": 27,
+"h": 21,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "2carbon_int_full_emg__48.png",
+"name": "2carbon_int_full_emg",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_1__49.png",
+"name": "LDR_LLL1_1",
+"src": "sharedassets1.assets",
+"w": 256,
+"h": 256,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "LDR_LLL1_30__50.png",
+"name": "LDR_LLL1_30",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "example_chip2__51.png",
+"name": "example_chip2",
+"src": "sharedassets1.assets",
+"w": 21,
+"h": 17,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "client_display__52.png",
+"name": "client_display",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "2carbon_hand_1normal__53.png",
+"name": "2carbon_hand_1normal",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "cropped-logo-correct__54.png",
+"name": "cropped-logo-correct",
+"src": "sharedassets1.assets",
+"w": 75,
+"h": 65,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "3gold_addon_2blade__55.png",
+"name": "3gold_addon_2blade",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_61__56.png",
+"name": "LDR_LLL1_61",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "guide_color_guide__57.png",
+"name": "guide_color_guide",
+"src": "sharedassets1.assets",
+"w": 12,
+"h": 21,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "example_letter3__58.png",
+"name": "example_letter3",
+"src": "sharedassets1.assets",
+"w": 42,
+"h": 27,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_47__59.png",
+"name": "LDR_LLL1_47",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "chem_scan_button__60.png",
+"name": "chem_scan_button",
+"src": "sharedassets1.assets",
+"w": 73,
+"h": 19,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "seal_zhong__61.png",
+"name": "seal_zhong",
+"src": "sharedassets1.assets",
+"w": 319,
+"h": 124,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "chip color__62.png",
+"name": "chip color",
+"src": "sharedassets1.assets",
+"w": 137,
+"h": 96,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "checkbox_checked__63.png",
+"name": "checkbox_checked",
+"src": "sharedassets1.assets",
+"w": 13,
+"h": 13,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "tutorial_bubble_unpointed_x2__64.png",
+"name": "tutorial_bubble_unpointed_x2",
+"src": "sharedassets1.assets",
+"w": 96,
+"h": 68,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "3gold_hand_2wear__65.png",
+"name": "3gold_hand_2wear",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "reputation_box__66.png",
+"name": "reputation_box",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_16__67.png",
+"name": "LDR_LLL1_16",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "notebook_manual_section__68.png",
+"name": "notebook_manual_section",
+"src": "sharedassets1.assets",
+"w": 213,
+"h": 14,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_44__69.png",
+"name": "LDR_LLL1_44",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "ribwich_logo_incorrect3__70.png",
+"name": "ribwich_logo_incorrect3",
+"src": "sharedassets1.assets",
+"w": 265,
+"h": 104,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "calendar_top-Sheet__71.png",
+"name": "calendar_top-Sheet",
+"src": "sharedassets1.assets",
+"w": 405,
+"h": 63,
+"filter": 0,
+"sprites": 4
+},
+{
+"file": "2carbon_addon_2blade__72.png",
+"name": "2carbon_addon_2blade",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "window__73.png",
+"name": "window",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "cigarette_color_card_item__74.png",
+"name": "cigarette_color_card_item",
+"src": "sharedassets1.assets",
+"w": 110,
+"h": 126,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "example_letter1__75.png",
+"name": "example_letter1",
+"src": "sharedassets1.assets",
+"w": 129,
+"h": 81,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "femaleFarmer__76.png",
+"name": "femaleFarmer",
+"src": "sharedassets1.assets",
+"w": 576,
+"h": 211,
+"filter": 0,
+"sprites": 2
+},
+{
+"file": "card_plate__77.png",
+"name": "card_plate",
+"src": "sharedassets1.assets",
+"w": 12,
+"h": 12,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_40__78.png",
+"name": "LDR_LLL1_40",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "LDR_LLL1_2__79.png",
+"name": "LDR_LLL1_2",
+"src": "sharedassets1.assets",
+"w": 256,
+"h": 256,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "maleChef__80.png",
+"name": "maleChef",
+"src": "sharedassets1.assets",
+"w": 864,
+"h": 211,
+"filter": 0,
+"sprites": 3
+},
+{
+"file": "store_mid_stairs__81.png",
+"name": "store_mid_stairs",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_37__82.png",
+"name": "LDR_LLL1_37",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "logo incorrect2__83.png",
+"name": "logo incorrect2",
+"src": "sharedassets1.assets",
+"w": 137,
+"h": 96,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "credit_display__84.png",
+"name": "credit_display",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "scavMale__85.png",
+"name": "scavMale",
+"src": "sharedassets1.assets",
+"w": 576,
+"h": 211,
+"filter": 0,
+"sprites": 2
+},
+{
+"file": "card_wild__86.png",
+"name": "card_wild",
+"src": "sharedassets1.assets",
+"w": 137,
+"h": 85,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "white_rounded__87.png",
+"name": "white_rounded",
+"src": "sharedassets1.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "femaleBM__88.png",
+"name": "femaleBM",
+"src": "sharedassets1.assets",
+"w": 1440,
+"h": 211,
+"filter": 0,
+"sprites": 5
+},
+{
+"file": "wanted_portait5__89.png",
+"name": "wanted_portait5",
+"src": "sharedassets1.assets",
+"w": 34,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "next_normal__90.png",
+"name": "next_normal",
+"src": "sharedassets1.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "serpico_rev__91.png",
+"name": "serpico_rev",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "trailer_scav1__92.png",
+"name": "trailer_scav1",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "2carbon_int_symboll_emgp__93.png",
+"name": "2carbon_int_symboll_emgp",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "uibackOrange1L__94.png",
+"name": "uibackOrange1L",
+"src": "sharedassets1.assets",
+"w": 48,
+"h": 64,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "maleScav1__95.png",
+"name": "maleScav1",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "wanted5__96.png",
+"name": "wanted5",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "2carbon_hand_2wear__97.png",
+"name": "2carbon_hand_2wear",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "layout3__98.png",
+"name": "layout3",
+"src": "sharedassets1.assets",
+"w": 364,
+"h": 466,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "maleScav6__99.png",
+"name": "maleScav6",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "info_dark__100.png",
+"name": "info_dark",
+"src": "sharedassets1.assets",
+"w": 14,
+"h": 14,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "water_container__101.png",
+"name": "water_container",
+"src": "sharedassets1.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 2
+},
+{
+"file": "negociation_tablet__102.png",
+"name": "negociation_tablet",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "window_top__103.png",
+"name": "window_top",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "nightly_tab__104.png",
+"name": "nightly_tab",
+"src": "sharedassets1.assets",
+"w": 250,
+"h": 29,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "refresh__105.png",
+"name": "refresh",
+"src": "sharedassets1.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "wanted__106.png",
+"name": "wanted",
+"src": "sharedassets1.assets",
+"w": 666,
+"h": 930,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "glass_door__107.png",
+"name": "glass_door",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "emoji_happy__108.png",
+"name": "emoji_happy",
+"src": "sharedassets1.assets",
+"w": 11,
+"h": 11,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "start__109.png",
+"name": "start",
+"src": "sharedassets1.assets",
+"w": 82,
+"h": 19,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "card__110.png",
+"name": "card",
+"src": "sharedassets1.assets",
+"w": 137,
+"h": 96,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "wanted_portait6__111.png",
+"name": "wanted_portait6",
+"src": "sharedassets1.assets",
+"w": 34,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "3gold_hand_3damage__112.png",
+"name": "3gold_hand_3damage",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "uiback2L__113.png",
+"name": "uiback2L",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "shotgun_shadow_only__114.png",
+"name": "shotgun_shadow_only",
+"src": "sharedassets1.assets",
+"w": 49,
+"h": 158,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "shot_animation_body__115.png",
+"name": "shot_animation_body",
+"src": "sharedassets1.assets",
+"w": 2048,
+"h": 256,
+"filter": 0,
+"sprites": 7
+},
+{
+"file": "end_top__116.png",
+"name": "end_top",
+"src": "sharedassets1.assets",
+"w": 82,
+"h": 19,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "wall2__117.png",
+"name": "wall2",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "labeler__118.png",
+"name": "labeler",
+"src": "sharedassets1.assets",
+"w": 548,
+"h": 258,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "mouse_icon_right__119.png",
+"name": "mouse_icon_right",
+"src": "sharedassets1.assets",
+"w": 23,
+"h": 38,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "injector_dam2__120.png",
+"name": "injector_dam2",
+"src": "sharedassets1.assets",
+"w": 231,
+"h": 39,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "bargain_active__121.png",
+"name": "bargain_active",
+"src": "sharedassets1.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "logo correct__122.png",
+"name": "logo correct",
+"src": "sharedassets1.assets",
+"w": 137,
+"h": 96,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_15__123.png",
+"name": "LDR_LLL1_15",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "maleLower__124.png",
+"name": "maleLower",
+"src": "sharedassets1.assets",
+"w": 864,
+"h": 211,
+"filter": 0,
+"sprites": 3
+},
+{
+"file": "box_ok__125.png",
+"name": "box_ok",
+"src": "sharedassets1.assets",
+"w": 83,
+"h": 141,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_34__126.png",
+"name": "LDR_LLL1_34",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "cross_hover__127.png",
+"name": "cross_hover",
+"src": "sharedassets1.assets",
+"w": 28,
+"h": 28,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "farTrechCoat__128.png",
+"name": "farTrechCoat",
+"src": "sharedassets1.assets",
+"w": 128,
+"h": 45,
+"filter": 0,
+"sprites": 4
+},
+{
+"file": "sawyer__129.png",
+"name": "sawyer",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "phone__130.png",
+"name": "phone",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "example_letter2__131.png",
+"name": "example_letter2",
+"src": "sharedassets1.assets",
+"w": 43,
+"h": 27,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_24__132.png",
+"name": "LDR_LLL1_24",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "maleScav7__133.png",
+"name": "maleScav7",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "2carbon_addon_1armor__134.png",
+"name": "2carbon_addon_1armor",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "button__135.png",
+"name": "button",
+"src": "sharedassets1.assets",
+"w": 48,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_36__136.png",
+"name": "LDR_LLL1_36",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "card_outline_normal__137.png",
+"name": "card_outline_normal",
+"src": "sharedassets1.assets",
+"w": 12,
+"h": 12,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "bookBack_white__138.png",
+"name": "bookBack_white",
+"src": "sharedassets1.assets",
+"w": 48,
+"h": 64,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "3gold_interface_emg__139.png",
+"name": "3gold_interface_emg",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_3__140.png",
+"name": "LDR_LLL1_3",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "wanted_portait3__141.png",
+"name": "wanted_portait3",
+"src": "sharedassets1.assets",
+"w": 34,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "maleEng__142.png",
+"name": "maleEng",
+"src": "sharedassets1.assets",
+"w": 1728,
+"h": 211,
+"filter": 0,
+"sprites": 6
+},
+{
+"file": "end__143.png",
+"name": "end",
+"src": "sharedassets1.assets",
+"w": 82,
+"h": 19,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "condition_reinforced__144.png",
+"name": "condition_reinforced",
+"src": "sharedassets1.assets",
+"w": 319,
+"h": 124,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "maleScav5__145.png",
+"name": "maleScav5",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "notebook_manual_section_2x__146.png",
+"name": "notebook_manual_section_2x",
+"src": "sharedassets1.assets",
+"w": 426,
+"h": 28,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "wanted_portait4__147.png",
+"name": "wanted_portait4",
+"src": "sharedassets1.assets",
+"w": 34,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_7__148.png",
+"name": "LDR_LLL1_7",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "button_integoration__149.png",
+"name": "button_integoration",
+"src": "sharedassets1.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "2carbon_int_full_ni__150.png",
+"name": "2carbon_int_full_ni",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_1__151.png",
+"name": "LDR_LLL1_1",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "femaleRev__152.png",
+"name": "femaleRev",
+"src": "sharedassets1.assets",
+"w": 2016,
+"h": 211,
+"filter": 0,
+"sprites": 7
+},
+{
+"file": "condition_wear__153.png",
+"name": "condition_wear",
+"src": "sharedassets1.assets",
+"w": 319,
+"h": 124,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "label__154.png",
+"name": "label",
+"src": "sharedassets1.assets",
+"w": 128,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "seal-open__155.png",
+"name": "seal-open",
+"src": "sharedassets1.assets",
+"w": 83,
+"h": 141,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "Serpico__156.png",
+"name": "Serpico",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "event__157.png",
+"name": "event",
+"src": "sharedassets1.assets",
+"w": 76,
+"h": 19,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "water_container2__158.png",
+"name": "water_container2",
+"src": "sharedassets1.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "notebook_manual__159.png",
+"name": "notebook_manual",
+"src": "sharedassets1.assets",
+"w": 314,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "body__160.png",
+"name": "body",
+"src": "sharedassets1.assets",
+"w": 90,
+"h": 48,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "general_button_2x__161.png",
+"name": "general_button_2x",
+"src": "sharedassets1.assets",
+"w": 84,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "poster_no_shadow__162.png",
+"name": "poster_no_shadow",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "arrow_left__163.png",
+"name": "arrow_left",
+"src": "sharedassets1.assets",
+"w": 32,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "chip_cracked__164.png",
+"name": "chip_cracked",
+"src": "sharedassets1.assets",
+"w": 137,
+"h": 96,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_49__165.png",
+"name": "LDR_LLL1_49",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "reputation_box__166.png",
+"name": "reputation_box",
+"src": "sharedassets1.assets",
+"w": 98,
+"h": 288,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_60__167.png",
+"name": "LDR_LLL1_60",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "pickles_extra__168.png",
+"name": "pickles_extra",
+"src": "sharedassets1.assets",
+"w": 265,
+"h": 104,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "farBandana__169.png",
+"name": "farBandana",
+"src": "sharedassets1.assets",
+"w": 128,
+"h": 45,
+"filter": 0,
+"sprites": 4
+},
+{
+"file": "wild__170.png",
+"name": "wild",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "maleLower__171.png",
+"name": "maleLower",
+"src": "sharedassets1.assets",
+"w": 2880,
+"h": 422,
+"filter": 0,
+"sprites": 11
+},
+{
+"file": "femaleSecCorpo__172.png",
+"name": "femaleSecCorpo",
+"src": "sharedassets1.assets",
+"w": 576,
+"h": 211,
+"filter": 0,
+"sprites": 2
+},
+{
+"file": "ribwich_logo_incorrect1__173.png",
+"name": "ribwich_logo_incorrect1",
+"src": "sharedassets1.assets",
+"w": 265,
+"h": 104,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "mentors_notes__174.png",
+"name": "mentors_notes",
+"src": "sharedassets1.assets",
+"w": 255,
+"h": 351,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "deepArea_2x__175.png",
+"name": "deepArea_2x",
+"src": "sharedassets1.assets",
+"w": 354,
+"h": 444,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "davre_logo_incorrect2__176.png",
+"name": "davre_logo_incorrect2",
+"src": "sharedassets1.assets",
+"w": 265,
+"h": 104,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "store_front_wall_lit__177.png",
+"name": "store_front_wall_lit",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "guide__178.png",
+"name": "guide",
+"src": "sharedassets1.assets",
+"w": 320,
+"h": 400,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "maleFarmer__179.png",
+"name": "maleFarmer",
+"src": "sharedassets1.assets",
+"w": 1152,
+"h": 211,
+"filter": 0,
+"sprites": 4
+},
+{
+"file": "plant_scanner__180.png",
+"name": "plant_scanner",
+"src": "sharedassets1.assets",
+"w": 211,
+"h": 303,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "close__181.png",
+"name": "close",
+"src": "sharedassets1.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "midGasmask__182.png",
+"name": "midGasmask",
+"src": "sharedassets1.assets",
+"w": 520,
+"h": 180,
+"filter": 0,
+"sprites": 4
+},
+{
+"file": "subpanel_x2__183.png",
+"name": "subpanel_x2",
+"src": "sharedassets1.assets",
+"w": 418,
+"h": 790,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "bargain__184.png",
+"name": "bargain",
+"src": "sharedassets1.assets",
+"w": 152,
+"h": 311,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "frame_notched__185.png",
+"name": "frame_notched",
+"src": "sharedassets1.assets",
+"w": 12,
+"h": 12,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "incident_slip_2x__186.png",
+"name": "incident_slip_2x",
+"src": "sharedassets1.assets",
+"w": 582,
+"h": 256,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "paper_buttons3__187.png",
+"name": "paper_buttons3",
+"src": "sharedassets1.assets",
+"w": 14,
+"h": 15,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "Mentor__188.png",
+"name": "Mentor",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "wanted6__189.png",
+"name": "wanted6",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "station__190.png",
+"name": "station",
+"src": "sharedassets1.assets",
+"w": 42,
+"h": 42,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "bottom_bun__191.png",
+"name": "bottom_bun",
+"src": "sharedassets1.assets",
+"w": 265,
+"h": 104,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "color_poor2__192.png",
+"name": "color_poor2",
+"src": "sharedassets1.assets",
+"w": 319,
+"h": 124,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "element_bg__193.png",
+"name": "element_bg",
+"src": "sharedassets1.assets",
+"w": 246,
+"h": 39,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_63__194.png",
+"name": "LDR_LLL1_63",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "confirmation_dialog_2x__195.png",
+"name": "confirmation_dialog_2x",
+"src": "sharedassets1.assets",
+"w": 770,
+"h": 324,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "guide_indicator_orange__196.png",
+"name": "guide_indicator_orange",
+"src": "sharedassets1.assets",
+"w": 15,
+"h": 6,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "letter-incorrect1__197.png",
+"name": "letter-incorrect1",
+"src": "sharedassets1.assets",
+"w": 83,
+"h": 141,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "clipboard__198.png",
+"name": "clipboard",
+"src": "sharedassets1.assets",
+"w": 48,
+"h": 69,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "card__199.png",
+"name": "card",
+"src": "sharedassets1.assets",
+"w": 194,
+"h": 116,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "notebox__200.png",
+"name": "notebox",
+"src": "sharedassets1.assets",
+"w": 319,
+"h": 62,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "frame_2__201.png",
+"name": "frame_2",
+"src": "sharedassets1.assets",
+"w": 6,
+"h": 6,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "berry_5small__202.png",
+"name": "berry_5small",
+"src": "sharedassets1.assets",
+"w": 239,
+"h": 233,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "prev_hover__203.png",
+"name": "prev_hover",
+"src": "sharedassets1.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "femGenericsDec3__204.png",
+"name": "femGenericsDec3",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "card_outline_selected__205.png",
+"name": "card_outline_selected",
+"src": "sharedassets1.assets",
+"w": 12,
+"h": 12,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "paper_buttons1__206.png",
+"name": "paper_buttons1",
+"src": "sharedassets1.assets",
+"w": 14,
+"h": 15,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "maleSecCorpo__207.png",
+"name": "maleSecCorpo",
+"src": "sharedassets1.assets",
+"w": 576,
+"h": 211,
+"filter": 0,
+"sprites": 2
+},
+{
+"file": "bell_button_sheet__208.png",
+"name": "bell_button_sheet",
+"src": "sharedassets1.assets",
+"w": 101,
+"h": 34,
+"filter": 0,
+"sprites": 3
+},
+{
+"file": "client_counter-Sheet__209.png",
+"name": "client_counter-Sheet",
+"src": "sharedassets1.assets",
+"w": 150,
+"h": 25,
+"filter": 0,
+"sprites": 4
+},
+{
+"file": "maleMerc__210.png",
+"name": "maleMerc",
+"src": "sharedassets1.assets",
+"w": 1152,
+"h": 211,
+"filter": 0,
+"sprites": 4
+},
+{
+"file": "client_shadow_small__211.png",
+"name": "client_shadow_small",
+"src": "sharedassets1.assets",
+"w": 48,
+"h": 64,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "reputation_background__212.png",
+"name": "reputation_background",
+"src": "sharedassets1.assets",
+"w": 798,
+"h": 468,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "uiback1LGreen__213.png",
+"name": "uiback1LGreen",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_0__214.png",
+"name": "LDR_LLL1_0",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "cap__215.png",
+"name": "cap",
+"src": "sharedassets1.assets",
+"w": 231,
+"h": 39,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "special__216.png",
+"name": "special",
+"src": "sharedassets1.assets",
+"w": 2304,
+"h": 211,
+"filter": 0,
+"sprites": 8
+},
+{
+"file": "perks_tooltip_calendar__217.png",
+"name": "perks_tooltip_calendar",
+"src": "sharedassets1.assets",
+"w": 442,
+"h": 178,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "emoji_smile__218.png",
+"name": "emoji_smile",
+"src": "sharedassets1.assets",
+"w": 11,
+"h": 11,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "cost_area_bought__219.png",
+"name": "cost_area_bought",
+"src": "sharedassets1.assets",
+"w": 19,
+"h": 9,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "walker1__220.png",
+"name": "walker1",
+"src": "sharedassets1.assets",
+"w": 1144,
+"h": 273,
+"filter": 0,
+"sprites": 8
+},
+{
+"file": "phone_button_large__221.png",
+"name": "phone_button_large",
+"src": "sharedassets1.assets",
+"w": 31,
+"h": 24,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "paper_buttons_l_1__222.png",
+"name": "paper_buttons_l_1",
+"src": "sharedassets1.assets",
+"w": 14,
+"h": 15,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_39__223.png",
+"name": "LDR_LLL1_39",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "femaleChef__224.png",
+"name": "femaleChef",
+"src": "sharedassets1.assets",
+"w": 576,
+"h": 211,
+"filter": 0,
+"sprites": 2
+},
+{
+"file": "maleScav9__225.png",
+"name": "maleScav9",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "wanted_portait2__226.png",
+"name": "wanted_portait2",
+"src": "sharedassets1.assets",
+"w": 34,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "wires_table__227.png",
+"name": "wires_table",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "1steel_int_full_emgp__228.png",
+"name": "1steel_int_full_emgp",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "middle__229.png",
+"name": "middle",
+"src": "sharedassets1.assets",
+"w": 82,
+"h": 19,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "cropped-color-saturation__230.png",
+"name": "cropped-color-saturation",
+"src": "sharedassets1.assets",
+"w": 55,
+"h": 25,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "tablet_bargain_open__231.png",
+"name": "tablet_bargain_open",
+"src": "sharedassets1.assets",
+"w": 322,
+"h": 409,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "pricebox__232.png",
+"name": "pricebox",
+"src": "sharedassets1.assets",
+"w": 263,
+"h": 37,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "grey_2x__233.png",
+"name": "grey_2x",
+"src": "sharedassets1.assets",
+"w": 234,
+"h": 226,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "cropped-seal-correct__234.png",
+"name": "cropped-seal-correct",
+"src": "sharedassets1.assets",
+"w": 83,
+"h": 28,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "wanted3__235.png",
+"name": "wanted3",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "emoji_angry__236.png",
+"name": "emoji_angry",
+"src": "sharedassets1.assets",
+"w": 11,
+"h": 11,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "slip__237.png",
+"name": "slip",
+"src": "sharedassets1.assets",
+"w": 259,
+"h": 353,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "pickles__238.png",
+"name": "pickles",
+"src": "sharedassets1.assets",
+"w": 265,
+"h": 104,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "iconGrowth__239.png",
+"name": "iconGrowth",
+"src": "sharedassets1.assets",
+"w": 78,
+"h": 14,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "scratch_back__240.png",
+"name": "scratch_back",
+"src": "sharedassets1.assets",
+"w": 180,
+"h": 142,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "exchange__241.png",
+"name": "exchange",
+"src": "sharedassets1.assets",
+"w": 333,
+"h": 465,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "color_high_quality__242.png",
+"name": "color_high_quality",
+"src": "sharedassets1.assets",
+"w": 319,
+"h": 124,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "connector__243.png",
+"name": "connector",
+"src": "sharedassets1.assets",
+"w": 133,
+"h": 174,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "eleanor_scav__244.png",
+"name": "eleanor_scav",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "paper_buttons_screen__245.png",
+"name": "paper_buttons_screen",
+"src": "sharedassets1.assets",
+"w": 56,
+"h": 15,
+"filter": 0,
+"sprites": 4
+},
+{
+"file": "display_case_large__246.png",
+"name": "display_case_large",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_55__247.png",
+"name": "LDR_LLL1_55",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "paper_buttons_close1__248.png",
+"name": "paper_buttons_close1",
+"src": "sharedassets1.assets",
+"w": 14,
+"h": 15,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "paper_buttons2__249.png",
+"name": "paper_buttons2",
+"src": "sharedassets1.assets",
+"w": 14,
+"h": 15,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "letter-correct__250.png",
+"name": "letter-correct",
+"src": "sharedassets1.assets",
+"w": 83,
+"h": 141,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "iconGrowth_lit__251.png",
+"name": "iconGrowth_lit",
+"src": "sharedassets1.assets",
+"w": 78,
+"h": 14,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "paper_buttons_l_4__252.png",
+"name": "paper_buttons_l_4",
+"src": "sharedassets1.assets",
+"w": 14,
+"h": 15,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "femaleMed__253.png",
+"name": "femaleMed",
+"src": "sharedassets1.assets",
+"w": 576,
+"h": 211,
+"filter": 0,
+"sprites": 2
+},
+{
+"file": "letter-incorrect3__254.png",
+"name": "letter-incorrect3",
+"src": "sharedassets1.assets",
+"w": 83,
+"h": 141,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_0__255.png",
+"name": "LDR_LLL1_0",
+"src": "sharedassets1.assets",
+"w": 256,
+"h": 256,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "seal golden__256.png",
+"name": "seal golden",
+"src": "sharedassets1.assets",
+"w": 137,
+"h": 96,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "shutter_door__257.png",
+"name": "shutter_door",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "cross__258.png",
+"name": "cross",
+"src": "sharedassets1.assets",
+"w": 79,
+"h": 80,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "wild_pat__259.png",
+"name": "wild_pat",
+"src": "sharedassets1.assets",
+"w": 135,
+"h": 145,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "card_ripped_2x__260.png",
+"name": "card_ripped_2x",
+"src": "sharedassets1.assets",
+"w": 268,
+"h": 176,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "midBandana__261.png",
+"name": "midBandana",
+"src": "sharedassets1.assets",
+"w": 520,
+"h": 180,
+"filter": 0,
+"sprites": 4
+},
+{
+"file": "network_button_normal__262.png",
+"name": "network_button_normal",
+"src": "sharedassets1.assets",
+"w": 48,
+"h": 48,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "cat__263.png",
+"name": "cat",
+"src": "sharedassets1.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "info_tan__264.png",
+"name": "info_tan",
+"src": "sharedassets1.assets",
+"w": 14,
+"h": 14,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "example_logo1__265.png",
+"name": "example_logo1",
+"src": "sharedassets1.assets",
+"w": 55,
+"h": 39,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "gp_2x__266.png",
+"name": "gp_2x",
+"src": "sharedassets1.assets",
+"w": 278,
+"h": 176,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "logo incorrect4__267.png",
+"name": "logo incorrect4",
+"src": "sharedassets1.assets",
+"w": 137,
+"h": 96,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "3gold_addon_1armor__268.png",
+"name": "3gold_addon_1armor",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "davre_logo_incorrect1__269.png",
+"name": "davre_logo_incorrect1",
+"src": "sharedassets1.assets",
+"w": 265,
+"h": 104,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "injector_dam1__270.png",
+"name": "injector_dam1",
+"src": "sharedassets1.assets",
+"w": 231,
+"h": 39,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "network_button_pressed__271.png",
+"name": "network_button_pressed",
+"src": "sharedassets1.assets",
+"w": 48,
+"h": 48,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_13__272.png",
+"name": "LDR_LLL1_13",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "3gold_interface_symbol_ni__273.png",
+"name": "3gold_interface_symbol_ni",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "shot_animation_wound__274.png",
+"name": "shot_animation_wound",
+"src": "sharedassets1.assets",
+"w": 2048,
+"h": 256,
+"filter": 0,
+"sprites": 6
+},
+{
+"file": "case_enjoyer__275.png",
+"name": "case_enjoyer",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "icon_synaprest__276.png",
+"name": "icon_synaprest",
+"src": "sharedassets1.assets",
+"w": 15,
+"h": 15,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "nego_buttonx2-3Pressed__277.png",
+"name": "nego_buttonx2-3Pressed",
+"src": "sharedassets1.assets",
+"w": 170,
+"h": 50,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "logo incorrect3__278.png",
+"name": "logo incorrect3",
+"src": "sharedassets1.assets",
+"w": 137,
+"h": 96,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "letter-incorrect2__279.png",
+"name": "letter-incorrect2",
+"src": "sharedassets1.assets",
+"w": 83,
+"h": 141,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "injector_color1__280.png",
+"name": "injector_color1",
+"src": "sharedassets1.assets",
+"w": 231,
+"h": 39,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "button_rewind_disabled__281.png",
+"name": "button_rewind_disabled",
+"src": "sharedassets1.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_31__282.png",
+"name": "LDR_LLL1_31",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "top_button__283.png",
+"name": "top_button",
+"src": "sharedassets1.assets",
+"w": 108,
+"h": 24,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "2carbon_int_full_emgp__284.png",
+"name": "2carbon_int_full_emgp",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_20__285.png",
+"name": "LDR_LLL1_20",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "drjackson__286.png",
+"name": "drjackson",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "door__287.png",
+"name": "door",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "maleScav8__288.png",
+"name": "maleScav8",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_4__289.png",
+"name": "LDR_LLL1_4",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "letter-chinese__290.png",
+"name": "letter-chinese",
+"src": "sharedassets1.assets",
+"w": 83,
+"h": 141,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "button_bargain-Sheet__291.png",
+"name": "button_bargain-Sheet",
+"src": "sharedassets1.assets",
+"w": 48,
+"h": 16,
+"filter": 0,
+"sprites": 3
+},
+{
+"file": "dropdown_arrow__292.png",
+"name": "dropdown_arrow",
+"src": "sharedassets1.assets",
+"w": 40,
+"h": 40,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "desk animations3__293.png",
+"name": "desk animations3",
+"src": "sharedassets1.assets",
+"w": 180,
+"h": 15,
+"filter": 0,
+"sprites": 9
+},
+{
+"file": "LDR_LLL1_7__294.png",
+"name": "LDR_LLL1_7",
+"src": "sharedassets1.assets",
+"w": 256,
+"h": 256,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "LDR_LLL1_56__295.png",
+"name": "LDR_LLL1_56",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "perk_h__296.png",
+"name": "perk_h",
+"src": "sharedassets1.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "letter incorrect5__297.png",
+"name": "letter incorrect5",
+"src": "sharedassets1.assets",
+"w": 137,
+"h": 96,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_9__298.png",
+"name": "LDR_LLL1_9",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "prev_normal__299.png",
+"name": "prev_normal",
+"src": "sharedassets1.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_43__300.png",
+"name": "LDR_LLL1_43",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "scanlines__301.png",
+"name": "scanlines",
+"src": "sharedassets1.assets",
+"w": 1,
+"h": 4,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_19__302.png",
+"name": "LDR_LLL1_19",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "info__303.png",
+"name": "info",
+"src": "sharedassets1.assets",
+"w": 128,
+"h": 128,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "marketplace_pc_notif__304.png",
+"name": "marketplace_pc_notif",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "1steel_hand_2wear__305.png",
+"name": "1steel_hand_2wear",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "1steel_hand_3damage__306.png",
+"name": "1steel_hand_3damage",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "letter correct__307.png",
+"name": "letter correct",
+"src": "sharedassets1.assets",
+"w": 137,
+"h": 96,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "3gold_interface_symbol_emgp__308.png",
+"name": "3gold_interface_symbol_emgp",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "AreaTex__309.png",
+"name": "AreaTex",
+"src": "sharedassets1.assets",
+"w": 160,
+"h": 560,
+"filter": 1,
+"sprites": 0
+},
+{
+"file": "1steel_int_syml_emg__310.png",
+"name": "1steel_int_syml_emg",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "info_light__311.png",
+"name": "info_light",
+"src": "sharedassets1.assets",
+"w": 14,
+"h": 14,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "phone_button_normal__312.png",
+"name": "phone_button_normal",
+"src": "sharedassets1.assets",
+"w": 22,
+"h": 24,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_18__313.png",
+"name": "LDR_LLL1_18",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "letter-font__314.png",
+"name": "letter-font",
+"src": "sharedassets1.assets",
+"w": 83,
+"h": 141,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "maleBM__315.png",
+"name": "maleBM",
+"src": "sharedassets1.assets",
+"w": 864,
+"h": 211,
+"filter": 0,
+"sprites": 3
+},
+{
+"file": "front_counter__316.png",
+"name": "front_counter",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "paper_buttons_l_3__317.png",
+"name": "paper_buttons_l_3",
+"src": "sharedassets1.assets",
+"w": 14,
+"h": 15,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "dialogue_bubble_science__318.png",
+"name": "dialogue_bubble_science",
+"src": "sharedassets1.assets",
+"w": 32,
+"h": 32,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_11__319.png",
+"name": "LDR_LLL1_11",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "guide_grid__320.png",
+"name": "guide_grid",
+"src": "sharedassets1.assets",
+"w": 333,
+"h": 465,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "recorder_text separators__321.png",
+"name": "recorder_text separators",
+"src": "sharedassets1.assets",
+"w": 31,
+"h": 2,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "newspaper__322.png",
+"name": "newspaper",
+"src": "sharedassets1.assets",
+"w": 364,
+"h": 466,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "postit_pink__323.png",
+"name": "postit_pink",
+"src": "sharedassets1.assets",
+"w": 16,
+"h": 13,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "green_bar__324.png",
+"name": "green_bar",
+"src": "sharedassets1.assets",
+"w": 24,
+"h": 1,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "cropped-letter-incorrect3__325.png",
+"name": "cropped-letter-incorrect3",
+"src": "sharedassets1.assets",
+"w": 56,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "femaleUpper__326.png",
+"name": "femaleUpper",
+"src": "sharedassets1.assets",
+"w": 2880,
+"h": 422,
+"filter": 0,
+"sprites": 13
+},
+{
+"file": "phone_button1h__327.png",
+"name": "phone_button1h",
+"src": "sharedassets1.assets",
+"w": 11,
+"h": 10,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_6__328.png",
+"name": "LDR_LLL1_6",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "cropped-letter-font__329.png",
+"name": "cropped-letter-font",
+"src": "sharedassets1.assets",
+"w": 62,
+"h": 10,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "textbox__330.png",
+"name": "textbox",
+"src": "sharedassets1.assets",
+"w": 80,
+"h": 25,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "dialogue_bubble2_pink_pointed__331.png",
+"name": "dialogue_bubble2_pink_pointed",
+"src": "sharedassets1.assets",
+"w": 48,
+"h": 40,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "guide_reworked__332.png",
+"name": "guide_reworked",
+"src": "sharedassets1.assets",
+"w": 333,
+"h": 465,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "marketplace_scrollbar_back__333.png",
+"name": "marketplace_scrollbar_back",
+"src": "sharedassets1.assets",
+"w": 18,
+"h": 688,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "indicator_green__334.png",
+"name": "indicator_green",
+"src": "sharedassets1.assets",
+"w": 231,
+"h": 39,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "exghange_logo__335.png",
+"name": "exghange_logo",
+"src": "sharedassets1.assets",
+"w": 60,
+"h": 42,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "Red_Imp_2x__336.png",
+"name": "Red_Imp_2x",
+"src": "sharedassets1.assets",
+"w": 278,
+"h": 176,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "maleSec__337.png",
+"name": "maleSec",
+"src": "sharedassets1.assets",
+"w": 1728,
+"h": 211,
+"filter": 0,
+"sprites": 6
+},
+{
+"file": "lou_sec__338.png",
+"name": "lou_sec",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "recorder-Sheet__339.png",
+"name": "recorder-Sheet",
+"src": "sharedassets1.assets",
+"w": 144,
+"h": 32,
+"filter": 0,
+"sprites": 3
+},
+{
+"file": "sample__340.png",
+"name": "sample",
+"src": "sharedassets1.assets",
+"w": 211,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "start_top__341.png",
+"name": "start_top",
+"src": "sharedassets1.assets",
+"w": 82,
+"h": 19,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "injector_dam3__342.png",
+"name": "injector_dam3",
+"src": "sharedassets1.assets",
+"w": 231,
+"h": 39,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "next_hover__343.png",
+"name": "next_hover",
+"src": "sharedassets1.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "offer window__344.png",
+"name": "offer window",
+"src": "sharedassets1.assets",
+"w": 322,
+"h": 409,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "maleUpper__345.png",
+"name": "maleUpper",
+"src": "sharedassets1.assets",
+"w": 1728,
+"h": 422,
+"filter": 0,
+"sprites": 9
+},
+{
+"file": "midBackpack__346.png",
+"name": "midBackpack",
+"src": "sharedassets1.assets",
+"w": 520,
+"h": 180,
+"filter": 0,
+"sprites": 4
+},
+{
+"file": "wires2__347.png",
+"name": "wires2",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "network_button_disabled__348.png",
+"name": "network_button_disabled",
+"src": "sharedassets1.assets",
+"w": 48,
+"h": 48,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "wanted9__349.png",
+"name": "wanted9",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "3gold_interface_ni__350.png",
+"name": "3gold_interface_ni",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "top_bun_normal__351.png",
+"name": "top_bun_normal",
+"src": "sharedassets1.assets",
+"w": 265,
+"h": 104,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "hidden_space__352.png",
+"name": "hidden_space",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_58__353.png",
+"name": "LDR_LLL1_58",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "info_cream__354.png",
+"name": "info_cream",
+"src": "sharedassets1.assets",
+"w": 14,
+"h": 14,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "red_square__355.png",
+"name": "red_square",
+"src": "sharedassets1.assets",
+"w": 48,
+"h": 48,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "wanted_portait9__356.png",
+"name": "wanted_portait9",
+"src": "sharedassets1.assets",
+"w": 34,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "condition_screws__357.png",
+"name": "condition_screws",
+"src": "sharedassets1.assets",
+"w": 319,
+"h": 124,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "2carbon_int_symboll_ni__358.png",
+"name": "2carbon_int_symboll_ni",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "red_bar__359.png",
+"name": "red_bar",
+"src": "sharedassets1.assets",
+"w": 24,
+"h": 1,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "serpico_scav__360.png",
+"name": "serpico_scav",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_32__361.png",
+"name": "LDR_LLL1_32",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "guide_ribwich_logo_incorrect__362.png",
+"name": "guide_ribwich_logo_incorrect",
+"src": "sharedassets1.assets",
+"w": 38,
+"h": 19,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "phone__363.png",
+"name": "phone",
+"src": "sharedassets1.assets",
+"w": 281,
+"h": 316,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "color_normal__364.png",
+"name": "color_normal",
+"src": "sharedassets1.assets",
+"w": 319,
+"h": 124,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "maleScav10__365.png",
+"name": "maleScav10",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "maleScav2__366.png",
+"name": "maleScav2",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "button_back_blue_m__367.png",
+"name": "button_back_blue_m",
+"src": "sharedassets1.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "arrow_right__368.png",
+"name": "arrow_right",
+"src": "sharedassets1.assets",
+"w": 32,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "icon_contraceptive__369.png",
+"name": "icon_contraceptive",
+"src": "sharedassets1.assets",
+"w": 15,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "3gold_interface_emgp__370.png",
+"name": "3gold_interface_emgp",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "maleScav3__371.png",
+"name": "maleScav3",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "berry_4mold__372.png",
+"name": "berry_4mold",
+"src": "sharedassets1.assets",
+"w": 239,
+"h": 233,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "icon_toxicity__373.png",
+"name": "icon_toxicity",
+"src": "sharedassets1.assets",
+"w": 13,
+"h": 14,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "eleanor3__374.png",
+"name": "eleanor3",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "general_button_2x_hl__375.png",
+"name": "general_button_2x_hl",
+"src": "sharedassets1.assets",
+"w": 84,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_46__376.png",
+"name": "LDR_LLL1_46",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "farBackpack__377.png",
+"name": "farBackpack",
+"src": "sharedassets1.assets",
+"w": 128,
+"h": 45,
+"filter": 0,
+"sprites": 4
+},
+{
+"file": "condition_heavy_wear__378.png",
+"name": "condition_heavy_wear",
+"src": "sharedassets1.assets",
+"w": 319,
+"h": 124,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "element_bg_single__379.png",
+"name": "element_bg_single",
+"src": "sharedassets1.assets",
+"w": 492,
+"h": 46,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "eleanor1__380.png",
+"name": "eleanor1",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "emoji_skull__381.png",
+"name": "emoji_skull",
+"src": "sharedassets1.assets",
+"w": 11,
+"h": 11,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "button_contact__382.png",
+"name": "button_contact",
+"src": "sharedassets1.assets",
+"w": 124,
+"h": 12,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_54__383.png",
+"name": "LDR_LLL1_54",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "nutrifruit__384.png",
+"name": "nutrifruit",
+"src": "sharedassets1.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "uiback1L__385.png",
+"name": "uiback1L",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "overlay box__386.png",
+"name": "overlay box",
+"src": "sharedassets1.assets",
+"w": 109,
+"h": 18,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "calendar wire__387.png",
+"name": "calendar wire",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "store_background__388.png",
+"name": "store_background",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_38__389.png",
+"name": "LDR_LLL1_38",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "3gold_interface_symbol_emg__390.png",
+"name": "3gold_interface_symbol_emg",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "network_button_hover__391.png",
+"name": "network_button_hover",
+"src": "sharedassets1.assets",
+"w": 48,
+"h": 48,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "wanted_portait8__392.png",
+"name": "wanted_portait8",
+"src": "sharedassets1.assets",
+"w": 34,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_12__393.png",
+"name": "LDR_LLL1_12",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "halo_glow__394.png",
+"name": "halo_glow",
+"src": "sharedassets1.assets",
+"w": 256,
+"h": 256,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "iconTrash__395.png",
+"name": "iconTrash",
+"src": "sharedassets1.assets",
+"w": 13,
+"h": 14,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_6__396.png",
+"name": "LDR_LLL1_6",
+"src": "sharedassets1.assets",
+"w": 256,
+"h": 256,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "berry_2under2__397.png",
+"name": "berry_2under2",
+"src": "sharedassets1.assets",
+"w": 239,
+"h": 233,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "tutorial_sheet__398.png",
+"name": "tutorial_sheet",
+"src": "sharedassets1.assets",
+"w": 220,
+"h": 320,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "seal_ll__399.png",
+"name": "seal_ll",
+"src": "sharedassets1.assets",
+"w": 319,
+"h": 124,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "button_rewind_normal__400.png",
+"name": "button_rewind_normal",
+"src": "sharedassets1.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "colorChecker__401.png",
+"name": "colorChecker",
+"src": "sharedassets1.assets",
+"w": 55,
+"h": 63,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "nego_buttonx2-2Hover__402.png",
+"name": "nego_buttonx2-2Hover",
+"src": "sharedassets1.assets",
+"w": 170,
+"h": 50,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "water_purity_2x__403.png",
+"name": "water_purity_2x",
+"src": "sharedassets1.assets",
+"w": 628,
+"h": 804,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "wires__404.png",
+"name": "wires",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "nego_buttonx2-4Disabled__405.png",
+"name": "nego_buttonx2-4Disabled",
+"src": "sharedassets1.assets",
+"w": 170,
+"h": 50,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "ribwich_logo_incorrect2__406.png",
+"name": "ribwich_logo_incorrect2",
+"src": "sharedassets1.assets",
+"w": 265,
+"h": 104,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "logo-complexe2__407.png",
+"name": "logo-complexe2",
+"src": "sharedassets1.assets",
+"w": 83,
+"h": 141,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "farPuncho__408.png",
+"name": "farPuncho",
+"src": "sharedassets1.assets",
+"w": 128,
+"h": 45,
+"filter": 0,
+"sprites": 4
+},
+{
+"file": "aqua_scan_button__409.png",
+"name": "aqua_scan_button",
+"src": "sharedassets1.assets",
+"w": 73,
+"h": 19,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_62__410.png",
+"name": "LDR_LLL1_62",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "nego_button_Disabled__411.png",
+"name": "nego_button_Disabled",
+"src": "sharedassets1.assets",
+"w": 85,
+"h": 25,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_5__412.png",
+"name": "LDR_LLL1_5",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "button_confront__413.png",
+"name": "button_confront",
+"src": "sharedassets1.assets",
+"w": 61,
+"h": 15,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "muzzleflash2__414.png",
+"name": "muzzleflash2",
+"src": "sharedassets1.assets",
+"w": 173,
+"h": 156,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "wanted7__415.png",
+"name": "wanted7",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "sec lamps red__416.png",
+"name": "sec lamps red",
+"src": "sharedassets1.assets",
+"w": 7,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "inspection_receipt__417.png",
+"name": "inspection_receipt",
+"src": "sharedassets1.assets",
+"w": 103,
+"h": 133,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "scrollbar_handle__418.png",
+"name": "scrollbar_handle",
+"src": "sharedassets1.assets",
+"w": 18,
+"h": 134,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "middle_top__419.png",
+"name": "middle_top",
+"src": "sharedassets1.assets",
+"w": 82,
+"h": 19,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_2__420.png",
+"name": "LDR_LLL1_2",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "magnifying glass__421.png",
+"name": "magnifying glass",
+"src": "sharedassets1.assets",
+"w": 242,
+"h": 228,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "femaleUpper__422.png",
+"name": "femaleUpper",
+"src": "sharedassets1.assets",
+"w": 864,
+"h": 211,
+"filter": 0,
+"sprites": 3
+},
+{
+"file": "chip correct__423.png",
+"name": "chip correct",
+"src": "sharedassets1.assets",
+"w": 137,
+"h": 96,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "sliding_area__424.png",
+"name": "sliding_area",
+"src": "sharedassets1.assets",
+"w": 7,
+"h": 39,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "rep_indicator__425.png",
+"name": "rep_indicator",
+"src": "sharedassets1.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "store_mid__426.png",
+"name": "store_mid",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "example_seal__427.png",
+"name": "example_seal",
+"src": "sharedassets1.assets",
+"w": 9,
+"h": 12,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "handnote__428.png",
+"name": "handnote",
+"src": "sharedassets1.assets",
+"w": 259,
+"h": 353,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "emoji_sad__429.png",
+"name": "emoji_sad",
+"src": "sharedassets1.assets",
+"w": 11,
+"h": 11,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "button_dismiss__430.png",
+"name": "button_dismiss",
+"src": "sharedassets1.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "arrows__431.png",
+"name": "arrows",
+"src": "sharedassets1.assets",
+"w": 194,
+"h": 259,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "nego_button_Pressed__432.png",
+"name": "nego_button_Pressed",
+"src": "sharedassets1.assets",
+"w": 85,
+"h": 25,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "condition_crack1__433.png",
+"name": "condition_crack1",
+"src": "sharedassets1.assets",
+"w": 319,
+"h": 124,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "maleBM__434.png",
+"name": "maleBM",
+"src": "sharedassets1.assets",
+"w": 1728,
+"h": 211,
+"filter": 0,
+"sprites": 6
+},
+{
+"file": "clientele-Sheet__435.png",
+"name": "clientele-Sheet",
+"src": "sharedassets1.assets",
+"w": 105,
+"h": 48,
+"filter": 0,
+"sprites": 4
+},
+{
+"file": "Note box__436.png",
+"name": "Note box",
+"src": "sharedassets1.assets",
+"w": 716,
+"h": 69,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "connectimg wire__437.png",
+"name": "connectimg wire",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "day__438.png",
+"name": "day",
+"src": "sharedassets1.assets",
+"w": 78,
+"h": 122,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_29__439.png",
+"name": "LDR_LLL1_29",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "cropped-logo-simple__440.png",
+"name": "cropped-logo-simple",
+"src": "sharedassets1.assets",
+"w": 71,
+"h": 65,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "shotgun_shadow__441.png",
+"name": "shotgun_shadow",
+"src": "sharedassets1.assets",
+"w": 49,
+"h": 158,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "phone_button_hover__442.png",
+"name": "phone_button_hover",
+"src": "sharedassets1.assets",
+"w": 10,
+"h": 9,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "bargain_plate__443.png",
+"name": "bargain_plate",
+"src": "sharedassets1.assets",
+"w": 144,
+"h": 311,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "wanted_portait1__444.png",
+"name": "wanted_portait1",
+"src": "sharedassets1.assets",
+"w": 34,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_5__445.png",
+"name": "LDR_LLL1_5",
+"src": "sharedassets1.assets",
+"w": 256,
+"h": 256,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "store_front_floor__446.png",
+"name": "store_front_floor",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "dotted_line__447.png",
+"name": "dotted_line",
+"src": "sharedassets1.assets",
+"w": 10,
+"h": 2,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "berry_1normal__448.png",
+"name": "berry_1normal",
+"src": "sharedassets1.assets",
+"w": 239,
+"h": 233,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "paper_buttons_close2__449.png",
+"name": "paper_buttons_close2",
+"src": "sharedassets1.assets",
+"w": 14,
+"h": 15,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "sec lamps green__450.png",
+"name": "sec lamps green",
+"src": "sharedassets1.assets",
+"w": 7,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "inventor_main__451.png",
+"name": "inventor_main",
+"src": "sharedassets1.assets",
+"w": 48,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "bar_code__452.png",
+"name": "bar_code",
+"src": "sharedassets1.assets",
+"w": 265,
+"h": 104,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "contractBack__453.png",
+"name": "contractBack",
+"src": "sharedassets1.assets",
+"w": 88,
+"h": 128,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_10__454.png",
+"name": "LDR_LLL1_10",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "LDR_LLL1_48__455.png",
+"name": "LDR_LLL1_48",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "button_glass__456.png",
+"name": "button_glass",
+"src": "sharedassets1.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "trailer_rev1__457.png",
+"name": "trailer_rev1",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "lines__458.png",
+"name": "lines",
+"src": "sharedassets1.assets",
+"w": 1808,
+"h": 832,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "desk animations4__459.png",
+"name": "desk animations4",
+"src": "sharedassets1.assets",
+"w": 441,
+"h": 15,
+"filter": 0,
+"sprites": 9
+},
+{
+"file": "indicator_missing__460.png",
+"name": "indicator_missing",
+"src": "sharedassets1.assets",
+"w": 231,
+"h": 39,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "store_front_lamp__461.png",
+"name": "store_front_lamp",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "ribwich_logo__462.png",
+"name": "ribwich_logo",
+"src": "sharedassets1.assets",
+"w": 265,
+"h": 104,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_42__463.png",
+"name": "LDR_LLL1_42",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "cross__464.png",
+"name": "cross",
+"src": "sharedassets1.assets",
+"w": 28,
+"h": 28,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "notice_box__465.png",
+"name": "notice_box",
+"src": "sharedassets1.assets",
+"w": 229,
+"h": 27,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "midTrechCoat__466.png",
+"name": "midTrechCoat",
+"src": "sharedassets1.assets",
+"w": 520,
+"h": 180,
+"filter": 0,
+"sprites": 4
+},
+{
+"file": "guide_section__467.png",
+"name": "guide_section",
+"src": "sharedassets1.assets",
+"w": 54,
+"h": 37,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "paper_buttons_l_2__468.png",
+"name": "paper_buttons_l_2",
+"src": "sharedassets1.assets",
+"w": 14,
+"h": 15,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "cost_area__469.png",
+"name": "cost_area",
+"src": "sharedassets1.assets",
+"w": 19,
+"h": 9,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "logo-simple__470.png",
+"name": "logo-simple",
+"src": "sharedassets1.assets",
+"w": 83,
+"h": 141,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "test_strips__471.png",
+"name": "test_strips",
+"src": "sharedassets1.assets",
+"w": 264,
+"h": 40,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_4__472.png",
+"name": "LDR_LLL1_4",
+"src": "sharedassets1.assets",
+"w": 256,
+"h": 256,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "berry_3over__473.png",
+"name": "berry_3over",
+"src": "sharedassets1.assets",
+"w": 239,
+"h": 233,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "poster__474.png",
+"name": "poster",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "button_confront_2x__475.png",
+"name": "button_confront_2x",
+"src": "sharedassets1.assets",
+"w": 122,
+"h": 30,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "shutter_door_cropped_2x__476.png",
+"name": "shutter_door_cropped_2x",
+"src": "sharedassets1.assets",
+"w": 302,
+"h": 241,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_33__477.png",
+"name": "LDR_LLL1_33",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "facility__478.png",
+"name": "facility",
+"src": "sharedassets1.assets",
+"w": 265,
+"h": 104,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "bookBack__479.png",
+"name": "bookBack",
+"src": "sharedassets1.assets",
+"w": 48,
+"h": 64,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_21__480.png",
+"name": "LDR_LLL1_21",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "tutorial_bubble_x2__481.png",
+"name": "tutorial_bubble_x2",
+"src": "sharedassets1.assets",
+"w": 96,
+"h": 80,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "berry_2under1__482.png",
+"name": "berry_2under1",
+"src": "sharedassets1.assets",
+"w": 239,
+"h": 233,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_45__483.png",
+"name": "LDR_LLL1_45",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "eleanor_rev__484.png",
+"name": "eleanor_rev",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "letter-incorrect5__485.png",
+"name": "letter-incorrect5",
+"src": "sharedassets1.assets",
+"w": 83,
+"h": 141,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "cartridge__486.png",
+"name": "cartridge",
+"src": "sharedassets1.assets",
+"w": 319,
+"h": 124,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "button_unavaible__487.png",
+"name": "button_unavaible",
+"src": "sharedassets1.assets",
+"w": 48,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "tray__488.png",
+"name": "tray",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "scratch__489.png",
+"name": "scratch",
+"src": "sharedassets1.assets",
+"w": 180,
+"h": 142,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_27__490.png",
+"name": "LDR_LLL1_27",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "Georgio__491.png",
+"name": "Georgio",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "phone_red_button_p__492.png",
+"name": "phone_red_button_p",
+"src": "sharedassets1.assets",
+"w": 22,
+"h": 20,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_17__493.png",
+"name": "LDR_LLL1_17",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "letter incorrect4__494.png",
+"name": "letter incorrect4",
+"src": "sharedassets1.assets",
+"w": 137,
+"h": 96,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_23__495.png",
+"name": "LDR_LLL1_23",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "eleanor2__496.png",
+"name": "eleanor2",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_3__497.png",
+"name": "LDR_LLL1_3",
+"src": "sharedassets1.assets",
+"w": 256,
+"h": 256,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "card_rev__498.png",
+"name": "card_rev",
+"src": "sharedassets1.assets",
+"w": 139,
+"h": 87,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "screen shadow__499.png",
+"name": "screen shadow",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "tag_rounded__500.png",
+"name": "tag_rounded",
+"src": "sharedassets1.assets",
+"w": 8,
+"h": 8,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "desk animations1__501.png",
+"name": "desk animations1",
+"src": "sharedassets1.assets",
+"w": 360,
+"h": 29,
+"filter": 0,
+"sprites": 9
+},
+{
+"file": "1steel_int_syml_ni__502.png",
+"name": "1steel_int_syml_ni",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "injector_color2__503.png",
+"name": "injector_color2",
+"src": "sharedassets1.assets",
+"w": 231,
+"h": 39,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "guide_ribwich_logo__504.png",
+"name": "guide_ribwich_logo",
+"src": "sharedassets1.assets",
+"w": 38,
+"h": 19,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "Back_White__505.png",
+"name": "Back_White",
+"src": "sharedassets1.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "marketplace_pc__506.png",
+"name": "marketplace_pc",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "container_tag_2x__507.png",
+"name": "container_tag_2x",
+"src": "sharedassets1.assets",
+"w": 92,
+"h": 20,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "button_zoom__508.png",
+"name": "button_zoom",
+"src": "sharedassets1.assets",
+"w": 48,
+"h": 16,
+"filter": 0,
+"sprites": 3
+},
+{
+"file": "card_blank_2x__509.png",
+"name": "card_blank_2x",
+"src": "sharedassets1.assets",
+"w": 272,
+"h": 162,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_8__510.png",
+"name": "LDR_LLL1_8",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "guide_davre_logo__511.png",
+"name": "guide_davre_logo",
+"src": "sharedassets1.assets",
+"w": 29,
+"h": 26,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "nego_button__512.png",
+"name": "nego_button",
+"src": "sharedassets1.assets",
+"w": 85,
+"h": 25,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "letter incorrect3__513.png",
+"name": "letter incorrect3",
+"src": "sharedassets1.assets",
+"w": 137,
+"h": 96,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_53__514.png",
+"name": "LDR_LLL1_53",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "guide_indicator_green__515.png",
+"name": "guide_indicator_green",
+"src": "sharedassets1.assets",
+"w": 15,
+"h": 6,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "indicator_red__516.png",
+"name": "indicator_red",
+"src": "sharedassets1.assets",
+"w": 231,
+"h": 39,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "wanted2__517.png",
+"name": "wanted2",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "maleSecOff__518.png",
+"name": "maleSecOff",
+"src": "sharedassets1.assets",
+"w": 864,
+"h": 211,
+"filter": 0,
+"sprites": 3
+},
+{
+"file": "femaleLower__519.png",
+"name": "femaleLower",
+"src": "sharedassets1.assets",
+"w": 2880,
+"h": 422,
+"filter": 0,
+"sprites": 14
+},
+{
+"file": "requirement__520.png",
+"name": "requirement",
+"src": "sharedassets1.assets",
+"w": 184,
+"h": 17,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "indicator_orange__521.png",
+"name": "indicator_orange",
+"src": "sharedassets1.assets",
+"w": 231,
+"h": 39,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "button_rewind_highlight__522.png",
+"name": "button_rewind_highlight",
+"src": "sharedassets1.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "maleRev__523.png",
+"name": "maleRev",
+"src": "sharedassets1.assets",
+"w": 1152,
+"h": 211,
+"filter": 0,
+"sprites": 4
+},
+{
+"file": "guide_indicator_red__524.png",
+"name": "guide_indicator_red",
+"src": "sharedassets1.assets",
+"w": 15,
+"h": 6,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "femaleBM__525.png",
+"name": "femaleBM",
+"src": "sharedassets1.assets",
+"w": 864,
+"h": 211,
+"filter": 0,
+"sprites": 3
+},
+{
+"file": "grey2_2x__526.png",
+"name": "grey2_2x",
+"src": "sharedassets1.assets",
+"w": 234,
+"h": 226,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "paper_buttons_close3__527.png",
+"name": "paper_buttons_close3",
+"src": "sharedassets1.assets",
+"w": 14,
+"h": 15,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_41__528.png",
+"name": "LDR_LLL1_41",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "sleeping_bag__529.png",
+"name": "sleeping_bag",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "button_rewind_pressed__530.png",
+"name": "button_rewind_pressed",
+"src": "sharedassets1.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "depression_section_x2__531.png",
+"name": "depression_section_x2",
+"src": "sharedassets1.assets",
+"w": 114,
+"h": 22,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "double_meat__532.png",
+"name": "double_meat",
+"src": "sharedassets1.assets",
+"w": 265,
+"h": 104,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "1steel_hand_1normal__533.png",
+"name": "1steel_hand_1normal",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "davre_logo_incorrect7__534.png",
+"name": "davre_logo_incorrect7",
+"src": "sharedassets1.assets",
+"w": 265,
+"h": 104,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "chip damaged__535.png",
+"name": "chip damaged",
+"src": "sharedassets1.assets",
+"w": 137,
+"h": 96,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "1steel_int_full_emg__536.png",
+"name": "1steel_int_full_emg",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "guide_clean__537.png",
+"name": "guide_clean",
+"src": "sharedassets1.assets",
+"w": 333,
+"h": 465,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "2carbon_int_symboll_emg__538.png",
+"name": "2carbon_int_symboll_emg",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "wanted8__539.png",
+"name": "wanted8",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "button_transfer__540.png",
+"name": "button_transfer",
+"src": "sharedassets1.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "desk__541.png",
+"name": "desk",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_52__542.png",
+"name": "LDR_LLL1_52",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "cropped-color-ok__543.png",
+"name": "cropped-color-ok",
+"src": "sharedassets1.assets",
+"w": 55,
+"h": 25,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "logo-correct__544.png",
+"name": "logo-correct",
+"src": "sharedassets1.assets",
+"w": 83,
+"h": 141,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "aqua_scan__545.png",
+"name": "aqua_scan",
+"src": "sharedassets1.assets",
+"w": 211,
+"h": 328,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "today__546.png",
+"name": "today",
+"src": "sharedassets1.assets",
+"w": 84,
+"h": 128,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "deepArea2__547.png",
+"name": "deepArea2",
+"src": "sharedassets1.assets",
+"w": 392,
+"h": 70,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "patch__548.png",
+"name": "patch",
+"src": "sharedassets1.assets",
+"w": 28,
+"h": 28,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "LDR_LLL1_51__549.png",
+"name": "LDR_LLL1_51",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "peat__550.png",
+"name": "peat",
+"src": "sharedassets1.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "bubble_sheet2__551.png",
+"name": "bubble_sheet2",
+"src": "sharedassets1.assets",
+"w": 512,
+"h": 512,
+"filter": 0,
+"sprites": 16
+},
+{
+"file": "store_mid_rail__552.png",
+"name": "store_mid_rail",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "midPuncho__553.png",
+"name": "midPuncho",
+"src": "sharedassets1.assets",
+"w": 520,
+"h": 180,
+"filter": 0,
+"sprites": 4
+},
+{
+"file": "1steel_addon_2blade__554.png",
+"name": "1steel_addon_2blade",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "phone_button_press__555.png",
+"name": "phone_button_press",
+"src": "sharedassets1.assets",
+"w": 10,
+"h": 9,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "pc_count-Sheet__556.png",
+"name": "pc_count-Sheet",
+"src": "sharedassets1.assets",
+"w": 128,
+"h": 32,
+"filter": 0,
+"sprites": 4
+},
+{
+"file": "LDR_LLL1_50__557.png",
+"name": "LDR_LLL1_50",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "letter-incorrect4__558.png",
+"name": "letter-incorrect4",
+"src": "sharedassets1.assets",
+"w": 83,
+"h": 141,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "trailer_rev2__559.png",
+"name": "trailer_rev2",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "logo incorrect5__560.png",
+"name": "logo incorrect5",
+"src": "sharedassets1.assets",
+"w": 137,
+"h": 96,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "card_outline_unavailable__561.png",
+"name": "card_outline_unavailable",
+"src": "sharedassets1.assets",
+"w": 12,
+"h": 12,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "odin__562.png",
+"name": "odin",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_59__563.png",
+"name": "LDR_LLL1_59",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "Courrier__564.png",
+"name": "Courrier",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "SearchTex__565.png",
+"name": "SearchTex",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 16,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "refresh__566.png",
+"name": "refresh",
+"src": "sharedassets1.assets",
+"w": 18,
+"h": 13,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "maleMed__567.png",
+"name": "maleMed",
+"src": "sharedassets1.assets",
+"w": 576,
+"h": 211,
+"filter": 0,
+"sprites": 2
+},
+{
+"file": "icon_euphoria__568.png",
+"name": "icon_euphoria",
+"src": "sharedassets1.assets",
+"w": 14,
+"h": 14,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "wanted1__569.png",
+"name": "wanted1",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "handle__570.png",
+"name": "handle",
+"src": "sharedassets1.assets",
+"w": 7,
+"h": 13,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "logo incorrect__571.png",
+"name": "logo incorrect",
+"src": "sharedassets1.assets",
+"w": 137,
+"h": 96,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "header2__572.png",
+"name": "header2",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 15,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "davre_logo_correct__573.png",
+"name": "davre_logo_correct",
+"src": "sharedassets1.assets",
+"w": 265,
+"h": 104,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "text box__574.png",
+"name": "text box",
+"src": "sharedassets1.assets",
+"w": 137,
+"h": 96,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_22__575.png",
+"name": "LDR_LLL1_22",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "button_sec__576.png",
+"name": "button_sec",
+"src": "sharedassets1.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "waffle_enjoyer__577.png",
+"name": "waffle_enjoyer",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "business_card_template__578.png",
+"name": "business_card_template",
+"src": "sharedassets1.assets",
+"w": 200,
+"h": 125,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "femaleSec__579.png",
+"name": "femaleSec",
+"src": "sharedassets1.assets",
+"w": 1440,
+"h": 211,
+"filter": 0,
+"sprites": 5
+},
+{
+"file": "LDR_LLL1_57__580.png",
+"name": "LDR_LLL1_57",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "guide_davre_logo_incorrect__581.png",
+"name": "guide_davre_logo_incorrect",
+"src": "sharedassets1.assets",
+"w": 29,
+"h": 27,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "grandpa_cheng__582.png",
+"name": "grandpa_cheng",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "maleUpper__583.png",
+"name": "maleUpper",
+"src": "sharedassets1.assets",
+"w": 864,
+"h": 211,
+"filter": 0,
+"sprites": 3
+},
+{
+"file": "reputation_grid__584.png",
+"name": "reputation_grid",
+"src": "sharedassets1.assets",
+"w": 50,
+"h": 262,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "magnifying_screen__585.png",
+"name": "magnifying_screen",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "logo-complexe1__586.png",
+"name": "logo-complexe1",
+"src": "sharedassets1.assets",
+"w": 83,
+"h": 141,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "landlord__587.png",
+"name": "landlord",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "letter incorrect7__588.png",
+"name": "letter incorrect7",
+"src": "sharedassets1.assets",
+"w": 137,
+"h": 96,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "warp_normal__589.png",
+"name": "warp_normal",
+"src": "sharedassets1.assets",
+"w": 265,
+"h": 104,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "lighting__590.png",
+"name": "lighting",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "playtest_button__591.png",
+"name": "playtest_button",
+"src": "sharedassets1.assets",
+"w": 75,
+"h": 30,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "scavFemale__592.png",
+"name": "scavFemale",
+"src": "sharedassets1.assets",
+"w": 2880,
+"h": 422,
+"filter": 0,
+"sprites": 14
+},
+{
+"file": "color_poor1__593.png",
+"name": "color_poor1",
+"src": "sharedassets1.assets",
+"w": 319,
+"h": 124,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "header_bar__594.png",
+"name": "header_bar",
+"src": "sharedassets1.assets",
+"w": 24,
+"h": 42,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "event_top__595.png",
+"name": "event_top",
+"src": "sharedassets1.assets",
+"w": 76,
+"h": 19,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "appraisal_panel__596.png",
+"name": "appraisal_panel",
+"src": "sharedassets1.assets",
+"w": 273,
+"h": 132,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "cropped-letter-correct__597.png",
+"name": "cropped-letter-correct",
+"src": "sharedassets1.assets",
+"w": 63,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "info_red__598.png",
+"name": "info_red",
+"src": "sharedassets1.assets",
+"w": 14,
+"h": 14,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "logo_checker__599.png",
+"name": "logo_checker",
+"src": "sharedassets1.assets",
+"w": 55,
+"h": 39,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "arrow__600.png",
+"name": "arrow",
+"src": "sharedassets1.assets",
+"w": 600,
+"h": 600,
+"filter": 1,
+"sprites": 1
+},
+{
+"file": "display_case_medium__601.png",
+"name": "display_case_medium",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "wall__602.png",
+"name": "wall",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "letter incorrect6__603.png",
+"name": "letter incorrect6",
+"src": "sharedassets1.assets",
+"w": 137,
+"h": 96,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "davre_logo_incorrect6__604.png",
+"name": "davre_logo_incorrect6",
+"src": "sharedassets1.assets",
+"w": 265,
+"h": 104,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "femaleSecOff__605.png",
+"name": "femaleSecOff",
+"src": "sharedassets1.assets",
+"w": 576,
+"h": 211,
+"filter": 0,
+"sprites": 2
+},
+{
+"file": "display_case__606.png",
+"name": "display_case",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "1steel_int_full_ni__607.png",
+"name": "1steel_int_full_ni",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "1steel_int_syml_emgp__608.png",
+"name": "1steel_int_syml_emgp",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "shutter_button_sheet__609.png",
+"name": "shutter_button_sheet",
+"src": "sharedassets1.assets",
+"w": 101,
+"h": 34,
+"filter": 0,
+"sprites": 3
+},
+{
+"file": "seal holo__610.png",
+"name": "seal holo",
+"src": "sharedassets1.assets",
+"w": 137,
+"h": 96,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "seal_ignition__611.png",
+"name": "seal_ignition",
+"src": "sharedassets1.assets",
+"w": 319,
+"h": 124,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "foil__612.png",
+"name": "foil",
+"src": "sharedassets1.assets",
+"w": 6,
+"h": 6,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "seal_republic__613.png",
+"name": "seal_republic",
+"src": "sharedassets1.assets",
+"w": 319,
+"h": 124,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "femaleEng__614.png",
+"name": "femaleEng",
+"src": "sharedassets1.assets",
+"w": 576,
+"h": 211,
+"filter": 0,
+"sprites": 2
+},
+{
+"file": "davre_logo_incorrect3__615.png",
+"name": "davre_logo_incorrect3",
+"src": "sharedassets1.assets",
+"w": 265,
+"h": 104,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "commissary__616.png",
+"name": "commissary",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "endofday__617.png",
+"name": "endofday",
+"src": "sharedassets1.assets",
+"w": 322,
+"h": 409,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "blue_close_button__618.png",
+"name": "blue_close_button",
+"src": "sharedassets1.assets",
+"w": 16,
+"h": 16,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "checkbox__619.png",
+"name": "checkbox",
+"src": "sharedassets1.assets",
+"w": 13,
+"h": 13,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "nego_buttonx2-1Normal__620.png",
+"name": "nego_buttonx2-1Normal",
+"src": "sharedassets1.assets",
+"w": 170,
+"h": 50,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "layout4__621.png",
+"name": "layout4",
+"src": "sharedassets1.assets",
+"w": 364,
+"h": 466,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "spy__622.png",
+"name": "spy",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "seal-correct__623.png",
+"name": "seal-correct",
+"src": "sharedassets1.assets",
+"w": 83,
+"h": 141,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "poster_down__624.png",
+"name": "poster_down",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "wanted_portait7__625.png",
+"name": "wanted_portait7",
+"src": "sharedassets1.assets",
+"w": 34,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "davre_logo_incorrect4__626.png",
+"name": "davre_logo_incorrect4",
+"src": "sharedassets1.assets",
+"w": 265,
+"h": 104,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "general_button_2x_d__627.png",
+"name": "general_button_2x_d",
+"src": "sharedassets1.assets",
+"w": 84,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "soda__628.png",
+"name": "soda",
+"src": "sharedassets1.assets",
+"w": 32,
+"h": 32,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "example_chip1__629.png",
+"name": "example_chip1",
+"src": "sharedassets1.assets",
+"w": 21,
+"h": 17,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "radio__630.png",
+"name": "radio",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "Serial__631.png",
+"name": "Serial",
+"src": "sharedassets1.assets",
+"w": 28,
+"h": 18,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "mouse_icon_left__632.png",
+"name": "mouse_icon_left",
+"src": "sharedassets1.assets",
+"w": 23,
+"h": 38,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "calendar__633.png",
+"name": "calendar",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_25__634.png",
+"name": "LDR_LLL1_25",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "bubble_sci_p__635.png",
+"name": "bubble_sci_p",
+"src": "sharedassets1.assets",
+"w": 48,
+"h": 40,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "jackson__636.png",
+"name": "jackson",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "3gold_hand_1normal__637.png",
+"name": "3gold_hand_1normal",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "wine_tutorial__638.png",
+"name": "wine_tutorial",
+"src": "sharedassets1.assets",
+"w": 314,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "magnifying_mask__639.png",
+"name": "magnifying_mask",
+"src": "sharedassets1.assets",
+"w": 242,
+"h": 228,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "sec_seal_2x__640.png",
+"name": "sec_seal_2x",
+"src": "sharedassets1.assets",
+"w": 94,
+"h": 96,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "LDR_LLL1_14__641.png",
+"name": "LDR_LLL1_14",
+"src": "sharedassets1.assets",
+"w": 64,
+"h": 64,
+"filter": 0,
+"sprites": 0
+},
+{
+"file": "cropped-seal-broke__642.png",
+"name": "cropped-seal-broke",
+"src": "sharedassets1.assets",
+"w": 83,
+"h": 28,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "maleScav4__643.png",
+"name": "maleScav4",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "2carbon_hand_3damage__644.png",
+"name": "2carbon_hand_3damage",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "emoji_star__645.png",
+"name": "emoji_star",
+"src": "sharedassets1.assets",
+"w": 11,
+"h": 11,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "chem_scan__646.png",
+"name": "chem_scan",
+"src": "sharedassets1.assets",
+"w": 211,
+"h": 357,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "lun__647.png",
+"name": "lun",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "guide_logo__648.png",
+"name": "guide_logo",
+"src": "sharedassets1.assets",
+"w": 283,
+"h": 116,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "maleSci__649.png",
+"name": "maleSci",
+"src": "sharedassets1.assets",
+"w": 576,
+"h": 211,
+"filter": 0,
+"sprites": 2
+},
+{
+"file": "door lock__650.png",
+"name": "door lock",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "paper_buttons4__651.png",
+"name": "paper_buttons4",
+"src": "sharedassets1.assets",
+"w": 14,
+"h": 15,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "sec_card__652.png",
+"name": "sec_card",
+"src": "sharedassets1.assets",
+"w": 58,
+"h": 40,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "injector_base__653.png",
+"name": "injector_base",
+"src": "sharedassets1.assets",
+"w": 231,
+"h": 39,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "ribs__654.png",
+"name": "ribs",
+"src": "sharedassets1.assets",
+"w": 265,
+"h": 104,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "nego_button_Hover__655.png",
+"name": "nego_button_Hover",
+"src": "sharedassets1.assets",
+"w": 85,
+"h": 25,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "card_header_plate__656.png",
+"name": "card_header_plate",
+"src": "sharedassets1.assets",
+"w": 12,
+"h": 12,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "davre_logo_incorrect5__657.png",
+"name": "davre_logo_incorrect5",
+"src": "sharedassets1.assets",
+"w": 265,
+"h": 104,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "layout2__658.png",
+"name": "layout2",
+"src": "sharedassets1.assets",
+"w": 364,
+"h": 466,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "general_button_2x_c__659.png",
+"name": "general_button_2x_c",
+"src": "sharedassets1.assets",
+"w": 84,
+"h": 32,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "maleScav11__660.png",
+"name": "maleScav11",
+"src": "sharedassets1.assets",
+"w": 288,
+"h": 211,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "iconMineral__661.png",
+"name": "iconMineral",
+"src": "sharedassets1.assets",
+"w": 17,
+"h": 14,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "nightly_tab_reversed__662.png",
+"name": "nightly_tab_reversed",
+"src": "sharedassets1.assets",
+"w": 250,
+"h": 29,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "femaleLower__663.png",
+"name": "femaleLower",
+"src": "sharedassets1.assets",
+"w": 864,
+"h": 211,
+"filter": 0,
+"sprites": 3
+},
+{
+"file": "1steel_addon_1armor__664.png",
+"name": "1steel_addon_1armor",
+"src": "sharedassets1.assets",
+"w": 456,
+"h": 402,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "tape anim-Sheet__665.png",
+"name": "tape anim-Sheet",
+"src": "sharedassets1.assets",
+"w": 332,
+"h": 40,
+"filter": 0,
+"sprites": 6
+},
+{
+"file": "femaleSci__666.png",
+"name": "femaleSci",
+"src": "sharedassets1.assets",
+"w": 576,
+"h": 211,
+"filter": 0,
+"sprites": 2
+},
+{
+"file": "letter incorrect__667.png",
+"name": "letter incorrect",
+"src": "sharedassets1.assets",
+"w": 137,
+"h": 96,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "dumping_ground__668.png",
+"name": "dumping_ground",
+"src": "sharedassets1.assets",
+"w": 960,
+"h": 540,
+"filter": 0,
+"sprites": 1
+},
+{
+"file": "paper_buttons_close4__669.png",
+"name": "paper_buttons_close4",
+"src": "sharedassets1.assets",
+"w": 14,
+"h": 15,
+"filter": 0,
+"sprites": 1
+}
+]

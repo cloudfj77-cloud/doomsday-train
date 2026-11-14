@@ -1,0 +1,1038 @@
+{
+ "scenes": [
+  "Assets/Scenes/Startup/Startup.unity",
+  "Assets/Scenes/MainMenu/MainMenu.unity",
+  "Assets/Scenes/Startup/DummyPrologueCutscene.unity",
+  "Assets/Scenes/Base.unity",
+  "Assets/Scenes/Base_Scene.unity",
+  "Assets/Scenes/Base_SceneV2.unity",
+  "Assets/Scenes/Base_SceneV2_Sub_01.unity",
+  "Assets/Scenes/Curtains/DefaultCurtain.unity",
+  "Assets/Scenes/LoadingScreens/LoadingScreen_Getout.unity",
+  "Assets/Scenes/LoadingScreens/LoadingScreen 1.unity",
+  "Assets/Scenes/Level_OpenWorldTest/Level_Farm_01.unity",
+  "Assets/Scenes/Level_OpenWorldTest/Level_Farm_Main.unity",
+  "Assets/Scenes/Level_OpenWorldTest/Level_Farm_JLab_Facility.unity",
+  "Assets/Scenes/Level_GroundZero/Level_GroundZero_Main.unity",
+  "Assets/Scenes/Level_GroundZero/Level_GroundZero_1.unity",
+  "Assets/Scenes/Level_GroundZero/Level_GroundZero_Cave.unity",
+  "Assets/Scenes/Prologue/Prologue_Main.unity",
+  "Assets/Scenes/Prologue/Prologue_1.unity",
+  "Assets/Scenes/Level_HiddenWarehouse/Level_HiddenWarehouse_Main.unity",
+  "Assets/Scenes/Level_HiddenWarehouse/Level_HiddenWarehouse.unity",
+  "Assets/Scenes/LoadingScreens/LoadingScreen Evacuate.unity",
+  "Assets/Scenes/PREPARE.unity",
+  "Assets/Scenes/Level_HiddenWarehouse/Level_HiddenWarehouse_CellarUnderGround.unity",
+  "Assets/Scenes/Level_Guide/Level_Guide_1.unity",
+  "Assets/Scenes/Level_Guide/Level_Guide_2.unity",
+  "Assets/Scenes/Level_Guide/Level_Guide_Main.unity",
+  "Assets/Scenes/EndGame/Ending.unity",
+  "Assets/Scenes/LoadingScreens/LoadingScreen Wakeup.unity",
+  "Assets/Scenes/LoadingScreens/LoadingScreen Move.unity",
+  "Assets/Scenes/LoadingScreens/LoadingScreen_Black.unity",
+  "Assets/Scenes/Level_JLab/Level_JLab_Main.unity",
+  "Assets/Scenes/Level_JLab/Level_JLab_1.unity",
+  "Assets/Scenes/Level_JLab/Level_JLab_2.unity",
+  "Assets/Scenes/Level_Desert/Level_Desert_Main.unity",
+  "Assets/Scenes/Level_Desert/Level_Desert.unity",
+  "Assets/Scenes/Level_Desert/Level_Desert_Boss.unity",
+  "Assets/Scenes/Level_DemoChallenge/Level_DemoChallenge_1.unity",
+  "Assets/Scenes/Level_DemoChallenge/Level_DemoChallenge_Main.unity",
+  "Assets/Scenes/Level_ChallengeSnow/Level_ChallengeSnow_Main.unity",
+  "Assets/Scenes/Level_ChallengeSnow/Level_ChallengeSnow.unity",
+  "Assets/Scenes/Level_StormZone/Level_StormZone_Main.unity",
+  "Assets/Scenes/Level_StormZone/Level_StormZone_1.unity",
+  "Assets/Scenes/Level_StormZone/Level_StormZone_B0.unity",
+  "Assets/Scenes/Level_StormZone/Level_StormZone_B1.unity",
+  "Assets/Scenes/Level_StormZone/Level_StormZone_B2.unity",
+  "Assets/Scenes/Level_StormZone/Level_StormZone_B3.unity",
+  "Assets/Scenes/Level_StormZone/Level_StormZone_B4.unity",
+  "Assets/Scenes/Level_SnowMilitaryBase/Level_SnowFactory.unity",
+  "Assets/Scenes/Level_SnowMilitaryBase/Level_SnowMilitaryBase.unity",
+  "Assets/Scenes/Level_SnowMilitaryBase/Level_SnowMilitaryBase_Main.unity",
+  "Assets/Scenes/Level_SnowMilitaryBase_ColdStorage/Level_SnowMilitaryBase_ColdStorage.unity",
+  "Assets/Scenes/Level_SnowMilitaryBase_ColdStorage/Level_SnowMilitaryBase_ColdStorage_Main.unity",
+  "Assets/Scenes/LoadingScreens/LoadingScreen ToStormZone.unity",
+  "Assets/Scenes/LoadingScreens/LoadingScreen Dream.unity",
+  "Assets/Scenes/Planet/CutScene_EggPlanet.unity",
+  "Assets/Scenes/LevelCutScene/Cutscene_Ending.unity",
+  "Assets/Scenes/Level_Zombie/Level_Zombie_Main.unity",
+  "Assets/Scenes/Level_Zombie/Level_Zombie_1.unity",
+  "Assets/Scenes/Level_StormPast/Level_StormPast_Main.unity",
+  "Assets/Scenes/Level_StormPast/Level_StormPast_1.unity",
+  "Assets/Scenes/Level_SurivalChallenge/Level_SurivalChallenge.unity",
+  "Assets/Scenes/Level_SurivalChallenge/Level_SurivalChallenge_Main.unity",
+  "Assets/Scenes/LoadingScreens/LoadingScreen_Duckry.unity"
+ ],
+ "tex_count": 2761,
+ "tex_prefix": [
+  [
+   "T_",
+   1136
+  ],
+  [
+   "Pfb_",
+   179
+  ],
+  [
+   "?",
+   124
+  ],
+  [
+   "stbn_",
+   64
+  ],
+  [
+   "PP_",
+   51
+  ],
+  [
+   "IG_",
+   30
+  ],
+  [
+   "Fish_",
+   30
+  ],
+  [
+   "WPN_",
+   27
+  ],
+  [
+   "Clothes_",
+   24
+  ],
+  [
+   "PictoIcon_",
+   23
+  ],
+  [
+   "SM_",
+   22
+  ],
+  [
+   "Modual_",
+   22
+  ],
+  [
+   "Kenney_",
+   19
+  ],
+  [
+   "ammo_",
+   18
+  ],
+  [
+   "Injection_",
+   15
+  ],
+  [
+   "Boss_",
+   13
+  ],
+  [
+   "PFB_",
+   13
+  ],
+  [
+   "tile_",
+   12
+  ],
+  [
+   "Key",
+   11
+  ],
+  [
+   "Helmets_",
+   9
+  ],
+  [
+   "ItemGraphic_",
+   9
+  ],
+  [
+   "Font",
+   9
+  ],
+  [
+   "Battery_",
+   8
+  ],
+  [
+   "Sniper_",
+   8
+  ],
+  [
+   "Monster_",
+   7
+  ],
+  [
+   "Map_",
+   7
+  ],
+  [
+   "Hair_",
+   7
+  ],
+  [
+   "NES_",
+   7
+  ],
+  [
+   "Knife",
+   7
+  ],
+  [
+   "ShotGun_",
+   7
+  ],
+  [
+   "JLAB_",
+   7
+  ],
+  [
+   "pictoicon_",
+   6
+  ],
+  [
+   "Grenade_",
+   6
+  ],
+  [
+   "Card_",
+   6
+  ],
+  [
+   "arrow_",
+   6
+  ],
+  [
+   "Backpack_",
+   5
+  ],
+  [
+   "Rifle",
+   5
+  ],
+  [
+   "item_",
+   5
+  ],
+  [
+   "fusion",
+   4
+  ],
+  [
+   "Default",
+   4
+  ]
+ ],
+ "tex_fmt": [
+  [
+   "25",
+   2180
+  ],
+  [
+   "12",
+   339
+  ],
+  [
+   "10",
+   102
+  ],
+  [
+   "3",
+   76
+  ],
+  [
+   "4",
+   46
+  ],
+  [
+   "1",
+   16
+  ],
+  [
+   "24",
+   1
+  ],
+  [
+   "5",
+   1
+  ]
+ ],
+ "tex_size": [
+  [
+   0,
+   12
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   4,
+   1
+  ],
+  [
+   8,
+   4
+  ],
+  [
+   11,
+   3
+  ],
+  [
+   16,
+   148
+  ],
+  [
+   22,
+   2
+  ],
+  [
+   24,
+   2
+  ],
+  [
+   26,
+   3
+  ],
+  [
+   32,
+   20
+  ],
+  [
+   48,
+   1
+  ],
+  [
+   49,
+   1
+  ],
+  [
+   51,
+   1
+  ],
+  [
+   55,
+   1
+  ],
+  [
+   56,
+   1
+  ],
+  [
+   61,
+   3
+  ],
+  [
+   64,
+   30
+  ],
+  [
+   96,
+   3
+  ],
+  [
+   128,
+   119
+  ],
+  [
+   184,
+   1
+  ],
+  [
+   192,
+   4
+  ],
+  [
+   256,
+   1277
+  ],
+  [
+   400,
+   1
+  ],
+  [
+   512,
+   643
+  ],
+  [
+   700,
+   1
+  ],
+  [
+   732,
+   1
+  ],
+  [
+   864,
+   1
+  ],
+  [
+   1000,
+   1
+  ],
+  [
+   1024,
+   418
+  ],
+  [
+   2000,
+   1
+  ],
+  [
+   2048,
+   56
+  ]
+ ],
+ "shaders": [
+  "BillBoard",
+  "BillBoardOverlay_Markers",
+  "BuildingGrid",
+  "CharacterShowBack",
+  "Hidden/ALINE/Font",
+  "Hidden/ALINE/Outline",
+  "Hidden/ALINE/Surface",
+  "Hidden/BasicBlit",
+  "Hidden/Blur",
+  "Hidden/ClearStencil",
+  "Hidden/Dilate",
+  "Hidden/EPO/Fill/Basic/Color fill",
+  "Hidden/EPO/Fill/Basic/Dots",
+  "Hidden/EPO/Fill/Basic/Fresnel",
+  "Hidden/EPO/Fill/Basic/Interlaced",
+  "Hidden/EPO/Fill/Utils/Empty fill",
+  "Hidden/EPO/Fill/Utils/Fill mask",
+  "Hidden/Edge dilate",
+  "Hidden/EfficientBlur",
+  "Hidden/EfficientBlur_UniversalRP",
+  "Hidden/FillCrop",
+  "Hidden/FillCrop_UniversalRP",
+  "Hidden/FinalBlit",
+  "Hidden/FullScreen/FOW/Blur",
+  "Hidden/FullScreen/FOW/FOW_RT",
+  "Hidden/FullScreen/FOW/GrayScale",
+  "Hidden/FullScreen/FOW/Outline",
+  "Hidden/FullScreen/FOW/SolidColor",
+  "Hidden/FullScreen/FOW/TextureSample",
+  "Hidden/Kronnect/UmbraScreenSpaceShadows",
+  "Hidden/Obstacle",
+  "Hidden/Outline",
+  "Hidden/ProBuilder/EdgePicker",
+  "Hidden/ProBuilder/FacePicker",
+  "Hidden/ProBuilder/HideVertices",
+  "Hidden/ProBuilder/VertexPicker",
+  "Hidden/Symmetry Break Studio/Tasty Grass Shader/Grass",
+  "Hidden/TrueShadow/Cutout",
+  "Hidden/TrueShadow/Generate",
+  "Hidden/TrueShadow/ImprintPostProcess",
+  "Hidden/TrueShadow/PostProcess",
+  "Hidden/VLB_HD_URP_Default",
+  "Hidden/VLB_SD_URP_Default",
+  "Hidden/ZPrepass",
+  "Lazer",
+  "Legacy Shaders/Particles/Alpha Blended",
+  "MapSprite",
+  "Mosaic",
+  "MoveRing",
+  "OverlayTransparent",
+  "ProBuilder/Standard Vertex Color",
+  "ProBuilder/UnlitVertexColor",
+  "RangeRing",
+  "RollingImage",
+  "Shader Graphs/Decal",
+  "Shader Graphs/SodaDecal",
+  "Shader Graphs/SodaDecalWaterV2",
+  "Shapes/Cone Additive",
+  "Shapes/Cone ColorBurn",
+  "Shapes/Cone ColorDodge",
+  "Shapes/Cone Darken",
+  "Shapes/Cone Lighten",
+  "Shapes/Cone LinearBurn",
+  "Shapes/Cone Multiplicative",
+  "Shapes/Cone Opaque",
+  "Shapes/Cone Screen",
+  "Shapes/Cone Subtractive",
+  "Shapes/Cone Transparent",
+  "Shapes/Cuboid Additive",
+  "Shapes/Cuboid ColorBurn",
+  "Shapes/Cuboid ColorDodge",
+  "Shapes/Cuboid Darken",
+  "Shapes/Cuboid Lighten",
+  "Shapes/Cuboid LinearBurn",
+  "Shapes/Cuboid Multiplicative",
+  "Shapes/Cuboid Opaque",
+  "Shapes/Cuboid Screen",
+  "Shapes/Cuboid Subtractive",
+  "Shapes/Cuboid Transparent",
+  "Shapes/Disc Additive",
+  "Shapes/Disc ColorBurn",
+  "Shapes/Disc ColorDodge",
+  "Shapes/Disc Darken",
+  "Shapes/Disc Lighten",
+  "Shapes/Disc LinearBurn",
+  "Shapes/Disc Multiplicative",
+  "Shapes/Disc Opaque",
+  "Shapes/Disc Screen",
+  "Shapes/Disc Subtractive",
+  "Shapes/Disc Transparent",
+  "Shapes/Line 2D Additive",
+  "Shapes/Line 2D ColorBurn",
+  "Shapes/Line 2D ColorDodge",
+  "Shapes/Line 2D Darken",
+  "Shapes/Line 2D Lighten",
+  "Shapes/Line 2D LinearBurn",
+  "Shapes/Line 2D Multiplicative",
+  "Shapes/Line 2D Opaque",
+  "Shapes/Line 2D Screen",
+  "Shapes/Line 2D Subtractive",
+  "Shapes/Line 2D Transparent",
+  "Shapes/Line 3D Additive",
+  "Shapes/Line 3D ColorBurn",
+  "Shapes/Line 3D ColorDodge",
+  "Shapes/Line 3D Darken",
+  "Shapes/Line 3D Lighten",
+  "Shapes/Line 3D LinearBurn",
+  "Shapes/Line 3D Multiplicative",
+  "Shapes/Line 3D Opaque",
+  "Shapes/Line 3D Screen",
+  "Shapes/Line 3D Subtractive",
+  "Shapes/Line 3D Transparent",
+  "Shapes/Polygon Additive",
+  "Shapes/Polygon ColorBurn",
+  "Shapes/Polygon ColorDodge",
+  "Shapes/Polygon Darken",
+  "Shapes/Polygon Lighten",
+  "Shapes/Polygon LinearBurn",
+  "Shapes/Polygon Multiplicative",
+  "Shapes/Polygon Opaque",
+  "Shapes/Polygon Screen",
+  "Shapes/Polygon Subtractive",
+  "Shapes/Polygon Transparent",
+  "Shapes/Polyline 2D Additive",
+  "Shapes/Polyline 2D ColorBurn",
+  "Shapes/Polyline 2D ColorDodge",
+  "Shapes/Polyline 2D Darken",
+  "Shapes/Polyline 2D Lighten",
+  "Shapes/Polyline 2D LinearBurn",
+  "Shapes/Polyline 2D Multiplicative",
+  "Shapes/Polyline 2D Opaque",
+  "Shapes/Polyline 2D Screen",
+  "Shapes/Polyline 2D Subtractive",
+  "Shapes/Polyline 2D Transparent",
+  "Shapes/Quad Additive",
+  "Shapes/Quad ColorBurn",
+  "Shapes/Quad ColorDodge",
+  "Shapes/Quad Darken",
+  "Shapes/Quad Lighten",
+  "Shapes/Quad LinearBurn",
+  "Shapes/Quad Multiplicative",
+  "Shapes/Quad Opaque",
+  "Shapes/Quad Screen",
+  "Shapes/Quad Subtractive",
+  "Shapes/Quad Transparent",
+  "Shapes/Rect Additive",
+  "Shapes/Rect ColorBurn",
+  "Shapes/Rect ColorDodge",
+  "Shapes/Rect Darken",
+  "Shapes/Rect Lighten",
+  "Shapes/Rect LinearBurn",
+  "Shapes/Rect Multiplicative",
+  "Shapes/Rect Opaque",
+  "Shapes/Rect Screen",
+  "Shapes/Rect Subtractive",
+  "Shapes/Rect Transparent",
+  "Shapes/Regular Polygon Additive",
+  "Shapes/Regular Polygon ColorBurn",
+  "Shapes/Regular Polygon ColorDodge",
+  "Shapes/Regular Polygon Darken",
+  "Shapes/Regular Polygon Lighten",
+  "Shapes/Regular Polygon LinearBurn",
+  "Shapes/Regular Polygon Multiplicative",
+  "Shapes/Regular Polygon Opaque",
+  "Shapes/Regular Polygon Screen",
+  "Shapes/Regular Polygon Subtractive",
+  "Shapes/Regular Polygon Transparent",
+  "Shapes/Sphere Additive",
+  "Shapes/Sphere ColorBurn",
+  "Shapes/Sphere ColorDodge",
+  "Shapes/Sphere Darken",
+  "Shapes/Sphere Lighten",
+  "Shapes/Sphere LinearBurn",
+  "Shapes/Sphere Multiplicative",
+  "Shapes/Sphere Opaque",
+  "Shapes/Sphere Screen",
+  "Shapes/Sphere Subtractive",
+  "Shapes/Sphere Transparent",
+  "Shapes/Texture Additive",
+  "Shapes/Texture ColorBurn",
+  "Shapes/Texture ColorDodge",
+  "Shapes/Texture Darken",
+  "Shapes/Texture Lighten",
+  "Shapes/Texture LinearBurn",
+  "Shapes/Texture Multiplicative",
+  "Shapes/Texture Opaque",
+  "Shapes/Texture Screen",
+  "Shapes/Texture Subtractive",
+  "Shapes/Texture Transparent",
+  "Shapes/Torus Additive",
+  "Shapes/Torus ColorBurn",
+  "Shapes/Torus ColorDodge",
+  "Shapes/Torus Darken",
+  "Shapes/Torus Lighten",
+  "Shapes/Torus LinearBurn",
+  "Shapes/Torus Multiplicative",
+  "Shapes/Torus Opaque",
+  "Shapes/Torus Screen",
+  "Shapes/Torus Subtractive",
+  "Shapes/Torus Transparent",
+  "Shapes/Triangle Additive",
+  "Shapes/Triangle ColorBurn",
+  "Shapes/Triangle ColorDodge",
+  "Shapes/Triangle Darken",
+  "Shapes/Triangle Lighten",
+  "Shapes/Triangle LinearBurn",
+  "Shapes/Triangle Multiplicative",
+  "Shapes/Triangle Opaque",
+  "Shapes/Triangle Screen",
+  "Shapes/Triangle Subtractive",
+  "Shapes/Triangle Transparent",
+  "SkillRange",
+  "SmokeDither",
+  "SmokeFireFX",
+  "SniperRound",
+  "SodaCraft/SodaCharacter",
+  "SodaCraft/SodaLit",
+  "SodaCraft/SodaLit_Blend2",
+  "SodaCraft/SodaLit_EdgeLight",
+  "SodaCraft/SodaLit_EdgeLight_Mask",
+  "SodaCraft/SodaLit_Mask2",
+  "SodaCutout",
+  "SodaSoftParticle",
+  "SodaTeleporter",
+  "SoundUI",
+  "Standard",
+  "TextMeshPro/Distance Field Overlay",
+  "TextMeshPro/Sprite",
+  "UI/Procedural UI Image",
+  "UI/TrueShadow-Additive",
+  "UI/TrueShadow-Multiply",
+  "UI/TrueShadow-Normal",
+  "UI/TrueShadow-Screen",
+  "UI_LineMove",
+  "Universal Render Pipeline/Particles/Lit",
+  "Universal Render Pipeline/Particles/Simple Lit",
+  "Universal Render Pipeline/Particles/Unlit",
+  "Unlit/Texture",
+  "WorldTile"
+ ],
+ "mat_shader": [
+  [
+   "SodaCraft/SodaLit",
+   408
+  ],
+  [
+   "SodaCraft/SodaCharacter",
+   186
+  ],
+  [
+   "Universal Render Pipeline/Particles/Unlit",
+   87
+  ],
+  [
+   "SodaCraft/SodaLit_EdgeLight",
+   50
+  ],
+  [
+   "Lazer",
+   22
+  ],
+  [
+   "ext_file1",
+   16
+  ],
+  [
+   "ext:0",
+   16
+  ],
+  [
+   "ext_file2",
+   15
+  ],
+  [
+   "SodaSoftParticle",
+   14
+  ],
+  [
+   "Universal Render Pipeline/Particles/Lit",
+   12
+  ],
+  [
+   "SmokeFireFX",
+   12
+  ],
+  [
+   "OverlayTransparent",
+   10
+  ],
+  [
+   "ext_file3",
+   9
+  ],
+  [
+   "BillBoardOverlay_Markers",
+   8
+  ],
+  [
+   "RollingImage",
+   8
+  ],
+  [
+   "Shader Graphs/SodaDecal",
+   4
+  ],
+  [
+   "Universal Render Pipeline/Particles/Simple Lit",
+   4
+  ],
+  [
+   "SkillRange",
+   3
+  ],
+  [
+   "Legacy Shaders/Particles/Alpha Blended",
+   3
+  ],
+  [
+   "TextMeshPro/Sprite",
+   2
+  ],
+  [
+   "Hidden/ALINE/Outline",
+   2
+  ],
+  [
+   "Hidden/ALINE/Surface",
+   2
+  ],
+  [
+   "Hidden/ALINE/Font",
+   2
+  ],
+  [
+   "WorldTile",
+   2
+  ],
+  [
+   "SodaTeleporter",
+   2
+  ],
+  [
+   "BillBoard",
+   2
+  ],
+  [
+   "UI_LineMove",
+   2
+  ],
+  [
+   "CharacterShowBack",
+   2
+  ],
+  [
+   "SniperRound",
+   2
+  ],
+  [
+   "Standard",
+   2
+  ],
+  [
+   "TextMeshPro/Distance Field Overlay",
+   1
+  ],
+  [
+   "Shader Graphs/SodaDecalWaterV2",
+   1
+  ],
+  [
+   "Shader Graphs/Decal",
+   1
+  ],
+  [
+   "SodaCraft/SodaLit_Blend2",
+   1
+  ],
+  [
+   "SodaCraft/SodaLit_EdgeLight_Mask",
+   1
+  ],
+  [
+   "SodaCutout",
+   1
+  ],
+  [
+   "MoveRing",
+   1
+  ],
+  [
+   "RangeRing",
+   1
+  ],
+  [
+   "SmokeDither",
+   1
+  ],
+  [
+   "BuildingGrid",
+   1
+  ],
+  [
+   "MapSprite",
+   1
+  ],
+  [
+   "Mosaic",
+   1
+  ],
+  [
+   "SoundUI",
+   1
+  ],
+  [
+   "Hidden/BasicBlit",
+   1
+  ],
+  [
+   "Hidden/Blur",
+   1
+  ],
+  [
+   "Hidden/ClearStencil",
+   1
+  ],
+  [
+   "Hidden/Dilate",
+   1
+  ],
+  [
+   "Hidden/Edge dilate",
+   1
+  ],
+  [
+   "Hidden/FinalBlit",
+   1
+  ],
+  [
+   "Hidden/Obstacle",
+   1
+  ],
+  [
+   "Hidden/Outline",
+   1
+  ],
+  [
+   "Hidden/ZPrepass",
+   1
+  ],
+  [
+   "Hidden/Symmetry Break Studio/Tasty Grass Shader/Grass",
+   1
+  ],
+  [
+   "Hidden/VLB_HD_URP_Default",
+   1
+  ],
+  [
+   "Hidden/VLB_SD_URP_Default",
+   1
+  ],
+  [
+   "Hidden/ProBuilder/EdgePicker",
+   1
+  ],
+  [
+   "Hidden/ProBuilder/FacePicker",
+   1
+  ],
+  [
+   "Hidden/ProBuilder/HideVertices",
+   1
+  ],
+  [
+   "Unlit/Texture",
+   1
+  ],
+  [
+   "ProBuilder/Standard Vertex Color",
+   1
+  ]
+ ],
+ "mesh_top": [
+  [
+   "UreaBag",
+   17594
+  ],
+  [
+   "torus_4",
+   8192
+  ],
+  [
+   "Clothes_LV5_3",
+   6773
+  ],
+  [
+   "Clothes_LV5_3",
+   6773
+  ],
+  [
+   "Car3_Main",
+   4803
+  ],
+  [
+   "WPN_AK74U_T",
+   4770
+  ],
+  [
+   "Shotgun",
+   4692
+  ],
+  [
+   "shit_rig:shit",
+   4444
+  ],
+  [
+   "Leg_3_B_L",
+   4190
+  ],
+  [
+   "WPN_RPD",
+   4160
+  ],
+  [
+   "Helmets_Tagilla_Minotaur",
+   4102
+  ],
+  [
+   "Cube",
+   4062
+  ],
+  [
+   "Bullet_SnowBall_H",
+   3897
+  ],
+  [
+   "Clothes_Killa",
+   3801
+  ],
+  [
+   "WPN_Fireworks",
+   3455
+  ],
+  [
+   "WPN_RPK16",
+   3451
+  ],
+  [
+   "WPN_UMP45",
+   3433
+  ],
+  [
+   "Car3_Tires",
+   3366
+  ],
+  [
+   "Clothes_LV5_2",
+   3312
+  ],
+  [
+   "WPN_MP155Ultima",
+   3258
+  ],
+  [
+   "Roadblock",
+   3251
+  ],
+  [
+   "Monster_T2",
+   3217
+  ],
+  [
+   "WPN_CompoundBow",
+   3112
+  ],
+  [
+   "WPN_Minotaur",
+   3098
+  ],
+  [
+   "WPN_WW_Carlotta",
+   3076
+  ],
+  [
+   "WPN_BarrettM1892",
+   3067
+  ],
+  [
+   "WPN_RPG7",
+   3064
+  ],
+  [
+   "WPN_SniperRifle",
+   2920
+  ],
+  [
+   "WPN_DTMDR762",
+   2912
+  ],
+  [
+   "WPN_AUGA1",
+   2881
+  ],
+  [
+   "WPN_WW_Lynae",
+   2876
+  ],
+  [
+   "WPN_M1A",
+   2854
+  ],
+  [
+   "WPN_PP19Bizon",
+   2791
+  ],
+  [
+   "WPN_SnowBall",
+   2772
+  ],
+  [
+   "WPN_DTMDR556",
+   2740
+  ],
+  [
+   "WPN_CopperCoinSword",
+   2736
+  ],
+  [
+   "Clothes_AntiFreeze",
+   2723
+  ],
+  [
+   "WPN_AUGA3",
+   2720
+  ],
+  [
+   "Player_Duck_Head",
+   2698
+  ],
+  [
+   "WPN_PPSH",
+   2645
+  ]
+ ],
+ "mesh_count": 903,
+ "mesh_vert_median": 402,
+ "errors": {}
+}
