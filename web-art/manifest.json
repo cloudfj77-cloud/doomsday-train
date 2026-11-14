@@ -1,0 +1,286 @@
+{
+ "scene/store.png": {
+  "from": "ProbablyStolen_teardown/art/scene/store_composite.png",
+  "note": "店铺内景合成图"
+ },
+ "scene/store_bg.png": {
+  "from": "ProbablyStolen_teardown/art/scene/step1_background.png",
+  "note": "店铺背景层"
+ },
+ "portraits/lower0.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/scavMale/scavMale_0__1697.png",
+  "note": "scavMale"
+ },
+ "portraits/lower1.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/scavMale/scavMale_1__1007.png",
+  "note": "scavMale"
+ },
+ "portraits/lower2.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/maleLower/maleLower_0__1038.png",
+  "note": "maleLower"
+ },
+ "portraits/lower3.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/maleLower/maleLower_0__1771.png",
+  "note": "maleLower"
+ },
+ "portraits/upper0.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/maleUpper/maleUpper_0__1037.png",
+  "note": "maleUpper"
+ },
+ "portraits/upper1.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/maleUpper/maleUpper_0__1133.png",
+  "note": "maleUpper"
+ },
+ "portraits/upper2.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/femaleUpper/femaleUpper_0__1017.png",
+  "note": "femaleUpper"
+ },
+ "portraits/upper3.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/femaleUpper/femaleUpper_0__1764.png",
+  "note": "femaleUpper"
+ },
+ "portraits/security0.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/maleSecOff/maleSecOff_0__1083.png",
+  "note": "maleSecOff"
+ },
+ "portraits/security1.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/maleSecOff/maleSecOff_1__1023.png",
+  "note": "maleSecOff"
+ },
+ "portraits/security2.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/femaleSec/femaleSec_0__1021.png",
+  "note": "femaleSec"
+ },
+ "portraits/security3.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/femaleSec/femaleSec_1__1011.png",
+  "note": "femaleSec"
+ },
+ "portraits/blackmarket0.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/maleBM/maleBM_0__1691.png",
+  "note": "maleBM"
+ },
+ "portraits/blackmarket1.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/maleBM/maleBM_0__1702.png",
+  "note": "maleBM"
+ },
+ "portraits/blackmarket2.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/femaleBM/femaleBM_0__1706.png",
+  "note": "femaleBM"
+ },
+ "portraits/blackmarket3.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/femaleBM/femaleBM_0__1789.png",
+  "note": "femaleBM"
+ },
+ "portraits/rebel0.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/maleRev/maleRev_0__1019.png",
+  "note": "maleRev"
+ },
+ "portraits/rebel1.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/maleRev/maleRev_1__1105.png",
+  "note": "maleRev"
+ },
+ "portraits/rebel2.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/femaleRev/femaleRev_0__1705.png",
+  "note": "femaleRev"
+ },
+ "portraits/rebel3.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/femaleRev/femaleRev_1__1776.png",
+  "note": "femaleRev"
+ },
+ "portraits/tourist0.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/femaleChef/femaleChef_0__1780.png",
+  "note": "femaleChef"
+ },
+ "portraits/tourist1.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/femaleChef/femaleChef_1__1786.png",
+  "note": "femaleChef"
+ },
+ "portraits/tourist2.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/maleChef/maleChef_0__1748.png",
+  "note": "maleChef"
+ },
+ "portraits/tourist3.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/maleChef/maleChef_1__1103.png",
+  "note": "maleChef"
+ },
+ "portraits/georgio.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/Georgio/Georgio__1519.png",
+  "note": "乔治奥"
+ },
+ "portraits/officer.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/lun/lun__1641.png",
+  "note": "伦警官原版 Lun"
+ },
+ "portraits/landlord.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/landlord/landlord__1588.png",
+  "note": "房东"
+ },
+ "portraits/serpico.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/Serpico/Serpico__1258.png",
+  "note": "督察 Serpico"
+ },
+ "wanted/wanted1.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/wanted_portait1/wanted_portait1__1483.png",
+  "note": "通缉令头像"
+ },
+ "wanted/wanted2.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/wanted_portait2/wanted_portait2__1310.png",
+  "note": "通缉令头像"
+ },
+ "wanted/wanted3.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/wanted_portait3/wanted_portait3__1247.png",
+  "note": "通缉令头像"
+ },
+ "wanted/wanted4.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/wanted_portait4/wanted_portait4__1252.png",
+  "note": "通缉令头像"
+ },
+ "wanted/wanted5.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/wanted_portait5/wanted_portait5__1204.png",
+  "note": "通缉令头像"
+ },
+ "wanted/wanted6.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/wanted_portait6/wanted_portait6__1225.png",
+  "note": "通缉令头像"
+ },
+ "wanted/wanted7.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/wanted_portait7/wanted_portait7__1622.png",
+  "note": "通缉令头像"
+ },
+ "wanted/wanted8.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/wanted_portait8/wanted_portait8__1441.png",
+  "note": "通缉令头像"
+ },
+ "wanted/wanted9.png": {
+  "from": "ProbablyStolen_teardown/art/sprites/wanted_portait9/wanted_portait9__1411.png",
+  "note": "通缉令头像"
+ },
+ "items/wpn_cleaver.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/Knife03.png",
+  "note": "Knife03.png"
+ },
+ "items/wpn_mmg.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/Pfb_WPN_MP5.png",
+  "note": "Pfb_WPN_MP5.png"
+ },
+ "items/wpn_shotgun.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/Pfb_WPN_CandyShotgun.png",
+  "note": "Pfb_WPN_CandyShotgun.png"
+ },
+ "items/wpn_ak74u.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/Pfb_WPN_AK74U_2.png",
+  "note": "Pfb_WPN_AK74U_2.png"
+ },
+ "items/wpn_mosin.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/Pfb_WPN_Mosin.png",
+  "note": "Pfb_WPN_Mosin.png"
+ },
+ "items/wpn_cubegun.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/CubeGun.png",
+  "note": "CubeGun.png"
+ },
+ "items/wpn_corn_burner.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/Pfb_WPN_AK47_Fire.png",
+  "note": "Pfb_WPN_AK47_Fire.png"
+ },
+ "items/att_silencer.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/Pfb_Muzzle_AR_SIL_1_1.png",
+  "note": "Pfb_Muzzle_AR_SIL_1_1.png"
+ },
+ "items/att_ap_muzzle.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/Pfb_Muzzle_AR_DAM_1_1.png",
+  "note": "Pfb_Muzzle_AR_DAM_1_1.png"
+ },
+ "items/att_drum_mag.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/Pfb_Magazine_AR_CAP_3_1.png",
+  "note": "Pfb_Magazine_AR_CAP_3_1.png"
+ },
+ "items/att_laser_grip.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/Pfb_Acc_Grip_ALL_ADS_2_1.png",
+  "note": "Pfb_Acc_Grip_ALL_ADS_2_1.png"
+ },
+ "items/hlm_lv2.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/Helmets_Headscarf.png",
+  "note": "Helmets_Headscarf.png"
+ },
+ "items/hlm_lv4.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/Helmets_Tagilla.png",
+  "note": "Helmets_Tagilla.png"
+ },
+ "items/hlm_lv6.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/Helmets_Tagilla_Minotaur.png",
+  "note": "Helmets_Tagilla_Minotaur.png"
+ },
+ "items/arm_lv2.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/Armor.png",
+  "note": "Armor.png"
+ },
+ "items/arm_lv4.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/Ballistic Armor Co. Bastion.png",
+  "note": "Ballistic Armor Co. Bastion.png"
+ },
+ "items/arm_lv6.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/Armor_SpaceProtect_Raider.png",
+  "note": "Armor_SpaceProtect_Raider.png"
+ },
+ "items/med_bandage.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/First_aid_Kit_Bandage.png",
+  "note": "First_aid_Kit_Bandage.png"
+ },
+ "items/med_aspirin.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/Pill.png",
+  "note": "Pill.png"
+ },
+ "items/med_kit_large.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/First_aid_Kit01.png",
+  "note": "First_aid_Kit01.png"
+ },
+ "items/wat_ditch.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/Bottle02.png",
+  "note": "Bottle02.png"
+ },
+ "items/wat_pure.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/Water01.png",
+  "note": "Water01.png"
+ },
+ "items/mat_scrap_ingot.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/MetalSlice.png",
+  "note": "MetalSlice.png"
+ },
+ "items/chem_precursor.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/Medicine_bottle02.png",
+  "note": "Medicine_bottle02.png"
+ },
+ "items/chem_dreamdust.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/Injection_A.png",
+  "note": "Injection_A.png"
+ },
+ "items/val_cigarettes.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/Cigarette02.png",
+  "note": "Cigarette02.png"
+ },
+ "items/val_prosthetic.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/back_hand_64dp_FFFFFF_FILL1_wght400_GRAD0_opsz48.png",
+  "note": "back_hand_64dp_FFFFFF_FILL1_wght400_GRAD0_opsz48.png"
+ },
+ "items/val_thruster.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/rocket.png",
+  "note": "rocket.png"
+ },
+ "items/val_gold_star.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/Star.png",
+  "note": "Star.png"
+ },
+ "items/int_encrypted_disk.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/FloppyDisk.png",
+  "note": "FloppyDisk.png"
+ },
+ "items/int_blackfile.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/Card_Black.png",
+  "note": "Card_Black.png"
+ },
+ "items/int_jlab_keycard.png": {
+  "from": "EscapeFromDuckov_teardown/duckov_re/art/sprites/KeyCard_W.png",
+  "note": "KeyCard_W.png"
+ }
+}

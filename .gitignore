@@ -1,0 +1,17 @@
+dist/
+node_modules/
+.forgeax/
+.assetlib/
+artifacts/
+.game-builder/state/
+.game-builder/covers/
+.game-builder/artifacts/
+.game-builder/reference/
+.env
+.env.*
+.feishu.env
+.agents/
+.claude/
+.codebuddy/
+.cursor/
+.workbuddy/
